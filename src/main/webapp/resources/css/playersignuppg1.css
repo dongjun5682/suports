@@ -1,0 +1,433 @@
+
+.playersignuppg1 {
+  width               : 100%;
+  min-width           : 1024px;
+  min-height          : 780px;
+  position            : relative;
+  overflow            : hidden;
+  margin-top              : 80px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color    : rgba(255, 255, 255, 1.0);
+}
+a {
+  text-decoration     : none;
+}
+div {
+  -webkit-text-size-adjust: none;
+}
+.anima-full-width-a {
+  width               : 100%;
+}
+.anima-full-height-a {
+  height              : 100%;
+}
+div {
+  -webkit-text-size-adjust: none;
+}
+.playersignuppg1 .rightcontent {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 0px;
+  height              : 780px;
+  width               : 540px;
+  position            : absolute;
+  margin              : 0;
+  left                : 484px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.playersignuppg1 .rightcontent .shadow {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 0px;
+  height              : 780px;
+  width               : 30px;
+  position            : absolute;
+  margin              : 0;
+  left                : 0px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  opacity             : 0.6;
+}
+.playersignuppg1 .rightcontent .gradientbg {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 0px;
+  height              : 780px;
+  width               : 510px;
+  position            : absolute;
+  margin              : 0;
+  left                : 30px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.playersignuppg1 .rightcontent .handimg {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 156px;
+  height              : 468px;
+  width               : 423px;
+  position            : absolute;
+  margin              : 0;
+  left                : 74px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.playersignuppg1 .formsignup {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 276px;
+  height              : 421px;
+  width               : 378px;
+  position            : absolute;
+  margin              : 0;
+  left                : 76px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.playersignuppg1 .formsignup .fieldbtn {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 353px;
+  height              : 68px;
+  width               : 378px;
+  position            : absolute;
+  margin              : 0;
+  left                : 0px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.playersignuppg1 .formsignup .chkterms {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 310px;
+  height              : auto;
+  width               : 372px;
+  position            : absolute;
+  margin              : 0;
+  left                : 4px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+  font-size           : 16.0px;
+  color               : rgba(115, 123, 132, 1.0);
+  text-align          : left;
+  line-height         : 28.0px;
+}
+.playersignuppg1 .formsignup .fieldemail {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 200px;
+  height              : 70px;
+  width               : 370px;
+  position            : absolute;
+  margin              : 0;
+  left                : 4px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.playersignuppg1 .formsignup .fieldemail .imgpath {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 68px;
+  height              : 2px;
+  width               : 370px;
+  position            : absolute;
+  margin              : 0;
+  left                : 0px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.playersignuppg1 .formsignup .fieldemail .textcontentpg1 {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 34px;
+  height              : auto;
+  width               : 253px;
+  position            : absolute;
+  margin              : 0;
+  left                : 1px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
+  font-size           : 14.0px;
+  color               : rgba(0, 0, 0, 1.0);
+  text-align          : left;
+  line-height         : 35.0px;
+}
+.playersignuppg1 .formsignup .fieldemail .textcontentpg1 .span1 {
+  
+}
+.playersignuppg1 .formsignup .fieldemail .textcontentpg1 .span2 {
+  font-family         : "HelveticaNeue-UltraLight", Helvetica, Arial, serif;
+}
+.playersignuppg1 .formsignup .fieldemail .textcontentpg1 .span3 {
+  
+}
+.playersignuppg1 .formsignup .fieldemail .textcontentpg1 .span4 {
+  font-family         : "HelveticaNeue-UltraLight", Helvetica, Arial, serif;
+}
+.playersignuppg1 .formsignup .fieldemail .textcontentpg1 .span5 {
+  
+}
+.playersignuppg1 .formsignup .fieldemail .texttitlepg1 {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 0px;
+  height              : auto;
+  width               : 204px;
+  position            : absolute;
+  margin              : 0;
+  left                : 1px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+  font-size           : 16.0px;
+  color               : rgba(0, 0, 0, 1.0);
+  text-align          : left;
+  line-height         : 19.0px;
+}
+.playersignuppg1 .formsignup .fieldemail .texttitlepg1 .span1 {
+  
+}
+.playersignuppg1 .formsignup .fieldemail .texttitlepg1 .span2 {
+  font-family         : "HelveticaNeue-Bold", Helvetica, Arial, serif;
+}
+.playersignuppg1 .formsignup .fieldnickname {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 100px;
+  height              : 70px;
+  width               : 370px;
+  position            : absolute;
+  margin              : 0;
+  left                : 4px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.playersignuppg1 .formsignup .fieldnickname .imgpath {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 68px;
+  height              : 2px;
+  width               : 370px;
+  position            : absolute;
+  margin              : 0;
+  left                : 0px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.playersignuppg1 .formsignup .fieldnickname .textcontentpg1 {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 34px;
+  height              : auto;
+  width               : 165px;
+  position            : absolute;
+  margin              : 0;
+  left                : 0px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
+  font-size           : 14.0px;
+  color               : rgba(0, 0, 0, 1.0);
+  text-align          : left;
+  line-height         : 35.0px;
+}
+.playersignuppg1 .formsignup .fieldnickname .textcontentpg1 .span1 {
+  
+}
+.playersignuppg1 .formsignup .fieldnickname .textcontentpg1 .span2 {
+  font-family         : "HelveticaNeue-UltraLight", Helvetica, Arial, serif;
+}
+.playersignuppg1 .formsignup .fieldnickname .textcontentpg1 .span3 {
+  
+}
+.playersignuppg1 .formsignup .fieldnickname .textcontentpg1 .span4 {
+  font-family         : "HelveticaNeue-UltraLight", Helvetica, Arial, serif;
+}
+.playersignuppg1 .formsignup .fieldnickname .texttitlepg1 {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 0px;
+  height              : auto;
+  width               : 205px;
+  position            : absolute;
+  margin              : 0;
+  left                : 0px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+  font-size           : 16.0px;
+  color               : rgba(0, 0, 0, 1.0);
+  text-align          : left;
+  line-height         : 19.0px;
+}
+.playersignuppg1 .formsignup .fieldnickname .texttitlepg1 .span1 {
+  
+}
+.playersignuppg1 .formsignup .fieldnickname .texttitlepg1 .span2 {
+  font-family         : "HelveticaNeue-Bold", Helvetica, Arial, serif;
+}
+.playersignuppg1 .formsignup .fieldfullname {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 0px;
+  height              : 70px;
+  width               : 370px;
+  position            : absolute;
+  margin              : 0;
+  left                : 4px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.playersignuppg1 .formsignup .fieldfullname .imgpath {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 68px;
+  height              : 2px;
+  width               : 370px;
+  position            : absolute;
+  margin              : 0;
+  left                : 0px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.playersignuppg1 .formsignup .fieldfullname .textcontentpg1 {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 34px;
+  height              : auto;
+  width               : 183px;
+  position            : absolute;
+  margin              : 0;
+  left                : 0px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
+  font-size           : 14.0px;
+  color               : rgba(0, 0, 0, 1.0);
+  text-align          : left;
+  line-height         : 35.0px;
+}
+.playersignuppg1 .formsignup .fieldfullname .texttitlepg1 {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 0px;
+  height              : auto;
+  width               : 206px;
+  position            : absolute;
+  margin              : 0;
+  left                : 0px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+  font-size           : 16.0px;
+  color               : rgba(0, 0, 0, 1.0);
+  text-align          : left;
+  line-height         : 19.0px;
+}
+.playersignuppg1 .formsignup .fieldfullname .texttitlepg1 .span1 {
+  
+}
+.playersignuppg1 .formsignup .fieldfullname .texttitlepg1 .span2 {
+  font-family         : "HelveticaNeue-Bold", Helvetica, Arial, serif;
+}
+.playersignuppg1 .hsubtitlepg1 {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 126px;
+  height              : 115px;
+  width               : 376px;
+  position            : absolute;
+  margin              : 0;
+  left                : 76px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.playersignuppg1 .hsubtitlepg1 .texthcontent {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 51px;
+  height              : auto;
+  width               : 376px;
+  position            : absolute;
+  margin              : 0;
+  left                : 0px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+  font-size           : 18.0px;
+  color               : rgba(57, 63, 69, 1.0);
+  text-align          : center;
+  line-height         : 18.0px;
+}
+.playersignuppg1 .hsubtitlepg1 .texthcontent .span1 {
+  line-height         : 32.0px;
+}
+.playersignuppg1 .hsubtitlepg1 .texthcontent .span2 {
+  font-size           : 20.0px;
+  line-height         : 32.0px;
+}
+.playersignuppg1 .hsubtitlepg1 .texthcontent .span3 {
+  line-height         : 32.0px;
+}
+.playersignuppg1 .hsubtitlepg1 .texthtitle {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 0px;
+  height              : auto;
+  width               : 376px;
+  position            : absolute;
+  margin              : 0;
+  left                : 0px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+  font-size           : 24.0px;
+  color               : rgba(39, 44, 49, 1.0);
+  text-align          : center;
+  line-height         : 51.0px;
+}
+.playersignuppg1 .logo {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 50px;
+  height              : 40px;
+  width               : 40px;
+  position            : absolute;
+  margin              : 0;
+  left                : 60px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.playersignuppg1 .logo .logobox {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 0px;
+  height              : 40px;
+  width               : 40px;
+  position            : absolute;
+  margin              : 0;
+  left                : 0px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.playersignuppg1 .clearmaterial {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 51px;
+  height              : auto;
+  width               : auto;
+  position            : absolute;
+  margin              : 0;
+  left                : 940px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "material", Helvetica, Arial, serif;
+  font-size           : 22.0px;
+  color               : rgba(115, 123, 132, 1.0);
+  text-align          : left;
+  line-height         : 22.0px;
+}

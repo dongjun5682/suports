@@ -1,0 +1,437 @@
+@import
+	url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+
+.signin {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+a {
+	text-decoration: none;
+}
+
+
+.signin .content {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 100px;
+	width: 849px;
+	position: absolute;
+	top:180px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+}
+
+.signin .content .login {
+	width: inherit;
+	position: absolute;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	font-family: "Roboto", Helvetica, Arial, serif;
+	font-weight: 300;
+	font-style: normal;
+	font-size: 42.0px;
+	color: white;
+	text-align: center;
+	letter-spacing: -0.4px;
+	line-height: 54.0px;
+}
+
+.signin .content .form {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 51px;
+	height: 475px;
+	width: 849px;
+	position: absolute;
+	margin: 0;
+	left: 0px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+}
+
+.signin .content .form .base {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 0px;
+	height: 475px;
+	width: 849px;
+	position: absolute;
+	margin: 0;
+	left: 0px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+}
+
+.signin .content .form .rememberme {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 286px;
+	height: auto;
+	width: auto;
+	position: absolute;
+	margin: 0;
+	left: 465px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+	opacity: 0.8;
+	font-family: "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+	font-size: 14.0px;
+	color: rgba(27, 27, 27, 1.0);
+	text-align: left;
+	line-height: 22.0px;
+}
+
+.signin .content .form .formsinputsdefaultlabel {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 80px;
+	height: 78px;
+	width: 302px;
+	position: absolute;
+	margin: 0;
+	left: 459px;
+	overflow: hidden;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+}
+
+.signin .content .form .formsinputsdefaultlabel .background {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 0px;
+	height: 78px;
+	width: 302px;
+	position: absolute;
+	margin: 0;
+	left: 0px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+}
+
+.signin .content .form .formsinputsdefaultlabel .label {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 0px;
+	height: auto;
+	width: auto;
+	position: absolute;
+	margin: 0;
+	left: 0px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+	font-family: "Roboto", Helvetica, Arial, serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 14.0px;
+	color: rgba(165, 165, 165, 1.0);
+	text-align: left;
+	line-height: 16.0px;
+}
+
+.signin .content .form .formsinputsdefaultlabel .input {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 26px;
+	height: 52px;
+	width: 302px;
+	position: absolute;
+	margin: 0;
+	left: 0px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+}
+
+.signin .content .form .formsinputsdefaultlabel .input .base1 {
+	background-color: rgba(255, 255, 255, 1.0);
+	top: 0px;
+	height: 52px;
+	box-sizing: border-box;
+	width: 302px;
+	position: absolute;
+	margin: 0;
+	left: 0px;
+	border-radius: 4px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgba(0, 0, 0, 0.1);
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+}
+
+.signin .content .form .formsinputsdefaultlabel .input .inputtext {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 13px;
+	height: auto;
+	width: auto;
+	position: absolute;
+	margin: 0;
+	left: 16px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+	font-family: "Roboto", Helvetica, Arial, serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 16.0px;
+	color: rgba(27, 27, 27, 1.0);
+	text-align: left;
+	line-height: 26.0px;
+}
+
+.signin .content .form .formsinputsinactive {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 183px;
+	height: 78px;
+	width: 302px;
+	position: absolute;
+	margin: 0;
+	left: 459px;
+	overflow: hidden;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+}
+
+.signin .content .form .formsinputsinactive .background {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 0px;
+	height: 78px;
+	width: 302px;
+	position: absolute;
+	margin: 0;
+	left: 0px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+}
+
+.signin .content .form .formsinputsinactive .label {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 0px;
+	height: auto;
+	width: auto;
+	position: absolute;
+	margin: 0;
+	left: 0px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+	font-family: "Roboto", Helvetica, Arial, serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 14.0px;
+	color: rgba(165, 165, 165, 1.0);
+	text-align: left;
+	line-height: 16.0px;
+}
+
+.signin .content .form .formsinputsinactive .input {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 26px;
+	height: 52px;
+	width: 302px;
+	position: absolute;
+	margin: 0;
+	left: 0px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+}
+
+.signin .content .form .formsinputsinactive .input .base1 {
+	background-color: rgba(255, 255, 255, 1.0);
+	top: 0px;
+	height: 52px;
+	box-sizing: border-box;
+	width: 302px;
+	position: absolute;
+	margin: 0;
+	left: 0px;
+	border-radius: 4px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgba(0, 0, 0, 0.1);
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+}
+
+.signin .content .form .formsinputsinactive .input .inputtext {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 13px;
+	height: auto;
+	width: auto;
+	position: absolute;
+	margin: 0;
+	left: 16px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+	opacity: 0.3;
+	font-family: "Roboto", Helvetica, Arial, serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 16.0px;
+	color: rgba(27, 27, 27, 1.0);
+	text-align: left;
+	line-height: 26.0px;
+}
+
+.signin .content .form .passwordcircles {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 232px;
+	height: 6px;
+	width: 71px;
+	position: absolute;
+	margin: 0;
+	left: 479px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+}
+
+.signin .content .form .buttonsgreen {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 323px;
+	height: 52px;
+	width: 300px;
+	position: absolute;
+	margin: 0;
+	left: 459px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+}
+
+.signin .content .form .buttonsgreen .pricebtn {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 0px;
+	height: 52px;
+	width: 300px;
+	position: absolute;
+	margin: 0;
+	left: 0px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+}
+
+.signin .content .form .buttonsgreen .pricebtn .container {
+	background-color: rgba(31, 198, 129, 1.0);
+	top: 0px;
+	height: 52px;
+	width: 300px;
+	position: relative;
+	margin: 0;
+	left: 0px;
+	border-radius: 4px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+}
+
+.signin .content .form .buttonsgreen .buttontext {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 18px;
+	height: auto;
+	width: auto;
+	position: absolute;
+	margin: 0;
+	left: 129px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+	font-family: "BarlowCondensed-Medium", Helvetica, Arial, serif;
+	font-size: 16.0px;
+	color: rgba(255, 255, 255, 1.0);
+	text-align: center;
+	line-height: 16.0px;
+}
+
+.signin .content .form .buttonsgreen .buttontext .span1 {
+	
+}
+
+.signin .content .form .buttonsgreen .buttontext .span2 {
+	font-family: "Roboto", Helvetica, Arial, serif;
+	font-weight: 500;
+	font-style: normal;
+}
+
+.signin .content .startnowandgetonyouraccount {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 509px;
+	height: 22px;
+	width: 244px;
+	position: absolute;
+	margin: 0;
+	left: 302px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+}
+
+.signin .content .startnowandgetonyouraccount .donu2019thaveanaccoun {
+	background-color: rgba(255, 255, 255, 0.0);
+	top: 0px;
+	height: auto;
+	width: auto;
+	position: absolute;
+	margin: 0;
+	left: -1px;
+	-ms-transform: rotate(0deg); /* IE 9 */
+	-webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+	transform: rotate(0deg);
+	font-family: "Roboto", Helvetica, Arial, serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 14.0px;
+	color: white;
+	text-align: center;
+	line-height: 22.0px;
+}
+
+.signin .content .startnowandgetonyouraccount .donu2019thaveanaccoun .span3
+	{
+	font-family: "Roboto", Helvetica, Arial, serif;
+	font-weight: 500;
+	font-style: normal;
+	color: white;
+}
+
+.signin .socialiconsfacebook {
+	top: 335px;
+	height: 30px;
+	width: 30px;
+	position: absolute;
+	margin: 0;
+	left: 160px;
+}
+
+.signin .socialiconstwitter {
+	top: 335px;
+	height: 30px;
+	width: 30px;
+	position: absolute;
+	margin: 0;
+	left: 210px;
+}
+
+.signin .socialiconsgoogle {
+	top: 335px;
+	height: 30px;
+	width: 30px;
+	position: absolute;
+	margin: 0;
+	left: 260px;
+}
+
+.signin .socialiconsinstagram {
+	top: 335px;
+	height: 30px;
+	width: 30px;
+	position: absolute;
+	margin: 0;
+	left: 310px;
+}
