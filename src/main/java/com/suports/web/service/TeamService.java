@@ -4,8 +4,11 @@ import java.util.List;
 
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
 import com.suports.web.domain.TeamDTO;
 
+@Component
 public interface TeamService {
 
 	// CREATE

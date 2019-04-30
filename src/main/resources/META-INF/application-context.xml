@@ -46,7 +46,9 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     	<property name="dataSource" ref="dataSource"/>
     </bean>
-
+   <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref ="sqlSessionFactoryBean"/>
+    </bean>
   		<mybatis-spring:scan base-package="com.suports.web"/>
   		
   		<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -57,5 +59,4 @@
          <constructor-arg value=" C:\\Users\\1027\\git\\repository7\\suports\\src\\main\\webapp\\resources\\img"/>
                 <!-- <constructor-arg value="//usr//local//tomcat9//webapps//ROOT//resources//img"/> -->
     </bean>
-  		
 </beans>
