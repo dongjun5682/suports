@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8" />
 <title>Document</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src='//unpkg.com/popper.js@1/dist/umd/popper.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c3c4beaf10eac4d6d6910770fdc4d4bb"></script>
@@ -17,8 +17,13 @@
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
 
+<!-- modal css -->
+<link rel="stylesheet" href="resources/css/modal.css">
+
 <!-- signin css -->
-<link rel="stylesheet" href="resources/css/signin.css">
+<link rel="stylesheet" href="resources/css/signin/util.css">
+<link rel="stylesheet" href="resources/css/signin/main.css">
+
 <!-- player css -->
 <link rel="stylesheet" href="resources/css/playersignuppg1.css">
 <link rel="stylesheet" href="resources/css/playersignuppg2.css">
@@ -37,9 +42,6 @@
 <link rel="stylesheet" href="resources/css/team/teamupdateemblem.css">
 <link rel="stylesheet" href="resources/css/team/teamupdateinfo.css">
 <link rel="stylesheet" href="resources/css/team/teamupdatepicture.css">
-
-<!-- modal css -->
-<link rel="stylesheet" href="resources/css/modal.css">
 
 </head>
 <body>
