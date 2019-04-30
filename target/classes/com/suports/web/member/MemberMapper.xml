@@ -20,4 +20,5 @@
   <result property="rnum" column="RNUM"/>
 </resultMap>
 
+
 </mapper>
