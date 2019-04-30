@@ -1283,7 +1283,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
     border-radius: 6px;
 }
 .ev_list{
-	width: 1200px;
+	width: 1095Spx;
 	height: 350px;
 	
 }
@@ -1321,7 +1321,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 .stadium-sidebar{
 	margin-top: 15px;
-	border-right: 1px solid rgba(235, 235, 235, 0.8);
+	border-right: 3px solid rgba(235, 235, 235, 0.8);
 }
 .stadium-row{
 	margin: 15px;
