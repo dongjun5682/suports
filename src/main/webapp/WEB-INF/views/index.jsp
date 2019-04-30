@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8" />
 <title>Document</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src='//unpkg.com/popper.js@1/dist/umd/popper.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
 
@@ -15,8 +15,13 @@
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
 
+<!-- modal css -->
+<link rel="stylesheet" href="resources/css/modal.css">
+
 <!-- signin css -->
-<link rel="stylesheet" href="resources/css/signin.css">
+<link rel="stylesheet" href="resources/css/signin/util.css">
+<link rel="stylesheet" href="resources/css/signin/main.css">
+
 <!-- player css -->
 <link rel="stylesheet" href="resources/css/playersignuppg1.css">
 <link rel="stylesheet" href="resources/css/playersignuppg2.css">
@@ -36,9 +41,6 @@
 <link rel="stylesheet" href="resources/css/team/teamupdateinfo.css">
 <link rel="stylesheet" href="resources/css/team/teamupdatepicture.css">
 
-<!-- modal css -->
-<link rel="stylesheet" href="resources/css/modal.css">
-
 </head>
 <body>
 	<div id="content"></div>
@@ -53,18 +55,13 @@
 			<div id="modal-content2"></div>
 		</div>
 	</div>
-<script 
-	src="<%=application.getContextPath()%>/resources/js/app.js"></script>
-<script
-	src="<%=application.getContextPath()%>/resources/js/com/router.js"></script>
-<script
-	src="<%=application.getContextPath()%>/resources/js/home/home.js"></script>
-<script
-	src="<%=application.getContextPath()%>/resources/js/compo/compo.js"></script>
-<script
-	src="<%=application.getContextPath()%>/resources/js/member/member.js"></script>	
-<script
-	src="<%=application.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+<script src="<%=application.getContextPath()%>/resources/js/app.js"></script>
+<script src="<%=application.getContextPath()%>/resources/js/com/router.js"></script>
+<script src="<%=application.getContextPath()%>/resources/js/compo/compo.js"></script>
+<script src="<%=application.getContextPath()%>/resources/js/home/home.js"></script>
+<script src="<%=application.getContextPath()%>/resources/js/member/member.js"></script>	
+<script src="<%=application.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+<script src="<%=application.getContextPath()%>/resources/js/signin/main.js"></script>
 <script>
  app.run('<%=application.getContextPath()%>');
 </script>

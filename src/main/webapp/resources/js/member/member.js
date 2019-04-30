@@ -80,7 +80,26 @@ member = (() => {
                     break;
             }
         })
-        
+    
+    let login = (d)=>{
+    	let formdata = {
+    			id: d.customerId,
+				password : d.password
+		};
+    	$.ajax({
+			url : $.ctx()+'/members/'+d.id,
+			type : 'POST',
+			data : JSON.stringify(formdata),
+			dataType : 'json',
+			contentType : "application/json; charset=utf-8",
+			success : d => {
+				
+				},
+			error : e => {
+				alert('cust mypage ajax fail');
+			}
+		})
+    }
         
     }
     let profile =()=>{

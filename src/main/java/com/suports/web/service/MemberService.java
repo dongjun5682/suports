@@ -4,8 +4,11 @@ import java.util.List;
 
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
 import com.suports.web.domain.MemberDTO;
 
+@Component
 public interface MemberService {
 
 	// CREATE
@@ -19,10 +22,10 @@ public interface MemberService {
 	public int countMembers();
 	public boolean existAMemberId(MemberDTO mem);
 	
-	// modify
+	// UPDATE
 	public void modifyAMember(MemberDTO mem);
 	public Map<String, Object> retrieveProfile(Map<?,?> map);
 	
-	// remove
+	// DELETE
 	public void removeAMember(MemberDTO mem);
 }

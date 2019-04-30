@@ -213,14 +213,45 @@ home = (() => {
     }
 
     let login = () => {
-        alert('login click!!');
         $('.modal-content').html(compo.signin());
-        $('.buttonsgreen').click(() => {
-            alert('login success!!');
+        $('.login100-form-btn').click(e => {
+        	e.preventDefault();
+        	let formdata = {
+					id : $('form input[name="username"]').val(),
+					password : $('form input[name="pass"]').val()
+			};
+        	$.ajax({
+				url : $.ctx()+'/members/'+formdata.id,
+				type : 'POST',
+				data : JSON.stringify(formdata),
+				dataType : 'json',
+				contentType : "application/json; charset=utf-8",
+				success : d => {
+						alert('ajax login : '+d.id);
+						member.onCreate(d);
+				},
+				error : e => {
+					alert('ajax fail');
+				}
+			})
             $('#myModal').modal('hide');
-            member.onCreate();
         });
-
+        $('#signupBtn_in_signin').click(() => {
+        	alert('test')
+            $('.modal-content').html(compo.signup_2());
+            $('.textnext').click(() => {
+                $('.modal-content').html(compo.signup_3());
+                $('.textnext').click(() => {
+                    $('.modal-content').html(compo.signup_4());
+                    $('.textnext').click(() => {
+                        $('.modal-content').html(compo.signup_5());
+                        $('.beginbtn').click(() => {
+                            $('#myModal').modal('hide');
+                        })
+                    })
+                })
+            })
+        })
     }
     let signup = () => {
         alert('signup');
