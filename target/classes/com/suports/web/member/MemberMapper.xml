@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.suports.web.mapper.MemberMapper">
-
 <resultMap id="selectresult" type="hashmap">
   <id property="memberIndex" column="MEMBER_INDEX"/>
   <result property="id" column="ID"/>
