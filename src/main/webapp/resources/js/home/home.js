@@ -31,6 +31,7 @@ home = (() => {
         });
     };
     let setContentView = () => {
+
         $('#content').before(compo.header()).append(compo.content()).after(compo.footer());
         $('#rm_search').append(compo.srch());
         $('#content').css('margin-top', '0');
@@ -40,6 +41,9 @@ home = (() => {
         $('#solo_search').click(() => {
             $('#people').empty().attr('id', 'position').append(compo.solo_search());
         });
+    	$.getJSON(_+ '/stadiums', d=>{
+    		alert(d);
+    	});
         list();
       
     };
@@ -83,7 +87,7 @@ home = (() => {
             '    </div>' +
             '    <!-- container -->';
 
-
+        
         let city = [{
             txt: 'Seoul Stadium',
             id: 'seoul_stadium'
@@ -187,6 +191,7 @@ home = (() => {
         })
         $('#sear-btn').click(() => {
             $('#content').css('margin-top', '80px');
+        
             stadium.onCreate();
         })
         $('#stadium_list').click(() => {
