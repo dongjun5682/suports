@@ -23,42 +23,95 @@ stadium = (() => {
     let setContentView = () => {
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
-        $('.stadium-list').html(compo.stadium_list_content());
+        $('#map_button').click(function(e){
+        	$('#content').empty().html(compo.stadium_list_sidebar());
+        	$('#map').html('<div id="map" style="width:500px;height:400px;"></div>');
+        });
+        $('#header').css('border-bottom','2px solid rgba(235, 235, 235, 1)');
+        	$('#content').empty().html(compo.stadium_list_sidebar());
+        	
+        	let arr = [{src : "resources/img/stadium/img_5terre.jpg"}
+        	,{src : "resources/img/stadium/img_monterosso.jpg"}
+        	,{src : "resources/img/stadium/img_vernazza.jpg"}
+        	,{src : "resources/img/stadium/img_5terre.jpg"}
+        	,{src : "resources/img/stadium/img_monterosso.jpg"}
+        	,{src : "resources/img/stadium/img_vernazza.jpg"}]
+        	let list = '<div id="asearch" class="row stadium-row">';
+        	$.each(arr,(i,j)=>{
+        		list +=  '  <div class="col-md-4">'
+      		  			+'    <div class="w3-card"><img src="resources/img/stadium/img_monterosso.jpg" style="width:100%">'
+      		  			+'      <div class="w3-container">'
+      		  			+'        <h5>Monterosso</h5>'
+      		  			+'      </div>'
+      		  			+'    </div>'
+      		  			+'  </div>'
+        				+'<div class="col-md-4">'
+        			  +'    <div class="w3-card"><img src="resources/img/stadium/img_5terre.jpg" style="width:100%">'
+        			  +'      <div class="w3-container">'
+        			  +'        <h5>Terre</h5>'
+        			  +'      </div>'
+        			  +'    </div>'
+        			  +'</div>';
+        	});
+        	list += '</div>';
+        	$(list).appendTo('.stadium-list');
+        	$('<nav>'
+        	+' <ul class="pagination">'
+        	+'  <li>'
+        	+'    <a href="#" aria-label="previous">'
+        	 +' <span aria-hidden="true">&laquo;</span>'
+        	+' </a>'
+        	+'  </li>'
+        	+'  <li><a href="#">1</a></li>'
+        	 +'  <li><a href="#">2</a></li>'
+        	 +'  <li><a href="#">3</a></li>'
+        	+'  <li><a href="#">4</a></li>'
+        	+'   <li><a href="#">5</a></li>'
+        	 +'   <li>'
+        			    +'    <a href="#" aria-label="next">'
+        			    +'     <span aria-hidden="true">&raquo;</span>'
+        			    +'   </a>'
+        			    +'   </li>'
+        			    +' </ul>'
+        			    +'</nav>').appendTo('.col-md-9');
+        	
         $('img').click(function(e) {
             list_detail();
         })
     }
 
     let list = () => {
-
+    	
     }
     let list_detail = () => {
     	$('#footer').css('.section','padding-bottom:78px;');
     	$('#footer').css('.section','background-color: #1db91d9e;');
-    	$('#footer').html('<div class="wrap">'
-    			+'    <div>'
-    			+'        <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="179">'
-    			+'            <ul>'
-    			+'            <li>'
-    			+'              <div class="footer-pay">'
-    			+'                   <div class="navbar-brand">'
-    			+'                     <a class="logo" href="index.html">'
-    			+'                             <img src="resources/img/logo/logo.png" alt="logo">'
-    			+'                      </a>'
-    			+'                  </div>'
-    			+'                  <button class="navbar-toggle"> </button>'
-    			+'            </li>'
-    			+'            <li>'
-    			+'             <button id="footer_payment" style="width: 105%; padding: 10px; background-color: #3688bf; right: -1000px; top: -35px;"><span style="color:white">예약하기</span></button>'
-    			+'            </li>'
-    			+'            </ul>'
-    			+'        </nav>'
-    			+'  </div>'
-    			+'    </div>');
+    	$('#header').css('border-bottom','2px solid rgba(235, 235, 235, 1)');
+    	$('#footer').attr('style','position: fixed; left: 0; bottom: 0; width: 100%; background-color: #8cff88; color: white; text-align: center; padding-bottom: 22px; padding-top: 5px;')
+    	$('#footer').html('<div class="navbar-brand">'
+    			+'<div class= col-ms-1>'
+    	    	+'                    <a class="logo" href="index.html">'
+    	    	+'                          <img src="resources/img/logo/logo.png" alt="logo"></a>'
+    	    	+'                  <button type="button" class="btn hover2" data-toggle="modal" data-target="#myModal" id="pay_btn_1" style="width:32%; padding: 16px; background-color: #337ab7;">'
+    	    	+'                     <span style="color:white">예약하기</span>'
+    	    	+'                 </button>'
+    	    	+'                 </div>'
+    	    	+'                 <div class= col-ms-11>'
+    	    	+'                </div>'
+    	    	+'             </div>'
+    	    	+'      </div>');
         $('#content').empty().html(compo.stadium_list_detail());
-        $('#footer_payment').click(()=>{
+        $('#pay_btn_1').click(()=>{
         	alert('모달로 확인창 뜨고 결제 예약으로 이동');
-        	payment();
+        	$('.modal-content').html(compo.pay_btn());
+    		$('#pay_next').click(()=>{
+    			alert('결제창 이동');
+    			$('#myModal').modal('hide');
+    			$('#footer').remove();
+    			$('#content').empty();
+    			payment();
+    		});
+        	
         });
 
     }

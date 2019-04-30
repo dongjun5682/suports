@@ -9,6 +9,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c3c4beaf10eac4d6d6910770fdc4d4bb"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script> -->
 
 <!-- default css -->
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
@@ -55,13 +57,20 @@
 			<div id="modal-content2"></div>
 		</div>
 	</div>
-<script src="<%=application.getContextPath()%>/resources/js/app.js"></script>
-<script src="<%=application.getContextPath()%>/resources/js/com/router.js"></script>
-<script src="<%=application.getContextPath()%>/resources/js/compo/compo.js"></script>
-<script src="<%=application.getContextPath()%>/resources/js/home/home.js"></script>
-<script src="<%=application.getContextPath()%>/resources/js/member/member.js"></script>	
-<script src="<%=application.getContextPath()%>/resources/js/bootstrap.min.js"></script>
-<script src="<%=application.getContextPath()%>/resources/js/signin/main.js"></script>
+
+	
+<script 
+	src="<%=application.getContextPath()%>/resources/js/app.js"></script>
+<script
+	src="<%=application.getContextPath()%>/resources/js/com/router.js"></script>
+<script
+	src="<%=application.getContextPath()%>/resources/js/home/home.js"></script>
+<script
+	src="<%=application.getContextPath()%>/resources/js/compo/compo.js"></script>
+<script
+	src="<%=application.getContextPath()%>/resources/js/member/member.js"></script>	
+<script
+	src="<%=application.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 <script>
  app.run('<%=application.getContextPath()%>');
 </script>

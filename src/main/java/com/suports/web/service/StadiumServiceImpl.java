@@ -1,27 +1,43 @@
 package com.suports.web.service;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.suports.web.domain.StadiumDTO;
 import com.suports.web.mapper.StadiumMapper;
 
-
-
 @Service
-public class StadiumServiceImpl implements StadiumService {
+public class StadiumServiceImpl implements StadiumService{
 
+	@Autowired StadiumMapper stdMap;
+	
 	@Override
-	public void selectStadiumList() {
+	public void addStadium(StadiumDTO std) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void selectStadium() {
-		// TODO Auto-generated method stub
-		
+	public List<?> retrieveListStadium(Map<?, ?> map) {
+
+		return null;
 	}
 
 	@Override
-	public String selectStadium(String searchWord) {
+	public List<StadiumDTO> retrieveSomeOfStadium(Map<?, ?> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public StadiumDTO retrieveStadiums() {
+		return stdMap.selectStadiumList();
+	}
+
+	@Override
+	public StadiumDTO retrieveStadium(StadiumDTO std) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -33,21 +49,20 @@ public class StadiumServiceImpl implements StadiumService {
 	}
 
 	@Override
-	public boolean existsStadium(String searchword) {
+	public boolean existStadium(StadiumDTO std) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public void updateStadium(StadiumMapper sta) {
+	public void modifyStadium(StadiumDTO std) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteStadium(StadiumMapper sta) {
+	public void removeStadium(StadiumDTO std) {
 		// TODO Auto-generated method stub
 		
 	}
-
 }
