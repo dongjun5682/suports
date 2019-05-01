@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.suports.web.mapper.StadiumMapper">
+
 <resultMap id="result" type="hashmap">
   <id property="stadiumIndex" column="STADIUM_INDEX" />
   <result property="stadiumName" column="STADIUM_NAME"/>

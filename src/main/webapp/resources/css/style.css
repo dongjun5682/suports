@@ -196,7 +196,6 @@ blockquote:before{
 input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="date"], input[type="url"], input[type="tel"], textarea {
     height: 40px;
     width: 100%;
-    border: 1px solid #EBEBEB;
 	border-radius:4px;
 	background: transparent;
     padding-left: 15px;
@@ -1332,71 +1331,102 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 .tournament-content button{
 	width: 160px;
 	height: 50px;
-	margin-top: 20px;
+	margin-top: 5px;
+	margin-left:20px;
 	margin-bottom: 20px;
+	color:black;
 	
 }
 .tournament-content h3{
 	text-align: center;
 	border-bottom: 2px solid;
 	padding-bottom: 20px;
+	color:black;
 }
 .match_unit img{
-	width: 70px;
-	padding: 
+	width: 55px;
+	padding: 10px 10px 10px;
+    margin-left: 5px;
+    margin-right: 10px;
 }
 .r_16 .m_segment{
 	height: 60px;
-	margin-bottom:40px;
+	margin-bottom:10px;
+	margin-top:10px;
     background-color: white;
-	
+	border-radius: 50px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
 }
 .r_8 .m_segment{
 	height: 60px;
-	margin:70px auto 140px;
+	margin:85px auto 110px;
     background-color: white;
-	
+		border-radius: 50px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
 }
 .r_4 .m_segment{
 	height: 60px;
-	margin: 170px auto 345px auto;
+	margin: 170px auto 280px auto;
     background-color: white;
-	
+		border-radius: 50px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
 }
 .l_16 .m_segment{
 	height: 60px;
-	margin-bottom:40px;
+	margin-bottom:10px;
+	margin-top:10px;
     background-color: white;
-	
+		border-radius: 50px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
 }
 .l_8 .m_segment{
 	height: 60px;
-	margin:70px auto 140px;
+	margin:85px auto 110px;
     background-color: white;
-	
+		border-radius: 50px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
 }
 .l_4 .m_segment{
 	height: 60px;
-	margin: 170px auto 345px auto;
+	margin: 170px auto 280px auto;
     background-color: white;
-	
+		border-radius: 50px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
 }
 .r_final .m_segment{
-	height: 160px;
+	height: 170px;
+	width:220px;
     background-color: white;
-	
+    margin-top:10px;
+	border-radius: 50px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+}
+.r_final .m_segment img{
+	margin-top:10px;
 }
 .r_final .match_unit{
-	margin: 250px auto 100px auto;
-    text-align: center
+	margin: 180px auto 150px auto;
+    text-align: center;
+    border-radius: 50px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
 }
 .r_semifinal .m_segment{
-	height: 160px;
+		margin-top:10px;
+}
+.r_semifinal .m_segment{
+	height: 170px;
+	width:220px;
     background-color: white;
-	 text-align: center
+	text-align: center;
+	border-radius: 50px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+}
+.r_16{
+	margin-top: 50px;
 }
 .r_16 .match_unit{
 	border-right: solid 2px #fff;
+	margin-bottom: 40px;
 }
 .r_8 .match_unit{
 	border-right: solid 2px #fff;
@@ -1404,9 +1434,12 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 .r_4 .match_unit{
 	border-right: solid 2px #fff;
 }
-
+.l_16{
+	margin-top: 50px;
+}
 .l_16 .match_unit{
 	border-left: solid 2px #fff;
+	margin-bottom: 40px;
 }
 .l_8 .match_unit{
 	border-left: solid 2px #fff;
@@ -1425,11 +1458,13 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 .winner span a img{
 	width: 45px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .winner span a {
 	padding-left: 27px;
 	padding-top: 15px;
-	
+	margin-top:30px;
 }
 
 .m_segment strong{
@@ -1456,4 +1491,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 .l_4 .m_segment img {
 	float: right;
+}
+#user-drop ul li h3{
+	padding:13px;
 }

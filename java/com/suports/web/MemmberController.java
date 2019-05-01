@@ -1,5 +1,7 @@
 package com.suports.web;
 
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +19,33 @@ public class MemmberController {
 
 	@Autowired MemberDTO memberDTO;
 	@Autowired MemberServiceImpl memberService;
+	@Autowired Map<String, Object> map;
+	
+	@PostMapping("/members")
+	public Map<?,?> join(@RequestBody MemberDTO param) {
+
+		memberService.addAMember(param);
+		
+		map.clear();
+		map.put("msg", "SUCCESS");
+		
+		return map;
+	}
 	
 	@PostMapping("/members/{userid}")
 	public MemberDTO login(@RequestBody MemberDTO param, @PathVariable String userid) {
 		
-		System.out.println("1 param val : "+param);
-	
+		System.out.println("1========="+memberDTO);
+		
 		memberDTO = memberService.retrieveAMember(param);
 		
-		System.out.println("2 param val : "+memberDTO.getPhone());
-		System.out.println("userid val : "+userid);
+		System.out.println("2========="+memberDTO);
+		System.out.println("3========="+param);
 		
 		return memberDTO;
+	
+	
 	}
+	
+	
 }

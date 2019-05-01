@@ -20,6 +20,10 @@
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c3c4beaf10eac4d6d6910770fdc4d4bb"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script> -->
 
+<link rel="stylesheet" href="resources/css/datepicker/datapicker.min.css">
+<script src="resources/js/com/datapicker.min.js"></script>
+<script src="resources/js/com/datapicker.ko-kr.js"></script>
+
 <!-- default css -->
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/style.css">
@@ -65,14 +69,14 @@
 			<div id="modal-content2"></div>
 		</div>
 	</div>
-<!-- /////////////////// -->
+		<div class="modal fade" id="myModal_tour" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div id="modal-content3"></div>
+		</div>
+	</div>
+
 <div id="map"></div>
-	
-	
-	
-	
-	
-	<!-- /////////////////// -->
+
 <script 
 	src="<%=application.getContextPath()%>/resources/js/app.js"></script>
 <script
@@ -88,6 +92,11 @@
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap">
     </script>		
+ 
+<script>
+ app.run('<%=application.getContextPath()%>');
+
+</script>
 <script>
 
 // Initialize and add the map
@@ -100,9 +109,6 @@ function initMap() {
   // The marker, positioned at Uluru
   var marker = new google.maps.Marker({position: uluru, map: map});
 }
-    </script>    
-<script>
- app.run('<%=application.getContextPath()%>');
-</script>
+    </script>   
 </body>
 </html>

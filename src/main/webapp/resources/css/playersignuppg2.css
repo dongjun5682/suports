@@ -25,6 +25,7 @@ div {
 div {
   -webkit-text-size-adjust: none;
 }
+
 .playersignuppg2 .fieldbtm {
   background-color    : rgba(255,255,255,0.0);
   top                 : 670px;
@@ -269,23 +270,18 @@ div {
   transform           : rotate(0deg);
 }
 .playersignuppg2 .formfieldpg2 .fieldposloctime .imgbirthbg {
-  background-color    : rgba(255,255,255,0.0);
   top                 : 30px;
   height              : 35px;
   box-sizing          : border-box;
-  width               : 128px;
+  width               : 129px;
   position            : absolute;
   margin              : 0;
-  left                : 285px;
-  border-style        : solid;
-  border-width        : 1px;
-  border-color        : rgba(222, 227, 232, 1.0);
+  left                : 284px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
 .playersignuppg2 .formfieldpg2 .fieldposloctime .imgbirthbg1 {
-  background-color    : rgba(255,255,255,0.0);
   top                 : 30px;
   height              : 35px;
   box-sizing          : border-box;
@@ -293,15 +289,11 @@ div {
   position            : absolute;
   margin              : 0;
   left                : 142px;
-  border-style        : solid;
-  border-width        : 1px;
-  border-color        : rgba(222, 227, 232, 1.0);
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
 .playersignuppg2 .formfieldpg2 .fieldposloctime .imgbirthbg2 {
-  background-color    : rgba(255,255,255,0.0);
   top                 : 30px;
   height              : 35px;
   box-sizing          : border-box;
@@ -309,9 +301,6 @@ div {
   position            : absolute;
   margin              : 0;
   left                : 0px;
-  border-style        : solid;
-  border-width        : 1px;
-  border-color        : rgba(222, 227, 232, 1.0);
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -431,23 +420,17 @@ div {
   transform           : rotate(0deg);
 }
 .playersignuppg2 .formfieldpg2 .fieldbirth .imgbirthbg {
-  background-color    : rgba(255,255,255,0.0);
   top                 : 30px;
   height              : 35px;
   box-sizing          : border-box;
-  width               : 128px;
+  width               : 100%;
   position            : absolute;
   margin              : 0;
-  left                : 285px;
-  border-style        : solid;
-  border-width        : 1px;
-  border-color        : rgba(222, 227, 232, 1.0);
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
 .playersignuppg2 .formfieldpg2 .fieldbirth .imgbirthbg1 {
-  background-color    : rgba(255,255,255,0.0);
   top                 : 30px;
   height              : 35px;
   box-sizing          : border-box;
@@ -455,15 +438,11 @@ div {
   position            : absolute;
   margin              : 0;
   left                : 142px;
-  border-style        : solid;
-  border-width        : 1px;
-  border-color        : rgba(222, 227, 232, 1.0);
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
 .playersignuppg2 .formfieldpg2 .fieldbirth .imgbirthbg2 {
-  background-color    : rgba(255,255,255,0.0);
   top                 : 30px;
   height              : 35px;
   box-sizing          : border-box;
@@ -471,15 +450,11 @@ div {
   position            : absolute;
   margin              : 0;
   left                : 0px;
-  border-style        : solid;
-  border-width        : 1px;
-  border-color        : rgba(222, 227, 232, 1.0);
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
 .playersignuppg2 .formfieldpg2 .fieldbirth .textyear {
-  background-color    : rgba(255,255,255,0.0);
   top                 : 34px;
   height              : 25px;
   width               : 102px;

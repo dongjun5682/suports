@@ -8,12 +8,9 @@ stadium = (() => {
         _ = $.ctx();
         js = $.js();
         compojs = js + '/compo/compo.js';
-
-        onCreate();
     };
     let onCreate = () => {
         init();
-        
         $.when(
             $.getScript(compojs),
             $.Deferred(function(d) {
@@ -24,12 +21,9 @@ stadium = (() => {
         });
         
     };
-    
-    let setContentView = (x) => {
-        $('#footer').empty();
-        $('#content').empty().html(compo.stadium_list_sidebar());
-        list(x);
-       
+
+    let setContentView = () => {
+       list(1);
     }
     let list =(x)=> {
     	$('#map').empty();
@@ -101,12 +95,12 @@ stadium = (() => {
     			};
     			
     	});
+
     }
     let list_detail = (j) => {
     	$('#content').html(compo.stadium_list_detail(j));
     	$('#footer').css('.section','padding-bottom:78px;');
     	$('#footer').css('.section','background-color: #1db91d9e;');
-    	$('#header').css('border-bottom','2px solid rgba(235, 235, 235, 1)');
     	$('#footer').attr('style','position: fixed; left: 0; bottom: 0; width: 100%; background-color: #8cff88; color: white; text-align: center; padding-bottom: 22px; padding-top: 5px;')
     	$('#footer').html('<div class="navbar-brand">'
     			+'<div class= col-ms-1>'
@@ -209,18 +203,9 @@ stadium = (() => {
     };
     return {
         onCreate: onCreate,
-        list: list,
+        list:list,
         list_detail: list_detail,
         payment: payment,
         payment_reservation: payment_reservation,
     	srch: srch}
-    function initMap() {
-    	  // The location of Uluru
-    	  var uluru = {lat: -25.344, lng: 131.036};
-    	  // The map, centered at Uluru
-    	  var map = new google.maps.Map(
-    	      document.getElementById('map'), {zoom: 4, center: uluru});
-    	  // The marker, positioned at Uluru
-    	  var marker = new google.maps.Marker({position: uluru, map: map});
-    	}
 })();

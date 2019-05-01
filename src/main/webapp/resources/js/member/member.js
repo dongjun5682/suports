@@ -30,11 +30,9 @@ member = (() => {
         $('#nav').empty().after(compo.login_nav());
         $('#userBtn').click(() => {
             $('#userBtn').after(compo.login_drop_btn());
-          
             $('#frofile').click(()=>{
             	profile();
             });
-            
             $('#myteam').click(()=>{
             	team.team_update_info();
             });
