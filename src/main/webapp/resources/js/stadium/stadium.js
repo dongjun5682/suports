@@ -19,7 +19,6 @@ stadium = (() => {
         ).done(() => {
             setContentView();
         });
-        
     };
 
     let setContentView = () => {
