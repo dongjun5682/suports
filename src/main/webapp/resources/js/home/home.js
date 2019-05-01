@@ -41,9 +41,6 @@ home = (() => {
         $('#solo_search').click(() => {
             $('#people').empty().attr('id', 'position').append(compo.solo_search());
         });
-    	$.getJSON(_+ '/stadiums', d=>{
-    		alert(d);
-    	});
         list();
       
     };

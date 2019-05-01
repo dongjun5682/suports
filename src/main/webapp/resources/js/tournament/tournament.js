@@ -27,8 +27,7 @@ tour =(()=>{
     };
     let setContentView =()=>{
     	$('#content').empty().html(compo.tournament()).css({
-            'margin-top': '70px',
-            'background-color': '#f0f0f0',
+            'margin-top': '100px',
             'height': '850px'
         });
     	$('#footer').remove();
