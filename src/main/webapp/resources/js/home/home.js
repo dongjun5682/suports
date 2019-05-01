@@ -13,7 +13,7 @@ home = (() => {
         stadiumjs = js + '/stadium/stadium.js';
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js+'/team/team.js';
-
+        
     };
     let onCreate = () => {
         init();
@@ -185,13 +185,19 @@ home = (() => {
                     break;
             }
         })
-        $('#sear-btn').click(() => {
+        $('#sear-btn').click(function(){
+        	$.getScript(compojs,()=>{
+        		compo.stadium_list_sidebar();
             $('#content').css('margin-top', '80px');
-            stadium.onCreate();
+           $.getScript(stadiumjs,()=>{
+        	   stadium.onCreate(1);
+           });
+
         })
+        });
         $('#stadium_list').click(() => {
             $('#content').css('margin-top', '80px');
-            stadium.onCreate();
+            stadium.onCreate(1);
         })
         $('.course-img').click(() => {
             $('#content').css('margin-top', '80px');

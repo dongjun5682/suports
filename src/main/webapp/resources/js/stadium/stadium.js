@@ -19,70 +19,86 @@ stadium = (() => {
         ).done(() => {
             setContentView();
         });
+        
     };
-    let setContentView = () => {
-       stadium_list();
-    }
 
-    let stadium_list = () => {
-    	 $('#footer').empty();
-         $('#content').empty().html(compo.stadium_list_sidebar());
-         $('#map_button').click(function(e){
-         	$('#content').empty().html(compo.stadium_list_sidebar());
-         	$('#map').html('<div id="map" style="width:500px;height:400px;"></div>');
-         });
-         	$('#content').empty().html(compo.stadium_list_sidebar());
-         	
-         	let arr = [{src : "resources/img/stadium/img_5terre.jpg"}
-         	,{src : "resources/img/stadium/img_monterosso.jpg"}
-         	,{src : "resources/img/stadium/img_vernazza.jpg"}
-         	,{src : "resources/img/stadium/img_5terre.jpg"}
-         	,{src : "resources/img/stadium/img_monterosso.jpg"}
-         	,{src : "resources/img/stadium/img_vernazza.jpg"}]
-         	let list = '<div id="asearch" class="row stadium-row">';
-         	$.each(arr,(i,j)=>{
-         		list +=  '  <div class="col-md-4">'
-       		  			+'    <div class="w3-card"><img src="resources/img/stadium/img_monterosso.jpg" style="width:100%">'
-       		  			+'      <div class="w3-container">'
-       		  			+'        <h5>Monterosso</h5>'
-       		  			+'      </div>'
-       		  			+'    </div>'
-       		  			+'  </div>'
-         				+'<div class="col-md-4">'
-         			  +'    <div class="w3-card"><img src="resources/img/stadium/img_5terre.jpg" style="width:100%">'
-         			  +'      <div class="w3-container">'
-         			  +'        <h5>Terre</h5>'
-         			  +'      </div>'
-         			  +'    </div>'
-         			  +'</div>';
-         	});
-         	list += '</div>';
-         	$(list).appendTo('.stadium-list');
-         	$('<nav>'
-         	+' <ul class="pagination">'
-         	+'  <li>'
-         	+'    <a href="#" aria-label="previous">'
-         	 +' <span aria-hidden="true">&laquo;</span>'
-         	+' </a>'
-         	+'  </li>'
-         	+'  <li><a href="#">1</a></li>'
-         	 +'  <li><a href="#">2</a></li>'
-         	 +'  <li><a href="#">3</a></li>'
-         	+'  <li><a href="#">4</a></li>'
-         	+'   <li><a href="#">5</a></li>'
-         	 +'   <li>'
-         			    +'    <a href="#" aria-label="next">'
-         			    +'     <span aria-hidden="true">&raquo;</span>'
-         			    +'   </a>'
-         			    +'   </li>'
-         			    +' </ul>'
-         			    +'</nav>').appendTo('.col-md-9');
-         	
-         $('img').click(()=>{
-             list_detail();
-         })
+    let setContentView = () => {
+       list(1);
     }
-    let list_detail = () => {
+    let list =(x)=> {
+    	$('#map').empty();
+    	$('#footer').empty();
+        $('#content').empty().html(compo.stadium_list_sidebar());
+        $('#map_button').click(()=>{
+        	alert('지도 클릭');
+        	$('#content').empty().html(compo.stadium_list_sidebar());
+        	$('.stadium-list').remove();
+        	$('.col-md-9').html();
+        });
+    	$.getJSON($.ctx()+'/stadiums/page/'+x,d=>{
+    		$('<div id="asearch" class="row stadium-row"></div>').appendTo('.stadium-list');
+	    	$.each(d.ls,(i,j)=>{
+	    		$('<div class="col-md-4">'
+	  		  			+'    <div class="w3-card" id="content_2"><img src="'+j.stadiumPhoto+'" style="width:90%">'
+	  		  			+'      <div class="w3-container">'
+	  		  			+'        <h5 style=" margin-top: 25px;">'+j.stadiumName+'</h5>'
+	  		  			+'        <h5>'+j.stadiumInfo+'</h5>'
+	  		  			+'      </div>'
+	  		  			+'    </div>'
+	  		  			+'  </div>')
+	  		  			.appendTo('#asearch')
+	  		  			.click(function() {
+	  		  				$('#map').empty();
+	  		  				$('#footer').empty();
+	  			    		list_detail(j);
+	  					});
+	    	});
+	    	
+	    	$('<div style="height: 50px"></div>').appendTo('.col-md-4');
+	    	$('<div class="pagination"></div>').appendTo('.col-md-9');
+	    	if(d.pxy.existPrev){
+	    		$('<li><a>&laquo;</a></li>')
+	    		.appendTo('.pagination')
+	    		.click(function(){
+	    			alert($(this).text());
+	    			list(d.pxy.prevBlock);
+	    		});
+	    	}
+	    	let i =0;
+	    	for(i=d.pxy.startPage; i<=d.pxy.endPage; i++){
+	    		if(d.pxy.pageNum == i){
+	    			$('<li><a class="page active">'+i+'</a></li>')
+	    			.attr('href',$.ctx()+'/stadiums/page/'+i)
+	    			.appendTo('.pagination')
+	    			.click(function(){
+	    				
+	    				alert($(this).text());
+	    				list($(this).text());
+	    			});
+	    		}else{
+	    			$('<li><a class="page">'+i+'</a></li>')
+	    			.attr('href',$.ctx()+'/stadiums/page/'+i)
+	    			.appendTo('.pagination')
+	    			.click(function(){
+	    				alert($(this).text());
+	    				list($(this).text());
+	    			});
+	    		}
+	    	}
+    		if(d.pxy.existnext){
+    			$('<li><a>&raquo;</a></li>')
+    			.appendTo('.pagination')
+    			.click(function(){
+    				alert($(this).text());
+    				list(d.pxy.nextBlock);
+    				});
+    			};
+    			
+    	});
+
+    }
+    let list_detail = (j) => {
+    	$('#content').html(compo.stadium_list_detail(j));
     	$('#footer').css('.section','padding-bottom:78px;');
     	$('#footer').css('.section','background-color: #1db91d9e;');
     	$('#footer').attr('style','position: fixed; left: 0; bottom: 0; width: 100%; background-color: #8cff88; color: white; text-align: center; padding-bottom: 22px; padding-top: 5px;')
@@ -98,7 +114,7 @@ stadium = (() => {
     	    	+'                </div>'
     	    	+'             </div>'
     	    	+'      </div>');
-        $('#content').empty().html(compo.stadium_list_detail());
+    	$('#map').html('');
         $('#pay_btn_1').click(()=>{
         	alert('모달로 확인창 뜨고 결제 예약으로 이동');
         	$('.modal-content').html(compo.pay_btn());
@@ -111,7 +127,6 @@ stadium = (() => {
     		});
         	
         });
-
     }
     let payment = () => {
     	$('#footer').empty();
@@ -125,12 +140,72 @@ stadium = (() => {
         $('#content').empty().html(compo.payment_reservation());
         $('#footer').empty();
     }
-
+    let srch =x=>{
+    	let url = _+'/stadiums/search/'+ x.s+'/'+x.p;
+    	$.getJSON(url,d=>{
+    		$('<div id="asearch" class="row stadium-row"></div>').appendTo('.stadium-list');
+	    	$.each(d.ls,(i,j)=>{
+	    		$('<div class="col-md-4">'
+	  		  			+'    <div class="w3-card" id="content_2"><img src="'+j.stadiumPhoto+'" style="width:90%">'
+	  		  			+'      <div class="w3-container">'
+	  		  			+'        <h5 style=" margin-top: 25px;">'+j.stadiumName+'</h5>'
+	  		  			+'        <h5>'+j.stadiumInfo+'</h5>'
+	  		  			+'      </div>'
+	  		  			+'    </div>'
+	  		  			+'  </div>')
+	  		  		.appendTo('#asearch')
+  		  			.click(function() {
+  		  				$('#footer').empty();
+  			    		alert(j.stadiumName);
+  			    		list_detail(j);
+  					});
+	    	});
+	    	$('<div style="height: 50px"></div>').appendTo('.col-md-4');
+	    	$('<div class="pagination"></div>').appendTo('.col-md-9');
+	    	if(d.pxy.existPrev){
+				$('<li><a>&laquo;</a></li>')
+				.appendTo('.pagination')
+				.click(function(){
+					let arr = {p:d.pxy.prevBlock, s:x.s};
+					srch(arr);
+				});
+			}
+	    	let i =0;
+			for(i=d.pxy.startPage; i<=d.pxy.endPage; i++){
+				if(d.pxy.pageNum == i){
+					$('<li><a class="page active">'+i+'</a></li>')
+					.attr('href',$.ctx()+'/stadiums/search/'+i)
+					.appendTo('.pagination')
+					.click(function(){
+						let arr = {p:$(this).text(), s:x.s};
+						srch(arr);
+					});
+				}else{
+					$('<li><a class="page">'+i+'</a></li>')
+					.attr('href',$.ctx()+'/stadiums/search/'+i)
+					.appendTo('.pagination')
+					.click(function(){
+						let arr = {p:$(this).text(), s:x.s};
+						srch(arr);
+					});
+				}
+			}
+				if(d.pxy.existnext){
+					$('<li><a>&raquo;</a></li>')
+					.appendTo('.pagination')
+					.click(function(){
+						alert($(this).text());
+						let arr = {p:d.pxy.nextBlock, s:x.s};
+						srch(arr);
+						});
+					};
+    	});
+    };
     return {
         onCreate: onCreate,
-        stadium_list: stadium_list,
+        list:list,
         list_detail: list_detail,
         payment: payment,
-        payment_reservation: payment_reservation
-    }
+        payment_reservation: payment_reservation,
+    	srch: srch}
 })();
