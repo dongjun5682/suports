@@ -12,6 +12,10 @@
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c3c4beaf10eac4d6d6910770fdc4d4bb"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script> -->
 
+<link rel="stylesheet" href="resources/css/datepicker/datapicker.min.css">
+<script src="resources/js/com/datapicker.min.js"></script>
+<script src="resources/js/com/datapicker.ko-kr.js"></script>
+
 <!-- default css -->
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/style.css">
@@ -63,8 +67,6 @@
 			<div id="modal-content3"></div>
 		</div>
 	</div>
-
-	
 <script 
 	src="<%=application.getContextPath()%>/resources/js/app.js"></script>
 <script
@@ -79,6 +81,7 @@
 	src="<%=application.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 <script>
  app.run('<%=application.getContextPath()%>');
+
 </script>
 
 </body>

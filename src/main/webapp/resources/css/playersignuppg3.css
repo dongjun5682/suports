@@ -25,6 +25,8 @@ div {
 div {
   -webkit-text-size-adjust: none;
 }
+
+
 .playersignuppg3 .shadow {
   background-color    : rgba(255,255,255,0.0);
   top                 : 0px;
@@ -262,27 +264,19 @@ div {
   transform           : rotate(0deg);
   font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size           : 14.0px;
-  color               : rgba(5, 201, 183, 1.0);
+  color               : #07172A
   text-align          : left;
   line-height         : 22.0px;
 }
 .playersignuppg3 .fieldchkbox .filedselect .text .texttitle1 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 32px;
-  width               : 122px;
-  position            : absolute;
-  margin              : 0;
-  left                : 23px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
   font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size           : 20.0px;
-  color               : rgba(5, 201, 183, 1.0);
+  color               : #07172A
   text-align          : left;
-  line-height         : 51.0px;
+  line-height         : 30.0px;
+  display: -webkit-inline-box
 }
+
 .playersignuppg3 .fieldchkbox .filedselect .imgicon6pg3 {
   background-color    : rgba(255,255,255,0.0);
   top                 : 0px;
@@ -349,21 +343,12 @@ div {
   line-height         : 22.0px;
 }
 .playersignuppg3 .fieldchkbox .filedselect1 .text .texttitle1 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 32px;
-  width               : 122px;
-  position            : absolute;
-  margin              : 0;
-  left                : 23px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
   font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size           : 20.0px;
-  color               : rgba(0, 0, 0, 1.0);
+  color               : #07172A
   text-align          : left;
-  line-height         : 51.0px;
+  line-height         : 30.0px;
+  display: -webkit-inline-box
 }
 .playersignuppg3 .fieldchkbox .filedselect1 .imgicon5pg3 {
   background-color    : rgba(255,255,255,0.0);
@@ -431,21 +416,12 @@ div {
   line-height         : 22.0px;
 }
 .playersignuppg3 .fieldchkbox .filedselect2 .text .texttitle1 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 32px;
-  width               : 122px;
-  position            : absolute;
-  margin              : 0;
-  left                : 23px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
   font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size           : 20.0px;
-  color               : rgba(0, 0, 0, 1.0);
+  color               : #07172A
   text-align          : left;
-  line-height         : 51.0px;
+  line-height         : 30.0px;
+  display: -webkit-inline-box
 }
 .playersignuppg3 .fieldchkbox .filedselect2 .imgicon4pg3 {
   background-color    : rgba(255,255,255,0.0);
@@ -513,21 +489,12 @@ div {
   line-height         : 22.0px;
 }
 .playersignuppg3 .fieldchkbox .filedselect3 .text .texttitle1 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 32px;
-  width               : 122px;
-  position            : absolute;
-  margin              : 0;
-  left                : 23px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
   font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size           : 20.0px;
-  color               : rgba(0, 0, 0, 1.0);
+  color               : #07172A
   text-align          : left;
-  line-height         : 51.0px;
+  line-height         : 30.0px;
+  display: -webkit-inline-box
 }
 .playersignuppg3 .fieldchkbox .filedselect3 .imgicon3pg3 {
   background-color    : rgba(255,255,255,0.0);
@@ -595,21 +562,12 @@ div {
   line-height         : 22.0px;
 }
 .playersignuppg3 .fieldchkbox .filedselect4 .text .texttitle1 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 32px;
-  width               : 122px;
-  position            : absolute;
-  margin              : 0;
-  left                : 23px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
   font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size           : 20.0px;
-  color               : rgba(0, 0, 0, 1.0);
+  color               : #07172A
   text-align          : left;
-  line-height         : 51.0px;
+  line-height         : 30.0px;
+  display: -webkit-inline-box
 }
 .playersignuppg3 .fieldchkbox .filedselect4 .imgicon2pg3 {
   background-color    : rgba(255,255,255,0.0);
@@ -677,21 +635,12 @@ div {
   line-height         : 22.0px;
 }
 .playersignuppg3 .fieldchkbox .fieldselect .text .texttitle1 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 32px;
-  width               : 122px;
-  position            : absolute;
-  margin              : 0;
-  left                : 23px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
   font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size           : 20.0px;
-  color               : rgba(0, 0, 0, 1.0);
+  color               : #07172A
   text-align          : left;
-  line-height         : 51.0px;
+  line-height         : 30.0px;
+  display: -webkit-inline-box
 }
 .playersignuppg3 .fieldchkbox .fieldselect .imgicon1pg3 {
   background-color    : rgba(255,255,255,0.0);

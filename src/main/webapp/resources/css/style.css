@@ -196,7 +196,6 @@ blockquote:before{
 input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="date"], input[type="url"], input[type="tel"], textarea {
     height: 40px;
     width: 100%;
-    border: 1px solid #EBEBEB;
 	border-radius:4px;
 	background: transparent;
     padding-left: 15px;
