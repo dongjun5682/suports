@@ -13,7 +13,7 @@ home = (() => {
         stadiumjs = js + '/stadium/stadium.js';
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js+'/team/team.js';
-
+        
     };
     let onCreate = () => {
         init();
@@ -41,9 +41,7 @@ home = (() => {
         $('#solo_search').click(() => {
             $('#people').empty().attr('id', 'position').append(compo.solo_search());
         });
-    	$.getJSON(_+ '/stadiums', d=>{
-    		alert(d);
-    	});
+    	
         list();
       
     };
@@ -189,10 +187,14 @@ home = (() => {
                     break;
             }
         })
-        $('#sear-btn').click(() => {
+        $('#sear-btn').click(function(){
+        	$.getScript(compojs,()=>{
+        		compo.stadium_list_sidebar();
             $('#content').css('margin-top', '80px');
-        
-            stadium.onCreate();
+           $.getScript(stadiumjs,()=>{
+        	   stadium.list(1);
+           });
+        	});
         })
         $('#stadium_list').click(() => {
             $('#content').css('margin-top', '80px');
