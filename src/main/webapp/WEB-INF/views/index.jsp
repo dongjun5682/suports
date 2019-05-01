@@ -3,14 +3,26 @@
 <!doctype html>
 <html lang="en">
 <head>
+<style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
 <meta charset="UTF-8" />
 <title>Document</title>
 <script src='//unpkg.com/popper.js@1/dist/umd/popper.min.js'></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c3c4beaf10eac4d6d6910770fdc4d4bb"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script> -->
+
+<link rel="stylesheet" href="resources/css/datepicker/datapicker.min.css">
+<script src="resources/js/com/datapicker.min.js"></script>
+<script src="resources/js/com/datapicker.ko-kr.js"></script>
 
 <!-- default css -->
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
@@ -57,8 +69,14 @@
 			<div id="modal-content2"></div>
 		</div>
 	</div>
+		<div class="modal fade" id="myModal_tour" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div id="modal-content3"></div>
+		</div>
+	</div>
 
-	
+<div id="map"></div>
+
 <script 
 	src="<%=application.getContextPath()%>/resources/js/app.js"></script>
 <script
@@ -71,9 +89,26 @@
 	src="<%=application.getContextPath()%>/resources/js/member/member.js"></script>	
 <script
 	src="<%=application.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap">
+    </script>		
+ 
 <script>
  app.run('<%=application.getContextPath()%>');
-</script>
 
+</script>
+<script>
+
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+    </script>   
 </body>
 </html>

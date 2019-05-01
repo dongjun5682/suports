@@ -13,7 +13,7 @@ home = (() => {
         stadiumjs = js + '/stadium/stadium.js';
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js+'/team/team.js';
-
+        
     };
     let onCreate = () => {
         init();
@@ -31,7 +31,6 @@ home = (() => {
         });
     };
     let setContentView = () => {
-
         $('#content').before(compo.header()).append(compo.content()).after(compo.footer());
         $('#rm_search').append(compo.srch());
         $('#content').css('margin-top', '0');
@@ -41,9 +40,6 @@ home = (() => {
         $('#solo_search').click(() => {
             $('#people').empty().attr('id', 'position').append(compo.solo_search());
         });
-    	$.getJSON(_+ '/stadiums', d=>{
-    		alert(d);
-    	});
         list();
       
     };
@@ -189,14 +185,19 @@ home = (() => {
                     break;
             }
         })
-        $('#sear-btn').click(() => {
+        $('#sear-btn').click(function(){
+        	$.getScript(compojs,()=>{
+        		compo.stadium_list_sidebar();
             $('#content').css('margin-top', '80px');
-        
-            stadium.onCreate();
+           $.getScript(stadiumjs,()=>{
+        	   stadium.onCreate(1);
+           });
+
         })
+        });
         $('#stadium_list').click(() => {
             $('#content').css('margin-top', '80px');
-            stadium.onCreate();
+            stadium.onCreate(1);
         })
         $('.course-img').click(() => {
             $('#content').css('margin-top', '80px');
@@ -204,7 +205,7 @@ home = (() => {
         })
         $('.navbar-brand .logo').click(()=>{
         	  $('#content').empty().append(compo.content());
-        	  $('#footer').empty().after(compo.footer());
+        	  $('#footer').empty().append(compo.footer()).attr('style','margin');
               $('#rm_search').append(compo.srch());
               $('#content').css('margin-top', '0');
               $('#team_search').click(() => {
@@ -242,41 +243,77 @@ home = (() => {
             $('#myModal').modal('hide');
         });
         $('#signupBtn_in_signin').click(() => {
-        	alert('test')
-            $('.modal-content').html(compo.signup_2());
-            $('.textnext').click(() => {
-                $('.modal-content').html(compo.signup_3());
-                $('.textnext').click(() => {
-                    $('.modal-content').html(compo.signup_4());
-                    $('.textnext').click(() => {
-                        $('.modal-content').html(compo.signup_5());
-                        $('.beginbtn').click(() => {
-                            $('#myModal').modal('hide');
-                        })
-                    })
-                })
-            })
+            signup();
         })
     }
     let signup = () => {
-        alert('signup');
         $('.modal-content').html(compo.signup_1());
-        $('.fieldbtn').click(() => {
+        $('.fieldbtn').click(()=> {
+        	let formdata = {
+					id : $('form input[name="memberId"]').val(),
+					name : $('form input[name="memberName"]').val(),
+					email : $('form input[name="memberEmail"]').val()
+			};
             $('.modal-content').html(compo.signup_2());
+            $('#datepicker').datepicker({
+            	locale: 'ko-kr',
+                uiLibrary: 'bootstrap4'
+            });
             $('.textnext').click(() => {
+              	let formdata2 = {
+    					password : $('form input[name="memberPassword"]').val(),
+    					birth : $('form input[name="memberBirth"]').val(),
+    					address : $('form select[id="memberLocation"]').val(),
+    					sports : $('form select[id="memberSports"]').val(),
+    					position : $('form select[id="memberPosition"]').val(),
+    					phone : $('form input[id="memberPhone"]').val()
+    			};
                 $('.modal-content').html(compo.signup_3());
                 $('.textnext').click(() => {
+                  	let formdata3 = {
+                  			
+        			};
                     $('.modal-content').html(compo.signup_4());
                     $('.textnext').click(() => {
+                    	let formdata4 = {
+                    			info : $('form input[name="memberInfo"]').val()
+            			};
                         $('.modal-content').html(compo.signup_5());
+                        let formdata5 = {
+                        		id : formdata.id,
+                        		password : formdata2.password,
+                        		email : formdata.email,
+            					name : formdata.name,
+            					birth : formdata2.birth,
+            					position : formdata2.position,
+            					sports : formdata2.sports,
+            					address : formdata2.address,
+            					phone : formdata2.phone,
+            					info : formdata4.info,
+            					photo : 'default_profile.jpg'
+            			};
                         $('.beginbtn').click(() => {
-                            $('#myModal').modal('hide');
+                        	$.ajax({
+                            	url : $.ctx()+'/members/',
+                            	type : 'POST',
+                            	data : JSON.stringify(formdata5),
+                            	dataType : 'json',
+                            	contentType : "application/json; charset=utf-8",
+                            	success : d => {
+                            		alert('ajax signup : '+formdata.id+formdata2.password);
+                            		$('#myModal').modal('hide');
+                            		},
+                            		error : e => {
+                            		alert('ajax fail');
+                            		}
+                            })
                         })
                     })
                 })
             })
         })
     }
+
     return {
         onCreate: onCreate,
         list: list,

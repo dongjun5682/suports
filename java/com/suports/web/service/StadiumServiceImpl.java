@@ -5,13 +5,16 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.suports.web.Proxy;
 import com.suports.web.domain.StadiumDTO;
 import com.suports.web.mapper.StadiumMapper;
 
 @Service
 public class StadiumServiceImpl implements StadiumService{
 
+	private static final Proxy Proxy = null;
 	@Autowired StadiumMapper stdMap;
+	@Autowired Proxy pxy;
 	
 	@Override
 	public void addStadium(StadiumDTO std) {
@@ -27,13 +30,12 @@ public class StadiumServiceImpl implements StadiumService{
 
 	@Override
 	public List<StadiumDTO> retrieveSomeOfStadium(Map<?, ?> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return stdMap.selectStadiumList(pxy);
 	}
 
 	@Override
 	public StadiumDTO retrieveStadiums() {
-		return stdMap.selectStadiumList();
+		return null;
 	}
 
 	@Override
