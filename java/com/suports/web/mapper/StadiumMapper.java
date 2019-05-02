@@ -18,5 +18,6 @@ public interface StadiumMapper {
 	public int countStadium();
 	public void updateStadium(StadiumDTO std);
 	public void deleteStadium(StadiumDTO std);
+	public List<StadiumDTO> selectStadiumArea(String area);
 	
 }

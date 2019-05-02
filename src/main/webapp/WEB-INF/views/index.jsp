@@ -3,13 +3,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-<style>
-       /* Set the size of the div element that contains the map */
-      #map {
-        height: 400px;  /* The height is 400 pixels */
-        width: 100%;  /* The width is the width of the web page */
-       }
-    </style>
 <meta charset="UTF-8" />
 <title>Document</title>
 <script src='//unpkg.com/popper.js@1/dist/umd/popper.min.js'></script>
@@ -74,9 +67,9 @@
 			<div id="modal-content3"></div>
 		</div>
 	</div>
-
+<div class="map-container">
 <div id="map"></div>
-
+</div>
 <script 
 	src="<%=application.getContextPath()%>/resources/js/app.js"></script>
 <script
@@ -89,26 +82,20 @@
 	src="<%=application.getContextPath()%>/resources/js/member/member.js"></script>	
 <script
 	src="<%=application.getContextPath()%>/resources/js/bootstrap.min.js"></script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap">
-    </script>		
- 
+
 <script>
  app.run('<%=application.getContextPath()%>');
 
 </script>
 <script>
-
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: -25.344, lng: 131.036};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
-    </script>   
+  	function initMap() {
+    		  // The location of Uluru
+    		  let uluru = {lat: 37.691822, lng: 126.778621};
+    		  // The map, centered at Uluru
+    		  let map = new google.maps.Map(document.getElementById('map'), {zoom: 16, center: uluru});
+    		  // The marker, positioned at Uluru
+    		  let marker = new google.maps.Marker({position: uluru, map: map});
+    	  }
+</script>
 </body>
 </html>

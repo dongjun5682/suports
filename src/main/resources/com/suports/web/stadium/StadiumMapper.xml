@@ -11,6 +11,7 @@
   <result property="stadiumInfo" column="STADIUM_INFO"/>
   <result property="areaName" column="AREA_NAME"/>
 </resultMap>
+
 <select id="selectStadiumList"  resultMap="result">
    SELECT @ROWNUM:=@ROWNUM+1 AS rownum,
            S.*
@@ -21,6 +22,7 @@
   <select id="countStadium" resultType="int">
     SELECT COUNT(*) FROM STADIUM
   </select>
+  
   <select id="selectProductlists" resultMap="result"
 	parameterType="com.suports.web.Proxy">
  	SELECT @ROWNUM:=@ROWNUM+1 COLOR,P.PRODUCT_NAME productName
@@ -32,4 +34,13 @@
 		OR S.CITY LIKE #{search}
 	limit #{startRow}, #{pageSize}
 	  </select>	 
+	
+<!-- 	<select id="selectStadiumArea" resultMap="result" parameterType="string">
+		SELECT S.STADIUM_NAME,S.STADIUM_INFO,S.STADIUM_PHOTO,A.AREA_NAME
+		FROM STADIUM S JOIN AREA A
+				ON S.AREA_INDEX LIKE A.AREA_INDEX
+		WHERE A.AREA_NAME LIKE '%${value}%'
+	  </select>	  -->
+	
+	  
 </mapper>

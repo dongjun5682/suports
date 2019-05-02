@@ -34,7 +34,7 @@ stadium = (() => {
         	$('.stadium-list').remove();
         	$('.col-md-9').html();
         });
-    	$.getJSON($.ctx()+'/stadiums/page/'+x,d=>{
+    	$.getJSON(_+'/stadiums/page/'+x,d=>{
     		$('<div id="asearch" class="row stadium-row"></div>').appendTo('.stadium-list');
 	    	$.each(d.ls,(i,j)=>{
 	    		$('<div class="col-md-4">'
@@ -113,7 +113,11 @@ stadium = (() => {
     	    	+'                </div>'
     	    	+'             </div>'
     	    	+'      </div>');
-    	$('#map').html('');
+    	//map 설정
+    	$('#map').css({'width':'100%','height':'400px'}).after('<script async defer'
+    		    +' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap">'
+    		    +'</script>');
+    	//예약 확인 버튼
         $('#pay_btn_1').click(()=>{
         	alert('모달로 확인창 뜨고 결제 예약으로 이동');
         	$('.modal-content').html(compo.pay_btn());
