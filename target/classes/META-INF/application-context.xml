@@ -56,7 +56,8 @@
                 <property name="defaultEncoding" value="utf-8"></property>
         </bean> 
     <bean id="uploadPath" class="java.lang.String">
-         <constructor-arg value=" C:\\Users\\1027\\git\\repository7\\suports\\src\\main\\webapp\\resources\\img"/>
+         <constructor-arg value="./fileuploads"/>
+<!--          <constructor-arg value="C:\\Users\\1027\\git\\repository7\\suports\\src\\main\\webapp\\resources\\img"/> -->
                 <!-- <constructor-arg value="//usr//local//tomcat9//webapps//ROOT//resources//img"/> -->
     </bean>
 </beans>
