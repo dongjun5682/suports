@@ -41,7 +41,7 @@ home = (() => {
         $('#solo_search').click(() => {
             $('#people').empty().attr('id', 'position').append(compo.solo_search());
         });
-        list();
+        home_list();
         $('.navbar-right a').click(function(e) {
             alert('click :' + $(this).attr('id'));
             let _this = $(this).attr('id');
@@ -95,129 +95,70 @@ home = (() => {
               $('#solo_search').click(() => {
                   $('#people').empty().attr('id', 'position').append(compo.solo_search());
               });
-              list();
+              home_list();
         })
         
         
         
     };
 
-    let list = () => {
+    let home_list = () => {
         let list_stadium_detail = '';
-//    	$.getJSON(_+'/stadiums/list',d=>{
-        let list_stadium_city = '<div id="best_stadium" class="section">' +
-            '        <!-- container -->' +
-            '        <div class="container">' +
-            '            <!-- row -->' +
-            '            <div class="row" >' +
-            '                <div class="col-md-3">' +
-            '                    <div class="section-header">' +
-            '                        <h2>Best Stadium</h2>' +
-            '                    </div>' +
-            '                </div>' +
-            '                <div id="courses-wrapper" class="col-md-12">' +
-            '                    <!-- row -->' +
-            '                    <div class="row">' +
-            '                        <!-- single course -->' +
-            ' 					<div class="col-md-3 col-sm-6 col-xs-6" id="best_list">' +
-            '       				 <div class="course">' +
-            '       				     <a href="#" class="course-img"> ' +
-            '        				        <img src="resources/img/stadium/stadium_1.jpg" alt=""> ' +
-            '         					       <i class="course-link-icon fa fa-link"></i>' +
-            '           				 </a>' +
-            '          			   <a class="course-title" href="#">PHP Tips, Tricks, and Techniques</a>' +
-            '       			     <div class="course-details">' +
-            '       				         <span class="course-category">Web Development</span> ' +
-            '           				     <span class="course-price course-free">Free</span>' +
-            '          		  </div>' +
-            '        			</div>' +
-            '    			</div>' +
-            '                        <!-- /single course -->' +
-            '                    </div>' +
-            '                    <!-- /row -->' +
-            '                </div>' +
-            '            </div>' +
-            '        </div>' +
-            '        <!-- row -->' +
-            '    </div>' +
-            '    <!-- container -->';
-
-        
-        let city = [{
-            txt: 'Seoul Stadium',
-            id: 'seoul_stadium'
-        }, {
-            txt: 'Incheon Stadium',
-            id: 'incheon_stadium'
-        }, {
-            txt: 'Busan Stadium',
-            id: 'busan_stadium'
-        }]
-        let area = ['Sinchon', 'Bupyeong', 'Haeundae', 'Bucheon']
-
-
-        $.each(city, (i, j) => {
-            list_stadium_city += '    <div id="' + j.id + '" class="section">' +
-                '        <!-- container -->' +
-                '        <div class="container">' +
-                '            <!-- row -->' +
-                '            <div class="row" >' +
-                '                <div class="col-md-3">' +
-                '                    <div class="section-header">' +
-                '                        <h2>' + j.txt + '</h2>' +
-                '                    </div>' +
-                '                </div>' +
-                '                <div id="courses-wrapper" class="col-md-12">' +
-                '                    <!-- row -->' +
-                '                    <div class="row">' +
-                '                        <!-- single course -->' +
-                ' 					<div class="col-md-3 col-sm-6 col-xs-6" id="best_list">' +
-                '       				 <div class="course">' +
-                '       				     <a href="#" class="course-img"> ' +
-                '        				        <img src="resources/img/stadium/stadium_1.jpg" alt=""> ' +
-                '         					       <i class="course-link-icon fa fa-link"></i>' +
-                '           				 </a>' +
-                '          			   <a class="course-title" href="#">PHP Tips, Tricks, and Techniques</a>' +
-                '       			     <div class="course-details">' +
-                '       				         <span class="course-category">Web Development</span> ' +
-                '           				     <span class="course-price course-free">Free</span>' +
-                '          		  </div>' +
-                '        			</div>' +
-                '    			</div>' +
-                '                        <!-- /single course -->' +
-                '                    </div>' +
-                '                    <!-- /row -->' +
-                '                </div>' +
-                '            </div>' +
-                '        </div>' +
-                '        <!-- row -->' +
-                '    </div>' +
-                '    <!-- container -->';
-        })
-        $('#ev_list').after(list_stadium_city);
-
-        $.each(area, (i, j) => {
-            let photo = i + 1;
-            list_stadium_detail += '<!-- single course -->' +
-                ' <div class="col-md-3 col-sm-6 col-xs-6">' +
-                '        <div class="course">' +
-                '            <a href="#" class="course-img"> ' +
-                '                <img src="resources/img/stadium/stadium_' + photo + '.jpg" alt=""> ' +
-                '                <i class="course-link-icon fa fa-link"></i>' +
-                '            </a>' +
-                '             <a class="course-title" href="#">' + j + '</a>' +
-                '            <div class="course-details">' +
-                '                <span class="course-category">Reservation</span> ' +
-                '                <span class="course-price course-free">Free</span>' +
-                '            </div>' +
-                '        </div>' +
-                '    </div>' +
-                '<!-- /single course -->';
-        });
-        $('#busan_stadium').after('<div class="container">' +
-                ' <div class="row" >' +
-                '<a class="course-title" href="#">더보기(300개 이상)</a></div></div>');
-//    	});
+    	$.getJSON(_+'/stadiums',d=>{
+    		$.each(d.home ,(i,j)=>{
+    			if(j.areaName == '서울'){
+    			$('.seoul_stadium').append('<div class="col-md-3 col-sm-6 col-xs-6" >'
+    					+'  <div class="course">'
+    					+'    <a href="#" class="course-img">'
+    					+'      <img src="'+j.stadiumPhoto+'" alt="'+i+'" style="height: 220px;">'
+    					+'      <i class="course-link-icon fa fa-link"></i>'
+    					+'    </a>'
+    					+'    <a class="course-title" href="#">'+j.stadiumName+'</a>'
+    					+'    <div class="course-details">'
+    					+'      <span class="course-category">'+j.stadiumInfo+'</span>'
+    					+'    </div>'
+    					+'    <div class="course-people">'
+    					+'      <span class="course-price course-free">'+10+'/'+22+'</span>'
+    					+'    </div>'
+    					+'  </div>'
+    					+'</div> ').click(function(){
+    						alert(j.stadiumName);
+    					});
+    			}else if(j.areaName == '인천'){
+    				$('.Incheon_stadium').append('<div class="col-md-3 col-sm-6 col-xs-6" >'
+        					+'  <div class="course">'
+        					+'    <a href="#" class="course-img">'
+        					+'      <img src="'+j.stadiumPhoto+'" alt="'+i+'" style="height: 220px;">'
+        					+'      <i class="course-link-icon fa fa-link"></i>'
+        					+'    </a>'
+        					+'    <a class="course-title" href="#">'+j.stadiumName+'</a>'
+        					+'    <div class="course-details">'
+        					+'      <span class="course-category">'+j.stadiumInfo+'</span>'
+        					+'    </div>'
+        					+'    <div class="course-people">'
+        					+'      <span class="course-price course-free">'+10+'/'+22+'</span>'
+        					+'    </div>'
+        					+'  </div>'
+        					+'</div> ');
+    			}else if(j.areaName == '경기'){
+    				$('.gyeonggi_stadium').append('<div class="col-md-3 col-sm-6 col-xs-6">'
+        					+'  <div class="course">'
+        					+'    <a href="#" class="course-img">'
+        					+'      <img src="'+j.stadiumPhoto+'" alt="'+i+'" style="height: 220px;">'
+        					+'      <i class="course-link-icon fa fa-link"></i>'
+        					+'    </a>'
+        					+'    <a class="course-title" href="#">'+j.stadiumName+'</a>'
+        					+'    <div class="course-details">'
+        					+'      <span class="course-category">'+j.stadiumInfo+'</span>'
+        					+'    </div>'
+        					+'    <div class="course-people">'
+        					+'      <span class="course-price course-free">'+10+'/'+22+'</span>'
+        					+'    </div>'
+        					+'  </div>'
+        					+'</div> ');
+    			}
+    		});
+    	});
     }
 
     let login = () => {
@@ -318,7 +259,7 @@ home = (() => {
 
     return {
         onCreate: onCreate,
-        list: list,
+        home_list: home_list,
         login: login
     };
 

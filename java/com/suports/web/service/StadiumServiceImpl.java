@@ -67,8 +67,5 @@ public class StadiumServiceImpl implements StadiumService{
 	}
 
 
-	@Override
-	public List<StadiumDTO> retrieveStardiumArea(String area) {
-		return stdMap.selectStadiumArea(area);
-	}
+
 }

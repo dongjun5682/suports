@@ -35,12 +35,11 @@
 	limit #{startRow}, #{pageSize}
 	  </select>	 
 	
-<!-- 	<select id="selectStadiumArea" resultMap="result" parameterType="string">
-		SELECT S.STADIUM_NAME,S.STADIUM_INFO,S.STADIUM_PHOTO,A.AREA_NAME
+ 	<select id="selectAllStadium" resultMap="result">
+		SELECT STADIUM_NAME,STADIUM_INFO,STADIUM_PHOTO,A.AREA_NAME
 		FROM STADIUM S JOIN AREA A
-				ON S.AREA_INDEX LIKE A.AREA_INDEX
-		WHERE A.AREA_NAME LIKE '%${value}%'
-	  </select>	  -->
+			ON S.AREA_INDEX LIKE A.AREA_INDEX;
+	  </select>	  
 	
 	  
 </mapper>

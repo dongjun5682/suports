@@ -1495,3 +1495,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 #user-drop ul li h3{
 	padding:13px;
 }
+
+.course-people{
+	color:green;
+}

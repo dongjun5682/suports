@@ -19,7 +19,6 @@ public interface StadiumService {
 	public StadiumDTO retrieveStadiums();
 	public StadiumDTO retrieveStadium(StadiumDTO std);
 	
-	public List<StadiumDTO> retrieveStardiumArea(String area);
 	
 	public int countStadium();
 	public boolean existStadium(StadiumDTO std);
