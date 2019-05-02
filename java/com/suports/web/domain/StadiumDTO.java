@@ -8,9 +8,8 @@ import lombok.Data;
 
 @Data @Component @Lazy
 public  class StadiumDTO {
-	private int stadiumIndex;
+	private int stadiumIndex,sports_index,area_index;
 	private String	stadiumName,
 					stadiumPhoto,
-					stadiumInfo,
-					areaName;
+					stadiumInfo;
 }

@@ -7,6 +7,8 @@
 <resultMap id="result" type="hashmap">
   <id property="stadiumIndex" column="STADIUM_INDEX" />
   <result property="stadiumName" column="STADIUM_NAME"/>
+  <result property="sportsIndex" column="SPORTS_INDEX"/>
+  <result property="areaIndex" column="AREA_INDEX"/>
   <result property="stadiumPhoto" column="STADIUM_PHOTO"/>
   <result property="stadiumInfo" column="STADIUM_INFO"/>
   <result property="areaName" column="AREA_NAME"/>
@@ -22,19 +24,18 @@
   <select id="countStadium" resultType="int">
     SELECT COUNT(*) FROM STADIUM
   </select>
-  
-  <select id="selectProductlists" resultMap="result"
+  <select id="selectStadiumlists" resultMap="result"
 	parameterType="com.suports.web.Proxy">
- 	SELECT @ROWNUM:=@ROWNUM+1 COLOR,P.PRODUCT_NAME productName
-			,S.SUPPLIER_NAME supplierID,P.UNIT,P.PRICE
-	FROM PRODUCTS P JOIN SUPPLIERS S ON P.SUPPLIER_ID LIKE S.SUPPLIER_ID ,(SELECT @ROWNUM:=0)TMP
-	WHERE P.PRODUCT_NAME LIKE #{search} 
-		OR S.SUPPLIER_NAME LIKE #{search} 
-		OR S.ADDRESS LIKE #{search}
-		OR S.CITY LIKE #{search}
+ 	SELECT S.*
+	FROM STADIUM S
+	WHERE S.STADIUM_INFO LIKE #{search}
 	limit #{startRow}, #{pageSize}
 	  </select>	 
-	
+	<select id="countStadiums" resultType="int"  parameterType="string">
+  SELECT COUNT(*)
+	FROM STADIUM S 
+		WHERE S.STADIUM_NAME LIKE #{value}
+      </select>
 <!-- 	<select id="selectStadiumArea" resultMap="result" parameterType="string">
 		SELECT S.STADIUM_NAME,S.STADIUM_INFO,S.STADIUM_PHOTO,A.AREA_NAME
 		FROM STADIUM S JOIN AREA A

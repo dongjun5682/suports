@@ -82,6 +82,8 @@
 	src="<%=application.getContextPath()%>/resources/js/member/member.js"></script>	
 <script
 	src="<%=application.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+	<script
+	src="<%=application.getContextPath()%>/resources/js/com/util.js"></script>
 
 <script>
  app.run('<%=application.getContextPath()%>');

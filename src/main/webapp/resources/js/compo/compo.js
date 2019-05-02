@@ -313,7 +313,7 @@ compo = {
 		  			+'<div class="col-md-12" style="margin-top:20px;">'              
 		  			+'<button type="button" id="map_button" class="btn btn-default btn-lg">전체 운동장 보기</button></div></div>'
 		  			+'<form><fieldset>'
-		  			+'  <input type="search" style="margin-top: 30px;width: 56%;height: 49px; border: 1px solid;"/><button type="submit" id="area_srch" style="height: 50px; border: 1px solid;"><i class="fa fa-search">'
+		  			+'  <input type="text" id="search"; style="margin-top: 30px;width: 56%;height: 49px; border: 1px solid;"/><button type="submit" id="area_srch" style="height: 50px; border: 1px solid;"><i class="fa fa-search">'
 		  			+'   </i></button></fieldset></form>'
 		  			+'<h4 style="margin-top: 20px;">운동</h4>'
 		  			+'<div class="btn-group">'
