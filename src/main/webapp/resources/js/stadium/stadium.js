@@ -19,7 +19,6 @@ stadium = (() => {
         ).done(() => {
             setContentView();
         });
-        
     };
 
     let setContentView = () => {
@@ -33,13 +32,27 @@ stadium = (() => {
         	alert('지도 클릭');
         	$('#content').empty().html(compo.stadium_list_sidebar());
         	$('.stadium-list').remove();
-        	$('.col-md-9').html();
+        	$('.navbar-brand').remove();
+        	$('#home').remove();
+        	$('#footer').empty();
+        	$('.col-md-9').load('#map');
         });
+        $('#area_srch').on('click',()=>{
+        	alert('검색 클릭')
+			let search = $('#search').val();
+			if($.fn.nullChecker(search)){
+				alert('검색어를 입력하십시오');
+			}else{
+				alert('검색중 ');
+				let arr = {p:'1', s:search};
+				srch(arr);
+			}
+		});
     	$.getJSON(_+'/stadiums/page/'+x,d=>{
     		$('<div id="asearch" class="row stadium-row"></div>').appendTo('.stadium-list');
 	    	$.each(d.ls,(i,j)=>{
 	    		$('<div class="col-md-4">'
-	  		  			+'    <div class="w3-card" id="content_2"><img src="'+j.stadiumPhoto+'" style="width:90%">'
+	  		  			+'    <div class="w3-card" id="content_2"><img src="'+j.stadiumPhoto+'" style="width:208px">'
 	  		  			+'      <div class="w3-container">'
 	  		  			+'        <h5 style=" margin-top: 25px;">'+j.stadiumName+'</h5>'
 	  		  			+'        <h5>'+j.stadiumInfo+'</h5>'
@@ -114,11 +127,13 @@ stadium = (() => {
     	    	+'                </div>'
     	    	+'             </div>'
     	    	+'      </div>');
+
     	//map 설정
     	$('#map').css({'width':'100%','height':'400px'}).after('<script async defer'
     		    +' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap">'
     		    +'</script>');
     	//예약 확인 버튼
+
         $('#pay_btn_1').click(()=>{
         	alert('모달로 확인창 뜨고 결제 예약으로 이동');
         	$('.modal-content').html(compo.pay_btn());
@@ -145,12 +160,15 @@ stadium = (() => {
         $('#footer').empty();
     }
     let srch =x=>{
+    	$('#map').empty();
+    	$('#footer').empty();
+        $('#content').empty().html(compo.stadium_list_sidebar());
     	let url = _+'/stadiums/search/'+ x.s+'/'+x.p;
     	$.getJSON(url,d=>{
     		$('<div id="asearch" class="row stadium-row"></div>').appendTo('.stadium-list');
-	    	$.each(d.ls,(i,j)=>{
+	    	$.each(d.srch,(i,j)=>{
 	    		$('<div class="col-md-4">'
-	  		  			+'    <div class="w3-card" id="content_2"><img src="'+j.stadiumPhoto+'" style="width:90%">'
+	  		  			+'    <div class="w3-card" id="content_2"><img src="'+j.stadiumPhoto+'" style="width:208px">'
 	  		  			+'      <div class="w3-container">'
 	  		  			+'        <h5 style=" margin-top: 25px;">'+j.stadiumName+'</h5>'
 	  		  			+'        <h5>'+j.stadiumInfo+'</h5>'
@@ -204,6 +222,19 @@ stadium = (() => {
 						});
 					};
     	});
+    	
+    	 $('#area_srch').on('click',()=>{
+         	alert('검색 클릭')
+ 			let search = $('#search').val();
+ 			if($.fn.nullChecker(search)){
+ 				alert('검색어를 입력하십시오');
+ 			}else{
+ 				alert('검색중 ');
+ 				let arr = {p:'1', s:search};
+ 				srch(arr);
+ 			}
+ 		});
+    	
     };
     return {
         onCreate: onCreate,

@@ -56,11 +56,12 @@ public class StadiumController {
 		map.put("pageNum", page);
 		map.put("pageSize", "9");
 		map.put("blockSize", "3");
-		map.put("totalCount", staMap.countStadium());
+		map.put("totalCount", staMap.countStadiums(sa));
 		pxy.carryOut(map);
 		map.clear();
 		map.put("pxy", pxy);
-		map.put("srch", staMap.selectStadiumList(pxy));
+		map.put("srch", staMap.selectStadiumlists(pxy));
+		System.out.println(staMap.selectStadiumlists(pxy).toString());
 		return map;
 	}
 
