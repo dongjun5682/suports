@@ -107,7 +107,8 @@ home = (() => {
     	$.getJSON(_+'/stadiums',d=>{
     		$.each(d.home ,(i,j)=>{
     			if(j.areaName == '서울'){
-    			$('.seoul_stadium').append('<div class="col-md-3 col-sm-6 col-xs-6" >'
+    				if(i<4){
+    			$('<div class="col-md-3 col-sm-6 col-xs-6" >'
     					+'  <div class="course">'
     					+'    <a href="#" class="course-img">'
     					+'      <img src="'+j.stadiumPhoto+'" alt="'+i+'" style="height: 220px;">'
@@ -121,11 +122,14 @@ home = (() => {
     					+'      <span class="course-price course-free">'+10+'/'+22+'</span>'
     					+'    </div>'
     					+'  </div>'
-    					+'</div> ').click(function(){
+    					+'</div> ').appendTo('.seoul_stadium').click(function(){
     						alert(j.stadiumName);
+    						stadium.list_detail(j);
     					});
+    				}
     			}else if(j.areaName == '인천'){
-    				$('.Incheon_stadium').append('<div class="col-md-3 col-sm-6 col-xs-6" >'
+    				if(i<14){
+    				$('<div class="col-md-3 col-sm-6 col-xs-6" >'
         					+'  <div class="course">'
         					+'    <a href="#" class="course-img">'
         					+'      <img src="'+j.stadiumPhoto+'" alt="'+i+'" style="height: 220px;">'
@@ -139,23 +143,32 @@ home = (() => {
         					+'      <span class="course-price course-free">'+10+'/'+22+'</span>'
         					+'    </div>'
         					+'  </div>'
-        					+'</div> ');
+        					+'</div> ').appendTo('.Incheon_stadium').click(function(){
+        						alert(j.stadiumName);
+        						stadium.list_detail(j);
+        					});
+    				}
     			}else if(j.areaName == '경기'){
-    				$('.gyeonggi_stadium').append('<div class="col-md-3 col-sm-6 col-xs-6">'
-        					+'  <div class="course">'
-        					+'    <a href="#" class="course-img">'
-        					+'      <img src="'+j.stadiumPhoto+'" alt="'+i+'" style="height: 220px;">'
-        					+'      <i class="course-link-icon fa fa-link"></i>'
-        					+'    </a>'
-        					+'    <a class="course-title" href="#">'+j.stadiumName+'</a>'
-        					+'    <div class="course-details">'
-        					+'      <span class="course-category">'+j.stadiumInfo+'</span>'
-        					+'    </div>'
-        					+'    <div class="course-people">'
-        					+'      <span class="course-price course-free">'+10+'/'+22+'</span>'
-        					+'    </div>'
-        					+'  </div>'
-        					+'</div> ');
+    				if(i<20){
+    					$('<div class="col-md-3 col-sm-6 col-xs-6">'
+            					+'  <div class="course">'
+            					+'    <a href="#" class="course-img">'
+            					+'      <img src="'+j.stadiumPhoto+'" alt="'+i+'" style="height: 220px;">'
+            					+'      <i class="course-link-icon fa fa-link"></i>'
+            					+'    </a>'
+            					+'    <a class="course-title" href="#">'+j.stadiumName+'</a>'
+            					+'    <div class="course-details">'
+            					+'      <span class="course-category">'+j.stadiumInfo+'</span>'
+            					+'    </div>'
+            					+'    <div class="course-people">'
+            					+'      <span class="course-price course-free">'+10+'/'+22+'</span>'
+            					+'    </div>'
+            					+'  </div>'
+            					+'</div> ').appendTo('.gyeonggi_stadium').click(function(){
+            						alert(j.stadiumName);
+            						stadium.list_detail(j);
+            					});
+    				}	
     			}
     		});
     	});
