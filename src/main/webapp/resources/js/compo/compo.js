@@ -1,8 +1,7 @@
 var compo = compo || {}
 compo = {
      header : ()=>{
-    	 return '    <!-- Header -->'
-		+'        <header id="header" class="transparent-nav">'
+    	 return'        <header id="header" class="transparent-nav">'
 		+'            <div class="header">'
 		+'                <div class="navbar-header">'
 		+'                    <div class="navbar-brand">'
@@ -14,7 +13,6 @@ compo = {
 		+'                        <span></span>'
 		+'                    </button>'
 		+'                </div>'
-		+'                <!-- Navigation -->'
 		+'                <nav id="nav">'
 		+'                    <ul class="main-menu nav navbar-nav navbar-right">'
 		+'                        <li><a href="#" id="about">ABOUT</a></li>'
@@ -24,17 +22,12 @@ compo = {
 		+'                        <li><a href="#" id="login" data-toggle="modal" data-target="#myModal">LOGIN</a></li>'
 		+'                    </ul>'
 		+'                </nav>'
-		+'                <!-- /Navigation -->'
 		+'            </div>'
-		+'        </header>'
-		+'        <!-- /Header -->'; 
-     },
+		+'        </header>';
+   },
 	 content : ()=>{
-		return'<!-- Home -->'
-		+' <div id="home" class="hero-area">'
-			+'<!-- Backgound Image -->'
+		return' <div id="home" class="hero-area">'
 			+' <div class="bg-image bg-parallax overlay" style="background-image:url(resources/img/background/background.jpg);height: 950px;"></div>'
-			+'<!-- /Backgound Image -->'
 			+' <div class="home-wrapper">'
 				+' <div class="container">'
 					+' <div class="row">'
@@ -46,11 +39,8 @@ compo = {
 					+' </div>'
 				+' </div>'
 			+' </div>'
-		+'<!-- /Home -->'
 		+' <div id="ev_list" class="section">'
-			+'<!-- container -->'
 			+' <div class="container">'
-				+'<!-- row -->'
 				+' <div class="row">'
 					+' <div class="col-md-3">'
 						+' <div class="section-header">'
@@ -65,9 +55,7 @@ compo = {
 							+' </div>'
 						+' </div>'
 					+' </div>'
-				+'<!-- row -->'
 				+' </div>'
-			+'<!-- container -->'
 				+' <div class="section">'
 				+' <div class="container">'
 					+' <div class="row">'
@@ -195,12 +183,9 @@ compo = {
 		+'        </div>';
 	},
 	footer : ()=>{
-		return 	'        <!-- Footer -->'
-		+'        <footer id="footer" class="section">'
-		+'            <!-- container -->'
+		return '<footer id="footer" class="section">'
 		+'            <div class="container">'
 		+'                <div id="bottom-footer" class="row">'
-		+'                    <!-- footer logo -->'
 		+'                    <div class="col-md-6">'
 		+'                        <div class="footer-logo">'
 		+'                            <a class="logo" href="#">'
@@ -208,8 +193,6 @@ compo = {
 		+'                            </a>'
 		+'                        </div>'
 		+'                    </div>'
-		+'                    <!-- footer logo -->'
-		+'                    <!-- footer nav -->'
 		+'                    <div class="col-md-6">'
 		+'                        <ul class="footer-nav">'
 		+'                            <li><a href="index.html">Home</a></li>'
@@ -219,7 +202,6 @@ compo = {
 		+'                            <li><a href="contact.html">Contact</a></li>'
 		+'                        </ul>'
 		+'                    </div>'
-		+'                    <!-- footer nav -->'
 		+'                </div>'
 		+'            </div>'
 		+'        </footer>';
