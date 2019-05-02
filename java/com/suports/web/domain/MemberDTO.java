@@ -8,5 +8,5 @@ import lombok.Data;
 @Data @Component @Lazy
 public class MemberDTO {
 	private int index;
-	private String id, password, email, name, birth, position, sports, address, phone, info, photo;
+	private String id, password, email, name, birth, position, characters, sports, address, phone, info, photo;
 }

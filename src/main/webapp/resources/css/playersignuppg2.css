@@ -241,21 +241,21 @@ div {
   transform           : rotate(0deg);
 }
 .playersignuppg2 .formfieldpg2 .fieldselect .texttitle {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : auto;
-  width               : 127px;
-  position            : absolute;
-  margin              : 0;
-  left                : 1px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
-  font-size           : 18.0px;
-  color               : rgba(0, 0, 0, 1.0);
-  text-align          : left;
-  line-height         : 21.0px;
+  background-color: rgba(255,255,255,0.0);
+  top: -14px;
+  height: auto;
+  width: 127px;
+  position: absolute;
+  /* margin: 0; */
+  left: 1px;
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  /* transform: rotate(0deg); */
+  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+  font-size: 18.0px;
+  color: rgba(0, 0, 0, 1.0);
+  text-align: left;
+  /* line-height: 21.0px; */
 }
 .playersignuppg2 .formfieldpg2 .fieldposloctime {
   background-color    : rgba(255,255,255,0.0);

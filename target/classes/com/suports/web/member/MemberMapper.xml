@@ -12,6 +12,7 @@
   <result property="name" column="NAME"/>  
   <result property="birth" column="BIRTHDY"/>
   <result property="position" column="POSITION"/>
+  <result property="characters" column="CHARACTERS"/>
   <result property="sports" column="SPORTS"/>
   <result property="address" column="ADDR"/>
   <result property="phone" column="PHONE"/>
@@ -31,6 +32,7 @@
 		NAME name,
 		BIRTHDY birth,
 		POSITION position,
+		CHARACTERS characters,
 		SPORTS sports,
 		ADDR address,
 		PHONE phone,
@@ -52,6 +54,7 @@
 		NAME,
 		BIRTHDY,
 		POSITION,
+		CHARACTERS,
 		SPORTS,
 		ADDR,
 		PHONE,
@@ -65,6 +68,7 @@
 		#{name},
 		#{birth},
 		#{position},
+		#{characters},
 		#{sports},
 		#{address},
 		#{phone},

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import com.suports.web.domain.TeamDTO;
 
-@Component
 public interface TeamService {
 
 	// CREATE

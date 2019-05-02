@@ -1,5 +1,6 @@
 package com.suports.web;
 
+
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -8,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.suports.web.domain.MemberDTO;
 import com.suports.web.service.MemberServiceImpl;
@@ -47,5 +50,9 @@ public class MemmberController {
 	
 	}
 	
-	
+	@PostMapping("/members/uploadFile")
+	public Map<?,?> fileupload(@RequestParam("file") MultipartFile file) throws Exception {
+		
+		return map;
+	}
 }

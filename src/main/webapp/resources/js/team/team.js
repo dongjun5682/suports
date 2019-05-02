@@ -13,7 +13,7 @@ team = (() => {
         tournamentjs = js + '/tournament/tournament.js';
         homejs = js + '/home/home.js';
     };
-    let onCreate = () => {
+    let onCreate = (d) => {
         init();
         $.when(
             $.getScript(compojs),
@@ -25,16 +25,15 @@ team = (() => {
                 $(d.resolve);
             })
         ).done(() => {
-            setContentView();
+            setContentView(d);
         });
     };
-    let setContentView = () => {
+    let setContentView = (d) => {
     	$('#content').empty();
     	$('#footer').empty();
     	team_list();
     	$('#team_create').click(()=>{
-    		alert('팀 창설');
-    		team_create();
+    			team_create(d);    			    			
     	})
     	$('.course-img').click(()=>{
     		alert('팀 디테일');
@@ -46,19 +45,56 @@ team = (() => {
     let team_detail =()=>{
     	
     }
-    let team_create =()=>{
-    	$('#modal-content2').html(compo.team_create_1());
+    let team_create =(d)=>{
+    	$('#modal-content2').html(compo.team_create_1(d));
         $('.fieldbtn').click(() => {
             $('#modal-content2').html(compo.team_create_2());
             $('.textnext').click(() => {
+            	let formdata = {
+    					name : $('input[name="teamName"]').val(),
+    					avgage : $('input[name="teamAge"]').val(),
+    					sort : $('select[name="teamSort"]').val(),
+    					address : $('select[name="teamLocation"]').val(),
+    					sport : $('select[name="teamSport"]').val(),
+    					style : $('select[name="teamStyle"]').val(),
+    					info : $('#teamInfo').val()
+    			};
                 $('#modal-content2').html(compo.team_create_3());
                 $('.textnext').click(() => {
+                	let formdata2 = {
+                			emblem : 'default_emblem.jpg'
+        			};
                     $('#modal-content2').html(compo.team_create_4());
                     $('.textnext').click(() => {
                         $('#modal-content2').html(compo.team_create_5());
-                        $('.fieldbtn').click(() => {
-                            $('#myModal2').modal('hide');
-                        })
+                        	let formdata3 = {
+                        			name : formdata.name,
+                        			avgage : formdata.avgage,
+                        			sort : formdata.sort,
+                        			captain: '1',
+//                        			captain: d_data.memberId,
+                        			address : formdata.address,
+                        			sport : formdata.sport,
+                        			style : formdata.style,
+                        			info : formdata.info,
+                        			emblem : formdata2.emblem
+                			};
+                        	alert(formdata3.address+'  ==  '+formdata3.sport+'  ==  '+formdata3.info+'  ==  '+formdata3.emblem+"  ==  "+formdata3.name);
+                        	 $('#team-create-btn').click(() => {
+                            	$.ajax({
+                                	url : $.ctx()+'/teams/',
+                                	type : 'POST',
+                                	data : JSON.stringify(formdata3),
+                                	dataType : 'json',
+                                	contentType : "application/json; charset=utf-8",
+                                	success : d => {
+                                		$('#myModal').modal('hide');
+                                		},
+                                		error : e => {
+                                		alert('ajax fail');
+                                		}
+                                })
+                            })
                     })
                 })
             })

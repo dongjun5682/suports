@@ -7,17 +7,61 @@
 <mapper namespace="com.suports.web.mapper.TeamMapper">
 
 <resultMap id="selectresult" type="hashmap">
-  <id property="index" column="INDEX"/>
-  <result property="name" column="NAME"/>
-  <result property="emblem" column="EMBLEM"/>
-  <result property="captainId" column="CAPTAIN_ID"/>
-  <result property="address" column="ADDRESS"/>
-  <result property="info" column="INFO"/>
-  <result property="avgage" column="AVGAGE"/>
-  <result property="style" column="STYLE"/>
+  <id property="index" column="TEAM_INDEX"/>
+  <result property="name" column="TEAM_NAME"/>
+  <result property="emblem" column="TEAM_EMBLEM"/>
+  <result property="captain" column="TEAM_CAPTAIN"/>
+  <result property="sport" column="TEAM_SPORT"/>
+  <result property="sort" column="TEAM_SORT"/>
+  <result property="address" column="TEAM_ADDR"/>
+  <result property="info" column="TEAM_INFO"/>
+  <result property="avgage" column="TEAM_AGE"/>
+  <result property="style" column="TEAM_STYLE"/>
   <result property="totalcount" column="TOTALCOUNT"/>
   <result property="rnum" column="RNUM"/>
 </resultMap>
 
-
+	<select id="selectATeam" 
+	resultType="com.suports.web.domain.TeamDTO">
+		SELECT
+		MEMBER_INDEX memberIndex,
+		TEAM_INDEX index,
+		TEAM_NAME name,
+		TEAM_EMBLEM emblem,
+		TEAM_CAPTAIN captain,
+		TEAM_SPORT sport,
+		TEAM_SORT sort,
+		TEAM_ADDR address,
+		TEAM_INFO info,
+		TEAM_AGE avgage,
+		TEAM_STYLE style
+		FROM TEAM
+		WHERE TEAM_NAME LIKE #{name}
+	</select>
+	<insert id="insertATeam"
+		parameterType="com.suports.web.domain.TeamDTO" flushCache="true"
+		statementType="PREPARED">
+		INSERT INTO TEAM (
+		TEAM_NAME,
+		TEAM_EMBLEM,
+		TEAM_CAPTAIN,
+		TEAM_SPORT,
+		TEAM_SORT,
+		TEAM_ADDR,
+		TEAM_INFO,
+		TEAM_AGE,
+		TEAM_STYLE
+		)
+		VALUES (
+		#{name},
+		#{emblem},
+		#{captain},
+		#{sport},
+		#{sort},
+		#{address},
+		#{info},
+		#{avgage},
+		#{style}
+		)
+	</insert>
 </mapper>
