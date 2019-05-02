@@ -32,8 +32,22 @@ stadium = (() => {
         	alert('지도 클릭');
         	$('#content').empty().html(compo.stadium_list_sidebar());
         	$('.stadium-list').remove();
-        	$('.col-md-9').html();
+        	$('.navbar-brand').remove();
+        	$('#home').remove();
+        	$('#footer').empty();
+        	$('.col-md-9').load('#map');
         });
+        $('#area_srch').on('click',()=>{
+        	alert('검색 클릭');
+			let search = $('#search').val();
+			if($.fn.nullChecker(search)){
+				alert('검색어를 입력하십시오');
+			}else{
+				alert('검색중 ');
+				let arr = {p:'1', s:search};
+				srch(arr);
+			}
+		});
     	$.getJSON($.ctx()+'/stadiums/page/'+x,d=>{
     		$('<div id="asearch" class="row stadium-row"></div>').appendTo('.stadium-list');
 	    	$.each(d.ls,(i,j)=>{
@@ -113,7 +127,6 @@ stadium = (() => {
     	    	+'                </div>'
     	    	+'             </div>'
     	    	+'      </div>');
-    	$('#map').html('');
         $('#pay_btn_1').click(()=>{
         	alert('모달로 확인창 뜨고 결제 예약으로 이동');
         	$('.modal-content').html(compo.pay_btn());
