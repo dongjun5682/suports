@@ -12,7 +12,6 @@ import com.suports.web.mapper.StadiumMapper;
 @Service
 public class StadiumServiceImpl implements StadiumService{
 
-	private static final Proxy Proxy = null;
 	@Autowired StadiumMapper stdMap;
 	@Autowired Proxy pxy;
 	
@@ -24,7 +23,6 @@ public class StadiumServiceImpl implements StadiumService{
 
 	@Override
 	public List<?> retrieveListStadium(Map<?, ?> map) {
-
 		return null;
 	}
 
@@ -66,5 +64,11 @@ public class StadiumServiceImpl implements StadiumService{
 	public void removeStadium(StadiumDTO std) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public List<StadiumDTO> retrieveStardiumArea(String area) {
+		return stdMap.selectStadiumArea(area);
 	}
 }
