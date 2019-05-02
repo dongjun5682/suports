@@ -31,7 +31,8 @@ home = (() => {
         });
     };
     let setContentView = () => {
-        $('#content').before(compo.header()).append(compo.content()).after(compo.footer());
+        $('#content').before(compo.header()).append(compo.content());
+        $('.map-container').after(compo.footer());
         $('#rm_search').append(compo.srch());
         $('#content').css('margin-top', '0');
         $('#team_search').click(() => {
@@ -41,11 +42,69 @@ home = (() => {
             $('#people').empty().attr('id', 'position').append(compo.solo_search());
         });
         list();
-      
+        $('.navbar-right a').click(function(e) {
+            alert('click :' + $(this).attr('id'));
+            let _this = $(this).attr('id');
+            switch (_this) {
+                case 'login':
+                    login();
+                    break;
+                case 'signup':
+                    signup();
+                    break;
+                case 'team':
+                    $('#content').css('margin-top', '80px');
+                    team.onCreate();
+                    break;
+                case 'tourment':
+                    tour.onCreate();
+                    break;
+                case 'about':
+                    $('#content').css('margin-top', '80px');
+                    break;
+                default:
+                    break;
+            }
+        })
+        $('#sear-btn').click(function(){
+        	$.getScript(compojs,()=>{
+        		compo.stadium_list_sidebar();
+            $('#content').css('margin-top', '80px');
+           $.getScript(stadiumjs,()=>{
+        	   stadium.onCreate();
+           });
+
+        })
+        });
+        $('#stadium_list').click(() => {
+            $('#content').css('margin-top', '80px');
+            stadium.onCreate();
+        })
+        $('.course-img').click(() => {
+            $('#content').css('margin-top', '80px');
+            stadium.list_detail();
+        })
+        $('.navbar-brand .logo').click(()=>{
+        	  $('#content').empty().append(compo.content());
+        	  $('#footer').empty().append(compo.footer()).attr('style','margin');
+              $('#rm_search').append(compo.srch());
+              $('#content').css('margin-top', '0');
+              $('#team_search').click(() => {
+                  $('#position').empty().attr('id', 'people').append(compo.team_search());
+              });
+              $('#solo_search').click(() => {
+                  $('#people').empty().attr('id', 'position').append(compo.solo_search());
+              });
+              list();
+        })
+        
+        
+        
     };
 
     let list = () => {
         let list_stadium_detail = '';
+//    	$.getJSON(_+'/stadiums/list',d=>{
         let list_stadium_city = '<div id="best_stadium" class="section">' +
             '        <!-- container -->' +
             '        <div class="container">' +
@@ -155,67 +214,10 @@ home = (() => {
                 '    </div>' +
                 '<!-- /single course -->';
         });
-        $('#courses-wrapper .row').empty().html(list_stadium_detail);
-
         $('#busan_stadium').after('<div class="container">' +
-            ' <div class="row" >' +
-            '<a class="course-title" href="#">더보기(300개 이상)</a></div></div>')
-
-        $('.navbar-right a').click(function(e) {
-            alert('click :' + $(this).attr('id'));
-            let _this = $(this).attr('id');
-            switch (_this) {
-                case 'login':
-                    login();
-                    break;
-                case 'signup':
-                    signup();
-                    break;
-                case 'team':
-                    $('#content').css('margin-top', '80px');
-                    team.onCreate();
-                    break;
-                case 'tourment':
-                    tour.onCreate();
-                    break;
-                case 'about':
-                    $('#content').css('margin-top', '80px');
-                    break;
-                default:
-                    break;
-            }
-        })
-        $('#sear-btn').click(function(){
-        	$.getScript(compojs,()=>{
-        		compo.stadium_list_sidebar();
-            $('#content').css('margin-top', '80px');
-           $.getScript(stadiumjs,()=>{
-        	   stadium.onCreate(1);
-           });
-
-        })
-        });
-        $('#stadium_list').click(() => {
-            $('#content').css('margin-top', '80px');
-            stadium.onCreate(1);
-        })
-        $('.course-img').click(() => {
-            $('#content').css('margin-top', '80px');
-            stadium.list_detail();
-        })
-        $('.navbar-brand .logo').click(()=>{
-        	  $('#content').empty().append(compo.content());
-        	  $('#footer').empty().append(compo.footer()).attr('style','margin');
-              $('#rm_search').append(compo.srch());
-              $('#content').css('margin-top', '0');
-              $('#team_search').click(() => {
-                  $('#position').empty().attr('id', 'people').append(compo.team_search());
-              });
-              $('#solo_search').click(() => {
-                  $('#people').empty().attr('id', 'position').append(compo.solo_search());
-              });
-              list();
-        })
+                ' <div class="row" >' +
+                '<a class="course-title" href="#">더보기(300개 이상)</a></div></div>');
+//    	});
     }
 
     let login = () => {

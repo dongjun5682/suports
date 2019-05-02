@@ -37,6 +37,7 @@ stadium = (() => {
         	$('#footer').empty();
         	$('.col-md-9').load('#map');
         });
+<<<<<<< HEAD
         $('#area_srch').on('click',()=>{
         	alert('검색 클릭');
 			let search = $('#search').val();
@@ -49,6 +50,9 @@ stadium = (() => {
 			}
 		});
     	$.getJSON($.ctx()+'/stadiums/page/'+x,d=>{
+=======
+    	$.getJSON(_+'/stadiums/page/'+x,d=>{
+>>>>>>> 7208021c0c0864f3eee08ffe35a084700ccebcba
     		$('<div id="asearch" class="row stadium-row"></div>').appendTo('.stadium-list');
 	    	$.each(d.ls,(i,j)=>{
 	    		$('<div class="col-md-4">'
@@ -127,6 +131,14 @@ stadium = (() => {
     	    	+'                </div>'
     	    	+'             </div>'
     	    	+'      </div>');
+<<<<<<< HEAD
+=======
+    	//map 설정
+    	$('#map').css({'width':'100%','height':'400px'}).after('<script async defer'
+    		    +' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap">'
+    		    +'</script>');
+    	//예약 확인 버튼
+>>>>>>> 7208021c0c0864f3eee08ffe35a084700ccebcba
         $('#pay_btn_1').click(()=>{
         	alert('모달로 확인창 뜨고 결제 예약으로 이동');
         	$('.modal-content').html(compo.pay_btn());
