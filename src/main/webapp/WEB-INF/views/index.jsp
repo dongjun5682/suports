@@ -9,8 +9,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c3c4beaf10eac4d6d6910770fdc4d4bb"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script> -->
+
+<!-- Background -->
+<link rel="stylesheet" href="resources/css/backgroundTransition.css">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
 
 <link rel="stylesheet" href="resources/css/datepicker/datapicker.min.css">
 <script src="resources/js/com/datapicker.min.js"></script>
@@ -49,7 +56,9 @@
 
 </head>
 <body>
-	<div id="content"></div>
+	<div id="content">
+		<div id="home" class="backgroundTransition"></div>
+	</div>
 	<!-- Fullsize Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -81,22 +90,43 @@
 	src="<%=application.getContextPath()%>/resources/js/member/member.js"></script>	
 <script
 	src="<%=application.getContextPath()%>/resources/js/bootstrap.min.js"></script>
-	<script
+<script
 	src="<%=application.getContextPath()%>/resources/js/com/util.js"></script>
+<script
+	src="<%=application.getContextPath()%>/resources/js/backgroundTransition.js"></script>
 
+
+<script type="text/javascript">
+  $(document).ready(function(){
+	  $('.backgroundTransition').backgroundTransition({
+		  backgrounds:[
+			  { src: 'http://www.blueb.co.kr/SRC2/_image/01.jpg' },
+			  { src: 'http://www.blueb.co.kr/SRC2/_image/02.jpg' },
+			  { src: 'http://www.blueb.co.kr/SRC2/_image/03.jpg' },
+			  { src: 'http://www.blueb.co.kr/SRC2/_image/04.jpg' },
+			  { src: 'http://www.blueb.co.kr/SRC2/_image/05.jpg' },
+			  { src: 'http://www.blueb.co.kr/SRC2/_image/06.jpg' },
+			  { src: 'http://www.blueb.co.kr/SRC2/_image/07.jpg' }
+		  ],
+		  transitionDelay: 3,
+		  animationSpeed: 300
+	  });
+  });
+</script>
+<script>
+function initMap(){
+		  // The location of Uluru
+		  let uluru = {lat: 37.552377, lng: 126.937597};
+		  // The map, centered at Uluru
+		  let map = new google.maps.Map(document.getElementById('map'), {zoom: 15, center: uluru});
+		  // The marker, positioned at Uluru
+		  let marker = new google.maps.Marker({position: uluru, map: map});
+	  };
+</script>
 <script>
  app.run('<%=application.getContextPath()%>');
 
 </script>
-<script>
-  	function initMap() {
-    		  // The location of Uluru
-    		  let uluru = {lat: 37.691822, lng: 126.778621};
-    		  // The map, centered at Uluru
-    		  let map = new google.maps.Map(document.getElementById('map'), {zoom: 16, center: uluru});
-    		  // The marker, positioned at Uluru
-    		  let marker = new google.maps.Marker({position: uluru, map: map});
-    	  }
-</script>
+
 </body>
 </html>

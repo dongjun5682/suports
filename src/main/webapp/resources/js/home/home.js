@@ -31,7 +31,8 @@ home = (() => {
         });
     };
     let setContentView = () => {
-        $('#content').before(compo.header()).append(compo.content());
+        $('#content').before(compo.header())
+        $('#home').after(compo.content());
         $('.map-container').after(compo.footer());
         $('#rm_search').append(compo.srch());
         $('#content').css('margin-top', '0');

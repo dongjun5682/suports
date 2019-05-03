@@ -26,9 +26,7 @@ compo = {
 		+'        </header>';
    },
 	 content : ()=>{
-		return' <div id="home" class="hero-area">'
-			+' <div class="bg-image bg-parallax overlay" style="background-image:url(resources/img/background/background.jpg);height: 950px;"></div>'
-			+' <div class="home-wrapper">'
+		return' <div class="home-wrapper">'
 				+' <div class="container">'
 					+' <div class="row">'
 						+' <div class="col-md-12" id="rm_search">'

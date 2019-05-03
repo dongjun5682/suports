@@ -2,19 +2,17 @@ var stadium = stadium || {}
 
 stadium = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
-    let _, js, compojs,mapsjs;
+    let _, js, compojs;
 
     let init = () => {
         _ = $.ctx();
         js = $.js();
         compojs = js + '/compo/compo.js';
-        mapsjs = js+'/map/maps.js';
     };
     let onCreate = () => {
         init();
         $.when(
             $.getScript(compojs),
-            $.getScript(mapsjs),
             $.Deferred(function(d) {
                 $(d.resolve);
             })
@@ -116,6 +114,8 @@ stadium = (() => {
     }
     let list_detail = (j) => {
         $('#content').html(compo.stadium_list_detail(j));
+        $('#footer').remove();
+        $('.map-container').after('<footer id="footer" class="section"></footer>');
         $('#footer').css('.section', 'padding-bottom:78px;');
         $('#footer').css('.section', 'background-color: #1db91d9e;');
         $('#footer').attr('style', 'position: fixed; left: 0; bottom: 0; width: 100%; background-color: #8cff88; color: white; text-align: center; padding-bottom: 22px; padding-top: 5px;')
@@ -133,12 +133,14 @@ stadium = (() => {
             '      </div>');
 
         //map 설정
-        $('#map').css({
+        $('.map-container').css({
             'width': '100%',
             'height': '400px'
-        }).after('<script async defer' +
-            ' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap">' +
-            '</script>');
+        });
+        $('#footer')
+        .after('<script async defer' 
+        		+' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap">'
+        		+'</script>');
         //예약 확인 버튼
 
         $('#pay_btn_1').click(() => {
@@ -268,3 +270,4 @@ stadium = (() => {
         srch: srch
     }
 })();
+
