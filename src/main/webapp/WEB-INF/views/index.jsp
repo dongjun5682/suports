@@ -9,6 +9,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap"></script>
+
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c3c4beaf10eac4d6d6910770fdc4d4bb"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script> -->
 
@@ -66,9 +69,8 @@
 			<div id="modal-content3"></div>
 		</div>
 	</div>
-<div class="map-container">
-<div id="map"></div>
-</div>
+	<div class="maps">
+	</div>
 <script 
 	src="<%=application.getContextPath()%>/resources/js/app.js"></script>
 <script
@@ -88,15 +90,12 @@
  app.run('<%=application.getContextPath()%>');
 
 </script>
-<script>
-  	function initMap() {
-    		  // The location of Uluru
-    		  let uluru = {lat: 37.691822, lng: 126.778621};
-    		  // The map, centered at Uluru
-    		  let map = new google.maps.Map(document.getElementById('map'), {zoom: 16, center: uluru});
-    		  // The marker, positioned at Uluru
-    		  let marker = new google.maps.Marker({position: uluru, map: map});
-    	  }
-</script>
+	<script>
+	function allowDrop(ev) { ev.preventDefault(); } 
+	function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); } 
+	function drop(ev) { ev.preventDefault(); 
+	var c = ev.dataTransfer.getData("text"); 
+	ev.target.appendChild(document.getElementById(c)); } 
+	</script>
 </body>
 </html>

@@ -32,7 +32,7 @@ home = (() => {
     };
     let setContentView = () => {
         $('#content').before(compo.header()).append(compo.content());
-        $('.map-container').after(compo.footer());
+        $('.maps').after(compo.footer());
         $('#rm_search').append(compo.srch());
         $('#content').css('margin-top', '0');
         $('#team_search').click(() => {
