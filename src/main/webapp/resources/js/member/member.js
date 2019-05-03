@@ -111,10 +111,31 @@ member = (() => {
                 	locale: 'ko-kr',
                     uiLibrary: 'bootstrap4'
         		});
+        		 $("#memberPassword").off("focus").on("focus", function () {
+        			    var value = $(this).val();
+        			    $('.js-mytooltip-pw').myTooltip('updateContent', getPwContent(value));
+        			  });
+        			  $("#memberPassword").off("click").on("click", function () {
+        			    var value = $(this).val();
+        			    if (!isNull(value)) {
+        			      $('.js-mytooltip-pw').myTooltip('updateContent', getPwContent(value));
+        			    }
+        			  });
+        			  $("#memberPassword").off("keyup").on("keyup", function () {
+        			    $("#memberPassword").blur();
+        			    $("#memberPassword").focus();
+        			  });
+        			  $('.js-mytooltip-pw').myTooltip({
+        			    offset: 30,
+        			    theme: 'light',
+        			    customClass: 'mytooltip-content',
+        			    direction: 'right',
+        			    content: '<p>t</p>'
+        			  });
+        		   
         	} else {
         		alert('회원가입 약관에 동의하셔야 서비스 이용이 가능합니다.')
         	}
-            
             $('.textnext').click(() => {
               	let formdata2 = {
     					password : $('form input[name="memberPassword"]').val(),

@@ -77,7 +77,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "material", Helvetica, Arial, serif;
+  font-family         : Helvetica, Arial, serif;
   font-size           : 22.0px;
   color               : rgba(115, 123, 132, 1.0);
   text-align          : left;
