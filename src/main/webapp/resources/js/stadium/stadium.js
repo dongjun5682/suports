@@ -161,10 +161,10 @@ stadium = (() => {
     	    	+'</div>');
     	//map 설정 ////
     	
-    	$(document).ready(function() {
-            initMap();
-        });
-     	$('#myMpa').append(compo.map());
+//    	$(document).ready(function() {
+//            initMap();
+//        });
+//     	$('#myMpa').append(compo.map());
      	$('#map').css({'width':'100%','height':'400px','margin-bottom':'300px'});  
     	//예약 확인 버튼
         $('#pay_btn_1').click(()=>{
@@ -268,15 +268,15 @@ stadium = (() => {
  		});
     	
     };
-    function initMap() {
-        // The location of Uluru
-        var uluru = {lat: 37.552378, lng: 126.937635};
-        // The map, centered at Uluru
-        var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 15, center: uluru});
-        // The marker, positioned at Uluru
-        var marker = new google.maps.Marker({position: uluru, map: map});
-    }  
+//    function initMap() {
+//        // The location of Uluru
+//        var uluru = {lat: 37.552378, lng: 126.937635};
+//        // The map, centered at Uluru
+//        var map = new google.maps.Map(
+//            document.getElementById('map'), {zoom: 15, center: uluru});
+//        // The marker, positioned at Uluru
+//        var marker = new google.maps.Marker({position: uluru, map: map});
+//    }  
     return {
         onCreate: onCreate,
         list:list,
