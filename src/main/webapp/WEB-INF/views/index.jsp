@@ -7,8 +7,7 @@
 <title>Document</title>
 <script src='//unpkg.com/popper.js@1/dist/umd/popper.min.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
-<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap"></script>
 
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c3c4beaf10eac4d6d6910770fdc4d4bb"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script> -->
@@ -75,9 +74,8 @@
 			<div id="modal-content3"></div>
 		</div>
 	</div>
-<div class="map-container">
-<div id="map"></div>
-</div>
+	<div id="myMpa">
+	</div>
 <script 
 	src="<%=application.getContextPath()%>/resources/js/app.js"></script>
 <script
@@ -103,13 +101,19 @@ jQuery(function($){
       // Options
       muted: true,
       loop: true,
-				overlay: true,
+	  overlay: true,
     });
 });
 </script>
  <script>
  app.run('<%=application.getContextPath()%>');
-
 </script>
+	<script>
+	function allowDrop(ev) { ev.preventDefault(); } 
+	function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); } 
+	function drop(ev) { ev.preventDefault(); 
+	var c = ev.dataTransfer.getData("text"); 
+	ev.target.appendChild(document.getElementById(c)); } 
+	</script>
 </body>
 </html>

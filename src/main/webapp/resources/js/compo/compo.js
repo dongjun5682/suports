@@ -422,8 +422,7 @@ compo = {
 		  +'</div>';
 	},
 	pay_btn : ()=>{
-		return	'<div class="modal-content" style=" border: 6px solid #959895;">'
-					+'<div class="modal-header">'
+		return	'<div class="modal-header">'
 		       /* +'<button type="button" class="close" data-dismiss="modal" aria-label="Close">'*/
 		        +'<h4 class="modal-title" id="ModalLabel" style=" font-size: 23px;">결제 예약</h4>'
 		      +'</div>'
@@ -980,7 +979,7 @@ compo = {
 		+'  </div>'
 		+'  <div class="row">'
 		+'    <div class="col-md-12">'
-		+'      <h3 style="float:left;margin-left: 115px;margin-top: 118px;">운동장이 결제예약 되었습니다</h3>'
+		+'      <h3 style="float:left;margin-left: 155px;margin-top: 125px;">운동장이 결제예약 되었습니다</h3>'
 		+'    </div>'
 		+'  </div>'
 		+'  <div class="row">'
@@ -1265,37 +1264,40 @@ compo = {
 		+'</div>';
 	},
 	stadium_list_detail : (j)=>{
-		return  '<div class="detail-content" action="action_page.php" style="margin-top: 115px;">'	
+		return  '<div class="container" action="action_page.php" style="margin-top: 115px;">'	
 		/*+'<div class="container">'*/
-		+'<div class="row_1">'
-		  +'<div class="col-md-5"><img src="resources/img/stadium/bae.jpg" style="width: 102%;">'
-		  /*+'<div class="jumbo">'*/
-		  +'<div id="stadium_name" value="'+j.stadiumName+'" name="stadiumName" style="margin-top: 35px;font-size: 38px;margin-left: 250px;">'+j.stadiumName+'</div>'
-		/*+'</div>'*/
-		+'</div >'
-		  +'<div class="col-md-7"><img src="'+j.stadiumPhoto+'" style="width:100%;">'
-		  +'<div style="margin-top: 35px;">'
+		+'<div class="row">'
+		  +'<div class="col-md-5" style="margin-left: -123px;height: 480px;width: 440px;background-color: gainsboro;margin-right: 16px;">'
+		  +'<img src="resources/img/logo/logo.png" style="width: 161px;">'
+		  +'<div id="stadium_name" value="'+j.stadiumName+'" name="stadiumName" style="margin-top: 35px;font-size: 27px;color: black;">'+j.stadiumName+'</div>'
+		+'</div>'
+		  +'<div class="col-md-7"><img src="'+j.stadiumPhoto+'" style="width: 145%;height: 480px;">'
+		  +'<div style="margin-top: 35px;text-align: left;">'
 		  +'<h3 style="margin-bottom: 20px;">주의 사항</h3>'
-		  +'<p>1.전용 축구장 : 인조잔디,1면(6,400m B=100,L=64)</p>'
-		  +'<p></p>'
-		  +'<p></p>'
-		  +'<p>2.다목적 구장 : 족구장 1면, 농구장 1면(6,400m B=100,L=64)</p>'
-		  +'<p></p>'
-		  +'<p></p>'
-		  +'<p>3.테 니 스 장 : 인조잔디 4면 (6,400m B=100,L=64)</p>'
-		  +'<p></p>'
-		  +'<p></p>'
-		  +'<p>4.부 대 시 설: 대강당(100명 수용),주차장(100대 수용)</p>'
+		  +'<p>사용 당일 현장관리 사무실에서 이용자서약서를 제출하셔야합니다.</p>'
+		  +'<p>- 구장 사용자는 해당 시설물이 운영규정 및 이용수칙,허가조건 등을 준수할 것이며,</p>'
+		  +'<p> 이를 위반할시 사용을 중지시킬 수 있습니다.</p>'
+		  +'<p>- 구장은 사용료 납부 후 정해진 시간에만 이용할 수 있습니다.</p>'
+		  +'<p>  (초과 시에는 축구장 관리자의 사전승인을 받고 사용하며,초과 사용료를 즉시 납부)</p>'
+		  +'<p>- 구장 사용자는 그 사용으로 인해 시설물을 훼손되었을 시,원상 복구 또는 변상해야 합니다.</p>'
+		  +'<p>- 운동장 내에서는 화기사용,취사사행 및 흡연을 금합니다</p>'
+		  +'<p>- 주류,음료수,음식물류의 반입을 금합니다.(순수한 물만 반입 가능합니다.)</p>'
+		  +'<p>- 차량,오토바이,자전거,인라인스케이트,애완동물 등의 운동장 출입을 금합니다.</p>'
+		  +'<p>- 펜스에서 공을 차지 마시기 바랍니다(펜스 파손 및 부상 위험)</p>'
+		  +'<p>- 쓰레기는 되가져 가시거나, 반드시 종량제 쓰레기봉투에 담아 수거하시기 바랍니다.</p>'
+		  +'<p>- 고성 방가등 미풍양속을 해치는 행위를 금합니다.</p>'
 		  +'</div>'
 		  +'</div>'
 		+'</div>'
 		+'</div>'
+		
 		+'<div class="container">'
-		+'<div class="row_2" style="margin-top: 20px;">'
-		+'<div class="col-md-5" style="margin-left: -115px;margin-top: -95px;"">'
-		+'<div class="jumbo">'
+		+'<div class="row" style="margin-top: 20px;">'
+		+'<div class="col-md-5" style="margin-left: -135px;margin-top: -195px;text-align: left;">'
+		+'<div style="margin-top: 35px;">'
 		  +'<div style="float:left;">'
-		  +'<p>1.전용 축구장 : 인조잔디,1면(6,400m B=100,L=64)</p>'
+		  +'<h3 style="text-align: left;margin-bottom: 20px;">경기장 정보</h3>'
+		  +'<p>1.전용축구장 : 인조잔디 1면 (6.400m2 B=100, L=64)</p>'
 		  +'<p></p>'
 		  +'<p></p>'
 		  +'<p>2.다목적 구장 : 족구장 1면, 농구장 1면(6,400m B=100,L=64)</p>'
@@ -1309,31 +1311,21 @@ compo = {
 		+'</div>'
 		+'</div>'
 		+'</div>'
-		+'<div class="row_3">'
-		  +'<h3 style="float: left;margin-top: 175px;margin-left: 0px;">포지션 선택</h3><img src="resources/img/stadium/field.jpg" style="width:90%;margin-top: 97px;"></div>'
+		+'<div class="row" id="sta_photo">'
+		  +'<h3 style="float: left;margin-top: 175px;margin-left: 54px;">포지션 선택</h3><img src="resources/img/stadium/field.jpg" style="width:90%;margin-top: 50px;margin-bottom: 100px;"></div>'
 		+'</div>'
-		/*+'<div class="row_4">'
-		  +'<div class="col-md-12"><img src="resources/img/stadium/map.jpg" style="width: 97%;margin-left: 30px;margin-bottom: 55px;margin-top: 253px;height: 497px;">'
-		 +'</div>'
-		+'</div>'*/
-/*		+'<div class="row_5">'
-		+'<div class="col-md-12" style="margin-top: 20px;">'
-		+'<div class="jumbo" style="background-color: #f3f3f3;">'
-		 +'<div style="float:left;">'
-		  +'<p>1.전용 축구장 : 인조잔디,1면(6,400m B=100,L=64)</p>'
-		  +'<p></p>'
-		  +'<p></p>'
-		  +'<p>2.다목적 구장 : 족구장 1면, 농구장 1면(6,400m B=100,L=64)</p>'
-		  +'<p></p>'
-		  +'<p></p>'
-		  +'<p>3.테 니 스 장 : 인조잔디 4면 (6,400m B=100,L=64)</p>'
-		  +'<p></p>'
-		  +'<p></p>'
-		  +'<p>4.부 대 시 설: 대강당(100명 수용),주차장(100대 수용)</p>'
-		  +'</div>'*/
 		+'</div></div>'
 		+'</div>'
 		+'</form>'; 
+	},
+	drag :()=>{
+		return '<div id="a" ondrop="drop(event)" ondragover="allowDrop(event)"> '
+		+'<img src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-11/72/Shopping-basket-full-icon.png" draggable="true" ondragstart="drag(event)" id="image1" width="72" height="72"> '
+		+'</div> '
+		+'<div id="b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>'
+
+
+
 	},
 	update_player:()=>{
 		return '       <div class="playerupdateinfo">'
@@ -2285,5 +2277,8 @@ compo = {
 		+'  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'
 		+'  <button type="button" class="btn btn-primary">신청</button>'
 		+'</div>';
+	},
+	map :()=>{
+		return'<div id="map"></div>';
 	}
 }

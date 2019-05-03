@@ -35,7 +35,7 @@
 	<select id="countStadiums" resultType="int"  parameterType="string">
   SELECT COUNT(*)
 	FROM STADIUM S 
-		WHERE S.STADIUM_NAME LIKE #{value}
+		WHERE S.STADIUM_INFO LIKE #{value}
       </select>
 	<select id="selectAllStadium" resultMap="result">
 		SELECT STADIUM_NAME,STADIUM_INFO,STADIUM_PHOTO,A.AREA_NAME

@@ -33,10 +33,9 @@ home = (() => {
         });
     };
     let setContentView = () => {
-    	
         $('#content').before(compo.header());
         $('#home').after(compo.content());
-        $('.map-container').after(compo.footer());
+        $('#myMpa').after(compo.footer());
         $('#rm_search').append(compo.srch());
         $('#content').css('margin-top', '0');
         $('#team_search').click(() => {

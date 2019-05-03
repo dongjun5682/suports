@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.suports.web.domain.MemberDTO;
 import com.suports.web.service.MemberServiceImpl;
 
 @RestController
+@SessionAttributes({"member","memberDetail"})
 public class MemmberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemmberController.class);
 
