@@ -3,7 +3,7 @@ var home = home || {};
 
 home = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
-    let _, js, compojs, memberjs, stadiumjs, tournamentjs, teamjs;
+    let _, js, compojs, memberjs, stadiumjs, tournamentjs, teamjs,backjs;
 
     let init = () => {
         _ = $.ctx();
@@ -13,6 +13,7 @@ home = (() => {
         stadiumjs = js + '/stadium/stadium.js';
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js + '/team/team.js';
+        backjs = js+'/backgroundTransition.js';
 
     };
     let onCreate = () => {
@@ -23,6 +24,7 @@ home = (() => {
             $.getScript(stadiumjs),
             $.getScript(tournamentjs),
             $.getScript(teamjs),
+            $.getScript(backjs),
             $.Deferred(function(d) {
                 $(d.resolve);
             })
@@ -31,7 +33,8 @@ home = (() => {
         });
     };
     let setContentView = () => {
-        $('#content').before(compo.header())
+    	
+        $('#content').before(compo.header());
         $('#home').after(compo.content());
         $('.map-container').after(compo.footer());
         $('#rm_search').append(compo.srch());
@@ -42,6 +45,7 @@ home = (() => {
         $('#solo_search').click(() => {
             $('#people').empty().attr('id', 'position').append(compo.solo_search());
         });
+        $('#home').css('z-index','0');
         home_list();
         $('.navbar-right a').click(function(e) {
             alert('click :' + $(this).attr('id'));
@@ -196,7 +200,6 @@ home = (() => {
             signup();
         })
     }
-
     return {
         onCreate: onCreate,
         home_list: home_list,

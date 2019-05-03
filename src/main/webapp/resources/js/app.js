@@ -4,6 +4,7 @@ app = (()=>{
 	const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
 	let _,js,compojs,homejs;
 	let run=x=>{
+		
 		$.getScript(x+'/resources/js/com/router.js',
 			()=>{
 				$.extend(new Session(x));
@@ -33,6 +34,8 @@ app = (()=>{
 	};
 	let setContentView=()=>{
 		home.onCreate();
+		
 	};
 	return {run:run,onCreate:onCreate};
 })();
+

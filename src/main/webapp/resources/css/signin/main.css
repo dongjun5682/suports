@@ -73,8 +73,9 @@ p {
 	font-family: inherit;
 	font-size: 14px;
 	line-height: 1.7;
-	color: #666666;
+	color: white;
 	margin: 0px;
+	font-weight: normal;
 }
 
 ul, li {
