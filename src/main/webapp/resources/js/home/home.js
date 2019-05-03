@@ -94,9 +94,6 @@ home = (() => {
             $('#header').empty();
            onCreate();
         })
-
-
-
     };
 
     let home_list = () => {

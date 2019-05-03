@@ -27,12 +27,15 @@ public class MemmberController {
 	@Autowired Map<String, Object> map;
 	
 	@PostMapping("/members")
-	public Map<?,?> join(@RequestBody MemberDTO param) {
+	public Map<?,?> signup(@RequestBody MemberDTO param) {
+		System.out.println(param);
 
 		memberService.addAMember(param);
 		
 		map.clear();
 		map.put("msg", "SUCCESS");
+		
+		System.out.println(param);
 		
 		return map;
 	}
