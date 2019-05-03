@@ -56,7 +56,7 @@
 </head>
 <body>
 	<div id="content">
-	<div id="home" class="hero-area"> ></div>
+	<div id="home" class="hero-area"> </div>
 	</div>
 	
 	<!-- Fullsize Modal -->
