@@ -18,7 +18,6 @@
   <result property="phone" column="PHONE"/>
   <result property="info" column="INFO"/>
   <result property="photo" column="PHOTO"/>
-  
   <result property="totalcount" column="TOTALCOUNT"/>
   <result property="rnum" column="RNUM"/>
 </resultMap>

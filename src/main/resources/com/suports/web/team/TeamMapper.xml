@@ -64,4 +64,20 @@
 		#{style}
 		)
 	</insert>
+	
+	<select id="selectListOfTeams"
+	parameterType="com.suports.web.Proxy"
+	resultMap="selectresult">
+	SELECT T2.*
+	FROM (SELECT  @ROWNUM:=@ROWNUM+1 AS RNUM, T.*
+			FROM (SELECT * FROM TEAM ORDER BY TEAM_INDEX DESC) T, (SELECT @ROWNUM:=0)TMP) T2 
+	WHERE T2.RNUM BETWEEN #{startRow} AND #{endRow};
+	</select>
+	
+	<select id="countTeams" resultType="int">
+	SELECT COUNT(*) FROM TEAM;
+	</select>
+	
+	
+	
 </mapper>

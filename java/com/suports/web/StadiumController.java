@@ -34,7 +34,7 @@ public class StadiumController {
 		map.clear();
 		map.put("pageNum", page);
 		map.put("pageSize", "9");
-		map.put("blockSize", "3");
+		map.put("blockSize", "5");
 		ISupplier c = ()-> staMap.countStadium();
 		map.put("totalCount", c.get());
 		pxy.carryOut(map);
@@ -43,6 +43,7 @@ public class StadiumController {
 		map.clear();
 		map.put("ls", ls);
 		map.put("pxy", pxy);
+		System.out.println(" ls list : "+ls.toString());
 		return map;
 	}
 	@GetMapping("/stadiums/search/{search}/{page}")
@@ -55,7 +56,7 @@ public class StadiumController {
 		map.put("search", sa);
 		map.put("pageNum", page);
 		map.put("pageSize", "9");
-		map.put("blockSize", "3");
+		map.put("blockSize", "5");
 		map.put("totalCount", staMap.countStadiums(sa));
 		pxy.carryOut(map);
 		map.clear();
@@ -67,10 +68,8 @@ public class StadiumController {
 
 	@GetMapping("/stadiums")
 	public Map<?,?> list(){
-		logger.info("=====홈 리스트 진입 ======");
 		ISupplier s = ()-> staMap.selectAllStadium();
 		List<?> allStadium = (List<?>) s.get();
-		System.out.println(allStadium.toString());
 		map.clear();
 		map.put("home", allStadium);
 		return map;
