@@ -7,7 +7,6 @@
 <title>SUPORTS</title>
 <script src='//unpkg.com/popper.js@1/dist/umd/popper.min.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <link rel="stylesheet" href="resources/css/datepicker/datapicker.min.css">
 <script src="resources/js/com/datapicker.min.js"></script>
 <script src="resources/js/com/datapicker.ko-kr.js"></script>
