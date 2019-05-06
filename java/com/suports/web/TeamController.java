@@ -55,6 +55,7 @@ public class TeamController {
 		return map;
 	}
 	
+//	team pagenation (dongjun)!
 	@GetMapping("/teams/page/{page}")
 	public Map<?,?> list(@PathVariable String page){
 		System.out.println("team pagenation");

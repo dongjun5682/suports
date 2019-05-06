@@ -3,7 +3,7 @@ var home = home || {};
 
 home = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
-    let _, js, compojs, memberjs, stadiumjs, tournamentjs, teamjs,backjs;
+    let _, js, compojs, memberjs, stadiumjs, tournamentjs,teamjs,backjs,msessionjs;
 
     let init = () => {
         _ = $.ctx();
@@ -14,6 +14,7 @@ home = (() => {
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js + '/team/team.js';
         backjs = js+'/backgroundTransition.js';
+        msessionjs = js+'/home/membersession.js'
 
     };
     let onCreate = () => {
@@ -25,6 +26,7 @@ home = (() => {
             $.getScript(tournamentjs),
             $.getScript(teamjs),
             $.getScript(backjs),
+            $.getScript(msessionjs),
             $.Deferred(function(d) {
                 $(d.resolve);
             })
@@ -184,6 +186,8 @@ home = (() => {
                 contentType: "application/json; charset=utf-8",
                 success: d => {
                     alert('ajax login : ' + d.id);
+                    //멤버세션을 사용해서 어디서든 아이디를 호출 가능
+                    $.extend(new MemberSession(d));
                     member.onCreate(d);
                 },
                 error: e => {
