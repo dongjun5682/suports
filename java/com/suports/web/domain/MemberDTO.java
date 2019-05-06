@@ -7,6 +7,6 @@ import lombok.Data;
 
 @Data @Component @Lazy
 public class MemberDTO {
-	private int index;
+	private int memberIndex,teamIndex;
 	private String id, password, email, name, birth, position, characters, sports, address, phone, info, photo;
 }

@@ -26,7 +26,8 @@ compo = {
 		+'        </header>';
    },
 	 content : ()=>{
-		return' <div class="home-wrapper">'
+		return	'<div id="home" class="hero-area"> </div>'
+		+'<div class="home-wrapper">'
 				+' <div class="container">'
 					+' <div class="row">'
 						+' <div class="col-md-12" id="rm_search">'
@@ -1537,6 +1538,39 @@ compo = {
 		+'  </div>'
 		+'</div>';
 	},
+	no_team_content: ()=>{
+		return '<div class="content">'
+		+'  <div class="row">'
+		+'      <div class="col-md-12">'
+		+' 		<div class="col-md-5" style="margin: 40px auto 30px 30px;"> <span>'
+		+'          <h3 style="text-align: left;">자신에게 맞는 팀을 찾아보세요</h3>'
+		+'        </span>'
+		+'		</div>'
+		+'		</div>'
+		+'    </div>'
+		+'    <div class="col-md-11" style="padding: 20px; border: 2px solid;margin: auto 30px auto 50px;">'
+		+'      <div class="col-md-2" style="width: 5%;margin-top: 5px;"> <span>* 팀</span> </div>'
+		+'      <div class="col-md-3"> <select class="form-control">'
+		+'          <option>지역</option>'
+		+'          <option>서울특별시</option>'
+		+'          <option>인천광역시</option>'
+		+'        </select> </div>'
+		+'      <div class="col-md-3"> <select class="form-control">'
+		+'          <option>연령</option>'
+		+'          <option>10대</option>'
+		+'          <option>20대</option>'
+		+'        </select> </div>'
+		+'    </div>'
+		+'	<div class="team-container">'	
+		+'    <div class="row">'
+		+'      <div class="col-md-12" style="margin-top:50px;">'
+		+'      </div>'
+		+'    </div>'
+		+'	</div>'
+		+'  </div>'
+		+'</div>';
+	},
+	
 	team_create_1: ()=>{
 		return '<div class="teamcreatepg1">'
 		+'           <div >'

@@ -35,20 +35,22 @@ team = (() => {
     	let x = {'page' : 1};
     	team_list(x);
     	$('#team_create').click(()=>{
-    			team_create(d);    			    			
+    			alert('로그인 먼저 해주세요!!');
+    			$('#team_create').attr({'data-target':'#myModal','data-toggle':'modal'});
+    			home.login();   			    			
     	})
     	
     }
     let team_list =(x)=>{
     	$('.team-container .row .col-md-12').empty();
     	$('.team-container .row nav').remove();
-    	$.getJSON(_+'/teams/page/'+x.page, d=>{
+    	$.getJSON($.ctx()+'/teams/page/'+x.page, d=>{
     		$.each(d.team,(i,j)=>{
     	    	$('<div class="col-md-2 col-sm-6 col-xs-6">'
     	    			+'<div class="course"> <a href="#" class="course-img"> <img src="resources/img/logo/'+j.emblem+'" alt="" style="width:50%;"> </a>' 
     	    			+'<a class="course-title" href="#">'+j.name+'</a> </div>'
     	    			+'</div>').appendTo('.team-container .row .col-md-12').click(function(){
-    	    		    		alert('팀 디테일');
+	    		    		alert("team name : "+ j.name+' team index: ' +j.index );
     	    			})
     		});
     		let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:800px;">'
@@ -89,6 +91,68 @@ team = (() => {
                 
     	});
     }
+    let team_list_after =(x)=>{
+    	$('#content').empty();
+    	$('#footer').remove();
+    	alert($.member().teamIndex);
+    	if($.member().teamIndex === 0){
+    		$('#content').html(compo.team_content());
+    	}else{
+    		$('#content').html(compo.no_team_content());
+    	}
+    	$('#team_create').click(()=>{
+			team_create(d);    			    			
+    	})
+    	$('.team-container .row .col-md-12').empty();
+    	$('.team-container .row nav').remove();
+    	$.getJSON($.ctx()+'/teams/page/'+x.page, d=>{
+    		$.each(d.team,(i,j)=>{
+    	    	$('<div class="col-md-2 col-sm-6 col-xs-6">'
+    	    			+'<div class="course"> <a href="#" class="course-img"> <img src="resources/img/logo/'+j.emblem+'" alt="" style="width:50%;"> </a>' 
+    	    			+'<a class="course-title" href="#">'+j.name+'</a> </div>'
+    	    			+'</div>').appendTo('.team-container .row .col-md-12').click(function(){
+    	    		    		alert("team name : "+ j.name+' team index: ' +j.index );
+    	    			})
+    		});
+    		let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:800px;">'
+                if (d.pxy.existPrev) {
+                    html += '<li class="prevBlock"><a href="#">&laquo;</a></li>';
+                }
+                let i = 0;
+                for (i = d.pxy.startPage; i <= d.pxy.endPage; i++) {
+                    if (x == i) {
+                        html += '<li class="active"><a href="#" class="page">' + i + '</a></li>';
+                    } else {
+
+                        html += '<li><a href="#" class="page">' + i + '</a></li>';
+                    }
+                }
+                if (d.pxy.existNext) {
+                    html += '<li class="nextBlock"><a href="#">&raquo;</a></li>';
+                }
+                $('.team-container .row .col-md-12').after(html);
+                
+                $('.page').each(function() {
+                    $(this).click(() => {
+                 	   let arr = {srch :x.srch,
+                 			   	  page :$(this).text()};
+                 	   team_list(arr);
+                    });
+                });
+                $('.nextBlock').click(function() {
+             	   let arr = {srch :x.srch,
+          			   	  page :d.pxy.nextBlock};
+             	  team_list(arr);
+                })
+                $('.prevBlock').click(function() {
+             	   let arr = {srch :x.srch,
+          			   	  page :d.pxy.prevBlock};
+             	  team_list(arr);
+                }) 
+                
+    	});
+    }
+    
     let team_detail =()=>{
     	
     }
@@ -184,7 +248,8 @@ team = (() => {
     	,team_update_info:team_update_info
     	,team_update_emblem:team_update_emblem
     	,team_update_photo:team_update_photo
-    	,team_manage:team_manage};
+    	,team_manage:team_manage
+    	,team_list_after:team_list_after};
     
 })();
     

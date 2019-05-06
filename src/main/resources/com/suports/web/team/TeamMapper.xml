@@ -78,6 +78,19 @@
 	SELECT COUNT(*) FROM TEAM;
 	</select>
 	
-	
+	<select id="selectTeam" parameterType="com.suports.web.domain.MemberDTO" resultType="com.suports.web.domain.TeamDTO">
+	SELECT 
+		TEAM_INDEX teamIndex,
+		TEAM_NAME name,
+		TEAM_EMBLEM emblem,
+		TEAM_CAPTAIN captain,
+		TEAM_SPORT sport,
+		TEAM_SORT sort,
+		TEAM_ADDR address,
+		TEAM_INFO info,
+		TEAM_AGE avgage,
+		TEAM_STYLE style
+		FROM TEAM WHERE TEAM_CAPTAIN LIKE #{memberIndex};
+	</select>
 	
 </mapper>

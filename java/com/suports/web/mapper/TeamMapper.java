@@ -1,6 +1,7 @@
 package com.suports.web.mapper;
 
 import com.suports.web.ProxyTwo;
+import com.suports.web.domain.MemberDTO;
 import com.suports.web.domain.TeamDTO;
 
 import java.util.List;
@@ -17,6 +18,10 @@ public interface TeamMapper {
 	public List<TeamDTO> selectSomeOfTeams(Map<?,?> map);
 	public Map<String, Object> selectATeamPic(TeamDTO team);
 	public TeamDTO selectATeam(TeamDTO team);
+	
+	//tournament apply access
+	public TeamDTO selectTeam(MemberDTO memDTO);
+	
 	public int countTeams();
 	public boolean existATeamId(TeamDTO team);
 	

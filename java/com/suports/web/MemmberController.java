@@ -43,7 +43,7 @@ public class MemmberController {
 	@PostMapping("/members/{userid}")
 	public MemberDTO login(@RequestBody MemberDTO param, @PathVariable String userid) {
 		
-		System.out.println("1========="+memberDTO);
+		System.out.println("1========="+param);
 		
 		memberDTO = memberService.retrieveAMember(param);
 		

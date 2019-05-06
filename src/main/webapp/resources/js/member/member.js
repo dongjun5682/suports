@@ -29,9 +29,25 @@ member = (() => {
         });
     };
     let setContentView = (d) => {
+         $('#content').empty().append(compo.content());
+         jQuery(function($){
+             $('#home').vidbg({
+                 'mp4': 'resources/video/Fifa.mp4',
+             }, {
+               // Options
+               muted: true,
+               loop: true,
+         	  overlay: true,
+             });
+         });
+        $('#home').attr('style','" "');
+        $('#rm_search').empty().append(compo.srch());
+        $('#content').css('margin-top', '0');
+        home.home_list();
         $('#nav').empty().after(compo.login_nav());
         $('#userBtn').click(() => {
             $('#userBtn').after(compo.login_drop_btn());
+            $('#user-drop').attr('style','" "');
             $('#frofile').click(()=>{
             	profile();
             });
@@ -61,17 +77,17 @@ member = (() => {
                 case 'team':
                     $('#content').css('margin-top', '80px');
                     alert('팀 클릭!');
-                    team.onCreate(d);
+                    let x = {'page': 1};
+                    team.team_list_after(x);
                     break;
                 case 'tourment':
                     $('#content').css('margin-top', '80px');
                     $('#content').css({
                         'margin-top': '70px',
-                        'background-color': '#f0f0f0',
                         'height': '850px'
                     });
                     alert('토너먼트 클릭!');
-                    tour.onCreate();
+                    tour.tour_apply();
                     break;
                 case 'about':
                     alert('소개 클릭!!');

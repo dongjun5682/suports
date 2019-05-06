@@ -20,6 +20,8 @@
   <result property="photo" column="PHOTO"/>
   <result property="totalcount" column="TOTALCOUNT"/>
   <result property="rnum" column="RNUM"/>
+  <result property="team" column="TEAM_INDEX"/>
+  
 </resultMap>
 	<select id="selectAMember" 
 	resultType="com.suports.web.domain.MemberDTO">
@@ -36,8 +38,9 @@
 		ADDR address,
 		PHONE phone,
 		INFO info,
-		PHOTO photo
-		FROM MEMBER
+		PHOTO photo,
+		TEAM_INDEX teamIndex
+		FROM MEMBER 
 		WHERE ID LIKE #{id}
 		<if test="password != null">
 			AND PASSWORD LIKE #{password}

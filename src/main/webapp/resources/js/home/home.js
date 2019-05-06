@@ -36,7 +36,17 @@ home = (() => {
     };
     let setContentView = () => {
         $('#content').before(compo.header());
-        $('#home').after(compo.content());
+        $('#content').append(compo.content());
+        jQuery(function($){
+            $('#home').vidbg({
+                'mp4': 'resources/video/Fifa.mp4',
+            }, {
+              // Options
+              muted: true,
+              loop: true,
+        	  overlay: true,
+            });
+        });
         $('#myMpa').after(compo.footer());
         $('#rm_search').append(compo.srch());
         $('#content').css('margin-top', '0');
@@ -46,7 +56,6 @@ home = (() => {
         $('#solo_search').click(() => {
             $('#people').empty().attr('id', 'position').append(compo.solo_search());
         });
-        $('#home').css('z-index','0');
         home_list();
         $('.navbar-right a').click(function(e) {
             alert('click :' + $(this).attr('id'));
@@ -100,7 +109,7 @@ home = (() => {
 
     let home_list = () => {
         let list_stadium_detail = '';
-        $.getJSON(_ + '/stadiums', d => {
+        $.getJSON($.ctx() + '/stadiums', d => {
             $.each(d.home, (i, j) => {
                 if (j.areaName == '서울') {
                     if (i < 4) {
@@ -205,6 +214,4 @@ home = (() => {
         home_list: home_list,
         login: login
     };
-
-
 })();

@@ -242,7 +242,7 @@
     if ($element.css('position') === 'static') {
       $element.css('position', 'relative');
     }
-    $element.css('z-index', '1');
+    $element.css('z-index', '0');
 
     // If the element is set to body make the wrapper position fixed
     if($element.is("body")) {
