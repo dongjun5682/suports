@@ -100,7 +100,6 @@ app.run('<%=application.getContextPath()%>');
 jQuery(function($){
     $('#home').vidbg({
         'mp4': 'resources/video/Fifa.mp4',
-        'poster': 'resources/video/Fifa.jpg',
     }, {
       // Options
       muted: true,
