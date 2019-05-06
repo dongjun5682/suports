@@ -1,13 +1,3 @@
-/*
- * myTooltip: javascript plugin for jQuery
- * 1.3.1
- *
- * By M.Ulyanov
- * Source: https://github.com/M-Ulyanov/myTooltip
- * Example https://m-ulyanov.github.io/myTooltip/
- */
-
-
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
@@ -781,17 +771,17 @@ isNull = function (object) {
 
 	  if (o.spaceChk && /\s/g.test(pw)) {
 	    return "<p style='line-height:200%;'><span style='color:#EE2460; font-weight:bold;'>사용불가</span> : 비밀번호 재작성 필요" + "<br/>" 
-	      + "<span style='color:#999; font-weight:bold;'>영문 대소문자, 숫자 및 특수문자 사용</span></p>"; 
+	      + "<span style='color:#878E96; font-weight:bold;'>영문 대소문자, 숫자 및 특수문자 사용</span></p>"; 
 	    } 
 
 	  if (pw.length < o.length[0]) return "<p style='line-height:200%;'><span style='color:#EE2460; font-weight:bold;'>사용불가</span>" 
 	    + "<br/>" 
-	    + "<span style='color:#999; font-weight:bold;'>비밀번호는 " + o.length[0] 
+	    + "<span style='color:#878E96; font-weight:bold;'>비밀번호는 " + o.length[0] 
 	    + "자 이상 입력하셔야 합니다.</span></p>"; 
 	  if (pw.length > o.length[1]) 
 	    return "<p style='line-height:200%;'><span style='color:#22C781; font-weight:bold;'>사용불가</span>" 
 	      + "<br/>" 
-	      + "<span style='color:#999;'>비밀번호는 " + o.length[1] + "자 이내로 입력하셔야 합니다.</span></p>"; 
+	      + "<span style='color:#878E96;'>비밀번호는 " + o.length[1] + "자 이내로 입력하셔야 합니다.</span></p>"; 
 	  if (o.badSequenceLength && pw.length >= o.length[0]) { 
 	    var lower = "abcdefghijklmnopqrstuvwxyz", 
 	        upper = lower.toUpperCase(),
@@ -803,11 +793,11 @@ isNull = function (object) {
 	      seq = seq.slice(1) + pw.charAt(i);
 	      if ( lower.indexOf(seq) > -1 || upper.indexOf(seq) > -1 || numbers.indexOf(seq) > -1 || (o.noQwertySequences && qwerty.indexOf(seq) > -1) ) {
 	    	  return "<p style='line-height:200%;'>비밀번호 안전도 <span style='color:#E5E5E5'>|</span> <span style='color:#E3691E; font-weight:bold;'>낮음</span> " 
-		      + "<span style='color:#00B68E; font-weight:bold; font-size:20px; position: relative; top: 1.5px;'>―</span>"
-		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:20px; position: relative; top: 1.5px;''>―</span>"
-		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:20px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#00B68E; font-weight:bold; font-size:16px; position: relative; top: 1.5px;'>―</span>"
+		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
 		      + "<br/>"
-		      + "<span style='color:#999; font-weight:bold;'>안전도가 높은 비밀번호를 권장합니다.</span></p>";
+		      + "<span style='color:#878E96; font-weight:bold;'>안전도가 높은 비밀번호를 권장합니다.</span></p>";
 	      }
 	    }
 	  }
@@ -828,31 +818,31 @@ isNull = function (object) {
 	    if ((pw.match(re['numeric']) || []).length == pw.length) {
 		      return "<p style='line-height:200%;'><span style='color:#EE2460; font-weight:bold;'>사용불가</span> : 비밀번호 재작성 필요"
 		      + "<br/>" 
-		      + "<span style='color:#999; font-weight:bold;'>영문 대소문자, 숫자 및 특수문자 사용</span></p>";
+		      + "<span style='color:#878E96; font-weight:bold;'>영문 대소문자, 숫자 및 특수문자 사용</span></p>";
 		    }
 		    else if (lower + upper + numeric + special <= 2) {
 		      return "<p style='line-height:200%;'>비밀번호 안전도 <span style='color:#E5E5E5'>|</span> <span style='color:#E3691E; font-weight:bold;'>낮음</span> " 
-		      + "<span style='color:#00B68E; font-weight:bold; font-size:20px; position: relative; top: 1.5px;'>―</span>"
-		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:20px; position: relative; top: 1.5px;''>―</span>"
-		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:20px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#00B68E; font-weight:bold; font-size:16px; position: relative; top: 1.5px;'>―</span>"
+		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
 		      + "<br/>"
-		      + "<span style='color:#999; font-weight:bold;'>안전도가 높은 비밀번호를 권장합니다.</span></p>";
+		      + "<span style='color:#878E96; font-weight:bold;'>안전도가 높은 비밀번호를 권장합니다.</span></p>";
 		    }
 		    else if (lower + upper + numeric + special <= 3) {
 		      return "<p style='line-height:200%;'>비밀번호 안전도 <span style='color:#E5E5E5'>|</span> <span style='color:#F9D421; font-weight:bold;'>적정</span> "
-		      + "<span style='color:#00B68E; font-weight:bold; font-size:20px; position: relative; top: 1.5px;'>―</span>"
-		      + "<span style='color:#00939D; font-weight:bold; font-size:20px; position: relative; top: 1.5px;''>―</span>"
-		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:20px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#00B68E; font-weight:bold; font-size:16px; position: relative; top: 1.5px;'>―</span>"
+		      + "<span style='color:#00939D; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
 		      + "<br/>"
-		      + "<span style='color:#999; font-weight:bold;'>안전하게 사용하실 수 있는 비밀번호 입니다.</span></p>";
+		      + "<span style='color:#878E96; font-weight:bold;'>안전하게 사용하실 수 있는 비밀번호 입니다.</span></p>";
 		    }
 		    else {
 		      return "<p style='line-height:200%;'>비밀번호 안전도 <span style='color:#212528'>|</span> <span style='color:#45D9FD; font-weight:bold;'>높음</span> "
-		      + "<span style='color:#00B68E; font-weight:bold; font-size:20px; position: relative; top: 1.5px;'>―</span>" 
-		      + "<span style='color:#00939D; font-weight:bold; font-size:20px; position: relative; top: 1.5px;''>―</span>"
-		      + "<span style='color:#006D99; font-weight:bold; font-size:20px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#00B68E; font-weight:bold; font-size:16px; position: relative; top: 1.5px;'>―</span>" 
+		      + "<span style='color:#00939D; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#006D99; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
 		      + "<br/>"
-		      + "<span style='color:#999; font-weight:bold;'>예측하기 힘든 비밀번호로 더욱 안전합니다.</span></p>";
+		      + "<span style='color:#878E96; font-weight:bold;'>예측하기 힘든 비밀번호로 더욱 안전합니다.</span></p>";
 		    }
 	  if (o.noSequential && /([\S\s])\1/.test(pw)) {
 	    return "no sequential";

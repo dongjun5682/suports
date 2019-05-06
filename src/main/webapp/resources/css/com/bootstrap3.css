@@ -3330,21 +3330,21 @@ output {
 	color: #555;
 	background-color: #fff;
 	background-image: none;
-	border: 1px solid #ccc;
+	border: 1px solid rgba(204, 204, 204, 0.7);
 	border-radius: 4px;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
 	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
 .form-control:focus {
-	border-color: #66afe9;
+	border: 1px solid rgba(204, 204, 204);
 	outline: 0;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
-}
+	box-shadow: inset 0 2px 4px 0 hsla(0, 0%, 0%, 0.08);
+	}
 
 .form-control::-moz-placeholder {
 	color: #999;
@@ -4805,7 +4805,7 @@ tbody.collapse.in {
 	z-index: 2;
 	float: left;
 	width: 100%;
-	margin-bottom: 0
+	margin-bottom: 0;
 }
 
 .input-group .form-control:focus {

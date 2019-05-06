@@ -1,6 +1,6 @@
 
 .playersignuppg1 {
-  width               : 100%;
+  /* width               : 100%; */
   min-width           : 1024px;
   min-height          : 780px;
   position            : relative;
@@ -87,16 +87,18 @@ div {
   transform           : rotate(0deg);
 }
 .playersignuppg1 .formsignup .fieldbtn {
-  background-color    : rgba(255,255,255,0.0);
+  background-color: #22C781;
   top                 : 353px;
+  font-size: 18px;
+  color: white;
+  border-radius: 4px;
   height              : 68px;
-  width               : 378px;
+  width: 100%;
   position            : absolute;
-  margin              : 0;
   left                : 0px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
+  /* transform           : rotate(0deg); */
 }
 .playersignuppg1 .formsignup .chkterms {
   background-color    : rgba(255,255,255,0.0);
@@ -139,11 +141,11 @@ div {
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
-.playersignuppg1 .formsignup .fieldemail .textcontentpg1 {
+.playersignuppg1 .formsignup .textcontentpg1 {
   background-color    : rgba(255,255,255,0.0);
   top                 : 34px;
   height              : auto;
-  width               : 253px;
+  width               : 100%;
   position            : absolute;
   margin              : 0;
   left                : 1px;
@@ -156,22 +158,7 @@ div {
   text-align          : left;
   line-height         : 35.0px;
 }
-.playersignuppg1 .formsignup .fieldemail .textcontentpg1 .span1 {
-  
-}
-.playersignuppg1 .formsignup .fieldemail .textcontentpg1 .span2 {
-  font-family         : "HelveticaNeue-UltraLight", Helvetica, Arial, serif;
-}
-.playersignuppg1 .formsignup .fieldemail .textcontentpg1 .span3 {
-  
-}
-.playersignuppg1 .formsignup .fieldemail .textcontentpg1 .span4 {
-  font-family         : "HelveticaNeue-UltraLight", Helvetica, Arial, serif;
-}
-.playersignuppg1 .formsignup .fieldemail .textcontentpg1 .span5 {
-  
-}
-.playersignuppg1 .formsignup .fieldemail .texttitlepg1 {
+.playersignuppg1 .formsignup .texttitlepg1 {
   background-color    : rgba(255,255,255,0.0);
   top                 : 0px;
   height              : auto;
@@ -187,12 +174,6 @@ div {
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
   line-height         : 19.0px;
-}
-.playersignuppg1 .formsignup .fieldemail .texttitlepg1 .span1 {
-  
-}
-.playersignuppg1 .formsignup .fieldemail .texttitlepg1 .span2 {
-  font-family         : "HelveticaNeue-Bold", Helvetica, Arial, serif;
 }
 .playersignuppg1 .formsignup .fieldnickname {
   background-color    : rgba(255,255,255,0.0);
@@ -218,63 +199,11 @@ div {
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
-.playersignuppg1 .formsignup .fieldnickname .textcontentpg1 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 34px;
-  height              : auto;
-  width               : 165px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
-  font-size           : 14.0px;
-  color               : rgba(0, 0, 0, 1.0);
-  text-align          : left;
-  line-height         : 35.0px;
-}
-.playersignuppg1 .formsignup .fieldnickname .textcontentpg1 .span1 {
-  
-}
-.playersignuppg1 .formsignup .fieldnickname .textcontentpg1 .span2 {
-  font-family         : "HelveticaNeue-UltraLight", Helvetica, Arial, serif;
-}
-.playersignuppg1 .formsignup .fieldnickname .textcontentpg1 .span3 {
-  
-}
-.playersignuppg1 .formsignup .fieldnickname .textcontentpg1 .span4 {
-  font-family         : "HelveticaNeue-UltraLight", Helvetica, Arial, serif;
-}
-.playersignuppg1 .formsignup .fieldnickname .texttitlepg1 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : auto;
-  width               : 205px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
-  font-size           : 16.0px;
-  color               : rgba(0, 0, 0, 1.0);
-  text-align          : left;
-  line-height         : 19.0px;
-}
-.playersignuppg1 .formsignup .fieldnickname .texttitlepg1 .span1 {
-  
-}
-.playersignuppg1 .formsignup .fieldnickname .texttitlepg1 .span2 {
-  font-family         : "HelveticaNeue-Bold", Helvetica, Arial, serif;
-}
 .playersignuppg1 .formsignup .fieldfullname {
   background-color    : rgba(255,255,255,0.0);
   top                 : 0px;
   height              : 70px;
-  width               : 370px;
+  width: 100%;
   position            : absolute;
   margin              : 0;
   left                : 4px;
@@ -294,46 +223,6 @@ div {
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
-.playersignuppg1 .formsignup .fieldfullname .textcontentpg1 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 34px;
-  height              : auto;
-  width               : 183px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
-  font-size           : 14.0px;
-  color               : rgba(0, 0, 0, 1.0);
-  text-align          : left;
-  line-height         : 35.0px;
-}
-.playersignuppg1 .formsignup .fieldfullname .texttitlepg1 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : auto;
-  width               : 206px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
-  font-size           : 16.0px;
-  color               : rgba(0, 0, 0, 1.0);
-  text-align          : left;
-  line-height         : 19.0px;
-}
-.playersignuppg1 .formsignup .fieldfullname .texttitlepg1 .span1 {
-  
-}
-.playersignuppg1 .formsignup .fieldfullname .texttitlepg1 .span2 {
-  font-family         : "HelveticaNeue-Bold", Helvetica, Arial, serif;
-}
 .playersignuppg1 .hsubtitlepg1 {
   background-color    : rgba(255,255,255,0.0);
   top                 : 126px;
@@ -352,8 +241,6 @@ div {
   height              : auto;
   width               : 376px;
   position            : absolute;
-  margin              : 0;
-  left                : 0px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -361,18 +248,8 @@ div {
   font-size           : 18.0px;
   color               : rgba(57, 63, 69, 1.0);
   text-align          : center;
-  line-height         : 18.0px;
 }
-.playersignuppg1 .hsubtitlepg1 .texthcontent .span1 {
-  line-height         : 32.0px;
-}
-.playersignuppg1 .hsubtitlepg1 .texthcontent .span2 {
-  font-size           : 20.0px;
-  line-height         : 32.0px;
-}
-.playersignuppg1 .hsubtitlepg1 .texthcontent .span3 {
-  line-height         : 32.0px;
-}
+
 .playersignuppg1 .hsubtitlepg1 .texthtitle {
   background-color    : rgba(255,255,255,0.0);
   top                 : 0px;

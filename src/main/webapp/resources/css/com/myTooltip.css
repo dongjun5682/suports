@@ -8,8 +8,10 @@
 }
 
 .mytooltip-content {
-	width: 300px;
-	margin-left: 320px;
+    width: 280px;
+    bottom: -28px;
+    top: auto;
+    left: 80%;
 }
 
 .mytooltip:after,

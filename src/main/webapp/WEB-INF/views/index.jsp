@@ -7,16 +7,19 @@
 <title>SUPORTS</title>
 <script src='//unpkg.com/popper.js@1/dist/umd/popper.min.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap"></script>
- -->
-<link href="resources/css/fullscreenDemo.css" rel="stylesheet" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <link rel="stylesheet" href="resources/css/datepicker/datapicker.min.css">
 <script src="resources/js/com/datapicker.min.js"></script>
 <script src="resources/js/com/datapicker.ko-kr.js"></script>
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap"></script>-->
 
+<script src="resources/js/signin/signin.js"></script>
+<!-- <script src="resources/js/com/validate.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+<link href="resources/css/fullscreenDemo.css" rel="stylesheet" type="text/css">
+
 
 
 <!-- default css -->
@@ -91,8 +94,10 @@
 	<script src="resources/js/member/member.js"></script>
 	<script src="resources/js/com/util.js"></script>
   <script src="resources/js/vidbg.js"></script>
-  
-<script type="text/javascript">
+
+<script>
+app.run('<%=application.getContextPath()%>');
+
 jQuery(function($){
     $('#home').vidbg({
         'mp4': 'resources/video/Fifa.mp4',
@@ -104,17 +109,12 @@ jQuery(function($){
 	  overlay: true,
     });
 });
-</script>
-<script>
-app.run('<%=application.getContextPath()%>');
 
+function allowDrop(ev) { ev.preventDefault(); } 
+function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); } 
+function drop(ev) { ev.preventDefault(); 
+var c = ev.dataTransfer.getData("text"); 
+ev.target.appendChild(document.getElementById(c)); } 
 </script>
-	<script>
-	function allowDrop(ev) { ev.preventDefault(); } 
-	function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); } 
-	function drop(ev) { ev.preventDefault(); 
-	var c = ev.dataTransfer.getData("text"); 
-	ev.target.appendChild(document.getElementById(c)); } 
-	</script>
 </body>
 </html>

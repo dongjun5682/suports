@@ -11,6 +11,7 @@ member = (() => {
         stadiumjs = js + '/stadium/stadium.js';
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js + '/team/team.js';
+        validatejs = js + '/com/validate.js';
     };
     let onCreate = (d) => {
         init();
@@ -19,6 +20,7 @@ member = (() => {
             $.getScript(stadiumjs),
             $.getScript(tournamentjs),
             $.getScript(teamjs),
+            $.getScript(validatejs),
             $.Deferred(function(d) {
                 $(d.resolve);
             })
@@ -97,9 +99,10 @@ member = (() => {
     	$('#content').empty().html(compo.update_photo_player());
     }
 
+    // Sign Up { Modal, Date_Picker, Tool_Tip, Validate }
     let signup = () => {
         $('.modal-content').html(compo.signup_1());
-        $('.fieldbtn').click(()=> {
+        $('form').on('submit', function(e){
         	let formdata = {
 					id : $('form input[name="memberId"]').val(),
 					name : $('form input[name="memberName"]').val(),
@@ -107,87 +110,97 @@ member = (() => {
 			};
         	if($("#signupTerm").prop("checked")==true){
         		$('.modal-content').html(compo.signup_2());
+        		$('#checkPassword').click(()=>{
+            		if($("#checkPassword").prop("checked")==true){
+        	        	$('#memberPassword').attr("type", "text");
+        	        	$("#checkPassword-text").css("color","#FC913A");
+        	        } 
+            		else {
+        	        	$('#memberPassword').attr("type", "password");
+        	        	$("#checkPassword-text").css("color","#AEB5BD");
+        	        }
+            	});
+        		$("#memberPassword").off("focus").on("focus", function () {
+        			var value = $(this).val();
+        			$('.js-mytooltip-pw').myTooltip('updateContent', getPwContent(value));
+        			});
+        		$("#memberPassword").off("click").on("click", function () {
+        			var value = $(this).val();
+        			if (!isNull(value)) {
+        				$('.js-mytooltip-pw').myTooltip('updateContent', getPwContent(value));
+        				}
+        			});
+        		$("#memberPassword").off("keyup").on("keyup", function () {
+        			$("#memberPassword").blur();
+        			$("#memberPassword").focus();
+        			});
+        		$('.js-mytooltip-pw').myTooltip({
+        			'offset': 30,
+        			'theme': 'light',
+        			'customClass': 'mytooltip-content',
+        			'content': '<p>t</p>'
+        				});   
         		$('#datepicker').datepicker({
-                	locale: 'ko-kr',
+        			locale: 'ko-kr',
                     uiLibrary: 'bootstrap4'
         		});
-        		 $("#memberPassword").off("focus").on("focus", function () {
-        			    var value = $(this).val();
-        			    $('.js-mytooltip-pw').myTooltip('updateContent', getPwContent(value));
-        			  });
-        			  $("#memberPassword").off("click").on("click", function () {
-        			    var value = $(this).val();
-        			    if (!isNull(value)) {
-        			      $('.js-mytooltip-pw').myTooltip('updateContent', getPwContent(value));
-        			    }
-        			  });
-        			  $("#memberPassword").off("keyup").on("keyup", function () {
-        			    $("#memberPassword").blur();
-        			    $("#memberPassword").focus();
-        			  });
-        			  $('.js-mytooltip-pw').myTooltip({
-        			    offset: 30,
-        			    theme: 'light',
-        			    customClass: 'mytooltip-content',
-        			    direction: 'right',
-        			    content: '<p>t</p>'
-        			  });
-        		   
+   			 	$('.js-mytooltip').myTooltip('destroy');
+        		$('.textnext').click(() => {
+        			let formdata2 = {
+        					password : $('form input[name="memberPassword"]').val(),
+        					birth : $('form input[name="memberBirth"]').val(),
+        					address : $('form select[id="memberLocation"]').val(),
+        					sports : $('form select[id="memberSports"]').val(),
+        					position : $('form select[id="memberPosition"]').val(),
+        					phone : $('form input[id="memberPhone"]').val()
+        					};
+        			$('.modal-content').html(compo.signup_3());
+        			$('.textnext').click(() => {
+        				let formdata3 = {
+        						characters : $('form input[name="charRadios"]:checked').val()
+        				};
+        				$('.modal-content').html(compo.signup_4());
+        				$('.textnext').click(() => {
+        					let formdata4 = {
+        							info : $('form input[name="memberInfo"]').val()
+        					};
+        					$('.modal-content').html(compo.signup_5());
+        					let formdata5 = {
+        							id : formdata.id,
+        							password : formdata2.password,
+        							email : formdata.email,
+        							name : formdata.name,
+        							birth : formdata2.birth,
+        							position : formdata2.position,
+        							characters : formdata3.characters,	
+               						sports : formdata2.sports,
+               						address : formdata2.address,
+               						phone : formdata2.phone,
+               						info : formdata4.info,
+               						photo : 'default_profile.jpg'
+        					};
+        					$('.beginbtn').click(() => {
+        						$.ajax({
+        							url : $.ctx()+'/members/',
+        							type : 'POST',
+        							data : JSON.stringify(formdata5),
+        							dataType : 'json',
+        							contentType : "application/json; charset=utf-8",
+        							success : d => {
+        								$('#myModal').modal('hide');
+        							},
+        							error : e => {
+        								alert('ajax fail');
+        							}
+        						})
+        					})
+        				})
+                   })
+               })
         	} else {
+        		e.preventDefault();
         		alert('회원가입 약관에 동의하셔야 서비스 이용이 가능합니다.')
         	}
-            $('.textnext').click(() => {
-              	let formdata2 = {
-    					password : $('form input[name="memberPassword"]').val(),
-    					birth : $('form input[name="memberBirth"]').val(),
-    					address : $('form select[id="memberLocation"]').val(),
-    					sports : $('form select[id="memberSports"]').val(),
-    					position : $('form select[id="memberPosition"]').val(),
-    					phone : $('form input[id="memberPhone"]').val()
-    			};
-                $('.modal-content').html(compo.signup_3());
-                $('.textnext').click(() => {
-                  	let formdata3 = {
-                  			characters : $('form input[name="charRadios"]:checked').val()
-        			};
-                    $('.modal-content').html(compo.signup_4());
-                    $('.textnext').click(() => {
-                    	let formdata4 = {
-                    			info : $('form input[name="memberInfo"]').val()
-            			};
-                        $('.modal-content').html(compo.signup_5());
-                        let formdata5 = {
-                        		id : formdata.id,
-                        		password : formdata2.password,
-                        		email : formdata.email,
-            					name : formdata.name,
-            					birth : formdata2.birth,
-            					position : formdata2.position,
-            					characters : formdata3.characters,
-            					sports : formdata2.sports,
-            					address : formdata2.address,
-            					phone : formdata2.phone,
-            					info : formdata4.info,
-            					photo : 'default_profile.jpg'
-            			};
-                        $('.beginbtn').click(() => {
-                        	$.ajax({
-                            	url : $.ctx()+'/members/',
-                            	type : 'POST',
-                            	data : JSON.stringify(formdata5),
-                            	dataType : 'json',
-                            	contentType : "application/json; charset=utf-8",
-                            	success : d => {
-                            		$('#myModal').modal('hide');
-                            		},
-                            		error : e => {
-                            		alert('ajax fail');
-                            		}
-                            })
-                        })
-                    })
-                })
-            })
         })
     }
     
