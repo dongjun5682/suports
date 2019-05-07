@@ -23,6 +23,7 @@ stadium = (() => {
 
     let setContentView = () => {
        list(1);
+       
     }
     let list =(x)=> {
     	$('#map').empty();
