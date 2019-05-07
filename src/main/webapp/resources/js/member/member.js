@@ -11,7 +11,6 @@ member = (() => {
         stadiumjs = js + '/stadium/stadium.js';
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js + '/team/team.js';
-        validatejs = js + '/com/validate.js';
     };
     let onCreate = (d) => {
         init();
@@ -20,7 +19,6 @@ member = (() => {
             $.getScript(stadiumjs),
             $.getScript(tournamentjs),
             $.getScript(teamjs),
-            $.getScript(validatejs),
             $.Deferred(function(d) {
                 $(d.resolve);
             })
@@ -43,6 +41,8 @@ member = (() => {
         $('#home').attr('style','" "');
         $('#rm_search').empty().append(compo.srch());
         $('#content').css('margin-top', '0');
+        $('#footer').remove();
+        $('#myMpa').after(compo.footer());
         home.home_list();
         $('#nav').empty().after(compo.login_nav());
         $('#userBtn').click(() => {
@@ -96,9 +96,25 @@ member = (() => {
                     break;
             }
         })
-    
+          $('#sear-btn').click(function() {
+                $.getScript(compojs, () => {
+                    compo.stadium_list_sidebar();
+                    $('#content').css('margin-top', '80px');
+                    $.getScript(stadiumjs, () => {
+                        stadium.onCreate();
+                    });
 
-        
+                })
+            });
+            $('#stadium_list').click(() => {
+                $('#content').css('margin-top', '80px');
+                stadium.onCreate();
+            })
+            $('.course-img').click(() => {
+                $('#content').css('margin-top', '80px');
+                stadium.list_detail();
+            })
+       
     }
     let profile =()=>{
     	$('#footer').remove();

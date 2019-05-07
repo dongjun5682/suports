@@ -35,7 +35,7 @@ public class StadiumController {
 		map.put("pageNum", page);
 
 		map.put("pageSize", "9"); // 
-		map.put("blockSize", "9"); //
+		map.put("blockSize", "5"); //
 		ISupplier c = ()-> staMap.countStadium();
 		map.put("totalCount", c.get());
 		pxy.carryOut(map);
@@ -57,7 +57,7 @@ public class StadiumController {
 		map.put("search", sa);
 		map.put("pageNum", page);
 		map.put("pageSize", "9"); //
-		map.put("blockSize", "9"); //
+		map.put("blockSize", "5"); //
 		map.put("totalCount", staMap.countStadiums(sa));
 		pxy.carryOut(map);
 		map.clear();

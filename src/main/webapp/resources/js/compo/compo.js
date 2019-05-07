@@ -1271,7 +1271,7 @@ compo = {
 		+'<div class="container">'
 		+'<div class="row" style="margin-top: 20px;">'
 		+'<div class="col-md-5" style="margin-left: -135px;margin-top: -195px;text-align: left;">'
-		+'<div style="margin-top: 35px;">'
+		+'<div style="margin-top: -9px;">'
 		  +'<div style="float:left;">'
 		  +'<h3 style="text-align: left;margin-bottom: 20px;">경기장 정보</h3>'
 		  +'<p>1.전용축구장 : 인조잔디 1면 (6.400m2 B=100, L=64)</p>'
