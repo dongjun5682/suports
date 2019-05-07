@@ -56,7 +56,7 @@ member = (() => {
             });
             
         });
-        $('a').click(function(e) {
+        $('.navbar-right a').click(function(e) {
             alert('click :' + $(this).attr('id'));
             let _this = $(this).attr('id');
             switch (_this) {

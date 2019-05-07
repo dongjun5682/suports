@@ -77,8 +77,6 @@ home = (() => {
                 case 'about':
                     $('#content').css('margin-top', '80px');
                     break;
-                default:
-                    break;
             }
         })
         $('#sear-btn').click(function() {
@@ -99,11 +97,50 @@ home = (() => {
             $('#content').css('margin-top', '80px');
             stadium.list_detail();
         })
+       
+        //로고 클릭시 새로 그리기
         $('.navbar-brand .logo').click(() => {
-            $('#content').empty();
-            $('#footer').empty();
-            $('#header').empty();
-           onCreate();
+        	alert('로고 클릭!!');
+        	  $('#content').empty().append(compo.content());
+              jQuery(function($){
+                  $('#home').vidbg({
+                      'mp4': 'resources/video/Fifa.mp4',
+                  }, {
+                    // Options
+                    muted: true,
+                    loop: true,
+              	  overlay: true,
+                  });
+              });
+              $('#rm_search').append(compo.srch());
+              $('#content').css('margin-top', '0');
+              $('#footer').remove();
+              $('#myMpa').after(compo.footer());
+            $('#team_search').click(() => {
+                $('#position').empty().attr('id', 'people').append(compo.team_search());
+            });
+            $('#solo_search').click(() => {
+                $('#people').empty().attr('id', 'position').append(compo.solo_search());
+            });
+            home_list();
+            $('#sear-btn').click(function() {
+                $.getScript(compojs, () => {
+                    compo.stadium_list_sidebar();
+                    $('#content').css('margin-top', '80px');
+                    $.getScript(stadiumjs, () => {
+                        stadium.onCreate();
+                    });
+
+                })
+            });
+            $('#stadium_list').click(() => {
+                $('#content').css('margin-top', '80px');
+                stadium.onCreate();
+            })
+            $('.course-img').click(() => {
+                $('#content').css('margin-top', '80px');
+                stadium.list_detail();
+            })
         })
     };
 

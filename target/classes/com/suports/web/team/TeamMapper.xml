@@ -78,6 +78,7 @@
 	SELECT COUNT(*) FROM TEAM;
 	</select>
 	
+	<!-- 토너먼트 주장만 신청 -->
 	<select id="selectTeam" parameterType="com.suports.web.domain.MemberDTO" resultType="com.suports.web.domain.TeamDTO">
 	SELECT 
 		TEAM_INDEX teamIndex,

@@ -52,8 +52,10 @@ tour =(()=>{
    		alert($.member().memberIndex);
    		$.getJSON($.ctx()+'/tournament/'+$.member().memberIndex , d=>{
    			alert(d.captain);
-   			if(d.captain == null){
+   			
+   			if(d.captain === null){
    				alert(_this + '주장만 신청 가능!!');
+   				$('#myModal_tour').modal("hide");
    			}else{
    				switch (_this) {
    				case 'btn1':

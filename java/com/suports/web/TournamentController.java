@@ -1,12 +1,10 @@
 package com.suports.web;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.suports.web.domain.MemberDTO;
@@ -32,7 +30,7 @@ public class TournamentController {
 		memDTO.setMemberIndex(Integer.parseInt(userid));
 		IFunction i = (Object o)-> teamMap.selectTeam(memDTO);
 		teamDTO = (TeamDTO) i.apply(memDTO);
-		System.out.println(teamDTO.toString());
+		//동적 으로 숫자값 던지기
 		return teamDTO;
 	}
 }
