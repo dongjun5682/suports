@@ -10,6 +10,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color    : rgba(255, 255, 255, 1.0);
+  border-radius: 8px;
 }
 a {
   text-decoration     : none;
@@ -309,23 +310,6 @@ div {
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
-.playersignuppg4 .fieldbtm .btnnextstep .textnext {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 11px;
-  height              : auto;
-  width               : 80px;
-  position            : absolute;
-  margin              : 0;
-  left                : 24px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
-  font-size           : 20.0px;
-  color               : rgba(255, 255, 255, 1.0);
-  text-align          : center;
-  line-height         : 24.0px;
-}
 .playersignuppg4 .fieldbtm .btnprevstep {
   background-color    : rgba(255,255,255,0.0);
   top                 : 34px;
@@ -416,12 +400,15 @@ div {
   transform           : rotate(0deg);
 }
 .playersignuppg4 .fieldpicture .fieldbtn {
-  background-color    : rgba(255,255,255,0.0);
+  /* background-color: #22C78B; */
+  color: white;
+  background-color: #22C781;
+  border-radius: 4px;
   top                 : 259px;
   height              : 50px;
   width               : 418px;
   position            : absolute;
-  margin              : 0;
+  /* margin              : 0; */
   left                : 0px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */

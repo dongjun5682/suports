@@ -1,4 +1,35 @@
 
+.fieldbtn {
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+.beginbtn {
+  box-shadow:  0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+.btnnextstep {
+  margin-top: 427px;
+  position: fixed;
+  margin-left: 360px;
+  width: 148px;
+  /* height: 100%; */
+}
+
+img.imgnextbtnbg {
+  width: 100%;
+}
+
+.clearmaterial {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 51px;
+  position            : absolute;
+  left                : 92%;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+  font-family         : "material", Helvetica, Arial, serif;
+  font-size           : 22.0px;
+  color               : rgba(115, 123, 132, 1.0);
+}
+
 .playersignuppg1 {
   /* width               : 100%; */
   min-width           : 1024px;
@@ -9,7 +40,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color    : rgba(255, 255, 255, 1.0);
+  border-radius: 8px;
 }
+
 a {
   text-decoration     : none;
 }
@@ -290,21 +323,4 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-}
-.playersignuppg1 .clearmaterial {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 51px;
-  height              : auto;
-  width               : auto;
-  position            : absolute;
-  margin              : 0;
-  left                : 940px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-  font-family         : "material", Helvetica, Arial, serif;
-  font-size           : 22.0px;
-  color               : rgba(115, 123, 132, 1.0);
-  text-align          : left;
-  line-height         : 22.0px;
 }
