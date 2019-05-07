@@ -101,7 +101,7 @@ team = (() => {
     		$('#content').html(compo.no_team_content());
     	}
     	$('#team_create').click(()=>{
-			team_create(d);    			    			
+			team_create();    			    			
     	})
     	$('.team-container .row .col-md-12').empty();
     	$('.team-container .row nav').remove();
@@ -156,8 +156,8 @@ team = (() => {
     let team_detail =()=>{
     	
     }
-    let team_create =(d)=>{
-    	$('#modal-content2').html(compo.team_create_1(d));
+    let team_create =()=>{
+    	$('#modal-content2').html(compo.team_create_1());
         $('.fieldbtn').click(() => {
             $('#modal-content2').html(compo.team_create_2());
             $('.textnext').click(() => {
@@ -182,8 +182,7 @@ team = (() => {
                         			name : formdata.name,
                         			avgage : formdata.avgage,
                         			sort : formdata.sort,
-                        			captain: '1',
-//                        			captain: d_data.memberId,
+                        			captain: $.member().id,
                         			address : formdata.address,
                         			sport : formdata.sport,
                         			style : formdata.style,

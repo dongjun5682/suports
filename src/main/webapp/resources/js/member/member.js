@@ -127,7 +127,28 @@ member = (() => {
     		profile_photo_update();
     	});
     	$('.imgsignupbtnbg button[type=submit]').click(e=>{
-    		update_profile();
+        	e.preventDefault();
+    		let updateData = {
+    				id : $.member().id,
+    				name : $('form input[name="memberName"]').val(),
+    				password : $('form input[name="memberPassword"]').val(),
+    				birth : $('form input[name="memberBirth"]').val(),
+    				characters : $('form select[id="memberSort"]').val(),
+    				info : $('form input[name="memberInfo"]').val()
+    		};
+    		$.ajax({
+    			url : $.ctx()+'/members/'+updateData.id,
+    			type : 'PUT',
+    			data : JSON.stringify(updateData),
+    			dataType : 'json',
+    			contentType : "application/json; charset=utf-8",
+    			success : d => {
+    				alert('ajax update :');
+    			},
+    			error : e => {
+    				alert('ajax fail');
+    			}
+    		})
     	});
     	
     }
@@ -274,41 +295,10 @@ member = (() => {
 //			}
 		});
     }
-    let update_profile = () => {
-    	alert('update_profile');
-    	e.preventDefault();
-		let updateData = {
-				id : 'a',
-				name : $('form input[name="memberName"]').val(),
-				password : $('form input[name="memberPassword"]').val(),
-				birth : $('form input[name="memberBirth"]').val(),
-				characters : $('form select[id="memberSort"]').val(),
-				info : $('form input[name="memberInfo"]').val()
-		};
-		alert(id+'   '+name+'   '+info);
-		$.ajax({
-			url : $.ctx()+'/members/'+updateData.id,
-			type : 'PUT',
-			data : JSON.stringify(moddata),
-			dataType : 'json',
-			contentType : "application/json; charset=utf-8",
-			success : d => {
-				if(d.msg === 'SUCCESS') {
-					alert('ajax update : '+updateData.id);
-				} else {
-					alert('ajax update fail');
-				}
-			},
-			error : e => {
-				alert('ajax fail');
-			}
-		})
-	}
     return {
         onCreate:onCreate,
         profile:profile,
         profile_photo_update:profile_photo_update,
-        update_profile:update_profile,
         signup:signup
     }
 })();
