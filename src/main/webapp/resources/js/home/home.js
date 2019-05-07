@@ -93,10 +93,6 @@ home = (() => {
             let arr = {p :1};
             stadium.list(arr);
         })
-        $('.course-img').click(() => {
-            $('#content').css('margin-top', '80px');
-            stadium.list_detail();
-        })
        
         //로고 클릭시 새로 그리기
         $('.navbar-brand .logo').click(() => {
@@ -134,10 +130,6 @@ home = (() => {
                 let arr = {p :1};
                 stadium.list(arr);
             })
-            $('.course-img').click(() => {
-                $('#content').css('margin-top', '80px');
-                stadium.list_detail();
-            })
         })
     };
 
@@ -163,7 +155,7 @@ home = (() => {
                             '  </div>' +
                             '</div> ').appendTo('.seoul_stadium').click(function() {
                             alert(j.stadiumName);
-                            stadium.list_detail(j);
+                            	 stadium.list_detail(j);
                         });
                     }
                 } else if (j.areaName == '인천') {
