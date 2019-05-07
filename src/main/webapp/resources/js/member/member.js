@@ -98,18 +98,15 @@ member = (() => {
             }
         })
           $('#sear-btn').click(function() {
-                $.getScript(compojs, () => {
-                    compo.stadium_list_sidebar();
-                    $('#content').css('margin-top', '80px');
-                    $.getScript(stadiumjs, () => {
-                        stadium.onCreate();
-                    });
-
-                })
+            	alert();
+            	let search = {p : 1 , s : ''}
+            	stadium.srch();
             });
             $('#stadium_list').click(() => {
                 $('#content').css('margin-top', '80px');
-                stadium.onCreate();
+                alert('전체 운동장 보기');
+                let arr = {p :1};
+                stadium.list(arr);
             })
             $('.course-img').click(() => {
                 $('#content').css('margin-top', '80px');
