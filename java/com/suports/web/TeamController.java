@@ -26,7 +26,7 @@ public class TeamController {
 	@Autowired TeamDTO teamDTO;
 	@Autowired TeamServiceImpl teamService;
 	@Autowired Map<String, Object> map;
-	@Autowired ProxyTwo pxy;
+	@Autowired Proxy pxy;
 	@Autowired TeamMapper teamMap;
 	
 	@PostMapping("/teams")

@@ -4,47 +4,61 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.suports.web.mapper.StadiumMapper">
 
-<resultMap id="result" type="hashmap">
-  <id property="stadiumIndex" column="STADIUM_INDEX" />
-  <result property="stadiumName" column="STADIUM_NAME"/>
-  <result property="sportsIndex" column="SPORTS_INDEX"/>
-  <result property="areaIndex" column="AREA_INDEX"/>
-  <result property="stadiumPhoto" column="STADIUM_PHOTO"/>
-  <result property="stadiumInfo" column="STADIUM_INFO"/>
-  <result property="stadiumAddr" column="STADIUM_ADDR"/>
-  <result property="latitude" column="LATITUDE"/>
-  <result property="hardness" column="HARDNESS"/>
-  <result property="areaName" column="AREA_NAME"/>
-     
-</resultMap>
+	<resultMap id="result" type="hashmap">
+		<id property="stadiumIndex" column="STADIUM_INDEX" />
+		<result property="stadiumName" column="STADIUM_NAME" />
+		<result property="sportsIndex" column="SPORTS_INDEX" />
+		<result property="areaIndex" column="AREA_INDEX" />
+		<result property="stadiumPhoto" column="STADIUM_PHOTO" />
+		<result property="stadiumInfo" column="STADIUM_INFO" />
+		<result property="stadiumAddr" column="STADIUM_ADDR" />
+		<result property="latitude" column="LATITUDE" />
+		<result property="hardness" column="HARDNESS" />
+		<result property="areaName" column="AREA_NAME" />
 
-<select id="selectStadiumList"  resultMap="result"> 
-   SELECT S.STADIUM_NAME ,S.STADIUM_PHOTO ,S.STADIUM_INFO ,S.STADIUM_ADDR 
-    FROM STADIUM S 
-    limit #{startRow}, #{pageSize}; 
-  </select>
-  <select id="countStadium" resultType="int">
-    SELECT COUNT(*) FROM STADIUM
-  </select>
-  <select id="selectStadiumlists" resultType="com.suports.web.domain.StadiumDTO"
-	parameterType="com.suports.web.Proxy">
- 	SELECT S.STADIUM_NAME stadiumName,S.STADIUM_PHOTO stadiumPhoto,S.STADIUM_INFO stadiumInfo,S.STADIUM_ADDR stadiumAddr
-	FROM STADIUM S
-	WHERE S.STADIUM_INFO LIKE #{search}
-	OR S.STADIUM_ADDR LIKE #{search}
-	limit #{startRow}, #{pageSize}
-	  </select>	 
+	</resultMap>
 
-	<select id="countStadiums" resultType="int"  parameterType="string">
-  SELECT COUNT(*)
-	FROM STADIUM S 
-		WHERE S.STADIUM_INFO LIKE #{value}
-		OR S.STADIUM_ADDR LIKE #{value}
-      </select>
+	<select id="selectListStadium"
+		parameterType="com.suports.web.Proxy" resultMap="result">
+		SELECT S2.*
+		FROM
+		(SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
+		FROM (SELECT * FROM STADIUM
+		ORDER BY STADIUM_INDEX DESC) S, (SELECT
+		@ROWNUM:=0)TMP) S2
+		WHERE
+		S2.RNUM BETWEEN #{startRow} AND #{endRow};
+	</select>
+	
+	<select id="countStadium" resultType="int">
+		SELECT COUNT(*) FROM
+		STADIUM
+	</select>
+	
+	<select id="searchStadium" resultMap="result"
+		parameterType="com.suports.web.Proxy">
+		SELECT S2.*
+		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
+		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
+		@ROWNUM:=0)TMP
+		WHERE S.STADIUM_ADDR LIKE '%${search}%') S2
+		WHERE S2.RNUM BETWEEN #{startRow} AND #{endRow};
+	</select>
+
+	<select id="countSearch" resultType="int"
+		parameterType="String">
+		SELECT COUNT(*)
+		FROM(SELECT S2.*
+		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
+		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
+		@ROWNUM:=0)TMP
+		WHERE S.STADIUM_ADDR LIKE '%${value}%') S2) S3;
+	</select>
+
 	<select id="selectAllStadium" resultMap="result">
-		SELECT STADIUM_NAME,STADIUM_INFO,STADIUM_PHOTO,A.AREA_NAME
-		FROM STADIUM S JOIN AREA A
-			ON S.AREA_INDEX LIKE A.AREA_INDEX;
-	  </select>
-	  
+		SELECT S.*,A.AREA_NAME
+		FROM STADIUM S JOIN	AREA A
+		ON S.AREA_INDEX LIKE A.AREA_INDEX;
+	</select>
+
 </mapper>

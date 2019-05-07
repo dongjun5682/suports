@@ -22,7 +22,8 @@ stadium = (() => {
     };
 
     let setContentView = () => {
-       list(1);
+    	let arr = {p :1};
+    	list(arr);
        
     }
     let list =(x)=> {
@@ -44,17 +45,25 @@ stadium = (() => {
 				srch(arr);
 			}
 		});
-    	$.getJSON(_+'/stadiums/page/'+x,d=>{
-    		$('<div id="asearch" class="row stadium-row"></div>').appendTo('.stadium-list');
+    	$.getJSON($.ctx()+'/stadiums/page/'+x.p,d=>{
+    	
+    		$('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
 	    	$.each(d.ls,(i,j)=>{
-	    		$('<div class="col-md-4">'
-	  		  			+'    <div class="w3-card" id="content_2"><img src="'+j.stadiumPhoto+'" style="width:208px">'
-	  		  			+'      <div class="w3-container">'
-	  		  			+'        <h5 style=" margin-top: 25px;">'+j.stadiumName+'</h5>'
-	  		  			+'        <h5>'+j.stadiumInfo+'</h5>'
-	  		  			+'      </div>'
-	  		  			+'    </div>'
-	  		  			+'  </div>')
+	    		$('<div class="col-md-3 col-sm-6 col-xs-6" >' +
+                        '  <div class="course">' +
+                        '    <a href="#" class="course-img">' +
+                        '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
+                        '      <i class="course-link-icon fa fa-link"></i>' +
+                        '    </a>' +
+                        '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                        '    <div class="course-details">' +
+                        '      <span class="course-category">' + j.stadiumAddr + '</span>' +
+                        '    </div>' +
+                        '    <div class="course-people">' +
+                        '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                        '    </div>' +
+                        '  </div>' +
+                        '</div> ')
 	  		  			.appendTo('#asearch')
 	  		  			.click(function() {
 	  		  				$('#map').empty();
@@ -62,47 +71,42 @@ stadium = (() => {
 	  			    		list_detail(j);
 	  					});
 	    	});
-	    	
-	    	$('<div style="height: 50px"></div>').appendTo('.col-md-4');
-	    	$('<div class="pagination"></div>').appendTo('.col-md-9');
-	    	if(d.pxy.existPrev){
-	    		$('<li><a>&laquo;</a></li>')
-	    		.appendTo('.pagination')
-	    		.click(function(){
-	    			alert($(this).text());
-	    			list(d.pxy.prevBlock);
-	    		});
-	    	}
-	    	let i =0;
-	    	for(i=d.pxy.startPage; i<=d.pxy.endPage; i++){
-	    		if(d.pxy.pageNum == i){
-	    			$('<li><a class="page active">'+i+'</a></li>')
-	    			.attr('href',$.ctx()+'/stadiums/page/'+i)
-	    			.appendTo('.pagination')
-	    			.click(function(){
-	    				
-	    				alert($(this).text());
-	    				list($(this).text());
-	    			});
-	    		}else{
-	    			$('<li><a class="page">'+i+'</a></li>')
-	    			.attr('href',$.ctx()+'/stadiums/page/'+i)
-	    			.appendTo('.pagination')
-	    			.click(function(){
-	    				alert($(this).text());
-	    				list($(this).text());
-	    			});
-	    		}
-	    	}
-    		if(d.pxy.existnext){
-    			$('<li><a>&raquo;</a></li>')
-    			.appendTo('.pagination')
-    			.click(function(){
-    				alert($(this).text());
-    				list(d.pxy.nextBlock);
-    				});
-    			};
-    			
+	    	let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:500px;">'
+                if (d.pxy.existPrev) {
+                    html += '<li class="prevBlock"><a href="#">&laquo;</a></li>';
+                }
+                let i = 0;
+                for (i = d.pxy.startPage; i <= d.pxy.endPage; i++) {
+                    if (x == i) {
+                        html += '<li class="active"><a href="#" class="page">' + i + '</a></li>';
+                    } else {
+
+                        html += '<li><a href="#" class="page">' + i + '</a></li>';
+                    }
+                }
+                if (d.pxy.existNext) {
+                    html += '<li class="nextBlock"><a href="#">&raquo;</a></li>';
+                }
+                $('.col-md-9').append(html);
+                
+                $('.page').each(function() {
+                    $(this).click(() => {
+                 	   let arr = {s :x.srch,
+                 			   	  p :$(this).text()};
+                 	   list(arr);
+                    });
+                });
+                $('.nextBlock').click(function() {
+             	   let arr = {s :x.srch,
+          			   	  p :d.pxy.nextBlock};
+             	  list(arr);
+                })
+                $('.prevBlock').click(function() {
+             	   let arr = {s :x.srch,
+          			   	  p :d.pxy.prevBlock};
+             	  list(arr);
+                }) 
+                
     	});
 
     }
@@ -197,67 +201,69 @@ stadium = (() => {
     	$('#map').empty();
     	$('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
-    	let url = _+'/stadiums/search/'+ x.s+'/'+x.p;
+        $('#content').css('margin-top', '80px');
+        let url = $.ctx()+'/stadiums/search/'+ x.s+'/'+x.p;
     	$.getJSON(url,d=>{
-    		$('<div id="asearch" class="row stadium-row"></div>').appendTo('.stadium-list');
+    		$('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
 	    	$.each(d.srch,(i,j)=>{
-	    		$('<div class="col-md-4">'
-	  		  			+'    <div class="w3-card" id="content_2"><img src="'+j.stadiumPhoto+'" style="width:208px">'
-	  		  			+'      <div class="w3-container">'
-	  		  			+'        <h5 style=" margin-top: 25px;">'+j.stadiumName+'</h5>'
-	  		  			+'        <h5>'+j.stadiumInfo+'</h5>'
-	  		  			+'    </div>'
-	  		  			+'    </div>'
-	  		  			+'  </div>')
-	  		  		.appendTo('#asearch')
-  		  			.click(function() {
-  		  				$('#footer').empty();
-  			    		alert(j.stadiumName);
-  			    		list_detail(j);
-  					});
+	    		$('<div class="col-md-3 col-sm-6 col-xs-6" >' +
+                        '  <div class="course">' +
+                        '    <a href="#" class="course-img">' +
+                        '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
+                        '      <i class="course-link-icon fa fa-link"></i>' +
+                        '    </a>' +
+                        '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                        '    <div class="course-details">' +
+                        '      <span class="course-category">' +j.stadiumAddr + '</span>' +
+                        '    </div>' +
+                        '    <div class="course-people">' +
+                        '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                        '    </div>' +
+                        '  </div>' +
+                        '</div> ')
+	  		  			.appendTo('#asearch')
+	  		  			.click(function() {
+	  		  				$('#map').empty();
+	  		  				$('#footer').empty();
+	  			    		list_detail(j);
+	  					});
 	    	});
-	    	$('<div style="height: 50px"></div>').appendTo('.col-md-4');
-	    	$('<div class="pagination"></div>').appendTo('.col-md-9');
-	    	
-	    	if(d.pxy.existPrev){
-				$('<li><a>&laquo;</a></li>')
-				.appendTo('.pagination')
-				.click(function(){
-					let arr = {p:d.pxy.prevBlock, s:x.s};
-					srch(arr);
-				});
-			}
-	    	let i =0;
-			for(i=d.pxy.startPage; i<=d.pxy.endPage; i++){
-				if(d.pxy.pageNum == i){
-					$('<li><a class="page active">'+i+'</a></li>')
-					.attr('href',$.ctx()+'/stadiums/search/'+i)
-					.appendTo('.pagination')
-					.click(function(){
-						let arr = {p:$(this).text(), s:x.s};
-						srch(arr);
-					});
-				}else{
-					$('<li><a class="page">'+i+'</a></li>')
-					.attr('href',$.ctx()+'/stadiums/search/'+i)
-					.appendTo('.pagination')
-					.click(function(){
-						let arr = {p:$(this).text(), s:x.s};
-						srch(arr);
-					});
-				  }
-				}
-				if(d.pxy.existnext){
-					$('<li><a>&raquo;</a></li>')
-					.appendTo('.pagination')
-					.click(function(){
-						alert($(this).text());
-						let arr = {p:d.pxy.nextBlock, s:x.s};
-						srch(arr);
-						});
-					};
-    		});
-    	
+	    	let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:400px;">'
+                if (d.pxy.existPrev) {
+                    html += '<li class="prevBlock"><a href="#">&laquo;</a></li>';
+                }
+                let i = 0;
+                for (i = d.pxy.startPage; i <= d.pxy.endPage; i++) {
+                    if (x == i) {
+                        html += '<li class="active"><a href="#" class="page">' + i + '</a></li>';
+                    } else {
+
+                        html += '<li><a href="#" class="page">' + i + '</a></li>';
+                    }
+                }
+                if (d.pxy.existNext) {
+                    html += '<li class="nextBlock"><a href="#">&raquo;</a></li>';
+                }
+                $('.col-md-9').append(html);
+                
+                $('.page').each(function() {
+                    $(this).click(() => {
+                 	   let arr = {s :x.srch,
+                 			   	  p :$(this).text()};
+                 	  srch(arr);
+                    });
+                });
+                $('.nextBlock').click(function() {
+             	   let arr = {s :x.srch,
+          			   	  p :d.pxy.nextBlock};
+             	  srch(arr);
+                })
+                $('.prevBlock').click(function() {
+             	   let arr = {s :x.srch,
+          			   	  p :d.pxy.prevBlock};
+             	  srch(arr);
+                }) 
+    	});
     	 $('#area_srch').on('click',()=>{
          	alert('검색 클릭')
  			let search = $('#search').val();

@@ -15,7 +15,6 @@ home = (() => {
         teamjs = js + '/team/team.js';
         backjs = js+'/backgroundTransition.js';
         msessionjs = js+'/home/membersession.js'
-
     };
     let onCreate = () => {
         init();
@@ -80,18 +79,19 @@ home = (() => {
             }
         })
         $('#sear-btn').click(function() {
-            $.getScript(compojs, () => {
-                compo.stadium_list_sidebar();
-                $('#content').css('margin-top', '80px');
-                $.getScript(stadiumjs, () => {
-                    stadium.onCreate();
-                });
-
-            })
+        	/*alert('addr : '+ $('.search-addr').val());
+        	alert('date : '+ $('.search-date').val());
+        	alert('time : '+ $('.search-time').val());
+        	alert('sport : '+ $('.search-sports').val());
+        	alert('position : '+ $('.search-position').val());*/
+        	let search = {p : 1 , s : $('.search-addr').val()};
+        	stadium.srch(search);
         });
         $('#stadium_list').click(() => {
             $('#content').css('margin-top', '80px');
-            stadium.onCreate();
+            alert('전체 운동장 보기');
+            let arr = {p :1};
+            stadium.list(arr);
         })
         $('.course-img').click(() => {
             $('#content').css('margin-top', '80px');
@@ -124,18 +124,15 @@ home = (() => {
             });
             home_list();
             $('#sear-btn').click(function() {
-                $.getScript(compojs, () => {
-                    compo.stadium_list_sidebar();
-                    $('#content').css('margin-top', '80px');
-                    $.getScript(stadiumjs, () => {
-                        stadium.onCreate();
-                    });
-
-                })
+            	alert();
+            	let search = {p : 1 , s : ''}
+            	stadium.srch();
             });
             $('#stadium_list').click(() => {
                 $('#content').css('margin-top', '80px');
-                stadium.onCreate();
+                alert('전체 운동장 보기');
+                let arr = {p :1};
+                stadium.list(arr);
             })
             $('.course-img').click(() => {
                 $('#content').css('margin-top', '80px');
@@ -150,7 +147,6 @@ home = (() => {
             $.each(d.home, (i, j) => {
                 if (j.areaName == '서울') {
                     if (i < 4) {
-                    	
                         $('<div class="col-md-3 col-sm-6 col-xs-6" >' +
                             '  <div class="course">' +
                             '    <a href="#" class="course-img">' +
@@ -159,7 +155,7 @@ home = (() => {
                             '    </a>' +
                             '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                             '    <div class="course-details">' +
-                            '      <span class="course-category">' + j.stadiumInfo + '</span>' +
+                            '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                             '    </div>' +
                             '    <div class="course-people">' +
                             '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
@@ -180,7 +176,7 @@ home = (() => {
                             '    </a>' +
                             '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                             '    <div class="course-details">' +
-                            '      <span class="course-category">' + j.stadiumInfo + '</span>' +
+                            '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                             '    </div>' +
                             '    <div class="course-people">' +
                             '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
@@ -201,7 +197,7 @@ home = (() => {
                             '    </a>' +
                             '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                             '    <div class="course-details">' +
-                            '      <span class="course-category">' + j.stadiumInfo + '</span>' +
+                            '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                             '    </div>' +
                             '    <div class="course-people">' +
                             '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +

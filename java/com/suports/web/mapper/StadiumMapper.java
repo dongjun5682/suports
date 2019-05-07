@@ -13,18 +13,21 @@ public interface StadiumMapper {
 	
 	public void insertStadium(StadiumDTO std);
 	
-	public List<StadiumDTO> selectStadiumList(Proxy pxy);
-	
-	public List<StadiumDTO> selectStadiumlists(Proxy pxy);
+	//stadium serch
+	public List<?> selectListStadium(Proxy pxy);
+	public List<?> searchStadium(Proxy pxy);
 	
 	public Map<?,?> selectStadiums(StadiumDTO std);
 	public Map<?,?> selectStadium(StadiumDTO std);
 	
 	public int countStadium();
-	public int countStadiums(String search);
+	
+	public int countSearch(String search);
 	
 	public void updateStadium(StadiumDTO std);
 	public void deleteStadium(StadiumDTO std);
+	
+	//home stadium list
 	public List<?> selectAllStadium();
 	
 }

@@ -29,22 +29,20 @@ public class StadiumController {
 	
 	@GetMapping("/stadiums/page/{page}")
 	public Map<?,?> list(@PathVariable String page){
-		logger.info("=======list 진입 ======");
-		//page_num.page_size,block_Size,totalCount
+		logger.info("=======list  asdasd 진입 ======");
+		System.out.println(page);
 		map.clear();
 		map.put("pageNum", page);
-
-		map.put("pageSize", "9"); // 
-		map.put("blockSize", "9"); //
+		map.put("pageSize", "12");
+		map.put("blockSize", "5");
 		ISupplier c = ()-> staMap.countStadium();
 		map.put("totalCount", c.get());
 		pxy.carryOut(map);
-		IFunction i = (Object o)-> staMap.selectStadiumList(pxy);
+		IFunction i = (Object o)-> staMap.selectListStadium(pxy);
 		List<?> ls = (List<?>) i.apply(pxy);
 		map.clear();
 		map.put("ls", ls);
 		map.put("pxy", pxy);
-		System.out.println(" ls list : "+ls.toString());
 		return map;
 	}
 	@GetMapping("/stadiums/search/{search}/{page}")
@@ -52,18 +50,22 @@ public class StadiumController {
 			@PathVariable("search") String search,	
 			@PathVariable("page") String page) {
 		logger.info("=======경기장 리스트 진입 ======");
-		String sa = "%"+search+"%";
+		String se = search;
+		System.out.println(search);
+		ISupplier c = ()-> staMap.countSearch(se);
 		map.clear();
-		map.put("search", sa);
+		map.put("search", se);
 		map.put("pageNum", page);
-		map.put("pageSize", "9"); //
-		map.put("blockSize", "9"); //
-		map.put("totalCount", staMap.countStadiums(sa));
+		map.put("pageSize", "12");
+		map.put("blockSize", "5");
+		map.put("totalCount",c.get());
 		pxy.carryOut(map);
+		IFunction i = (Object o)-> staMap.searchStadium(pxy);
+		List<?> ls = (List<?>) i.apply(pxy);
 		map.clear();
 		map.put("pxy", pxy);
-		map.put("srch", staMap.selectStadiumlists(pxy));
-		System.out.println(staMap.selectStadiumlists(pxy).toString());
+		map.put("srch", ls);
+		System.out.println(ls.toString());
 		return map;
 	}
 

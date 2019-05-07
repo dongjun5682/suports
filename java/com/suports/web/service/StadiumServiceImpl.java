@@ -27,16 +27,6 @@ public class StadiumServiceImpl implements StadiumService{
 	}
 
 	@Override
-	public List<StadiumDTO> retrieveSomeOfStadium(Map<?, ?> map) {
-		return stdMap.selectStadiumList(pxy);
-	}
-
-	@Override
-	public List<?> retrieveStadiums(Proxy pxy) {
-		return stdMap.selectStadiumlists(pxy);
-	}
-
-	@Override
 	public StadiumDTO retrieveStadium(StadiumDTO std) {
 		// TODO Auto-generated method stub
 		return null;
@@ -70,5 +60,17 @@ public class StadiumServiceImpl implements StadiumService{
 	public int countStadiums() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<StadiumDTO> retrieveSomeOfStadium(Map<?, ?> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<?> retrieveStadiums(Proxy pxy) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

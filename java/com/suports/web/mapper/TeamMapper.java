@@ -1,6 +1,6 @@
 package com.suports.web.mapper;
 
-import com.suports.web.ProxyTwo;
+import com.suports.web.Proxy;
 import com.suports.web.domain.MemberDTO;
 import com.suports.web.domain.TeamDTO;
 
@@ -14,7 +14,7 @@ public interface TeamMapper {
 	public void insertATeam(TeamDTO team);
 	
 	// READ
-	public List<?> selectListOfTeams(ProxyTwo pxy);
+	public List<?> selectListOfTeams(Proxy pxy);
 	public List<TeamDTO> selectSomeOfTeams(Map<?,?> map);
 	public Map<String, Object> selectATeamPic(TeamDTO team);
 	public TeamDTO selectATeam(TeamDTO team);
