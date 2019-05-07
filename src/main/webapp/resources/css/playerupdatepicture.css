@@ -108,11 +108,12 @@ div {
   transform           : rotate(0deg);
 }
 .playerupdatepicture .formupdate .fieldupdatepicture .fieldbtn {
-  background-color    : rgba(255,255,255,0.0);
+  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 413px;
-  height              : 60px;
+  height: 50px;
   width               : 311px;
   position            : absolute;
+  border-radius: 4px;
   margin              : 0;
   left                : 0px;
   -ms-transform       : rotate(0deg); /* IE 9 */
@@ -149,13 +150,15 @@ div {
   line-height         : 17.0px;
 }
 .playerupdatepicture .formupdate .fieldupdatepicture .textcontentpg1 {
-  background-color    : rgba(255,255,255,0.0);
+  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 380px;
   height              : auto;
-  width               : 232px;
+  width: 100%;
   position            : absolute;
-  margin              : 0;
-  left                : 41px;
+  /* margin              : 0; */
+  /* text-align: center; */
+  /* justify-content: center; */
+  left: 20px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);

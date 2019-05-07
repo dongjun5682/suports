@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,7 +44,6 @@ public class MemmberController {
 	@PostMapping("/members/{userid}")
 	public MemberDTO login(@RequestBody MemberDTO param, @PathVariable String userid) {
 		
-		System.out.println("1========="+param);
 		
 		memberDTO = memberService.retrieveAMember(param);
 		
@@ -53,6 +53,13 @@ public class MemmberController {
 		return memberDTO;
 	
 	
+	}
+	@PutMapping("/members/{userid}")
+	public Map<?,?> update(@RequestBody MemberDTO param, @PathVariable String userid) {
+
+		memberService.modifyAMember(param);
+		
+		return map;
 	}
 	
 	@PostMapping("/members/uploadFile")

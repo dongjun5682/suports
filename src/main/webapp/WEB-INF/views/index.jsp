@@ -17,6 +17,8 @@
 <!-- default css -->
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/com/myTooltip.css">
+<!-- <link rel="stylesheet" href="resources/css/com/filepond.css"> -->
+<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
 <link rel="stylesheet" href="resources/css/com/bootstrap3.css">
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
 <link rel="stylesheet" href="resources/css/datepicker/datapicker.min.css">
@@ -74,13 +76,14 @@
 	</div>
 	<div id="myMpa">
 	</div>
-	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/app.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/com/router.js"></script>
+	<script src="resources/js/com/filepond.min.js"></script>
 	<script src="resources/js/com/myTooltip.js"></script>
 	<script src="resources/js/com/datapicker.min.js"></script>
 	<script src="resources/js/com/datapicker.ko-kr.js"></script>
- 	<script src="resources/js/signin/signin.js"></script> 
+ 	<script src="resources/js/signin/signin.js"></script>  -->
 
 	<script src="resources/js/home/home.js"></script>
 	<script src="resources/js/compo/compo.js"></script>
@@ -91,8 +94,10 @@
 <script>
 app.run('<%=application.getContextPath()%>');
 
-function allowDrop(ev) { ev.preventDefault(); } 
-function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); } 
+FilePond.parse(document.body);
+
+function allowDrop(ev) { ev.preventDefault(); }
+function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
 function drop(ev) { ev.preventDefault(); 
 var c = ev.dataTransfer.getData("text"); 
 ev.target.appendChild(document.getElementById(c)); } 

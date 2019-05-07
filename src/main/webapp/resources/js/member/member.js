@@ -126,10 +126,19 @@ member = (() => {
     	$('#profile_photo_update').click(()=>{
     		profile_photo_update();
     	});
+    	$('.imgsignupbtnbg button[type=submit]').click(e=>{
+    		update_profile();
+    	});
     	
     }
     let profile_photo_update =()=>{
     	$('#content').empty().html(compo.update_photo_player());
+    	$('.textcontentpg1').click(()=>{
+    		profile();
+    	});
+    	$('.textcontentpg11').click(()=>{
+    		profile_photo_update();
+    	});
     }
 
     // Sign Up { Modal, Date_Picker, Tool_Tip, Validate }
@@ -189,7 +198,6 @@ member = (() => {
     					};
     			$('.modal-content').html(compo.signup_3());
     			$('.imgnextbtnbg').click(() => {
-    				e.preventDefault();
     				let formdata3 = {
     						characters : $('form input[name="charRadios"]:checked').val()
     				};
@@ -199,6 +207,7 @@ member = (() => {
     					let formdata4 = {
     							info : $('form input[name="memberInfo"]').val()
     					};
+    					
     					$('.modal-content').html(compo.signup_5());
     					let formdata5 = {
     							id : formdata.id,
@@ -264,12 +273,42 @@ member = (() => {
 //				alert('Image file uploading..');
 //			}
 		});
-    	
     }
+    let update_profile = () => {
+    	alert('update_profile');
+    	e.preventDefault();
+		let updateData = {
+				id : 'a',
+				name : $('form input[name="memberName"]').val(),
+				password : $('form input[name="memberPassword"]').val(),
+				birth : $('form input[name="memberBirth"]').val(),
+				characters : $('form select[id="memberSort"]').val(),
+				info : $('form input[name="memberInfo"]').val()
+		};
+		alert(id+'   '+name+'   '+info);
+		$.ajax({
+			url : $.ctx()+'/members/'+updateData.id,
+			type : 'PUT',
+			data : JSON.stringify(moddata),
+			dataType : 'json',
+			contentType : "application/json; charset=utf-8",
+			success : d => {
+				if(d.msg === 'SUCCESS') {
+					alert('ajax update : '+updateData.id);
+				} else {
+					alert('ajax update fail');
+				}
+			},
+			error : e => {
+				alert('ajax fail');
+			}
+		})
+	}
     return {
         onCreate:onCreate,
         profile:profile,
         profile_photo_update:profile_photo_update,
+        update_profile:update_profile,
         signup:signup
     }
 })();

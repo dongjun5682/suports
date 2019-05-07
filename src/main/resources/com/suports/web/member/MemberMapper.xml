@@ -78,4 +78,16 @@
 		#{photo}
 		)
 	</insert>
+	<update id="updateAMember"
+		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
+		statementType="PREPARED" timeout="20">
+		UPDATE MEMBER SET
+		NAME = #{name},
+		PASSWORD = #{password]},
+		BIRTHDY = #{birth},
+		CHARACTERS = #{characters},
+		INFO = #{info}
+		WHERE ID LIKE
+		LIKE #{id}
+	</update>
 </mapper>
