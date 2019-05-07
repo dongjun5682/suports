@@ -83,11 +83,11 @@
 		statementType="PREPARED" timeout="20">
 		UPDATE MEMBER SET
 		NAME = #{name},
-		PASSWORD = #{password]},
+		PASSWORD = #{password},
 		BIRTHDY = #{birth},
 		CHARACTERS = #{characters},
 		INFO = #{info}
-		WHERE ID LIKE
+		WHERE ID
 		LIKE #{id}
 	</update>
 </mapper>

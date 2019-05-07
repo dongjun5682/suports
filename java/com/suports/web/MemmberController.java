@@ -44,11 +44,8 @@ public class MemmberController {
 	@PostMapping("/members/{userid}")
 	public MemberDTO login(@RequestBody MemberDTO param, @PathVariable String userid) {
 		
-		
 		memberDTO = memberService.retrieveAMember(param);
 		
-		System.out.println("2========="+memberDTO);
-		System.out.println("3========="+param);
 		
 		return memberDTO;
 	
@@ -57,7 +54,11 @@ public class MemmberController {
 	@PutMapping("/members/{userid}")
 	public Map<?,?> update(@RequestBody MemberDTO param, @PathVariable String userid) {
 
+		System.out.println("update param in ========="+param);
+
 		memberService.modifyAMember(param);
+		
+		System.out.println("update param out ========="+param);
 		
 		return map;
 	}
