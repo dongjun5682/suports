@@ -11,9 +11,11 @@
   <result property="areaIndex" column="AREA_INDEX"/>
   <result property="stadiumPhoto" column="STADIUM_PHOTO"/>
   <result property="stadiumInfo" column="STADIUM_INFO"/>
-   <result property="stadiumAddr" column="STADIUM_ADDR"/>
-    <result property="latitude" column="LATITUDE"/>
-     <result property="hardness" column="HARDNESS"/>
+  <result property="stadiumAddr" column="STADIUM_ADDR"/>
+  <result property="latitude" column="LATITUDE"/>
+  <result property="hardness" column="HARDNESS"/>
+  <result property="areaName" column="AREA_NAME"/>
+     
 </resultMap>
 
 <select id="selectStadiumList"  resultMap="result"> 

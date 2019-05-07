@@ -7,6 +7,6 @@ import lombok.Data;
 
 @Data @Component @Lazy
 public class AreaDTO {
-	private String area_Name;
-	private int area_Code;
+	private String areaName;
+	private int areaCode;
 }

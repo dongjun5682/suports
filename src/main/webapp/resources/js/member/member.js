@@ -11,7 +11,6 @@ member = (() => {
         stadiumjs = js + '/stadium/stadium.js';
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js + '/team/team.js';
-        validatejs = js + '/com/validate.js';
     };
     let onCreate = (d) => {
         init();
@@ -20,7 +19,6 @@ member = (() => {
             $.getScript(stadiumjs),
             $.getScript(tournamentjs),
             $.getScript(teamjs),
-            $.getScript(validatejs),
             $.Deferred(function(d) {
                 $(d.resolve);
             })
@@ -29,6 +27,7 @@ member = (() => {
         });
     };
     let setContentView = (d) => {
+    	alert('member!!!');
          $('#content').empty().append(compo.content());
          jQuery(function($){
              $('#home').vidbg({
