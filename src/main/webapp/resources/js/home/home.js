@@ -147,6 +147,7 @@ home = (() => {
     let home_list = () => {
         let list_stadium_detail = '';
         $.getJSON($.ctx() + '/stadiums', d => {
+        	alert('home list');
             $.each(d.home, (i, j) => {
                 if (j.areaName == '서울') {
                     if (i < 4) {
