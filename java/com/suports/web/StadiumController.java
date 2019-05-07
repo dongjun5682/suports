@@ -59,6 +59,7 @@ public class StadiumController {
 		map.put("pageSize", "12");
 		map.put("blockSize", "5");
 		map.put("totalCount",c.get());
+
 		pxy.carryOut(map);
 		IFunction i = (Object o)-> staMap.searchStadium(pxy);
 		List<?> ls = (List<?>) i.apply(pxy);
