@@ -44,7 +44,7 @@ member = (() => {
         $('#content').css('margin-top', '0');
         $('#footer').remove();
         $('#myMpa').after(compo.footer());
-        home.home_list();
+        home_list_after();
         $('#nav').empty().after(compo.login_nav());
         $('#userBtn').click(() => {
             $('#userBtn').after(compo.login_drop_btn());
@@ -97,26 +97,97 @@ member = (() => {
                     break;
             }
         })
-          $('#sear-btn').click(function() {
-                $.getScript(compojs, () => {
-                    compo.stadium_list_sidebar();
-                    $('#content').css('margin-top', '80px');
-                    $.getScript(stadiumjs, () => {
-                        stadium.onCreate();
-                    });
-
-                })
-            });
-            $('#stadium_list').click(() => {
-                $('#content').css('margin-top', '80px');
-                stadium.onCreate();
-            })
-            $('.course-img').click(() => {
-                $('#content').css('margin-top', '80px');
-                stadium.list_detail();
-            })
+           $('#sear-btn').click(function() {
+        	/*alert('addr : '+ $('.search-addr').val());
+        	alert('date : '+ $('.search-date').val());
+        	alert('time : '+ $('.search-time').val());
+        	alert('sport : '+ $('.search-sports').val());
+        	alert('position : '+ $('.search-position').val());*/
+        	let search = {p : 1 , s : $('.search-addr').val()};
+        	stadium.srch_after(search);
+        });
+        $('#stadium_list').click(() => {
+            $('#content').css('margin-top', '80px');
+            alert('전체 운동장 보기');
+            let arr = {p :1};
+            stadium.list_after(arr);
+        })
        
     }
+    let home_list_after = () => {
+        let list_stadium_detail = '';
+        $.getJSON($.ctx() + '/stadiums', d => {
+            $.each(d.home, (i, j) => {
+                if (j.areaName == '서울') {
+                    if (i < 4) {
+                        $('<div class="col-md-3 col-sm-6 col-xs-6" >' +
+                            '  <div class="course">' +
+                            '    <a href="#" class="course-img">' +
+                            '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
+                            '      <i class="course-link-icon fa fa-link"></i>' +
+                            '    </a>' +
+                            '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                            '    <div class="course-details">' +
+                            '      <span class="course-category">' + j.stadiumAddr + '</span>' +
+                            '    </div>' +
+                            '    <div class="course-people">' +
+                            '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                            '    </div>' +
+                            '  </div>' +
+                            '</div> ').appendTo('.seoul_stadium').click(function() {
+                            alert(j.stadiumName);
+                            	stadium.list_detail_after(j);
+                        });
+                    }
+                } else if (j.areaName == '인천') {
+                    if (i < 14) {
+                        $('<div class="col-md-3 col-sm-6 col-xs-6" >' +
+                            '  <div class="course">' +
+                            '    <a href="#" class="course-img">' +
+                            '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
+                            '      <i class="course-link-icon fa fa-link"></i>' +
+                            '    </a>' +
+                            '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                            '    <div class="course-details">' +
+                            '      <span class="course-category">' + j.stadiumAddr + '</span>' +
+                            '    </div>' +
+                            '    <div class="course-people">' +
+                            '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                            '    </div>' +
+                            '  </div>' +
+                            '</div> ').appendTo('.Incheon_stadium').click(function() {
+                            alert(j.stadiumName);
+                            stadium.list_detail_after(j);
+                        });
+                    }
+                } else if (j.areaName == '경기') {
+                    if (i < 20) {
+                        $('<div class="col-md-3 col-sm-6 col-xs-6">' +
+                            '  <div class="course">' +
+                            '    <a href="#" class="course-img">' +
+                            '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
+                            '      <i class="course-link-icon fa fa-link"></i>' +
+                            '    </a>' +
+                            '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                            '    <div class="course-details">' +
+                            '      <span class="course-category">' + j.stadiumAddr + '</span>' +
+                            '    </div>' +
+                            '    <div class="course-people">' +
+                            '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                            '    </div>' +
+                            '  </div>' +
+                            '</div> ').appendTo('.gyeonggi_stadium').click(function() {
+                            alert(j.stadiumName);
+                            stadium.list_detail_after(j);
+                        });
+                    }
+                }
+            });
+        });
+    }
+
+    
+    
     let profile =()=>{
     	$('#footer').remove();
     	$('#content').empty().html(compo.update_player()).css('margin-top', '80px');
@@ -309,6 +380,7 @@ member = (() => {
         profile:profile,
         profile_photo_update:profile_photo_update,
         update_profile:update_profile,
-        signup:signup
+        signup:signup,
+        home_list_after:home_list_after
     }
 })();

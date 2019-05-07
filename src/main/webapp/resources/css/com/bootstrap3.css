@@ -3057,7 +3057,14 @@ th {
 .table-striped>tbody>tr:nth-of-type(odd) {
 	background-color: #f9f9f9
 }
-#a-team, #b-team {
+.a-team{
+width:60px;
+height:50px;
+margin:10px;
+padding:10px;
+border:2px solid #fffafa;
+}
+.b-team {
 width:60px;
 height:50px;
 margin:10px;

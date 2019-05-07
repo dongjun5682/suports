@@ -83,7 +83,7 @@
 	<script src="resources/js/com/myTooltip.js"></script>
 	<script src="resources/js/com/datapicker.min.js"></script>
 	<script src="resources/js/com/datapicker.ko-kr.js"></script>
- 	<script src="resources/js/signin/signin.js"></script>  -->
+ 	<script src="resources/js/signin/signin.js"></script> 
 
 	<script src="resources/js/home/home.js"></script>
 	<script src="resources/js/compo/compo.js"></script>
