@@ -69,7 +69,7 @@ public class StadiumController {
 
 	@GetMapping("/stadiums")
 	public Map<?,?> list(){
-		System.out.println(" home list!!!");
+//		System.out.println(" home list!!!"); // 홈 전역 걸쳐 자꾸 떠서 주석처리
 		ISupplier s = ()-> staMap.selectAllStadium();
 		List<?> allStadium = (List<?>) s.get();
 		map.clear();

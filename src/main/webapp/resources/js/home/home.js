@@ -147,7 +147,7 @@ home = (() => {
     let home_list = () => {
         let list_stadium_detail = '';
         $.getJSON($.ctx() + '/stadiums', d => {
-        	alert('home list');
+//        	alert('home list'); 홈 전역 걸쳐 자꾸 떠서 주석처리
             $.each(d.home, (i, j) => {
                 if (j.areaName == '서울') {
                     if (i < 4) {
