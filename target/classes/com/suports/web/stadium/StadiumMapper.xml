@@ -11,24 +11,25 @@
   <result property="areaIndex" column="AREA_INDEX"/>
   <result property="stadiumPhoto" column="STADIUM_PHOTO"/>
   <result property="stadiumInfo" column="STADIUM_INFO"/>
-  <result property="areaName" column="AREA_NAME"/>
+   <result property="stadiumAddr" column="STADIUM_ADDR"/>
+    <result property="latitude" column="LATITUDE"/>
+     <result property="hardness" column="HARDNESS"/>
 </resultMap>
 
-<select id="selectStadiumList"  resultMap="result">
-   SELECT @ROWNUM:=@ROWNUM+1 AS rownum,
-           S.*
-    FROM STADIUM S, (SELECT @ROWNUM:=0)TMP
-    ORDER BY rownum DESC
-    limit #{startRow}, #{pageSize};
+<select id="selectStadiumList"  resultMap="result"> 
+   SELECT S.STADIUM_NAME ,S.STADIUM_PHOTO ,S.STADIUM_INFO ,S.STADIUM_ADDR 
+    FROM STADIUM S 
+    limit #{startRow}, #{pageSize}; 
   </select>
   <select id="countStadium" resultType="int">
     SELECT COUNT(*) FROM STADIUM
   </select>
-  <select id="selectStadiumlists" resultMap="result"
+  <select id="selectStadiumlists" resultType="com.suports.web.domain.StadiumDTO"
 	parameterType="com.suports.web.Proxy">
- 	SELECT S.*
+ 	SELECT S.STADIUM_NAME stadiumName,S.STADIUM_PHOTO stadiumPhoto,S.STADIUM_INFO stadiumInfo,S.STADIUM_ADDR stadiumAddr
 	FROM STADIUM S
 	WHERE S.STADIUM_INFO LIKE #{search}
+	OR S.STADIUM_ADDR LIKE #{search}
 	limit #{startRow}, #{pageSize}
 	  </select>	 
 
@@ -36,6 +37,7 @@
   SELECT COUNT(*)
 	FROM STADIUM S 
 		WHERE S.STADIUM_INFO LIKE #{value}
+		OR S.STADIUM_ADDR LIKE #{value}
       </select>
 	<select id="selectAllStadium" resultMap="result">
 		SELECT STADIUM_NAME,STADIUM_INFO,STADIUM_PHOTO,A.AREA_NAME
