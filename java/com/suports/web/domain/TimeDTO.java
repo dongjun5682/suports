@@ -7,6 +7,6 @@ import lombok.Data;
 
 @Data @Component @Lazy
 public class TimeDTO {
-	private String game_Time;
-	private int stadium_Index,game_Number;
+	private String timeIndex;
+	private int time,stadiumIndex;
 }

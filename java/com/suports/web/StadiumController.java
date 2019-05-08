@@ -43,6 +43,7 @@ public class StadiumController {
 		map.clear();
 		map.put("ls", ls);
 		map.put("pxy", pxy);
+		System.out.println(ls.toString());
 		return map;
 	}
 	@GetMapping("/stadiums/search/{search}/{page}")
@@ -72,7 +73,6 @@ public class StadiumController {
 
 	@GetMapping("/stadiums")
 	public Map<?,?> list(){
-//		System.out.println(" home list!!!"); // 홈 전역 걸쳐 자꾸 떠서 주석처리
 		ISupplier s = ()-> staMap.selectAllStadium();
 		List<?> allStadium = (List<?>) s.get();
 		map.clear();
@@ -80,4 +80,5 @@ public class StadiumController {
 		map.put("home", allStadium);
 		return map;
 	}
+	
 }

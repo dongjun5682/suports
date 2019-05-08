@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<link rel="shortcut icon" href="resources/img/logo/favicon.ico" type="image/x-icon">
+<link rel="icon" href="resources/img/logo/favicon.ico" type="image/x-icon">
 <title>SUPORTS</title>
 
 <script src='//unpkg.com/popper.js@1/dist/umd/popper.min.js'></script>

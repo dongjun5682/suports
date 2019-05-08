@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.suports.web.mapper.GameMapper">
+
+	<resultMap id="result" type="hashmap">
+		<id property="gameIndex" column="GAME_INDEX" />
+		<result property="position" column="POSITION_NAME" />
+		<result property="date" column="GAME_DATE" />
+		<result property="timeIndex" column="TIME_INDEX" />
+		<result property="memberIndex" column="MEMBER_INDEX" />
+	</resultMap>
+
+	<select id="selectGame" parameterType="int"
+		resultMap="result">
+		SELECT GAME_INDEX,POSITION_NAME,GAME_DATE,TIME_INDEX,MEMBER_INDEX
+		 FROM GAME WHERE TIME_INDEX LIKE #{value};
+	</select>
+
+</mapper>

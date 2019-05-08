@@ -19,7 +19,6 @@ import com.suports.web.domain.MemberDTO;
 import com.suports.web.service.MemberServiceImpl;
 
 @RestController
-@SessionAttributes({"member","memberDetail"})
 public class MemmberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemmberController.class);
 

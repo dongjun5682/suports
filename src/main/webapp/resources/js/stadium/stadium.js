@@ -31,6 +31,7 @@ stadium = (() => {
     	list(arr);
     }
     let list =(x)=> {
+        $('#content').css('margin-top', '80px');
     	$('#map').empty();
     	$('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
@@ -41,7 +42,7 @@ stadium = (() => {
         $('#area_srch').on('click',()=>{
         	alert('검색 클릭')
 			let search = $('#search').val();
-			if($.fn.nullChecker(search)){
+			if(search === ''){
 				alert('검색어를 입력하십시오');
 			}else{
 				alert('검색중 ');
@@ -200,46 +201,42 @@ stadium = (() => {
     
     //드래그앤드랍 업데이트
     let list_detail = (j) => {
-    	alert('!!!!detail');
-    	/*function loadElement(){ 
-    		if(!storageSupport()){ 
-    			return null;  
-    		}
-    		return window.sessionStorage.getItem('id'); 
-    	}*/
+    	alert('detail index : '+j.stadiumIndex);
     	$('#content').html(compo.stadium_list_detail(j));
-    	$('#sta_photo').css({'background-image':'url(resources/img/stadium/field.jpg)','width':'100%','margin-top':'50px','margin-bottom':'100px','height':'947px'})
-    			.html('<div class="a-team" id="roster_0" ondrop="drop(event)" ondragover="allowDrop(event)"> '
-    			+'<img src="resources/img/soccer-ball.png" draggable="true" ondragstart="drag(event)" id="roster_ball" width="72" height="72"> '
-    			+'</div> '
-    			////왼쪽 팀
-    			+'<div class="a-team" id="roster_1" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 159px;position: absolute;bottom: -527px;"></div>'
-    			+'<div class="a-team" id="roster_2" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -334px;"></div>'
-    			+'<div class="a-team" id="roster_3" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -441px;"></div>'
-    			+'<div class="a-team" id="roster_4" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -592px;"></div>'
-    			+'<div class="a-team" id="roster_5" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -706px;"></div>'
-    			+'<div class="a-team" id="roster_6" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;margin-top: -60px;position: absolute;bottom: -380px;"></div>'
-    			+'<div class="a-team" id="roster_7" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -527px;"></div>'
-    			+'<div class="a-team" id="roster_8" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -675px;"></div>'
-    			+'<div class="a-team" id="roster_9" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -380px;"></div>'
-    			+'<div class="a-team" id="roster_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -527px;"></div>'
-    			+'<div class="a-team" id="roster_11" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -675px;"></div>'
-    			////오른쪽 팀
-    			+'<div class="b-team" id="roster_12" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 703px;position: absolute;bottom: -527px;"></div>'
-    			+'<div class="b-team" id="roster_13" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 703px;position: absolute;bottom: -380px;"></div>'
-    			+'<div class="b-team" id="roster_14" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 703px;position: absolute;bottom: -675px;"></div>'
-    			+'<div class="b-team" id="roster_15" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 804px;position: absolute;bottom: -601px;"></div>'
-    			+'<div class="b-team" id="roster_16" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 803px;position: absolute;bottom: -449px;"></div>'
-    			+'<div class="b-team" id="roster_17" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 895px;margin-top: -60px;position: absolute;bottom: -524px;"></div>'
-    			+'<div class="b-team" id="roster_18" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -706px;"></div>'
-    			+'<div class="b-team" id="roster_19" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -592px;"></div>'
-    			+'<div class="b-team" id="roster_20" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -441px;"></div>'
-    			+'<div class="b-team" id="roster_21" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -334px;"></div>'
-    			+'<div class="b-team" id="roster_22" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 1055px;position: absolute;bottom: -527px;"></div>'
-    			+'<button type="button" id="roster_save" class="btn hover2" style="bottom: -890px; right: 500px;background-color: white; padding: 16px; width: 6%;position: absolute;">'
-    			+'<span>저장</span>'
-    			+'</button>')
-    		
+    	let html ='<div class="a-team" id="roster_0" ondrop="drop(event)" ondragover="allowDrop(event)"> '
+		+'<img src="resources/img/football.png" draggable="true" ondragstart="drag(event)" id="roster_ball" width="72" height="72"> '
+		+'</div> ';
+		let a_team = ['<div class="a-team" id="roster_11" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -675px;"></div>'
+					,'<div class="a-team" id="roster_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -527px;"></div>'
+					,'<div class="a-team" id="roster_9" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -380px;"></div>'
+					,'<div class="a-team" id="roster_8" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -675px;"></div>'
+					,'<div class="a-team" id="roster_7" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -527px;"></div>'
+					,'<div class="a-team" id="roster_6" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;margin-top: -60px;position: absolute;bottom: -380px;"></div>'
+					,'<div class="a-team" id="roster_5" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -706px;"></div>'
+					,'<div class="a-team" id="roster_4" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -592px;"></div>'
+					,'<div class="a-team" id="roster_3" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -441px;"></div>'
+					,'<div class="a-team" id="roster_2" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -334px;"></div>'
+					,'<div class="a-team" id="roster_1" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 159px;position: absolute;bottom: -527px;"></div>'];
+//		+'<div class="b-team" id="roster_12" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 703px;position: absolute;bottom: -527px;"></div>'
+//		+'<div class="b-team" id="roster_13" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 703px;position: absolute;bottom: -380px;"></div>'
+//		+'<div class="b-team" id="roster_14" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 703px;position: absolute;bottom: -675px;"></div>'
+//		+'<div class="b-team" id="roster_15" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 804px;position: absolute;bottom: -601px;"></div>'
+//		+'<div class="b-team" id="roster_16" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 803px;position: absolute;bottom: -449px;"></div>'
+//		+'<div class="b-team" id="roster_17" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 895px;margin-top: -60px;position: absolute;bottom: -524px;"></div>'
+//		+'<div class="b-team" id="roster_18" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -706px;"></div>'
+//		+'<div class="b-team" id="roster_19" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -592px;"></div>'
+//		+'<div class="b-team" id="roster_20" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -441px;"></div>'
+//		+'<div class="b-team" id="roster_21" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -334px;"></div>'
+//		+'<div class="b-team" id="roster_22" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 1055px;position: absolute;bottom: -527px;"></div>'
+//		+'<button type="button" id="roster_save" class="btn hover2" style="bottom: -890px; right: 500px;background-color: white; padding: 16px; width: 6%;position: absolute;">'
+//		+'<span>저장</span>'
+//		+'</button>'
+    	$.getJSON($.ctx()+'/game/position/'+j.stadiumIndex, d=>{
+    		$.each(d.position,(i,j)=>{
+    			html += a_team[i];
+    		});
+    		$('#sta_photo').css({'background-image':'url(resources/img/stadium/field.jpg)','width':'100%','margin-top':'50px','margin-bottom':'100px','height':'947px'}).html(html);
+    	});  
     	$('#footer').css('.section','padding-bottom:78px;');
     	$('#footer').css('.section','background-color: #1db91d9e;');
     	$('#footer').attr('style','position: fixed;left: 0;bottom: 0;width: 100%;background-color: #8cff88;color: white;text-align: center;padding-bottom: 5px;padding-bottom: 34px;-top: 5px;padding-top: 0px;"')
@@ -280,46 +277,29 @@ stadium = (() => {
     }
     
     let list_detail_after = (j) => {
-    	alert('after detail');
-    	/*function loadElement(){ 
-    		if(!storageSupport()){ 
-    			return null;  
-    		}
-    		return window.sessionStorage.getItem('id'); 
-    	}*/
+    	alert('detail after index : '+j.stadiumIndex);
     	$('#content').html(compo.stadium_list_detail(j));
-    	$('#sta_photo').css({'background-image':'url(resources/img/stadium/field.jpg)','width':'100%','margin-top':'50px','margin-bottom':'100px','height':'947px'})
-    			.html('<div class="a-team" id="roster_0" ondrop="drop(event)" ondragover="allowDrop(event)"> '
-    			+'<img src="'+$.member().photo+'" draggable="true" ondragstart="drag(event)" id="roster_ball" width="72" height="72"> '
-    			+'</div> '
-    			////왼쪽 팀
-    			+'<div class="a-team" id="roster_1" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 159px;position: absolute;bottom: -527px;"></div>'
-    			+'<div class="a-team" id="roster_2" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -334px;"></div>'
-    			+'<div class="a-team" id="roster_3" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -441px;"></div>'
-    			+'<div class="a-team" id="roster_4" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -592px;"></div>'
-    			+'<div class="a-team" id="roster_5" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -706px;"></div>'
-    			+'<div class="a-team" id="roster_6" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;margin-top: -60px;position: absolute;bottom: -380px;"></div>'
-    			+'<div class="a-team" id="roster_7" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -527px;"></div>'
-    			+'<div class="a-team" id="roster_8" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -675px;"></div>'
-    			+'<div class="a-team" id="roster_9" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -380px;"></div>'
-    			+'<div class="a-team" id="roster_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -527px;"></div>'
-    			+'<div class="a-team" id="roster_11" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -675px;"></div>'
-    			////오른쪽 팀
-    			+'<div class="b-team" id="roster_12" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 703px;position: absolute;bottom: -527px;"></div>'
-    			+'<div class="b-team" id="roster_13" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 703px;position: absolute;bottom: -380px;"></div>'
-    			+'<div class="b-team" id="roster_14" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 703px;position: absolute;bottom: -675px;"></div>'
-    			+'<div class="b-team" id="roster_15" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 804px;position: absolute;bottom: -601px;"></div>'
-    			+'<div class="b-team" id="roster_16" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 803px;position: absolute;bottom: -449px;"></div>'
-    			+'<div class="b-team" id="roster_17" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 895px;margin-top: -60px;position: absolute;bottom: -524px;"></div>'
-    			+'<div class="b-team" id="roster_18" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -706px;"></div>'
-    			+'<div class="b-team" id="roster_19" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -592px;"></div>'
-    			+'<div class="b-team" id="roster_20" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -441px;"></div>'
-    			+'<div class="b-team" id="roster_21" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -334px;"></div>'
-    			+'<div class="b-team" id="roster_22" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 1055px;position: absolute;bottom: -527px;"></div>'
-    			+'<button type="button" id="roster_save" class="btn hover2" style="bottom: -890px; right: 500px;background-color: white; padding: 16px; width: 6%;position: absolute;">'
-    			+'<span>저장</span>'
-    			+'</button>')
-    		
+    	let html ='<div class="a-team" id="roster_0" ondrop="drop(event)" ondragover="allowDrop(event)"> '
+    		+'<img src="resources/img/'+$.member().photo+'" draggable="true" ondragstart="drag(event)" id="roster_ball" width="72" height="72"> '
+    		+'</div> ';
+    		let a_team = ['<div class="a-team" id="roster_11" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -675px;"></div>'
+    					,'<div class="a-team" id="roster_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -527px;"></div>'
+    					,'<div class="a-team" id="roster_9" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -380px;"></div>'
+    					,'<div class="a-team" id="roster_8" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -675px;"></div>'
+    					,'<div class="a-team" id="roster_7" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -527px;"></div>'
+    					,'<div class="a-team" id="roster_6" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;margin-top: -60px;position: absolute;bottom: -380px;"></div>'
+    					,'<div class="a-team" id="roster_5" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -706px;"></div>'
+    					,'<div class="a-team" id="roster_4" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -592px;"></div>'
+    					,'<div class="a-team" id="roster_3" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -441px;"></div>'
+    					,'<div class="a-team" id="roster_2" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -334px;"></div>'
+    					,'<div class="a-team" id="roster_1" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 159px;position: absolute;bottom: -527px;"></div>'];
+    	
+    		$.getJSON($.ctx()+'/game/position/'+j.stadiumIndex, d=>{
+        		$.each(d.position,(i,j)=>{
+        			html += a_team[i];
+        		});
+        		$('#sta_photo').css({'background-image':'url(resources/img/stadium/field.jpg)','width':'100%','margin-top':'50px','margin-bottom':'100px','height':'947px'}).html(html);
+        	});  
     	$('#footer').css('.section','padding-bottom:78px;');
     	$('#footer').css('.section','background-color: #1db91d9e;');
     	$('#footer').attr('style','position: fixed;left: 0;bottom: 0;width: 100%;background-color: #8cff88;color: white;text-align: center;padding-bottom: 5px;padding-bottom: 34px;-top: 5px;padding-top: 0px;"')

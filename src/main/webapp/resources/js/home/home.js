@@ -3,7 +3,7 @@ var home = home || {};
 
 home = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
-    let _, js, compojs, memberjs, stadiumjs, tournamentjs,teamjs,backjs,msessionjs;
+    let _, js, compojs, memberjs, stadiumjs, tournamentjs, teamjs, backjs, msessionjs;
 
     let init = () => {
         _ = $.ctx();
@@ -13,8 +13,8 @@ home = (() => {
         stadiumjs = js + '/stadium/stadium.js';
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js + '/team/team.js';
-        backjs = js+'/backgroundTransition.js';
-        msessionjs = js+'/home/membersession.js'
+        backjs = js + '/backgroundTransition.js';
+        msessionjs = js + '/home/membersession.js'
     };
     let onCreate = () => {
         init();
@@ -36,14 +36,14 @@ home = (() => {
     let setContentView = () => {
         $('#content').before(compo.header());
         $('#content').append(compo.content());
-        jQuery(function($){
+        jQuery(function($) {
             $('#home').vidbg({
                 'mp4': 'resources/video/Fifa.mp4',
             }, {
-              // Options
-              muted: true,
-              loop: true,
-        	  overlay: true,
+                // Options
+                muted: true,
+                loop: true,
+                overlay: true,
             });
         });
         $('#myMpa').after(compo.footer());
@@ -79,39 +79,51 @@ home = (() => {
             }
         })
         $('#sear-btn').click(function() {
-        	/*alert('addr : '+ $('.search-addr').val());
-        	alert('date : '+ $('.search-date').val());
-        	alert('time : '+ $('.search-time').val());
-        	alert('sport : '+ $('.search-sports').val());
-        	alert('position : '+ $('.search-position').val());*/
-        	let search = {p : 1 , s : $('.search-addr').val()};
-        	stadium.srch(search);
+            /*alert('addr : '+ $('.search-addr').val());
+            alert('date : '+ $('.search-date').val());
+            alert('time : '+ $('.search-time').val());
+            alert('sport : '+ $('.search-sports').val());
+            alert('position : '+ $('.search-position').val());*/
+            let search = {
+                p: 1,
+                s: $('.search-addr').val()
+            };
+            if (search.s === '') {
+                let arr = {
+                    p: 1
+                };
+                stadium.list(arr);
+            } else {
+                stadium.srch(search);
+            }
         });
         $('#stadium_list').click(() => {
             $('#content').css('margin-top', '80px');
             alert('전체 운동장 보기');
-            let arr = {p :1};
+            let arr = {
+                p: 1
+            };
             stadium.list(arr);
         })
-       
+
         //로고 클릭시 새로 그리기
         $('.navbar-brand .logo').click(() => {
-        	alert('로고 클릭!!');
-        	  $('#content').empty().append(compo.content());
-              jQuery(function($){
-                  $('#home').vidbg({
-                      'mp4': 'resources/video/Fifa.mp4',
-                  }, {
+            alert('로고 클릭!!');
+            $('#content').empty().append(compo.content());
+            jQuery(function($) {
+                $('#home').vidbg({
+                    'mp4': 'resources/video/Fifa.mp4',
+                }, {
                     // Options
                     muted: true,
                     loop: true,
-              	  overlay: true,
-                  });
-              });
-              $('#rm_search').append(compo.srch());
-              $('#content').css('margin-top', '0');
-              $('#footer').remove();
-              $('#myMpa').after(compo.footer());
+                    overlay: true,
+                });
+            });
+            $('#rm_search').append(compo.srch());
+            $('#content').css('margin-top', '0');
+            $('#footer').remove();
+            $('#myMpa').after(compo.footer());
             $('#team_search').click(() => {
                 $('#position').empty().attr('id', 'people').append(compo.team_search());
             });
@@ -120,14 +132,19 @@ home = (() => {
             });
             home_list();
             $('#sear-btn').click(function() {
-            	alert();
-            	let search = {p : 1 , s : ''}
-            	stadium.srch();
+                alert();
+                let search = {
+                    p: 1,
+                    s: ''
+                }
+                stadium.srch();
             });
             $('#stadium_list').click(() => {
                 $('#content').css('margin-top', '80px');
                 alert('전체 운동장 보기');
-                let arr = {p :1};
+                let arr = {
+                    p: 1
+                };
                 stadium.list(arr);
             })
         })
@@ -155,7 +172,7 @@ home = (() => {
                             '  </div>' +
                             '</div> ').appendTo('.seoul_stadium').click(function() {
                             alert(j.stadiumName);
-                            	 stadium.list_detail(j);
+                            stadium.list_detail(j);
                         });
                     }
                 } else if (j.areaName == '인천') {
