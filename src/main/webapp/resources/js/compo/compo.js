@@ -168,12 +168,13 @@ compo = {
 		+'            </div>'
 		+'        </div>';
 	},
+	//로고 위치 조정
 	footer : ()=>{
 		return '<footer id="footer" class="section">'
 		+'            <div class="container">'
 		+'                <div id="bottom-footer" class="row">'
 		+'                    <div class="col-md-6">'
-		+'                        <div class="footer-logo">'
+		+'                        <div class="footer-logo" style=" position: absolute;left: 10px;">'
 		+'                            <a class="logo" href="#">'
 		+'                       <img src="resources/img/logo/logo.png" alt="logo">'
 		+'                            </a>'
@@ -845,7 +846,7 @@ compo = {
 		 +'           </div>'
 		 +'       </div>'; 
 	},
-	payment : ()=>{
+	payment : (j)=>{
 		return '<div class="container">'
 			+'<div class="payment">'
 		+'<h6 style="margin-left: 28px;margin-bottom: 30px;font-size: 26px;">확인 및 결제 예약</h6>'
@@ -866,7 +867,7 @@ compo = {
 		  +'</div>'
 		  +'<div class="form-group">'
 		    +'<label for="exampleInputEmail2"></label>'
-		    +'<input type="email" class="form-control"  placeholder="성" style="margin-top: 39px;margin-left: 4px;width: 287px;">'
+		    +'<input type="email" class="form-control"  placeholder="성" style="margin-top: 49px;margin-left: 4px;width: 287px;">'
 		  +'</div>'
 		+'</form>'
 		+' <div class="form-group">'
@@ -876,10 +877,10 @@ compo = {
 		+'<form class="form-inline" style="margin-left: 15px;">'
 		+'  <div class="form-group">'
 		+'    <label class="sr-only" >Email address</label>'
-		+'    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="만료일">'
+		+'    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="만료일" style=" width: 500px;">'
 		+'  <div class="form-group">'
 		+'    <label class="sr-only" >Password</label>'
-		+'    <input type="password" class="form-control"placeholder="CVV" style=" width: 317px; ">'
+		+'    <input type="password" class="form-control"placeholder="CVV" style="width: 500px;">'
 		+'  </div>'
 		+' <h4 style="margin-top: 30px;">생년월일(주민번호 앞 6자리)</h4>'
 		+' <input type="email" class="form-control"  placeholder="940107" style="height: 40px;width: 500px;margin-top: 20px;"><br>'
@@ -897,16 +898,16 @@ compo = {
 		+'결제가 정상적으로 실행되지 않으면, 예약 참여가 취소됩니다.</textarea>&#10'
 		+'  </div>'
 		+'<div class=pay_info4 >'
-		   +'<button type="button" class="btn hover2" name="button" id="payment_reservation" style="width: 50%;padding: 16px;background-color: #337ab7;margin-left: 440px;">'
+		   +'<button type="button" class="btn hover2" name="button" id="payment_reservation" style="width: 50%;padding: 16px;background-color: #22c781;margin-left: 440px;">'
 		   +'<span style="color:white">결제 예약하기</span></button>'
 		+'  </div>'
 		+'    </div>'
 		 +'<div class="col-xs-6" style="margin-top: -180px;margin-left: 300px;width: 434px;height:420px; border: 1px solid #ccc; resize: none;"><br>'
 		   +'<div class=pay_info1>'
-		   +'<img src="resources/img/an.jpg" style="margin-left: 215px;width: 41%;margin-right: 21px;">'
+		   +'<img src="' + j.stadiumPhoto + '" style="margin-left: 215px;width: 41%;margin-right: 21px;">'
 		   +'<div class="row" style=" margin-right: 230px;margin-bottom: 12px;">'
-		   +'<p style="margin-bottom: -85px;">인천 광역시</p>'
-		   +'<p>문학 축구장</p>'
+		   +'<p style="margin-bottom: -85px;"></p>'
+		   +'<p>' + j.stadiumName + '</p>'
 		   +'<p>★★★★</p>'
 		   +'</div>'
 		   +'</div>'
@@ -929,16 +930,16 @@ compo = {
 		 +'</div>';
 	},
 	
-	payment_reservation : ()=> {
+	payment_reservation : (j)=> {
 		return  '<div class="reser-succeess" style=" margin-top: 80px;">'
 		+'  <div class="row">'
 		+'    <div class="reser-header">'
-		+'      <h3 style="float:left;margin-left: 131px;">결제 예약 완료</h3>'
+		+'      <h3 style="float:left;margin-left: 131px;margin-top: 42px;">결제 예약 완료</h3>'
 		+'    </div>'
 		+'  </div>'
 		+'  <div class="row">'
 		+'    <div class="col-md-12">'
-		+'      <h3 style="float:left;margin-left: 155px;margin-top: 125px;">운동장이 결제예약 되었습니다</h3>'
+		+'      <h3 style="float:left;margin-left: 113px;margin-top: 58px;margin-bottom: 110px;">운동장이 결제예약 되었습니다</h3>'
 		+'    </div>'
 		+'  </div>'
 		+'  <div class="row">'
@@ -949,7 +950,7 @@ compo = {
 		+'    </div>'
 		+'  <div class="row">'
 		+'    <div class="col-md-6" >'
-		+'        <img src="resources/img/stadium/stadium_1.jpg" style="width: 30%;">'
+		+'        <img src="' +j.stadiumPhoto +'" style="width: 30%;">'
 		+'<div class="text">'
 		+'    <div class="col-md-6" style=" margin-top: 32px;margin-left: 215px;margin-bottom: 18px; border-width: 2px 0px 0px 0px;">'
 		  +'<div style="border: 1px solid #dcdcdc; border-width: 1px 1px 1px 1px;">'
@@ -963,7 +964,7 @@ compo = {
 		  +'    </div>'  
 		+'    </div>'
 		+'      <div class="col-md-6" style="margin-top: 130px;">'
-		+'      <button class="btn hover1" style="width: 22%;padding: 10px; background-color: #ced5da;">홈으로</button>'
+		+'      <button class="btn hover1" id="pay_home" style="width: 22%;padding: 10px; background-color: #ced5da;">홈으로</button>'
 		+'  <button class="btn hover2"  style="width: 22%;padding: 10px; background-color: #eae6e6;">결제 예약 확인</button>'
 		+'    </div>'
 		+'  </div>'
@@ -1252,16 +1253,16 @@ compo = {
 		+'<div class="container">'
 		+'<div class="row" style="margin-top: 20px;">'
 		+'<div class="col-md-5" style="margin-left: -135px;margin-top: -195px;text-align: left;">'
-		+'<div style="margin-top: -9px;">'
+		+'<div style="margin-top: -235px;">'
 		  +'<div style="float:left;">'
-		  +'<h3 style="text-align: left;margin-bottom: 20px;">경기장 정보</h3>'
-		  +'<p>1.전용축구장 : 인조잔디 1면 (6.400m2 B=100, L=64)</p>'
+		  +'<h3 style="text-align: left;margin-bottom: 32px;">경기장 정보</h3>'
+		  +'<p style="margin-bottom: 72px;">1.전용축구장 : 인조잔디 1면 (6.400m2 B=100, L=64)</p>'
 		  +'<p></p>'
 		  +'<p></p>'
-		  +'<p>2.다목적 구장 : 족구장 1면, 농구장 1면(6,400m B=100,L=64)</p>'
+		  +'<p style="margin-bottom: 83px;">2.다목적 구장 : 족구장 1면, 농구장 1면(6,400m B=100,L=64)</p>'
 		  +'<p></p>'
 		  +'<p></p>'
-		  +'<p>3.테 니 스 장 : 인조잔디 4면 (6,400m B=100,L=64)</p>'
+		  +'<p style="margin-bottom: 92px;">3.테 니 스 장 : 인조잔디 4면 (6,400m B=100,L=64)</p>'
 		  +'<p></p>'
 		  +'<p></p>'
 		  +'<p>4.부 대 시 설: 대강당(100명 수용),주차장(100대 수용)</p>'
@@ -2172,7 +2173,7 @@ compo = {
 		+'  <button type="button" class="btn btn-primary">신청</button>'
 		+'</div>';
 	},
-	map :()=>{
+	map :(j)=>{
 		return'<div id="map"></div>';
 	}
 }

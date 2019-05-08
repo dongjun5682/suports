@@ -108,12 +108,23 @@ home = (() => {
 
         //로고 클릭시 새로 그리기
         $('.navbar-brand .logo').click(() => {
+<<<<<<< HEAD
             alert('로고 클릭!!');
             $('#content').empty().append(compo.content());
             jQuery(function($) {
                 $('#home').vidbg({
                     'mp4': 'resources/video/Fifa.mp4',
                 }, {
+=======
+        	alert('로고 클릭!!');
+        	  $('#map').remove();
+        	  $('#myMpa').remove();
+        	  $('#content').empty().append(compo.content());
+              jQuery(function($){
+                  $('#home').vidbg({
+                      'mp4': 'resources/video/Fifa.mp4',
+                  }, {
+>>>>>>> jonghyeop
                     // Options
                     muted: true,
                     loop: true,
@@ -151,6 +162,8 @@ home = (() => {
     };
 
     let home_list = () => {
+    	/*$('#map').remove();
+    	$('#myMpa').remove();*/
         let list_stadium_detail = '';
         $.getJSON($.ctx() + '/stadiums', d => {
             $.each(d.home, (i, j) => {
