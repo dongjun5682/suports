@@ -193,6 +193,7 @@ member = (() => {
     let profile =()=>{
     	$('#footer').remove();
     	$('#content').empty().html(compo.update_player()).css('margin-top', '80px');
+    	password_tooltip();
     	$('#profile_update').click(()=>{
     		profile();
     	});
@@ -246,42 +247,13 @@ member = (() => {
 					email : $('form input[name="memberEmail"]').val()
 			};
     		$('.modal-content').html(compo.signup_2());
-    		$('#checkPassword').click(()=>{
-        		if($("#checkPassword").prop("checked")==true){
-    	        	$('#memberPassword').attr("type", "text");
-    	        	$("#checkPassword-text").css("color","#FC913A");
-    	        } 
-        		else {
-    	        	$('#memberPassword').attr("type", "password");
-    	        	$("#checkPassword-text").css("color","#AEB5BD");
-    	        }
-        	});
-    		$("#memberPassword").off("focus").on("focus", function () {
-    			var value = $(this).val();
-    			$('.js-mytooltip-pw').myTooltip('updateContent', getPwContent(value));
-    			});
-    		$("#memberPassword").off("click").on("click", function () {
-    			var value = $(this).val();
-    			if (!isNull(value)) {
-    				$('.js-mytooltip-pw').myTooltip('updateContent', getPwContent(value));
-    				}
-    			});
-    		$("#memberPassword").off("keyup").on("keyup", function () {
-    			$("#memberPassword").blur();
-    			$("#memberPassword").focus();
-    			});
-    		$('.js-mytooltip-pw').myTooltip({
-    			'offset': 30,
-    			'theme': 'light',
-    			'customClass': 'mytooltip-content',
-    			'content': '<p>t</p>'
-    				});   
+    		password_tooltip();
     		$('#datepicker').datepicker({
     			locale: 'ko-kr',
                 uiLibrary: 'bootstrap4'
     		});
-			 	$('.js-mytooltip').myTooltip('destroy');
     		$('.imgnextbtnbg').click(() => {
+    			$('.js-mytooltip').myTooltip('destroy');
     			let formdata2 = {
     					password : $('form input[name="memberPassword"]').val(),
     					birth : $('form input[name="memberBirth"]').val(),
@@ -296,12 +268,11 @@ member = (() => {
     						characters : $('form input[name="charRadios"]:checked').val()
     				};
     				$('.modal-content').html(compo.signup_4());
+    				pond.appendTo(document.getElementById("upload_pond"));
     				$('.imgnextbtnbg').click(() => {
-    					e.preventDefault();
     					let formdata4 = {
     							info : $('form input[name="memberInfo"]').val()
     					};
-    					
     					$('.modal-content').html(compo.signup_5());
     					let formdata5 = {
     							id : formdata.id,
@@ -368,11 +339,44 @@ member = (() => {
 //			}
 		});
     }
+    let password_tooltip = () => {
+    	$('#checkPassword').click(()=>{
+    		if($("#checkPassword").prop("checked")==true){
+	        	$('#memberPassword').attr("type", "text");
+	        	$("#checkPassword-text").css("color","#FC913A");
+	        } 
+    		else {
+	        	$('#memberPassword').attr("type", "password");
+	        	$("#checkPassword-text").css("color","#AEB5BD");
+	        }
+    	});
+		$("#memberPassword").off("focus").on("focus", function () {
+			var value = $(this).val();
+			$('.js-mytooltip-pw').myTooltip('updateContent', getPwContent(value));
+			});
+		$("#memberPassword").off("click").on("click", function () {
+			var value = $(this).val();
+			if (!isNull(value)) {
+				$('.js-mytooltip-pw').myTooltip('updateContent', getPwContent(value));
+				}
+			});
+		$("#memberPassword").off("keyup").on("keyup", function () {
+			$("#memberPassword").blur();
+			$("#memberPassword").focus();
+			});
+		$('.js-mytooltip-pw').myTooltip({
+			'offset': 30,
+			'theme': 'light',
+			'customClass': 'mytooltip-content',
+			'content': '<p>t</p>'
+				});   
+    }
     return {
         onCreate:onCreate,
         profile:profile,
         profile_photo_update:profile_photo_update,
         signup:signup,
-        home_list_after:home_list_after
+        home_list_after:home_list_after,
+        password_tooltip:password_tooltip
     }
 })();

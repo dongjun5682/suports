@@ -63,8 +63,10 @@ public class MemmberController {
 		return map;
 	}
 	
-	@PostMapping("/members/uploadFile")
+	@PostMapping("/members/uploadImg")
 	public Map<?,?> fileupload(@RequestParam("file") MultipartFile file) throws Exception {
+		
+		System.out.println("===== file upload in =====");
 		
 		return map;
 	}
