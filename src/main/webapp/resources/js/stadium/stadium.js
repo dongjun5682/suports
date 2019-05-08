@@ -201,12 +201,6 @@ stadium = (() => {
     //드래그앤드랍 업데이트
     let list_detail = (j) => {
     	alert('!!!!detail');
-    	/*function loadElement(){ 
-    		if(!storageSupport()){ 
-    			return null;  
-    		}
-    		return window.sessionStorage.getItem('id'); 
-    	}*/
     	$('#content').html(compo.stadium_list_detail(j));
     	$('#sta_photo').css({'background-image':'url(resources/img/stadium/field.jpg)','width':'100%','margin-top':'50px','margin-bottom':'100px','height':'947px'})
     			.html('<div class="a-team" id="roster_0" ondrop="drop(event)" ondragover="allowDrop(event)"> '
@@ -247,8 +241,8 @@ stadium = (() => {
     			+'<div class= col-ms-1>'
     	    	+'<a class="logo" href="index.html">'
     	    	+'<img src="resources/img/logo/logo.png" alt="logo"></a>'
-    	    	+'<button type="button" id="pay_btn_1" class="btn hover2" data-toggle="modal" data-target="#myModal" style="width: 32%;padding: 16px;background-color: #337ab7;margin-bottom: 38px;">'
-    	    	+'<span style="color:white">예약하기</span>'
+    	    	+'<button type="button" id="pay_btn_1" class="btn hover2" data-toggle="modal" data-target="#myModal" style="width: 35%;padding: 16px;background-color: #ffffff;margin-bottom: 38px;">'
+    	    	+'<span style="color:black">예약하기</span>'
     	    	+'</button>'
     	    	+'</div>'
     	    	+'<div class= col-ms-11>'
@@ -256,11 +250,14 @@ stadium = (() => {
     	    	+'</div>'
     	    	+'</div>');
     	//map 설정 ////
-    	
-//    	$(document).ready(function() {
-//            initMap();
-//        });
-//     	$('#myMpa').append(compo.map());
+    	$(document).ready(function() {
+        initMap(j);
+    	});
+    	$('#myMpa').append(compo.map(j));
+    	$('#myMpa').after('<p style="position: absolute;top: 2577px;right: 80px;">주 소</p>'
+    			+'<p style="position: absolute;top: 2601px;right: 80px;font-size: 19px;">' + j.stadiumAddr + '</p>'
+    		   +'<p style="position: absolute;top: 2642px;right: 80px;">★★★★★</p>'
+    		   +'<p style="position: absolute;top: 2670px;right: 80px;">02-300-8509</p>');
      	$('#map').css({'width':'100%','height':'400px','margin-bottom':'300px'});  
     	//예약 확인 버튼
         $('#pay_btn_1').click(()=>{
@@ -281,12 +278,6 @@ stadium = (() => {
     
     let list_detail_after = (j) => {
     	alert('after detail');
-    	/*function loadElement(){ 
-    		if(!storageSupport()){ 
-    			return null;  
-    		}
-    		return window.sessionStorage.getItem('id'); 
-    	}*/
     	$('#content').html(compo.stadium_list_detail(j));
     	$('#sta_photo').css({'background-image':'url(resources/img/stadium/field.jpg)','width':'100%','margin-top':'50px','margin-bottom':'100px','height':'947px'})
     			.html('<div class="a-team" id="roster_0" ondrop="drop(event)" ondragover="allowDrop(event)"> '
@@ -319,7 +310,6 @@ stadium = (() => {
     			+'<button type="button" id="roster_save" class="btn hover2" style="bottom: -890px; right: 500px;background-color: white; padding: 16px; width: 6%;position: absolute;">'
     			+'<span>저장</span>'
     			+'</button>')
-    		
     	$('#footer').css('.section','padding-bottom:78px;');
     	$('#footer').css('.section','background-color: #1db91d9e;');
     	$('#footer').attr('style','position: fixed;left: 0;bottom: 0;width: 100%;background-color: #8cff88;color: white;text-align: center;padding-bottom: 5px;padding-bottom: 34px;-top: 5px;padding-top: 0px;"')
@@ -327,8 +317,8 @@ stadium = (() => {
     			+'<div class= col-ms-1>'
     	    	+'<a class="logo" href="index.html">'
     	    	+'<img src="resources/img/logo/logo.png" alt="logo"></a>'
-    	    	+'<button type="button" id="pay_btn_1" class="btn hover2" data-toggle="modal" data-target="#myModal" style="width: 32%;padding: 16px;background-color: #337ab7;margin-bottom: 38px;">'
-    	    	+'<span style="color:white">예약하기</span>'
+    	    	+'<button type="button" id="pay_btn_1" class="btn hover2" data-toggle="modal" data-target="#myModal" style="width: 35%;padding: 16px;background-color: #ffffff;margin-bottom: 38px;">'
+    	    	+'<span style="color:black">예약하기</span>'
     	    	+'</button>'
     	    	+'</div>'
     	    	+'<div class= col-ms-11>'
@@ -336,41 +326,84 @@ stadium = (() => {
     	    	+'</div>'
     	    	+'</div>');
     	//map 설정 ////
-    	
-//    	$(document).ready(function() {
-//            initMap();
-//        });
-//     	$('#myMpa').append(compo.map());
+    	$(document).ready(function() {
+        initMap(j);
+        });
+     	$('#myMpa').append(compo.map(j));
+     	$('#myMpa').after('<p style="position: absolute;top: 2577px;right: 1558px;">주 소</p>'
+			+'<p style="position: absolute;top: 2601px;right: 1558px;font-size: 20px;">' + j.stadiumAddr + '</p>'
+		   +'<p style="position: absolute;top: 2642px;right: 1558px;">★★★★★</p>'
+		   +'<p style="position: absolute;top: 2670px;right: 1558px;">02-300-8509</p>');
      	$('#map').css({'width':'100%','height':'400px','margin-bottom':'300px'});  
     	//예약 확인 버튼
         $('#pay_btn_1').click(()=>{
         		alert('모달로 확인창 뜨고 결제 예약으로 이동');
-        		$('.modal-content').css({'border-radius':'6px','padding': '20px'}).html(compo.pay_btn());
+        		$('.modal-content').css({'border-radius':'6px','padding': '20px','margin-top': '189px','border': '5px solid #468044'}).html(compo.pay_btn());
+        		$('.btn-primary').css({'background-color':'#116441','border-color':'#116441'})
         		$('#pay_next').click((e)=>{
         			alert('결제창 이동');
         			$('#myModal').modal('hide');
         			$('#footer').remove();
         			$('#content').empty();
-        			payment();
+        			payment(j);
         		});
         });
     	$('#roster_save').click(()=>{
-			alert('저장 클릭');
+    		if(typeof(Storage) !== "undefined") { 
+    			alert('여기에 localStorage 및 sessionStorage 코드를 삽입합니다.');
+    		} else {
+    			alert('웹 저장 기능이 제공되지 않는 브라우저 입니다.');
+    		}
 			});
     }
     
-    let payment = () => {
+    let payment = j => {
     	$('#footer').empty();
     	$('#map').remove();  // 확인 및 결제 예약 맵 삭제
-        $('#content').empty().html(compo.payment());
+        $('#content').empty().html(compo.payment(j));
         $('#payment_reservation').click(()=>{
-        	payment_reservation();
+        	payment_reservation(j);
         })
 
     }
-    let payment_reservation = () => {
-        $('#content').empty().html(compo.payment_reservation());
+    let payment_reservation = j => {
+        $('#content').empty().html(compo.payment_reservation(j));
         $('#footer').empty();
+        $('#pay_home').click(()=>{
+        	  $('#content').empty().append(compo.content());
+              jQuery(function($){
+                  $('#home').vidbg({
+                      'mp4': 'resources/video/Fifa.mp4',
+                  }, {
+                    // Options
+                    muted: true,
+                    loop: true,
+              	  overlay: true,
+                  });
+              });
+              $('#rm_search').append(compo.srch());
+              $('#content').css('margin-top', '0');
+              $('#footer').remove();
+              $('#myMpa').after(compo.footer());
+            $('#team_search').click(() => {
+                $('#position').empty().attr('id', 'people').append(compo.team_search());
+            });
+            $('#solo_search').click(() => {
+                $('#people').empty().attr('id', 'position').append(compo.solo_search());
+            });
+            home.home_list();
+            $('#sear-btn').click(function() {
+            	alert();
+            	let search = {p : 1 , s : ''}
+            	stadium.srch();
+            });
+            $('#stadium_list').click(() => {
+                $('#content').css('margin-top', '80px');
+                alert('전체 운동장 보기');
+                let arr = {p :1};
+                stadium.list(arr);
+            })
+    		});
     }
     let srch =x=>{
     	$('#map').empty();
@@ -566,15 +599,14 @@ stadium = (() => {
             signup();
         })
     }
-//    function initMap() {
-//        // The location of Uluru
-//        var uluru = {lat: 37.552378, lng: 126.937635};
-//        // The map, centered at Uluru
-//        var map = new google.maps.Map(
-//            document.getElementById('map'), {zoom: 15, center: uluru});
-//        // The marker, positioned at Uluru
-//        var marker = new google.maps.Marker({position: uluru, map: map});
-//    }  
+    function initMap(j) {
+    	j.latitude = parseFloat(j.latitude);
+    	j.hardness = parseFloat(j.hardness);
+    	var uluru = {lat: j.latitude, lng: j.hardness};
+    	var map = new google.maps.Map(document.getElementById('map'),{
+    				zoom: 15, center: uluru});
+    	var marker = new google.maps.Marker({position: uluru, map: map});
+    	}  
     return {
         onCreate: onCreate,
         list:list,
@@ -585,5 +617,6 @@ stadium = (() => {
     	login : login,
     	list_detail_after:list_detail_after,
     	list_after:list_after,
-    	srch_after:srch_after}
+    	srch_after:srch_after,
+    	initMap: initMap}
 })();
