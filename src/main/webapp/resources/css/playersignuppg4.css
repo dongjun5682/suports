@@ -42,9 +42,9 @@ div {
 }
 .playersignuppg4 .fieldpassword {
   background-color    : rgba(255,255,255,0.0);
-  top                 : 234px;
-  height              : 58px;
-  width               : 412px;
+  top: 150px;
+  /* height              : 58px; */
+  width: 400px;
   position            : absolute;
   margin              : 0;
   left                : 381px;
@@ -68,7 +68,7 @@ div {
   background-color    : rgba(255,255,255,0.0);
   top                 : 22px;
   height              : auto;
-  width               : 409px;
+  width: 440px;
   position            : absolute;
   margin              : 0;
   left                : 4px;
@@ -100,9 +100,9 @@ div {
 }
 .playersignuppg4 .hsubtitle {
   background-color    : rgba(255,255,255,0.0);
-  top                 : 154px;
-  height              : 51px;
-  width               : 520px;
+  top: 100px;
+  /* height              : 51px; */
+  width: 400px;
   position            : absolute;
   margin              : 0;
   left                : 380px;
@@ -112,9 +112,9 @@ div {
 }
 .playersignuppg4 .hsubtitle .htittle {
   background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : auto;
-  width               : 520px;
+  /* top: 0px; */
+  /* height              : auto; */
+  /* width               : 520px; */
   position            : absolute;
   margin              : 0;
   left                : 0px;
@@ -125,7 +125,7 @@ div {
   font-size           : 22.0px;
   color               : rgba(39, 44, 49, 1.0);
   text-align          : left;
-  line-height         : 51.0px;
+  /* line-height         : 51.0px; */
 }
 .playersignuppg4 .sidebarinfo {
   background-color    : rgba(255,255,255,0.0);
@@ -376,13 +376,13 @@ div {
   transform           : rotate(0deg);
 }
 .playersignuppg4 .fieldpicture {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 314px;
-  height              : 318px;
-  width               : 418px;
+  /* background-color    : rgba(255,255,255,0.0); */
+  top: 230px;
+  /* height: 218px; */
+  width: 450px;
   position            : absolute;
-  margin              : 0;
-  left                : 377px;
+  /* margin              : 0; */
+  left: 380px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);

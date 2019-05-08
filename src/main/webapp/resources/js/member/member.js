@@ -202,42 +202,40 @@ member = (() => {
         });
     }
 
-
-
-    let profile = () => {
-        $('#footer').remove();
-        $('#content').empty().html(compo.update_player()).css('margin-top', '80px');
-        $('#profile_update').click(() => {
-            profile();
-        });
-        $('#profile_photo_update').click(() => {
-            profile_photo_update();
-        });
-        $('.imgsignupbtnbg button[type=submit]').click(e => {
-            e.preventDefault();
-            let updateData = {
-                id: $.member().id,
-                name: $('form input[name="memberName"]').val(),
-                password: $('form input[name="memberPassword"]').val(),
-                birth: $('form input[name="memberBirth"]').val(),
-                characters: $('form select[id="memberSort"]').val(),
-                info: $('form input[name="memberInfo"]').val()
-            };
-            $.ajax({
-                url: $.ctx() + '/members/' + updateData.id,
-                type: 'PUT',
-                data: JSON.stringify(updateData),
-                dataType: 'json',
-                contentType: "application/json; charset=utf-8",
-                success: d => {
-                    alert('ajax update :');
-                },
-                error: e => {
-                    alert('ajax fail');
-                }
-            })
-        });
-
+    let profile =()=>{
+    	$('#footer').remove();
+    	$('#content').empty().html(compo.update_player()).css('margin-top', '80px');
+    	password_tooltip();
+    	$('#profile_update').click(()=>{
+    		profile();
+    	});
+    	$('#profile_photo_update').click(()=>{
+    		profile_photo_update();
+    	});
+    	$('.imgsignupbtnbg button[type=submit]').click(e=>{
+        	e.preventDefault();
+    		let updateData = {
+    				id : $.member().id,
+    				name : $('form input[name="memberName"]').val(),
+    				password : $('form input[name="memberPassword"]').val(),
+    				birth : $('form input[name="memberBirth"]').val(),
+    				characters : $('form select[id="memberSort"]').val(),
+    				info : $('form input[name="memberInfo"]').val()
+    		};
+    		$.ajax({
+    			url : $.ctx()+'/members/'+updateData.id,
+    			type : 'PUT',
+    			data : JSON.stringify(updateData),
+    			dataType : 'json',
+    			contentType : "application/json; charset=utf-8",
+    			success : d => {
+    				alert('ajax update :');
+    			},
+    			error : e => {
+    				alert('ajax fail');
+    			}
+    		})
+    	});
     }
     let profile_photo_update = () => {
         $('#content').empty().html(compo.update_photo_player());
@@ -252,103 +250,74 @@ member = (() => {
     // Sign Up { Modal, Date_Picker, Tool_Tip, Validate }
     let signup = () => {
         $('.modal-content').html(compo.signup_1());
-        $('form').on('submit', function(e) {
-            e.preventDefault();
-            let formdata = {
-                id: $('form input[name="memberId"]').val(),
-                name: $('form input[name="memberName"]').val(),
-                email: $('form input[name="memberEmail"]').val()
-            };
-            $('.modal-content').html(compo.signup_2());
-            $('#checkPassword').click(() => {
-                if ($("#checkPassword").prop("checked") == true) {
-                    $('#memberPassword').attr("type", "text");
-                    $("#checkPassword-text").css("color", "#FC913A");
-                } else {
-                    $('#memberPassword').attr("type", "password");
-                    $("#checkPassword-text").css("color", "#AEB5BD");
-                }
-            });
-            $("#memberPassword").off("focus").on("focus", function() {
-                var value = $(this).val();
-                $('.js-mytooltip-pw').myTooltip('updateContent', getPwContent(value));
-            });
-            $("#memberPassword").off("click").on("click", function() {
-                var value = $(this).val();
-                if (!isNull(value)) {
-                    $('.js-mytooltip-pw').myTooltip('updateContent', getPwContent(value));
-                }
-            });
-            $("#memberPassword").off("keyup").on("keyup", function() {
-                $("#memberPassword").blur();
-                $("#memberPassword").focus();
-            });
-            $('.js-mytooltip-pw').myTooltip({
-                'offset': 30,
-                'theme': 'light',
-                'customClass': 'mytooltip-content',
-                'content': '<p>t</p>'
-            });
-            $('#datepicker').datepicker({
-                locale: 'ko-kr',
+    	$('form').on('submit', function(e){
+    		e.preventDefault();
+			let formdata = {
+					id : $('form input[name="memberId"]').val(),
+					name : $('form input[name="memberName"]').val(),
+					email : $('form input[name="memberEmail"]').val()
+			};
+    		$('.modal-content').html(compo.signup_2());
+    		password_tooltip();
+    		$('#datepicker').datepicker({
+    			locale: 'ko-kr',
                 uiLibrary: 'bootstrap4'
-            });
-            $('.js-mytooltip').myTooltip('destroy');
-            $('.imgnextbtnbg').click(() => {
-                let formdata2 = {
-                    password: $('form input[name="memberPassword"]').val(),
-                    birth: $('form input[name="memberBirth"]').val(),
-                    address: $('form select[id="memberLocation"]').val(),
-                    sports: $('form select[id="memberSports"]').val(),
-                    position: $('form select[id="memberPosition"]').val(),
-                    phone: $('form input[id="memberPhone"]').val()
-                };
-                $('.modal-content').html(compo.signup_3());
-                $('.imgnextbtnbg').click(() => {
-                    let formdata3 = {
-                        characters: $('form input[name="charRadios"]:checked').val()
-                    };
-                    $('.modal-content').html(compo.signup_4());
-                    $('.imgnextbtnbg').click(() => {
-                        e.preventDefault();
-                        let formdata4 = {
-                            info: $('form input[name="memberInfo"]').val()
-                        };
-
-                        $('.modal-content').html(compo.signup_5());
-                        let formdata5 = {
-                            id: formdata.id,
-                            password: formdata2.password,
-                            email: formdata.email,
-                            name: formdata.name,
-                            birth: formdata2.birth,
-                            position: formdata2.position,
-                            characters: formdata3.characters,
-                            sports: formdata2.sports,
-                            address: formdata2.address,
-                            phone: formdata2.phone,
-                            info: formdata4.info,
-                            photo: 'default_profile.jpg'
-                        };
-                        $('.beginbtn').click(() => {
-                            $.ajax({
-                                url: $.ctx() + '/members/',
-                                type: 'POST',
-                                data: JSON.stringify(formdata5),
-                                dataType: 'json',
-                                contentType: "application/json; charset=utf-8",
-                                success: d => {
-                                    $('#myModal').modal('hide');
-                                },
-                                error: e => {
-                                    alert('ajax fail');
-                                }
-                            })
-                        })
-                    })
-                })
-            })
-        })
+    		});
+    		$('.imgnextbtnbg').click(() => {
+    			$('.js-mytooltip').myTooltip('destroy');
+    			let formdata2 = {
+    					password : $('form input[name="memberPassword"]').val(),
+    					birth : $('form input[name="memberBirth"]').val(),
+    					address : $('form select[id="memberLocation"]').val(),
+    					sports : $('form select[id="memberSports"]').val(),
+    					position : $('form select[id="memberPosition"]').val(),
+    					phone : $('form input[id="memberPhone"]').val()
+    					};
+    			$('.modal-content').html(compo.signup_3());
+    			$('.imgnextbtnbg').click(() => {
+    				let formdata3 = {
+    						characters : $('form input[name="charRadios"]:checked').val()
+    				};
+    				$('.modal-content').html(compo.signup_4());
+    				pond.appendTo(document.getElementById("upload_pond"));
+    				$('.imgnextbtnbg').click(() => {
+    					let formdata4 = {
+    							info : $('form input[name="memberInfo"]').val()
+    					};
+    					$('.modal-content').html(compo.signup_5());
+    					let formdata5 = {
+    							id : formdata.id,
+    							password : formdata2.password,
+    							email : formdata.email,
+    							name : formdata.name,
+    							birth : formdata2.birth,
+    							position : formdata2.position,
+    							characters : formdata3.characters,	
+           						sports : formdata2.sports,
+           						address : formdata2.address,
+           						phone : formdata2.phone,
+           						info : formdata4.info,
+           						photo : 'default_profile.jpg'
+    					};
+    					$('.beginbtn').click(() => {
+    						$.ajax({
+    							url : $.ctx()+'/members/',
+    							type : 'POST',
+    							data : JSON.stringify(formdata5),
+    							dataType : 'json',
+    							contentType : "application/json; charset=utf-8",
+    							success : d => {
+    								$('#myModal').modal('hide');
+    							},
+    							error : e => {
+    								alert('ajax fail');
+    							}
+    						})
+    					})
+    				})
+               })
+           })
+    	})
     }
 
     let upload = () => {
@@ -381,11 +350,45 @@ member = (() => {
             //			}
         });
     }
+    let password_tooltip = () => {
+    	$('#checkPassword').click(()=>{
+    		if($("#checkPassword").prop("checked")==true){
+	        	$('#memberPassword').attr("type", "text");
+	        	$("#checkPassword-text").css("color","#FC913A");
+	        } 
+    		else {
+	        	$('#memberPassword').attr("type", "password");
+	        	$("#checkPassword-text").css("color","#AEB5BD");
+	        }
+    	});
+		$("#memberPassword").off("focus").on("focus", function () {
+			var value = $(this).val();
+			$('.js-mytooltip-pw').myTooltip('updateContent', getPwContent(value));
+			});
+		$("#memberPassword").off("click").on("click", function () {
+			var value = $(this).val();
+			if (!isNull(value)) {
+				$('.js-mytooltip-pw').myTooltip('updateContent', getPwContent(value));
+				}
+			});
+		$("#memberPassword").off("keyup").on("keyup", function () {
+			$("#memberPassword").blur();
+			$("#memberPassword").focus();
+			});
+		$('.js-mytooltip-pw').myTooltip({
+			'offset': 30,
+			'theme': 'light',
+			'customClass': 'mytooltip-content',
+			'content': '<p>t</p>'
+				});   
+    }
     return {
-        onCreate: onCreate,
-        profile: profile,
-        profile_photo_update: profile_photo_update,
-        signup: signup,
-        home_list_after: home_list_after
+
+        onCreate:onCreate,
+        profile:profile,
+        profile_photo_update:profile_photo_update,
+        signup:signup,
+        home_list_after:home_list_after,
+        password_tooltip:password_tooltip
     }
 })();

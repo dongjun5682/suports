@@ -15,11 +15,13 @@
 
 <link href="resources/css/fullscreenDemo.css" rel="stylesheet" type="text/css">
 
+<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+
+
 <!-- default css -->
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/com/myTooltip.css">
-<!-- <link rel="stylesheet" href="resources/css/com/filepond.css"> -->
-<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
 <link rel="stylesheet" href="resources/css/com/bootstrap3.css">
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
 <link rel="stylesheet" href="resources/css/datepicker/datapicker.min.css">
@@ -51,12 +53,12 @@
 <link rel="stylesheet" href="resources/css/team/teamupdateinfo.css">
 <link rel="stylesheet" href="resources/css/team/teamupdatepicture.css">
 
+</style>
 </head>
 <body>
 	<div id="content">
 
 	</div>
-	
 	<!-- Fullsize Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -77,10 +79,10 @@
 	</div>
 	<div id="myMpa">
 	</div>
+	
 	<script src="resources/js/app.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/com/router.js"></script>
-	<script src="resources/js/com/filepond.min.js"></script>
 	<script src="resources/js/com/myTooltip.js"></script>
 	<script src="resources/js/com/datapicker.min.js"></script>
 	<script src="resources/js/com/datapicker.ko-kr.js"></script>
@@ -91,17 +93,47 @@
 	<script src="resources/js/member/member.js"></script>
 	<script src="resources/js/com/util.js"></script>
     <script src="resources/js/vidbg.js"></script>
+    
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
 
 <script>
-app.run('<%=application.getContextPath()%>');
+FilePond.registerPlugin(
+        FilePondPluginImagePreview
+);
+const pond = FilePond.create(
+		{
+			allowImagePreview: true,
+			imagePreviewMaxHeight: 380,
+            allowFileSizeValidation: true,
+            maxFileSize: '5MB',
+            labelMaxFileSize: '업로드 가능한 사이즈는 {filesize}미만입니다.',
+            allowFileTypeValidation: true,
+            acceptedFileTypes: ['image/jpeg','image/png'],
+            fileValidateTypeLabelExpectedTypes: 'JPG, PNG형식의 파일만 업로드 가능합니다.'
+        });
+FilePond.setOptions({
+	server: {
+		url: '/members/uploadImg',
+		method: 'POST',
+		timeout: 5000,
+        process: null,
+        load: './load/',
+        fetch: './fetch/'
+		}
+});
 
-FilePond.parse(document.body);
+
+app.run('<%=application.getContextPath()%>');
 
 function allowDrop(ev) { ev.preventDefault(); }
 function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
 function drop(ev) { ev.preventDefault(); 
 var c = ev.dataTransfer.getData("text"); 
 ev.target.appendChild(document.getElementById(c)); } 
+
 </script>
 </body>
 </html>
