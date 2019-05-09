@@ -48,6 +48,7 @@
 <link rel="stylesheet" href="resources/css/team/teamupdateemblem.css">
 <link rel="stylesheet" href="resources/css/team/teamupdateinfo.css">
 <link rel="stylesheet" href="resources/css/team/teamupdatepicture.css">
+<link rel="stylesheet" href="resources/css/team/team_detail_list.css">
 
 </head>
 <body>

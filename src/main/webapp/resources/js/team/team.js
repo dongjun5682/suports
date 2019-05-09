@@ -56,6 +56,7 @@ team = (() => {
                     '<a class="course-title" href="#">' + j.name + '</a> </div>' +
                     '</div>').appendTo('.team-container .row .col-md-12').click(function() {
                     alert("team name : " + j.name + ' team index: ' + j.index);
+                    $('#content').html(compo.team_detail_list());
                 })
             });
             let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:800px;">'
@@ -123,6 +124,7 @@ team = (() => {
                     '<a class="course-title" href="#">' + j.name + '</a> </div>' +
                     '</div>').appendTo('.team-container .row .col-md-12').click(function() {
                     alert("team name : " + j.name + ' team index: ' + j.index);
+                    $('#content').html(compo.team_detail_list());
                 })
             });
             let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:800px;">'
@@ -246,7 +248,33 @@ team = (() => {
         $('#team_manage').click(() => {
             team_manage();
         });
-
+        $('#team_update_btn').click((e)=>{
+        	e.preventDefault();
+        	let updateData = {
+        			captain : $.member().memberIndex,
+    				name : $('input[name="teamName"]').val(),
+    				avgage : $('input[name="teamAvgage"]').val(),
+    				sort: $('input[name="teamSort"]').val(),
+    				style: $('input[name="teamStyle"]').val(),
+    				sport : $('select[id="teamSport"]').val(),
+    				address : $('input[name="teamLocation"]').val(),
+    				emblem : $('input[name="teamEmblem"]').val(),
+    				info : $('#teamInfo').val()
+    		};
+    		$.ajax({
+    			url : $.ctx()+'/teams/'+updateData.id,
+    			type : 'PUT',
+    			data : JSON.stringify(updateData),
+    			dataType : 'json',
+    			contentType : "application/json; charset=utf-8",
+    			success : d => {
+    				alert('ajax update :');
+    			},
+    			error : e => {
+    				alert('ajax fail');
+    			}
+    		})
+    	});
     }
     let team_update_emblem = () => {
         $('#content').empty().html(compo.team_update_emblem());

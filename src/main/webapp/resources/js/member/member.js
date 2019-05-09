@@ -154,6 +154,7 @@ member = (() => {
                             '</div> ').appendTo('.seoul_stadium').click(function() {
                             alert(j.stadiumName);
                             stadium.list_detail_after(j);
+                            
                         });
                     }
                 } else if (j.areaName == '인천') {
@@ -212,6 +213,8 @@ member = (() => {
     	});
     	$('#profile_photo_update').click(()=>{
     		profile_photo_update();
+    		$('.fieldupdatepicture').html(compo.input_uploadImg());
+			upload_ajax();
     	});
     	$('.imgsignupbtnbg button[type=submit]').click(e=>{
         	e.preventDefault();
