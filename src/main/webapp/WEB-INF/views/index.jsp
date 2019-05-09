@@ -77,6 +77,7 @@
 	</div>
 	
 	<script src="resources/js/app.js"></script>
+	<script src="resources/js/check.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/com/router.js"></script>
 	<script src="resources/js/com/myTooltip.js"></script>
@@ -96,9 +97,11 @@ app.run('<%=application.getContextPath()%>');
 
 function allowDrop(ev) { ev.preventDefault(); }
 function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
+function drag2(ev) { ev.dataTransfer.setData("text", ev.target.id); }
 function drop(ev) { ev.preventDefault(); 
 var c = ev.dataTransfer.getData("text"); 
-ev.target.appendChild(document.getElementById(c)); } 
+ev.target.appendChild(document.getElementById(c));
+} 
 
 </script>
 </body>

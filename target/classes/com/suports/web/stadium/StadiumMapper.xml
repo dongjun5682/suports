@@ -15,7 +15,11 @@
 		<result property="latitude" column="LATITUDE" />
 		<result property="hardness" column="HARDNESS" />
 		<result property="areaName" column="AREA_NAME" />
-
+		<result property="timeIndex" column="TIME_INDEX" />
+		<result property="time" column="TIME" />
+		<result property="price" column="TIME_PRICE" />
+		
+		
 	</resultMap>
 
 	<select id="selectListStadium"
@@ -56,9 +60,15 @@
 	</select>
 
 	<select id="selectAllStadium" resultMap="result">
-		SELECT S.*,A.AREA_NAME
+		SELECT S.*,T1.TIME_INDEX,A.AREA_NAME,T1.TIME_PRICE,T1.TIME
 		FROM STADIUM S JOIN	AREA A
-		ON S.AREA_INDEX LIKE A.AREA_INDEX;
+				ON S.AREA_INDEX LIKE A.AREA_INDEX,
+		(SELECT STADIUM_INDEX,TIME_INDEX,TIME_PRICE,TIME
+					FROM TIME T 
+					WHERE TIME = '09:00') T1
+		WHERE S.STADIUM_INDEX LIKE T1.STADIUM_INDEX;
+
+
 	</select>
 
 </mapper>

@@ -8,5 +8,5 @@ import lombok.Data;
 @Data @Component @Lazy
 public class TimeDTO {
 	private String timeIndex;
-	private int time,stadiumIndex;
+	private int time,timePrice,stadiumIndex;
 }
