@@ -1271,7 +1271,7 @@ compo = {
 		+'</div>'
 		+'</div>'
 		+'<div class="row" id="sta_photo">'
-		+'<h3 style="float: left;margin-top: 175px;margin-left: 54px;">포지션 선택</h3><img src="resources/img/stadium/field.jpg" style="width:90%;margin-top: 50px;margin-bottom: 100px;"></div>'
+		+'<h3 style="float: left;margin-top: 175px;margin-left: 54px;">포지션 선택</h3></div>'
 		+'</div>'
 		+'</div></div>'
 		+'</div>'

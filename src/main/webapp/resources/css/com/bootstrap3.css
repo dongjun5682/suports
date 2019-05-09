@@ -3058,18 +3058,20 @@ th {
 	background-color: #f9f9f9
 }
 .a-team{
-width:60px;
-height:50px;
-margin:10px;
-padding:10px;
-border:2px solid #fffafa;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #fffafa;
+    border-radius: 100px;
 }
 .b-team {
-width:60px;
-height:50px;
-margin:10px;
-padding:10px;
-border:2px solid #fffafa;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #fffafa;
+    border-radius: 100px;
 }
 .table-hover>tbody>tr:hover {
 	background-color: #f5f5f5

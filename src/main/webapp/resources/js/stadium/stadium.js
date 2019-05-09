@@ -203,20 +203,22 @@ stadium = (() => {
     let list_detail = (j) => {
     	alert('detail index : '+j.stadiumIndex);
     	$('#content').html(compo.stadium_list_detail(j));
-    	let html ='<div class="a-team" id="roster_0" ondrop="drop(event)" ondragover="allowDrop(event)"> '
-		+'<img src="resources/img/football.png" draggable="true" ondragstart="drag(event)" id="roster_ball" width="72" height="72"> '
-		+'</div> ';
-		let a_team = ['<div class="a-team" id="roster_11" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -675px;"></div>'
-					,'<div class="a-team" id="roster_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -527px;"></div>'
-					,'<div class="a-team" id="roster_9" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -380px;"></div>'
-					,'<div class="a-team" id="roster_8" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -675px;"></div>'
-					,'<div class="a-team" id="roster_7" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -527px;"></div>'
-					,'<div class="a-team" id="roster_6" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;margin-top: -60px;position: absolute;bottom: -380px;"></div>'
-					,'<div class="a-team" id="roster_5" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -706px;"></div>'
-					,'<div class="a-team" id="roster_4" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -592px;"></div>'
-					,'<div class="a-team" id="roster_3" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -441px;"></div>'
-					,'<div class="a-team" id="roster_2" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -334px;"></div>'
-					,'<div class="a-team" id="roster_1" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 159px;position: absolute;bottom: -527px;"></div>'];
+    	let html ='<div class="a-team" id="roster_100" ondrop="drop(event)" ondragover="allowDrop(event)"> '
+		+'<img src="resources/img/football.png" draggable="true" ondragstart="drag(event)" id="roster_ball" width="50" height="50"> '
+		+'</div> '
+		+'<div class="a-team" id="roster_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 100px;position: absolute;bottom: -650px;"></div>'
+			+'<div class="a-team" id="roster_9" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;"></div>'
+			+'<div class="a-team" id="roster_8" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -560px;"></div>'
+			+'<div class="a-team" id="roster_7" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -730px;"></div>'
+			+'<div class="a-team" id="roster_6" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -880px;"></div>'
+			+'<div class="a-team" id="roster_5" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -450px;"></div>'
+			+'<div class="a-team" id="roster_4" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -620px;"></div>'
+			+'<div class="a-team" id="roster_3" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -800px;"></div>'
+			+'<div class="a-team" id="roster_2" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -380px;"></div>'
+			+'<div class="a-team" id="roster_1" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -640px;"></div>'
+			+'<div class="a-team" id="roster_0" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -860px;"></div>';
+  		
+		$('#sta_photo').css({'background-image':'url(resources/img/field.png)','width':'100%','margin-top':'50px','margin-bottom':'100px','height':'930px'}).html(html);
 //		+'<div class="b-team" id="roster_12" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 703px;position: absolute;bottom: -527px;"></div>'
 //		+'<div class="b-team" id="roster_13" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 703px;position: absolute;bottom: -380px;"></div>'
 //		+'<div class="b-team" id="roster_14" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 703px;position: absolute;bottom: -675px;"></div>'
@@ -233,9 +235,17 @@ stadium = (() => {
 //		+'</button>'
     	$.getJSON($.ctx()+'/game/position/'+j.stadiumIndex, d=>{
     		$.each(d.position,(i,j)=>{
-    			html += a_team[i];
+    			if(j.position === 'FW' && j.memberIndex != null){
+    				$('<img src="resources/img/'+j.photo+'" draggable="true" ondragstart="drag(event)" id="roster_ball" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#roster_'+i);
+    			}else if(j.position === 'MF' && j.memberIndex != null){
+    				$('<img src="resources/img/'+j.photo+'" draggable="true" ondragstart="drag(event)" id="roster_ball" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#roster_'+i);
+    			}else if(j.position === 'DF' && j.memberIndex != null){
+    				$('<img src="resources/img/'+j.photo+'" draggable="true" ondragstart="drag(event)" id="roster_ball" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#roster_'+i);
+    			}else if(j.position === 'GK' && j.memberIndex != null){
+    				$('<img src="resources/img/'+j.photo+'" draggable="true" ondragstart="drag(event)" id="roster_ball" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#roster_'+i);
+    			}
     		});
-    		$('#sta_photo').css({'background-image':'url(resources/img/stadium/field.jpg)','width':'100%','margin-top':'50px','margin-bottom':'100px','height':'947px'}).html(html);
+  
     	});  
     	$('#footer').css('.section','padding-bottom:78px;');
     	$('#footer').css('.section','background-color: #1db91d9e;');
@@ -282,26 +292,35 @@ stadium = (() => {
     let list_detail_after = (j) => {
     	alert('detail after index : '+j.stadiumIndex);
     	$('#content').html(compo.stadium_list_detail(j));
-    	let html ='<div class="a-team" id="roster_0" ondrop="drop(event)" ondragover="allowDrop(event)"> '
-    		+'<img src="resources/img/'+$.member().photo+'" draggable="true" ondragstart="drag(event)" id="roster_ball" width="72" height="72"> '
-    		+'</div> ';
-    		let a_team = ['<div class="a-team" id="roster_11" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -675px;"></div>'
-    					,'<div class="a-team" id="roster_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -527px;"></div>'
-    					,'<div class="a-team" id="roster_9" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -380px;"></div>'
-    					,'<div class="a-team" id="roster_8" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -675px;"></div>'
-    					,'<div class="a-team" id="roster_7" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -527px;"></div>'
-    					,'<div class="a-team" id="roster_6" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;margin-top: -60px;position: absolute;bottom: -380px;"></div>'
-    					,'<div class="a-team" id="roster_5" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -706px;"></div>'
-    					,'<div class="a-team" id="roster_4" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -592px;"></div>'
-    					,'<div class="a-team" id="roster_3" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 252px;position: absolute;bottom: -441px;"></div>'
-    					,'<div class="a-team" id="roster_2" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -334px;"></div>'
-    					,'<div class="a-team" id="roster_1" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 159px;position: absolute;bottom: -527px;"></div>'];
-    	
-    		$.getJSON($.ctx()+'/game/position/'+j.stadiumIndex, d=>{
+    	let html ='<div class="a-team" id="roster_100" ondrop="drop(event)" ondragover="allowDrop(event)"> '
+    		+'<img src="resources/img/football.png" draggable="true" ondragstart="drag(event)" id="roster_ball" width="50" height="50"> '
+    		+'</div> '
+    		+'<div class="a-team" id="GK_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 100px;position: absolute;bottom: -650px;"></div>'
+    			+'<div class="a-team" id="DF_9" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;"></div>'
+    			+'<div class="a-team" id="DF_8" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -560px;"></div>'
+    			+'<div class="a-team" id="DF_7" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -730px;"></div>'
+    			+'<div class="a-team" id="DF_6" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -880px;"></div>'
+    			+'<div class="a-team" id="MF_5" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -450px;"></div>'
+    			+'<div class="a-team" id="MF_4" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -620px;"></div>'
+    			+'<div class="a-team" id="MF_3" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -800px;"></div>'
+    			+'<div class="a-team" id="FW_2" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -380px;"></div>'
+    			+'<div class="a-team" id="FW_1" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -640px;"></div>'
+    			+'<div class="a-team" id="FW_0" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -860px;"></div>';
+      		
+    		$('#sta_photo').css({'background-image':'url(resources/img/field.png)','width':'100%','margin-top':'50px','margin-bottom':'100px','height':'930px'}).html(html);
+    	  	$.getJSON($.ctx()+'/game/position/'+j.stadiumIndex, d=>{
         		$.each(d.position,(i,j)=>{
-        			html += a_team[i];
+        			if(j.position === 'FW' && j.memberIndex != null){
+        				$('<img src="resources/img/'+j.photo+'" draggable="true" ondragstart="drag(event)" id="roster_ball" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#FW_'+i);
+        			}else if(j.position === 'MF' && j.memberIndex != null){
+        				$('<img src="resources/img/'+j.photo+'" draggable="true" ondragstart="drag(event)" id="roster_ball" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#MF_'+i);
+        			}else if(j.position === 'DF' && j.memberIndex != null){
+        				$('<img src="resources/img/'+j.photo+'" draggable="true" ondragstart="drag(event)" id="roster_ball" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#DF_'+i);
+        			}else if(j.position === 'GK' && j.memberIndex != null){
+        				$('<img src="resources/img/'+j.photo+'" draggable="true" ondragstart="drag(event)" id="roster_ball" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#GK_'+i);
+        			}
         		});
-        		$('#sta_photo').css({'background-image':'url(resources/img/stadium/field.jpg)','width':'100%','margin-top':'50px','margin-bottom':'100px','height':'947px'}).html(html);
+      
         	});  
 
     	$('#footer').css('.section','padding-bottom:78px;');
