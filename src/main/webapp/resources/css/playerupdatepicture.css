@@ -1,14 +1,18 @@
 
 .playerupdatepicture {
-  width               : 100%;
-  min-width           : 1440px;
-  min-height          : 800px;
+  display: flex;
+  flex-flow: row nowrap;
+  /* flex-direction: row; */
+  justify-content: space-between;
+  /* width               : 100%; */
+  /* min-width           : 1440px; */
+  /* min-height          : 800px; */
   position            : relative;
-  overflow            : hidden;
-  margin              : 0px;
-  -webkit-font-smoothing: antialiased;
+  /* overflow            : hidden; */
+  /* margin              : 0px; */
+  /* -webkit-font-smoothing: antialiased; */
   -moz-osx-font-smoothing: grayscale;
-  background-color    : rgba(255, 255, 255, 1.0);
+  /* background-color    : rgba(255, 255, 255, 1.0); */
 }
 a {
   text-decoration     : none;
@@ -36,26 +40,29 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
+  /* display: flex; */
 }
 .playerupdatepicture .imgsignupbtnbg {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 676px;
+  background-color: #22C781;
+  top: 620px;
+  border-radius: 4px;
   height              : 59px;
+  color: white;
   width               : 508px;
   position            : absolute;
-  margin              : 0;
+  /* margin              : 0; */
   left                : 463px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
 .playerupdatepicture .texttitlepg1 {
-  background-color    : rgba(255,255,255,0.0);
+  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 693px;
-  height              : auto;
+  /* height              : auto; */
   width               : 133px;
   position            : absolute;
-  margin              : 0;
+  /* margin              : 0; */
   left                : 654px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
@@ -64,10 +71,10 @@ div {
   font-size           : 16.0px;
   color               : rgba(255, 255, 255, 1.0);
   text-align          : center;
-  line-height         : 19.0px;
+  /* line-height         : 19.0px; */
 }
 .playerupdatepicture .divexit {
-  background-color    : rgba(255,255,255,0.0);
+  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 51px;
   height              : auto;
   width               : auto;
@@ -84,25 +91,27 @@ div {
   line-height         : 22.0px;
 }
 .playerupdatepicture .formupdate {
-  background-color    : rgba(255,255,255,0.0);
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 168px;
-  height              : 473px;
-  width               : 311px;
+  height: 428px;
+  width: 480px;
   position            : absolute;
-  margin              : 0;
-  left                : 565px;
+  /* margin              : 0; */
+  left: 480px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
 .playerupdatepicture .formupdate .fieldupdatepicture {
   background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 473px;
-  width               : 311px;
+  /* top                 : 0px; */
+  height: 100%;
+  width: 100%;
   position            : relative;
-  margin              : 0;
-  left                : 0px;
+  /* margin              : 0; */
+  /* left                : 0px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -186,16 +195,15 @@ div {
   line-height         : 15.0px;
 }
 .playerupdatepicture .fieldnickname {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 169px;
-  height              : 517px;
-  width               : 191px;
-  position            : absolute;
-  margin              : 0;
-  left                : 243px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
+  top: 169px;
+  height: 517px;
+  width: 191px;
+  position: absolute;
+  margin: 0;
+  left: 150px;
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
 }
 .playerupdatepicture .fieldnickname .imgpath1 {
   background-color    : rgba(255,255,255,0.0);
@@ -261,16 +269,16 @@ div {
   line-height         : 19.0px;
 }
 .playerupdatepicture .rightcontent {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 800px;
-  width               : 448px;
-  position            : absolute;
-  margin              : 0;
-  left                : 992px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
+  background-color: rgba(255,255,255,0.0);
+  top: 0px;
+  height: 800px;
+  width: 448px;
+  position: absolute;
+  margin: 0;
+  left: 992px;
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
 }
 .playerupdatepicture .rightcontent .shadow {
   background-color    : rgba(255,255,255,0.0);
