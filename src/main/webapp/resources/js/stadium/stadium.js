@@ -50,6 +50,9 @@ stadium = (() => {
 				srch(arr);
 			}
 		});
+        var target = document.getElementById("selectBox");
+        alert('선택된 옵션 value 값=' + target.options[target.selectedIndex].inc); 
+
     	$.getJSON($.ctx()+'/stadiums/page/'+x.p,d=>{
     		$('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
 	    	$.each(d.ls,(i,j)=>{
@@ -267,10 +270,10 @@ stadium = (() => {
         initMap(j);
     	});
     	$('#myMpa').append(compo.map(j));
-    	$('#myMpa').after('<p style="position: absolute;top: 2577px;right: 80px;">주 소</p>'
+    	/*$('#myMpa').after('<p style="position: absolute;top: 2577px;right: 80px;">주 소</p>'
     			+'<p style="position: absolute;top: 2601px;right: 80px;font-size: 19px;">' + j.stadiumAddr + '</p>'
     		   +'<p style="position: absolute;top: 2642px;right: 80px;">★★★★★</p>'
-    		   +'<p style="position: absolute;top: 2670px;right: 80px;">02-300-8509</p>');
+    		   +'<p style="position: absolute;top: 2670px;right: 80px;">02-300-8509</p>');*/
      	$('#map').css({'width':'100%','height':'400px','margin-bottom':'300px'});  
     	//예약 확인 버튼
         $('#pay_btn_1').click(()=>{
@@ -343,10 +346,10 @@ stadium = (() => {
         initMap(j);
         });
      	$('#myMpa').append(compo.map(j));
-     	$('#myMpa').after('<p style="position: absolute;top: 2577px;right: 1558px;">주 소</p>'
+     	/*$('#myMpa').after('<p style="position: absolute;top: 2577px;right: 1558px;">주 소</p>'
 			+'<p style="position: absolute;top: 2601px;right: 1558px;font-size: 20px;">' + j.stadiumAddr + '</p>'
 		   +'<p style="position: absolute;top: 2642px;right: 1558px;">★★★★★</p>'
-		   +'<p style="position: absolute;top: 2670px;right: 1558px;">02-300-8509</p>');
+		   +'<p style="position: absolute;top: 2670px;right: 1558px;">02-300-8509</p>');*/
      	$('#map').css({'width':'100%','height':'400px','margin-bottom':'300px'});  
     	//예약 확인 버튼
         $('#pay_btn_1').click(()=>{
@@ -419,7 +422,6 @@ stadium = (() => {
     		});
     }
     let srch =x=>{
-    	$('#map').empty();
     	$('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
         $('#content').css('margin-top', '80px');
@@ -500,7 +502,6 @@ stadium = (() => {
     };
     
     let srch_after =x=>{
-    	$('#map').empty();
     	$('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
         $('#content').css('margin-top', '80px');

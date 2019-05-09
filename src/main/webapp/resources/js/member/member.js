@@ -27,6 +27,7 @@ member = (() => {
         });
     };
     let setContentView = (d) => {
+    	$('#map').remove();
         alert('member!!!');
         $('#content').empty().append(compo.content());
         jQuery(function($) {

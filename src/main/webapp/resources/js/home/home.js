@@ -68,6 +68,7 @@ home = (() => {
                     break;
                 case 'team':
                     $('#content').css('margin-top', '80px');
+                    $('#map').remove();
                     team.onCreate();
                     break;
                 case 'tourment':
@@ -108,7 +109,6 @@ home = (() => {
 
         //로고 클릭시 새로 그리기
         $('.navbar-brand .logo').click(() => {
-
         	alert('로고 클릭!!');
         	  $('#map').remove();
         	  $('#myMpa').remove();
