@@ -1,3 +1,22 @@
+.teamupdateinfo .team_update_embem {margin-top: 238px;}
+
+.teamupdateinfo .team_update_emblem_title {
+    margin-bottom: 4px;
+    /* top: 0px; */
+    /* height: auto; */
+    width: 262px;
+    /* position: absolute; */
+    /* margin: 0; */
+    /* left: 0px; */
+    -ms-transform: rotate(0deg);
+    /* -webkit-transform: rotate(0deg); */
+    /* transform: rotate(0deg); */
+    font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+    font-size: 16.0px;
+    color: rgba(0, 0, 0, 1.0);
+    text-align: left;
+    /* line-height: 19.0px; */
+}
 
                         
 .teamupdateinfo {
@@ -27,10 +46,12 @@ div {
   -webkit-text-size-adjust: none;
 }
 .teamupdateinfo .imgsignupbtnbg {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 676px;
+  background-color: #00C5FF;
+  top: 620px;
   height              : 59px;
+  color: white;
   width               : 508px;
+  border-radius: 4px;
   position            : absolute;
   margin              : 0;
   left                : 463px;
@@ -74,9 +95,9 @@ div {
 }
 .teamupdateinfo .formupdate {
   background-color    : rgba(255,255,255,0.0);
-  top                 : 169px;
-  height              : 485px;
-  width               : 486px;
+  top: 140px;
+  height: 480px;
+  width: 480px;
   position            : absolute;
   margin              : 0;
   left                : 470px;
@@ -88,7 +109,7 @@ div {
   background-color    : rgba(255,255,255,0.0);
   top                 : 0px;
   height              : 60px;
-  width               : 484px;
+  width: 100%;
   position            : absolute;
   margin              : 0;
   left                : 2px;
@@ -126,13 +147,14 @@ div {
   line-height         : 35.0px;
 }
 .teamupdateinfo .formupdate .fieldnickname .texttitlepg11 {
-  background-color    : rgba(255,255,255,0.0);
+  /* background-color    : rgba(255,255,255,0.0); */
+  margin-bottom: 4px;
   top                 : 0px;
   height              : auto;
   width               : 262px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
+  /* position            : absolute; */
+  /* margin              : 0; */
+  /* left                : 0px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -140,11 +162,11 @@ div {
   font-size           : 16.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
-  line-height         : 19.0px;
+  /* line-height         : 19.0px; */
 }
 .teamupdateinfo .formupdate .fieldfullname {
   background-color    : rgba(255,255,255,0.0);
-  top                 : 83px;
+  top: 80px;
   height              : 60px;
   width               : 236px;
   position            : absolute;
@@ -184,13 +206,14 @@ div {
   line-height         : 35.0px;
 }
 .teamupdateinfo .formupdate .fieldfullname .texttitlepg11 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
+  /* background-color    : rgba(255,255,255,0.0); */
+  /* top                 : 0px; */
+  margin-bottom: 4px;
   height              : auto;
   width               : 133px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
+  /* position            : absolute; */
+  /* margin              : 0; */
+  /* left                : 0px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -198,11 +221,11 @@ div {
   font-size           : 16.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
-  line-height         : 19.0px;
+  /* line-height         : 19.0px; */
 }
 .teamupdateinfo .formupdate .fieldfullname1 {
   background-color    : rgba(255,255,255,0.0);
-  top                 : 84px;
+  top: 80px;
   height              : 60px;
   width               : 233px;
   position            : absolute;
@@ -242,13 +265,14 @@ div {
   line-height         : 35.0px;
 }
 .teamupdateinfo .formupdate .fieldfullname1 .texttitlepg11 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
+  /* background-color    : rgba(255,255,255,0.0); */
+  margin-bottom: 4px;
+  /* top                 : 0px; */
   height              : auto;
   width               : 133px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
+  /* position            : absolute; */
+  /* margin              : 0; */
+  /* left                : 0px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -256,7 +280,7 @@ div {
   font-size           : 16.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
-  line-height         : 19.0px;
+  /* line-height         : 19.0px; */
 }
 .teamupdateinfo .formupdate .fieldbirth {
   background-color    : rgba(255,255,255,0.0);
@@ -402,30 +426,30 @@ div {
   transform           : rotate(0deg);
 }
 .teamupdateinfo .formupdate .fieldloctypetime {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 241px;
-  height              : 57px;
-  width               : 473px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
+  /* background-color    : rgba(255,255,255,0.0); */
+  /* top: 170px; */
+  margin-top: 160px;
+  /* height              : 57px; */
+  /* width: 100%; */
+  /* margin              : 0; */
+  /* left                : 0px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
 .teamupdateinfo .formupdate .fieldloctypetime .imgbirthbg {
-  background-color    : rgba(255,255,255,0.0);
+  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 28px;
-  height              : 29px;
-  box-sizing          : border-box;
-  width               : 175px;
+  /* height              : 29px; */
+  /* box-sizing          : border-box; */
+  width: 33.3%;
   position            : absolute;
-  margin              : 0;
-  left                : 298px;
-  border-radius       : 1px;
-  border-style        : solid;
-  border-width        : 1px;
-  border-color        : rgba(222, 227, 232, 1.0);
+  /* margin              : 0; */
+  left: 67%;
+  /* border-radius       : 1px; */
+  /* border-style        : solid; */
+  /* border-width        : 1px; */
+  /* border-color        : rgba(222, 227, 232, 1.0); */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -433,33 +457,33 @@ div {
 .teamupdateinfo .formupdate .fieldloctypetime .imgbirthbg1 {
   background-color    : rgba(255,255,255,0.0);
   top                 : 28px;
-  height              : 29px;
-  box-sizing          : border-box;
-  width               : 139px;
+  /* height              : 29px; */
+  /* box-sizing          : border-box; */
+  width: 33.3%;
   position            : absolute;
-  margin              : 0;
-  left                : 152px;
-  border-radius       : 1px;
-  border-style        : solid;
-  border-width        : 1px;
-  border-color        : rgba(222, 227, 232, 1.0);
+  /* margin              : 0; */
+  left: 32%;
+  /* border-radius       : 1px; */
+  /* border-style        : solid; */
+  /* border-width        : 1px; */
+  /* border-color        : rgba(222, 227, 232, 1.0); */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
 .teamupdateinfo .formupdate .fieldloctypetime .imgbirthbg2 {
-  background-color    : rgba(255,255,255,0.0);
+  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 28px;
-  height              : 29px;
-  box-sizing          : border-box;
-  width               : 139px;
+  /* height              : 29px; */
+  /* box-sizing          : border-box; */
+  width: 30%;
   position            : absolute;
-  margin              : 0;
-  left                : 7px;
-  border-radius       : 1px;
-  border-style        : solid;
-  border-width        : 1px;
-  border-color        : rgba(222, 227, 232, 1.0);
+  /* margin              : 0; */
+  left: 0;
+  /* border-radius       : 1px; */
+  /* border-style        : solid; */
+  /* border-width        : 1px; */
+  /* border-color        : rgba(222, 227, 232, 1.0); */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -521,8 +545,8 @@ div {
   height              : auto;
   width               : 137px;
   position            : absolute;
-  margin              : 0;
-  left                : 0px;
+  /* margin              : 0; */
+  /* left                : 0px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -530,7 +554,7 @@ div {
   font-size           : 14.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
-  line-height         : 17.0px;
+  /* line-height         : 17.0px; */
 }
 .teamupdateinfo .formupdate .fieldloctypetime .texttitlepg11 {
   background-color    : rgba(255,255,255,0.0);
@@ -547,7 +571,7 @@ div {
   font-size           : 14.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
-  line-height         : 17.0px;
+  /* line-height         : 17.0px; */
 }
 .teamupdateinfo .formupdate .fieldloctypetime .texttitlepg12 {
   background-color    : rgba(255,255,255,0.0);
@@ -555,7 +579,7 @@ div {
   height              : auto;
   width               : 173px;
   position            : absolute;
-  margin              : 0;
+  /* margin              : 0; */
   left                : 299px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
@@ -564,16 +588,16 @@ div {
   font-size           : 14.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
-  line-height         : 17.0px;
+  /* line-height         : 17.0px; */
 }
 .teamupdateinfo .formupdate .group {
   background-color    : rgba(255,255,255,0.0);
-  top                 : 321px;
-  height              : 164px;
-  width               : 471px;
+  top: 312px;
+  /* height: 160px; */
+  width: 100%;
   position            : absolute;
-  margin              : 0;
-  left                : 1px;
+  /* margin              : 0; */
+  /* left                : 1px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -592,20 +616,20 @@ div {
 }
 .teamupdateinfo .formupdate .group .texttitle {
   background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : auto;
-  width               : 144px;
-  position            : absolute;
-  margin              : 0;
-  left                : 1px;
+  /* top                 : 0px; */
+  /* height              : auto; */
+  /* width               : 144px; */
+  /* position            : absolute; */
+  /* margin              : 0; */
+  /* left                : 1px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
   font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
-  font-size           : 18.0px;
-  color               : rgba(0, 0, 0, 1.0);
-  text-align          : left;
-  line-height         : 21.0px;
+  font-size: 16px;
+  /* color               : rgba(0, 0, 0, 1.0); */
+  /* text-align          : left; */
+  /* line-height         : 21.0px; */
 }
 .teamupdateinfo .imgpath {
   background-color    : rgba(255,255,255,0.0);

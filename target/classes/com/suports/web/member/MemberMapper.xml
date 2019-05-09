@@ -78,4 +78,36 @@
 		#{photo}
 		)
 	</insert>
+	<insert id="insertAMemberPhoto"
+		parameterType="com.suports.web.domain.ImageDTO" flushCache="true"
+		statementType="PREPARED">
+		INSERT INTO IMAGE (
+		IMAGE_NAME,
+		IMAGE_OWNER
+		)
+		VALUES (
+		#{imageName},
+		#{imageOwner}
+		)
+	</insert>
+	<update id="updateAMember"
+		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
+		statementType="PREPARED" timeout="20">
+		UPDATE MEMBER SET
+		NAME = #{name},
+		PASSWORD = #{password},
+		BIRTHDY = #{birth},
+		CHARACTERS = #{characters},
+		INFO = #{info}
+		WHERE ID
+		LIKE #{id}
+	</update>
+	<update id="updateAMemberPhoto"
+		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
+		statementType="PREPARED" timeout="20">
+		UPDATE MEMBER SET
+		PHOTO = #{photo}
+		WHERE ID
+		LIKE #{id}
+	</update>
 </mapper>

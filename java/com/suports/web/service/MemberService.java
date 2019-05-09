@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
+import com.suports.web.domain.ImageDTO;
 import com.suports.web.domain.MemberDTO;
 
 @Component
@@ -13,6 +14,7 @@ public interface MemberService {
 
 	// CREATE
 	public void addAMember(MemberDTO mem);
+	public void addAMemberPhoto(ImageDTO img);
 	
 	// READ
 	public List<?> retrieveListOfMembers(Map<?,?> map);
@@ -24,6 +26,7 @@ public interface MemberService {
 	
 	// UPDATE
 	public void modifyAMember(MemberDTO mem);
+	public void modifyAMemberPhoto(MemberDTO mem);
 	public Map<String, Object> retrieveProfile(Map<?,?> map);
 	
 	// DELETE

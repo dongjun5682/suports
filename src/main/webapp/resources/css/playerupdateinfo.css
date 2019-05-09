@@ -1,11 +1,92 @@
+.formupdate {
+  z-index: 99;
+}
+
+.playerupdateinfo .texttitlepg11 {
+  /* background-color    : rgba(255,255,255,0.0); */
+  /* top                 : 80px; */
+  /* height              : auto; */
+  /* width               : 262px; */
+  /* position            : absolute; */
+  /* margin              : 0; */
+  /* left                : 0px; */
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  /* -webkit-transform   : rotate(0deg); */ /* Chrome, Safari, Opera */
+  /* transform           : rotate(0deg); */
+  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+  font-size           : 16.0px;
+  color               : rgba(0, 0, 0, 1.0);
+  text-align          : left;
+  line-height         : 19.0px;
+}
+
+.playerupdateinfo .imgsignupbtnbg button {
+  width: 100%;
+  height: 100%;
+  background-color: #22C781;
+  /* padding-top: 50px; */
+  color: white;
+  border-radius: 4px;
+}
+.playerupdateinfo .fieldpassword {
+    margin-top: 80px;
+}
+
+.playerupdateinfo .checkPw {
+  margin-top: 1%;
+}
+
+.playerupdateinfo .imgbirthbg {
+  margin-top: 16px;
+}
+
+.playerupdateinfo .birthday {
+position: absolute;
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+  font-size: 16.0px;
+  color: rgba(0, 0, 0, 1.0);
+  text-align: left;
+  line-height: 19.0px;
+}
+
+.playerupdateinfo input#datepicker {
+  margin-top: 22px;
+}
+
+
+.playerupdateinfo select#memberLocation {position: absolute;top: 35px;}
+
+.playerupdateinfo span.span1 {
+  /* position: absolute; */
+  /* -webkit-transform: rotate(0deg); */
+  /* transform: rotate(0deg); */
+  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+  font-size: 16.0px;
+  color: rgba(0, 0, 0, 1.0);
+  text-align: left;
+  /* line-height: 19.0px; */
+  /* position: absolute; */
+  /* top: 12px; */
+  /* margin-top: 10px; */
+  /* font-size: 16px; */
+}
+
+.playerupdateinfo select#memberSort {
+  /* display: block; */
+  /* position: absolute; */
+  /* top: 35px; */
+}
 
 .playerupdateinfo {
   width               : 100%;
   min-width           : 1440px;
-  min-height          : 800px;
+  min-height: 800px;
   position            : relative;
   overflow            : hidden;
-  margin              : 0px;
+  /* margin              : 0px; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color    : rgba(255, 255, 255, 1.0);
@@ -27,7 +108,7 @@ div {
 }
 .playerupdateinfo .imgsignupbtnbg {
   background-color    : rgba(255,255,255,0.0);
-  top                 : 676px;
+  top: 620px;
   height              : 59px;
   width               : 508px;
   position            : absolute;
@@ -74,7 +155,7 @@ div {
 .playerupdateinfo .formupdate {
   background-color    : rgba(255,255,255,0.0);
   top                 : 187px;
-  height              : 443px;
+  height: 420px;
   width               : 484px;
   position            : absolute;
   margin              : 0;
@@ -84,13 +165,13 @@ div {
   transform           : rotate(0deg);
 }
 .playerupdateinfo .formupdate .fieldnickname1 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
+  /* background-color    : rgba(255,255,255,0.0); */
+  /* top                 : 0px; */
   height              : 56px;
   width               : 480px;
   position            : absolute;
-  margin              : 0;
-  left                : 2px;
+  /* margin              : 0; */
+  /* left                : 2px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -111,10 +192,10 @@ div {
   background-color    : rgba(255,255,255,0.0);
   top                 : 19px;
   height              : auto;
-  width               : 183px;
+  width: 100%;
   position            : absolute;
   margin              : 0;
-  left                : 12px;
+  /* left                : 12px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -130,8 +211,8 @@ div {
   height              : auto;
   width               : 262px;
   position            : absolute;
-  margin              : 0;
-  left                : 0px;
+  /* margin              : 0; */
+  /* left                : 0px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -508,19 +589,24 @@ div {
   line-height         : 17.0px;
 }
 .playerupdateinfo .formupdate .fieldcharacter {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 308px;
-  height              : 54px;
-  width               : 478px;
-  position            : absolute;
-  margin              : 0;
-  left                : 1px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
+     /* background-color: rgba(255,255,255,0.0); */
+     /* top: 0px; */
+     /* height: auto; */
+     /* width: 100%; */
+     /* position: absolute; */
+     /* margin: 0; */
+     /* left: 0px; */
+     -ms-transform: rotate(0deg);
+     /* -webkit-transform: rotate(0deg); */
+     /* transform: rotate(0deg); */
+     font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+     font-size: 16.0px;
+     color: rgba(0, 0, 0, 1.0);
+     text-align: left;
+     /* line-height: 19.0px; */       : rotate(0deg)
 }
 .playerupdateinfo .formupdate .fieldcharacter .imgbirthbg {
-  background-color    : rgba(255,255,255,0.0);
+  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 26px;
   height              : 28px;
   box-sizing          : border-box;
@@ -555,12 +641,11 @@ div {
 }
 .playerupdateinfo .formupdate .fieldcharacter .texttitlepg11 {
   background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
   height              : auto;
   width               : 265px;
   position            : absolute;
-  margin              : 0;
-  left                : 1px;
+  /* margin              : 0; */
+  /* left                : 1px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -569,6 +654,7 @@ div {
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
   line-height         : 19.0px;
+  margin-bottom: 10px;
 }
 .playerupdateinfo .formupdate .fieldcharacter .texttitlepg11 .span1 {
   
@@ -594,16 +680,17 @@ div {
   line-height         : 16.0px;
 }
 .playerupdateinfo .formupdate .fieldfirstname {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 382px;
-  height              : 61px;
-  width               : 484px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
+  /* background-color    : rgba(255,255,255,0.0); */
+  /* top: 320px; */
+  /* height              : 61px; */
+  width: 100%;
+  margin-top: 10px;
+  /* position            : absolute; */
+  /* margin              : 0; */
+  /* left                : 0px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
+  /* -webkit-transform   : rotate(0deg); */ /* Chrome, Safari, Opera */
+  /* transform           : rotate(0deg); */
 }
 .playerupdateinfo .formupdate .fieldfirstname .imgpath {
   background-color    : rgba(255,255,255,0.0);
@@ -618,38 +705,38 @@ div {
   transform           : rotate(0deg);
 }
 .playerupdateinfo .formupdate .fieldfirstname .textcontentpg1 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 21px;
-  height              : auto;
-  width               : 183px;
-  position            : absolute;
-  margin              : 0;
-  left                : 12px;
+  /* background-color    : rgba(255,255,255,0.0); */
+  /* top: 34px; */
+  /* height              : auto; */
+  /* width: 100%; */
+  /* position            : absolute; */
+  /* margin              : 0; */
+  /* left                : 12px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
+  /* -webkit-transform   : rotate(0deg); */ /* Chrome, Safari, Opera */
+  /* transform           : rotate(0deg); */
   font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
   font-size           : 14.0px;
-  color               : rgba(0, 0, 0, 1.0);
+  /* color               : rgba(0, 0, 0, 1.0); */
   text-align          : left;
-  line-height         : 35.0px;
+  /* line-height         : 35.0px; */
 }
 .playerupdateinfo .formupdate .fieldfirstname .texttitlepg11 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : auto;
-  width               : 262px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
+  /* background-color    : rgba(255,255,255,0.0); */
+  /* top                 : 0px; */
+  /* height              : auto; */
+  /* width: 100%; */
+  /* position            : absolute; */
+  /* margin              : 0; */
+  /* left                : 0px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
+  /* transform           : rotate(0deg); */
   font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size           : 16.0px;
-  color               : rgba(0, 0, 0, 1.0);
-  text-align          : left;
-  line-height         : 19.0px;
+  /* color               : rgba(0, 0, 0, 1.0); */
+  /* text-align          : left; */
+  /* line-height         : 19.0px; */
 }
 .playerupdateinfo .formupdate .fieldfirstname .texttitlepg11 .span1 {
   
@@ -664,7 +751,7 @@ div {
   width               : 191px;
   position            : absolute;
   margin              : 0;
-  left                : 243px;
+  left: 150px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);

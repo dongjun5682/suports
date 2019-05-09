@@ -43,6 +43,7 @@ public class StadiumController {
 		map.clear();
 		map.put("ls", ls);
 		map.put("pxy", pxy);
+		System.out.println(ls.toString());
 		return map;
 	}
 	@GetMapping("/stadiums/search/{search}/{page}")
@@ -59,6 +60,7 @@ public class StadiumController {
 		map.put("pageSize", "12");
 		map.put("blockSize", "5");
 		map.put("totalCount",c.get());
+
 		pxy.carryOut(map);
 		IFunction i = (Object o)-> staMap.searchStadium(pxy);
 		List<?> ls = (List<?>) i.apply(pxy);
@@ -68,10 +70,77 @@ public class StadiumController {
 		System.out.println(ls.toString());
 		return map;
 	}
-
+	@GetMapping("/seoul/search/{search}/{page}")
+	public Map<?,?> searchSeoul(	
+			@PathVariable("search") String search,	
+			@PathVariable("page") String page) {
+		logger.info("=======서울 리스트 진입 ======");
+		String se = search;
+		System.out.println(search);
+		ISupplier c = ()-> staMap.countSeoulSearch();
+		map.clear();
+		map.put("search", se);
+		map.put("pageNum", page);
+		map.put("pageSize", "12");
+		map.put("blockSize", "5");
+		map.put("totalCount",c.get());
+		pxy.carryOut(map);
+		IFunction i = (Object o)-> staMap.selectSeoulStadium(pxy);
+		List<?> ls = (List<?>) i.apply(pxy);
+		map.clear();
+		map.put("pxy", pxy);
+		map.put("srch", ls);
+		System.out.println(ls.toString());
+		return map;
+	}
+	@GetMapping("/incheon/search/{search}/{page}")
+	public Map<?,?> searchIncheon(	
+			@PathVariable("search") String search,	
+			@PathVariable("page") String page) {
+		logger.info("=======인천 리스트 진입 ======");
+		String se = search;
+		System.out.println(search);
+		ISupplier c = ()-> staMap.countSeoulSearch();
+		map.clear();
+		map.put("search", se);
+		map.put("pageNum", page);
+		map.put("pageSize", "12");
+		map.put("blockSize", "5");
+		map.put("totalCount",c.get());
+		pxy.carryOut(map);
+		IFunction i = (Object o)-> staMap.selectIncheonStadium(pxy);
+		List<?> ls = (List<?>) i.apply(pxy);
+		map.clear();
+		map.put("pxy", pxy);
+		map.put("srch", ls);
+		System.out.println(ls.toString());
+		return map;
+	}
+	@GetMapping("/gyeonggi/search/{search}/{page}")
+	public Map<?,?> searchGyeonggi(	
+			@PathVariable("search") String search,	
+			@PathVariable("page") String page) {
+		logger.info("=======경기도 리스트 진입 ======");
+		String se = search;
+		System.out.println(search);
+		ISupplier c = ()-> staMap.countSeoulSearch();
+		map.clear();
+		map.put("search", se);
+		map.put("pageNum", page);
+		map.put("pageSize", "12");
+		map.put("blockSize", "5");
+		map.put("totalCount",c.get());
+		pxy.carryOut(map);
+		IFunction i = (Object o)-> staMap.selectGyeonggiStadium(pxy);
+		List<?> ls = (List<?>) i.apply(pxy);
+		map.clear();
+		map.put("pxy", pxy);
+		map.put("srch", ls);
+		System.out.println(ls.toString());
+		return map;
+	}
 	@GetMapping("/stadiums")
 	public Map<?,?> list(){
-		System.out.println(" home list!!!");
 		ISupplier s = ()-> staMap.selectAllStadium();
 		List<?> allStadium = (List<?>) s.get();
 		map.clear();
@@ -79,4 +148,5 @@ public class StadiumController {
 		map.put("home", allStadium);
 		return map;
 	}
+	
 }

@@ -1,24 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<link rel="shortcut icon" href="resources/img/logo/favicon.ico" type="image/x-icon">
+<link rel="icon" href="resources/img/logo/favicon.ico" type="image/x-icon">
 <title>SUPORTS</title>
 
 <script src='//unpkg.com/popper.js@1/dist/umd/popper.min.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap"></script>-->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap"></script>
 <script src="resources/js/signin/signin.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
+<!-- 챗봇 -->
+<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> 
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
+<!-- 챗봇 -->
 <link href="resources/css/fullscreenDemo.css" rel="stylesheet" type="text/css">
+
 
 <!-- default css -->
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/com/myTooltip.css">
 <link rel="stylesheet" href="resources/css/com/bootstrap3.css">
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
+<link rel="stylesheet" href="resources/css/chatbot.css">
 <link rel="stylesheet" href="resources/css/datepicker/datapicker.min.css">
 
 <!-- modal css -->
@@ -47,13 +55,14 @@
 <link rel="stylesheet" href="resources/css/team/teamupdateemblem.css">
 <link rel="stylesheet" href="resources/css/team/teamupdateinfo.css">
 <link rel="stylesheet" href="resources/css/team/teamupdatepicture.css">
+<link rel="stylesheet" href="resources/css/team/team_detail_list.css">
 
 </head>
 <body>
+
 	<div id="content">
 
 	</div>
-	
 	<!-- Fullsize Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -74,12 +83,14 @@
 	</div>
 	<div id="myMpa">
 	</div>
-	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/app.js"></script>
+	<script src="resources/js/check.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/com/router.js"></script>
 	<script src="resources/js/com/myTooltip.js"></script>
 	<script src="resources/js/com/datapicker.min.js"></script>
 	<script src="resources/js/com/datapicker.ko-kr.js"></script>
+	<script src="resources/js/com/fileupload.js"></script>
  	<script src="resources/js/signin/signin.js"></script> 
 
 	<script src="resources/js/home/home.js"></script>
@@ -87,15 +98,21 @@
 	<script src="resources/js/member/member.js"></script>
 	<script src="resources/js/com/util.js"></script>
     <script src="resources/js/vidbg.js"></script>
-
+    <script src="resources/js/home/chat.js"></script>
+    
 <script>
 app.run('<%=application.getContextPath()%>');
 
-function allowDrop(ev) { ev.preventDefault(); } 
-function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); } 
+function allowDrop(ev) { ev.preventDefault(); }
+function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
+function drag2(ev) { ev.dataTransfer.setData("text", ev.target.id); }
 function drop(ev) { ev.preventDefault(); 
 var c = ev.dataTransfer.getData("text"); 
-ev.target.appendChild(document.getElementById(c)); } 
+
+ev.target.appendChild(document.getElementById(c));
+} 
+
 </script>
+
 </body>
 </html>

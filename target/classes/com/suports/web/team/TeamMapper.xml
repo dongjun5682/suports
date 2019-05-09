@@ -10,7 +10,7 @@
   <id property="index" column="TEAM_INDEX"/>
   <result property="name" column="TEAM_NAME"/>
   <result property="emblem" column="TEAM_EMBLEM"/>
-  <result property="captain" column="TEAM_CAPTAIN"/>
+  <result property="captain" column="TEAM_CAPTIN"/>
   <result property="sport" column="TEAM_SPORT"/>
   <result property="sort" column="TEAM_SORT"/>
   <result property="address" column="TEAM_ADDR"/>
@@ -28,7 +28,7 @@
 		TEAM_INDEX index,
 		TEAM_NAME name,
 		TEAM_EMBLEM emblem,
-		TEAM_CAPTAIN captain,
+		TEAM_CAPTIN captain,
 		TEAM_SPORT sport,
 		TEAM_SORT sort,
 		TEAM_ADDR address,
@@ -44,7 +44,7 @@
 		INSERT INTO TEAM (
 		TEAM_NAME,
 		TEAM_EMBLEM,
-		TEAM_CAPTAIN,
+		TEAM_CAPTIN,
 		TEAM_SPORT,
 		TEAM_SORT,
 		TEAM_ADDR,
@@ -64,6 +64,21 @@
 		#{style}
 		)
 	</insert>
+	<update id="updateATeam"
+		parameterType="com.suports.web.domain.TeamDTO" flushCache="true"
+		statementType="PREPARED" timeout="20">
+		UPDATE TEAM SET
+		TEAM_NAME = #{name},
+		TEAM_AGE = #{avgage},
+		TEAM_SORT = #{sort},
+		TEAM_STYLE = #{style},
+		TEAM_SPORT = #{sport},
+		TEAM_ADDR = #{address},
+		TEAM_EMBLEM = #{emblem},
+		TEAM_INFO = #{info},
+		WHERE TEAM_CAPTIN
+		LIKE #{captain}
+	</update>
 	
 	<select id="selectListOfTeams"
 	parameterType="com.suports.web.Proxy"
@@ -84,7 +99,7 @@
 		TEAM_INDEX teamIndex,
 		TEAM_NAME name,
 		TEAM_EMBLEM emblem,
-		TEAM_CAPTAIN captain,
+		TEAM_CAPTIN captain,
 		TEAM_SPORT sport,
 		TEAM_SORT sort,
 		TEAM_ADDR address,
