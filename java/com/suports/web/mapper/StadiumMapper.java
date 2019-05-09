@@ -16,11 +16,15 @@ public interface StadiumMapper {
 	//stadium serch
 	public List<?> selectListStadium(Proxy pxy);
 	public List<?> searchStadium(Proxy pxy);
+	public List<?> selectSeoulStadium(Proxy pxy);
+	public List<?> selectIncheonStadium(Proxy pxy);
+	public List<?> selectGyeonggiStadium(Proxy pxy);
 	
 	public Map<?,?> selectStadiums(StadiumDTO std);
 	public Map<?,?> selectStadium(StadiumDTO std);
 	
 	public int countStadium();
+	public int countSeoulSearch();
 	
 	public int countSearch(String search);
 	

@@ -3,7 +3,7 @@ var home = home || {};
 
 home = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
-    let _, js, compojs, memberjs, stadiumjs, tournamentjs, teamjs, backjs, msessionjs;
+    let _, js, compojs, memberjs, stadiumjs, tournamentjs, teamjs, backjs, msessionjs,chatjs;
 
     let init = () => {
         _ = $.ctx();
@@ -14,7 +14,8 @@ home = (() => {
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js + '/team/team.js';
         backjs = js + '/backgroundTransition.js';
-        msessionjs = js + '/home/membersession.js'
+        msessionjs = js + '/home/membersession.js';
+        chatjs = js + '/home/chat.js'
     };
     let onCreate = () => {
         init();
@@ -26,6 +27,7 @@ home = (() => {
             $.getScript(teamjs),
             $.getScript(backjs),
             $.getScript(msessionjs),
+            $.getScript(chatjs),
             $.Deferred(function(d) {
                 $(d.resolve);
             })
@@ -34,6 +36,7 @@ home = (() => {
         });
     };
     let setContentView = () => {
+    	 
         $('#content').before(compo.header());
         $('#content').append(compo.content());
         jQuery(function($) {
@@ -56,6 +59,12 @@ home = (() => {
             $('#people').empty().attr('id', 'position').append(compo.solo_search());
         });
         home_list();
+//        $.getScript($.js()+'/compo/compo.js',()=>{
+//        	$.getScript($.js()+'/home/chat.js',()=>{
+//        		$(compo.chatbot()).appendTo('#myMpa');
+//        		chat.init();
+//        	});
+//        });
         $('.navbar-right a').click(function(e) {
             alert('click :' + $(this).attr('id'));
             let _this = $(this).attr('id');
