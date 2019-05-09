@@ -50,9 +50,23 @@ stadium = (() => {
 				srch(arr);
 			}
 		});
-        var target = document.getElementById("selectBox");
-        alert('선택된 옵션 value 값=' + target.options[target.selectedIndex].inc); 
-
+        $(document).ready(function(){
+            $("#selectBox").on("change", function(){
+                console.log($(this).find("option[value='" + $(this).val() + "']").text())
+                if($(this).val()=='inc'){
+                alert($(this).val());	
+                srch_incheon(x);
+                }else if($(this).val()=='seo'){
+                alert($(this).val());	
+                srch_seoul(x);
+                }else if($(this).val()=='gy'){
+            	srch_gyeonggi(x);
+            	alert($(this).val());
+                
+                }
+            });
+        });
+        
     	$.getJSON($.ctx()+'/stadiums/page/'+x.p,d=>{
     		$('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
 	    	$.each(d.ls,(i,j)=>{
@@ -500,6 +514,288 @@ stadium = (() => {
  		});
     	
     };
+    let srch_seoul =x=>{
+    	$('#footer').empty();
+        $('#content').empty().html(compo.stadium_list_sidebar());
+        $('#content').css('margin-top', '80px');
+        let url = $.ctx()+'/seoul/search/'+ x.s+'/'+x.p;
+    	$.getJSON(url,d=>{
+    		$('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
+	    	$.each(d.srch,(i,j)=>{
+	    		$('<div class="col-md-3 col-sm-6 col-xs-6" >' +
+                        '  <div class="course">' +
+                        '    <a href="#" class="course-img">' +
+                        '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
+                        '      <i class="course-link-icon fa fa-link"></i>' +
+                        '    </a>' +
+                        '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                        '    <div class="course-details">' +
+                        '      <span class="course-category">' +j.stadiumAddr + '</span>' +
+                        '    </div>' +
+                        '    <div class="course-people">' +
+                        '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                        '    </div>' +
+                        '  </div>' +
+                        '</div> ')
+	  		  			.appendTo('#asearch')
+	  		  			.click(function() {
+	  		  				$('#map').empty();
+	  		  				$('#footer').empty();
+	  			    		list_detail(j);
+	  					});
+	    	});
+	    	let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:400px;">'
+                if (d.pxy.existPrev) {
+                    html += '<li class="prevBlock"><a href="#">&laquo;</a></li>';
+                }
+                let i = 0;
+                for (i = d.pxy.startPage; i <= d.pxy.endPage; i++) {
+                    if (x == i) {
+                        html += '<li class="active"><a href="#" class="page">' + i + '</a></li>';
+                    } else {
+
+                        html += '<li><a href="#" class="page">' + i + '</a></li>';
+                    }
+                }
+                if (d.pxy.existNext) {
+                    html += '<li class="nextBlock"><a href="#">&raquo;</a></li>';
+                }
+                $('.col-md-9').append(html);
+                
+                $('.page').each(function() {
+                    $(this).click(() => {
+                 	   let arr = {s :x.srch,
+                 			   	  p :$(this).text()};
+                 	  srch_seoul(arr);
+                    });
+                });
+                $('.nextBlock').click(function() {
+             	   let arr = {s :x.srch,
+          			   	  p :d.pxy.nextBlock};
+             	  srch_seoul(arr);
+                })
+                $('.prevBlock').click(function() {
+             	   let arr = {s :x.srch,
+          			   	  p :d.pxy.prevBlock};
+             	  srch_seoul(arr);
+                }) 
+    	});
+    	 $('#area_srch').on('click',()=>{
+         	alert('검색 클릭')
+ 			let search = $('#search').val();
+ 			if($.fn.nullChecker(search)){
+ 				alert('검색어를 입력하십시오');
+ 			}else{
+ 				alert('검색중 ');
+ 				let arr = {p:'1', s:search};
+ 				srch_seoul(arr);
+ 			}
+ 		});
+    	 $(document).ready(function(){
+             $("#selectBox").on("change", function(){
+                 console.log($(this).find("option[value='" + $(this).val() + "']").text())
+                 if($(this).val()=='inc'){
+                 alert($(this).val());	
+                 srch_incheon(x);
+                 }else if($(this).val()=='seo'){
+                 alert($(this).val());	
+                 srch_seoul(x);
+                 }else if($(this).val()=='gy'){
+             	srch_gyeonggi(x);
+             	alert($(this).val());
+                 
+                 }
+             });
+         });
+    };
+    let srch_incheon =x=>{
+    	$('#footer').empty();
+        $('#content').empty().html(compo.stadium_list_sidebar());
+        $('#content').css('margin-top', '80px');
+        let url = $.ctx()+'/incheon/search/'+ x.s+'/'+x.p;
+    	$.getJSON(url,d=>{
+    		$('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
+	    	$.each(d.srch,(i,j)=>{
+	    		$('<div class="col-md-3 col-sm-6 col-xs-6" >' +
+                        '  <div class="course">' +
+                        '    <a href="#" class="course-img">' +
+                        '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
+                        '      <i class="course-link-icon fa fa-link"></i>' +
+                        '    </a>' +
+                        '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                        '    <div class="course-details">' +
+                        '      <span class="course-category">' +j.stadiumAddr + '</span>' +
+                        '    </div>' +
+                        '    <div class="course-people">' +
+                        '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                        '    </div>' +
+                        '  </div>' +
+                        '</div> ')
+	  		  			.appendTo('#asearch')
+	  		  			.click(function() {
+	  		  				$('#map').empty();
+	  		  				$('#footer').empty();
+	  			    		list_detail(j);
+	  					});
+	    	});
+	    	/*let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:400px;">'
+                if (d.pxy.existPrev) {
+                    html += '<li class="prevBlock"><a href="#">&laquo;</a></li>';
+                }
+                let i = 0;
+                for (i = d.pxy.startPage; i <= d.pxy.endPage; i++) {
+                    if (x == i) {
+                        html += '<li class="active"><a href="#" class="page">' + i + '</a></li>';
+                    } else {
+
+                        html += '<li><a href="#" class="page">' + i + '</a></li>';
+                    }
+                }
+                if (d.pxy.existNext) {
+                    html += '<li class="nextBlock"><a href="#">&raquo;</a></li>';
+                }
+                $('.col-md-9').append(html);
+                
+                $('.page').each(function() {
+                    $(this).click(() => {
+                 	   let arr = {s :x.srch,
+                 			   	  p :$(this).text()};
+                 	  srch(arr);
+                    });
+                });
+                $('.nextBlock').click(function() {
+             	   let arr = {s :x.srch,
+          			   	  p :d.pxy.nextBlock};
+             	  srch(arr);
+                })
+                $('.prevBlock').click(function() {
+             	   let arr = {s :x.srch,
+          			   	  p :d.pxy.prevBlock};
+             	  srch(arr);
+                }) */
+    	});
+    	 $('#area_srch').on('click',()=>{
+         	alert('검색 클릭')
+ 			let search = $('#search').val();
+ 			if($.fn.nullChecker(search)){
+ 				alert('검색어를 입력하십시오');
+ 			}else{
+ 				alert('검색중 ');
+ 				let arr = {p:'1', s:search};
+ 				srch(arr);
+ 			}
+ 		});
+    	 $(document).ready(function(){
+             $("#selectBox").on("change", function(){
+                 console.log($(this).find("option[value='" + $(this).val() + "']").text())
+                 if($(this).val()=='inc'){
+                 alert($(this).val());	
+                 srch_incheon(x);
+                 }else if($(this).val()=='seo'){
+                 alert($(this).val());	
+                 srch_seoul(x);
+                 }else if($(this).val()=='gy'){
+             	srch_gyeonggi(x);
+             	alert($(this).val());
+                 
+                 }
+             });
+         });
+    };
+    let srch_gyeonggi =x=>{
+    	$('#footer').empty();
+        $('#content').empty().html(compo.stadium_list_sidebar());
+        $('#content').css('margin-top', '80px');
+        let url = $.ctx()+'/gyeonggi/search/'+ x.s+'/'+x.p;
+    	$.getJSON(url,d=>{
+    		$('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
+	    	$.each(d.srch,(i,j)=>{
+	    		$('<div class="col-md-3 col-sm-6 col-xs-6" >' +
+                        '  <div class="course">' +
+                        '    <a href="#" class="course-img">' +
+                        '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
+                        '      <i class="course-link-icon fa fa-link"></i>' +
+                        '    </a>' +
+                        '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                        '    <div class="course-details">' +
+                        '      <span class="course-category">' +j.stadiumAddr + '</span>' +
+                        '    </div>' +
+                        '    <div class="course-people">' +
+                        '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                        '    </div>' +
+                        '  </div>' +
+                        '</div> ')
+	  		  			.appendTo('#asearch')
+	  		  			.click(function() {
+	  		  				$('#map').empty();
+	  		  				$('#footer').empty();
+	  			    		list_detail(j);
+	  					});
+	    	});
+	    	/*let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:400px;">'
+                if (d.pxy.existPrev) {
+                    html += '<li class="prevBlock"><a href="#">&laquo;</a></li>';
+                }
+                let i = 0;
+                for (i = d.pxy.startPage; i <= d.pxy.endPage; i++) {
+                    if (x == i) {
+                        html += '<li class="active"><a href="#" class="page">' + i + '</a></li>';
+                    } else {
+
+                        html += '<li><a href="#" class="page">' + i + '</a></li>';
+                    }
+                }
+                if (d.pxy.existNext) {
+                    html += '<li class="nextBlock"><a href="#">&raquo;</a></li>';
+                }
+                $('.col-md-9').append(html);
+                
+                $('.page').each(function() {
+                    $(this).click(() => {
+                 	   let arr = {s :x.srch,
+                 			   	  p :$(this).text()};
+                 	  srch(arr);
+                    });
+                });
+                $('.nextBlock').click(function() {
+             	   let arr = {s :x.srch,
+          			   	  p :d.pxy.nextBlock};
+             	  srch(arr);
+                })
+                $('.prevBlock').click(function() {
+             	   let arr = {s :x.srch,
+          			   	  p :d.pxy.prevBlock};
+             	  srch(arr);
+                }) */
+    	});
+    	 $('#area_srch').on('click',()=>{
+         	alert('검색 클릭')
+ 			let search = $('#search').val();
+ 			if($.fn.nullChecker(search)){
+ 				alert('검색어를 입력하십시오');
+ 			}else{
+ 				alert('검색중 ');
+ 				let arr = {p:'1', s:search};
+ 				srch(arr);
+ 			}
+ 		});
+    	 $(document).ready(function(){
+             $("#selectBox").on("change", function(){
+                 console.log($(this).find("option[value='" + $(this).val() + "']").text())
+                 if($(this).val()=='inc'){
+                 alert($(this).val());	
+                 srch_incheon(x);
+                 }else if($(this).val()=='seo'){
+                 alert($(this).val());	
+                 srch_seoul(x);
+                 }else if($(this).val()=='gy'){
+             	srch_gyeonggi(x);
+             	alert($(this).val());
+                 
+                 }
+             });
+         });
+    };
     
     let srch_after =x=>{
     	$('#footer').empty();
@@ -632,5 +928,8 @@ stadium = (() => {
     	list_detail_after:list_detail_after,
     	list_after:list_after,
     	srch_after:srch_after,
-    	initMap: initMap}
+    	initMap: initMap,
+    	srch_seoul:srch_seoul,
+    	srch_incheon:srch_incheon,
+    	srch_gyeonggi:srch_gyeonggi}
 })();

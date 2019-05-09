@@ -44,7 +44,33 @@
 		WHERE S.STADIUM_ADDR LIKE '%${search}%') S2
 		WHERE S2.RNUM BETWEEN #{startRow} AND #{endRow};
 	</select>
-
+		<select id="selectSeoulStadium" resultMap="result"
+		parameterType="com.suports.web.Proxy">
+		SELECT S2.*
+		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
+		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
+		@ROWNUM:=0)TMP
+		WHERE S.AREA_INDEX LIKE '10') S2
+		WHERE S2.RNUM BETWEEN #{startRow} AND #{endRow};
+	</select>
+	<select id="selectIncheonStadium" resultMap="result"
+		parameterType="com.suports.web.Proxy">
+		SELECT S2.*
+		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
+		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
+		@ROWNUM:=0)TMP
+		WHERE S.S.AREA_INDEX LIKE '11') S2
+		WHERE S2.RNUM BETWEEN #{startRow} AND #{endRow};
+	</select>
+	<select id="selectGyeonggiStadium" resultMap="result"
+		parameterType="com.suports.web.Proxy">
+		SELECT S2.*
+		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
+		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
+		@ROWNUM:=0)TMP
+		WHERE S.S.AREA_INDEX LIKE '12') S2
+		WHERE S2.RNUM BETWEEN #{startRow} AND #{endRow};
+	</select>
 	<select id="countSearch" resultType="int"
 		parameterType="String">
 		SELECT COUNT(*)
@@ -54,7 +80,15 @@
 		@ROWNUM:=0)TMP
 		WHERE S.STADIUM_ADDR LIKE '%${value}%') S2) S3;
 	</select>
-
+	<select id="countSeoulSearch" resultType="int"
+		parameterType="String">
+		SELECT COUNT(*)
+		FROM(SELECT S2.*
+		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
+		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
+		@ROWNUM:=0)TMP
+		WHERE S.AREA_INDEX LIKE '10') S2) S3;
+	</select>
 	<select id="selectAllStadium" resultMap="result">
 		SELECT S.*,A.AREA_NAME
 		FROM STADIUM S JOIN	AREA A
