@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.suports.web.domain.ImageDTO;
 import com.suports.web.domain.MemberDTO;
 import com.suports.web.mapper.MemberMapper;
 
@@ -72,6 +73,19 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+	@Override
+	public void addAMemberPhoto(ImageDTO img) {
+		memberMapper.insertAMemberPhoto(img);
+		
+	}
+
+	@Override
+	public void modifyAMemberPhoto(MemberDTO mem) {
+		memberMapper.updateAMemberPhoto(mem);
+		
+	}
+
+
 	
 }

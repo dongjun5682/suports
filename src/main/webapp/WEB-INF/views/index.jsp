@@ -9,15 +9,11 @@
 
 <script src='//unpkg.com/popper.js@1/dist/umd/popper.min.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap"></script>
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap"></script> -->
 <script src="resources/js/signin/signin.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 <link href="resources/css/fullscreenDemo.css" rel="stylesheet" type="text/css">
-
-<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
-<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
-
 
 <!-- default css -->
 <link rel="stylesheet" href="resources/css/style.css">
@@ -53,9 +49,9 @@
 <link rel="stylesheet" href="resources/css/team/teamupdateinfo.css">
 <link rel="stylesheet" href="resources/css/team/teamupdatepicture.css">
 
-</style>
 </head>
 <body>
+
 	<div id="content">
 
 	</div>
@@ -86,6 +82,7 @@
 	<script src="resources/js/com/myTooltip.js"></script>
 	<script src="resources/js/com/datapicker.min.js"></script>
 	<script src="resources/js/com/datapicker.ko-kr.js"></script>
+	<script src="resources/js/com/fileupload.js"></script>
  	<script src="resources/js/signin/signin.js"></script> 
 
 	<script src="resources/js/home/home.js"></script>
@@ -94,38 +91,7 @@
 	<script src="resources/js/com/util.js"></script>
     <script src="resources/js/vidbg.js"></script>
     
-    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-
 <script>
-FilePond.registerPlugin(
-        FilePondPluginImagePreview
-);
-const pond = FilePond.create(
-		{
-			allowImagePreview: true,
-			imagePreviewMaxHeight: 380,
-            allowFileSizeValidation: true,
-            maxFileSize: '5MB',
-            labelMaxFileSize: '업로드 가능한 사이즈는 {filesize}미만입니다.',
-            allowFileTypeValidation: true,
-            acceptedFileTypes: ['image/jpeg','image/png'],
-            fileValidateTypeLabelExpectedTypes: 'JPG, PNG형식의 파일만 업로드 가능합니다.'
-        });
-FilePond.setOptions({
-	server: {
-		url: '/members/uploadImg',
-		method: 'POST',
-		timeout: 5000,
-        process: null,
-        load: './load/',
-        fetch: './fetch/'
-		}
-});
-
-
 app.run('<%=application.getContextPath()%>');
 
 function allowDrop(ev) { ev.preventDefault(); }
