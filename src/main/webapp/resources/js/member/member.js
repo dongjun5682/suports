@@ -244,6 +244,8 @@ member = (() => {
         });
         $('.textcontentpg11').click(() => {
             profile_photo_update();
+            $('.fieldupdatepicture').html(compo.input_uploadImg());
+			upload_ajax();
         });
     }
 
@@ -279,7 +281,10 @@ member = (() => {
     						characters : $('form input[name="charRadios"]:checked').val()
     				};
     				$('.modal-content').html(compo.signup_4());
-    				pond.appendTo(document.getElementById("upload_pond"));
+    				
+    				$('#upload_div').html(compo.input_uploadImg());
+    				upload_ajax();
+    				
     				$('.imgnextbtnbg').click(() => {
     					let formdata4 = {
     							info : $('form input[name="memberInfo"]').val()
@@ -320,35 +325,37 @@ member = (() => {
     	})
     }
 
-    let upload = () => {
-        $('#addfile_btn').click(function() {
-            //			let ok = (this.files[0]) ? true : false;
-            //			if(ok) {
-            let fd = new FormData();
-
-            alert('click file upload');
-            alert('this files[0]' + this.files[0]);
-
-            fd.append('file', this.files[0]);
-            $.ajax({
-                url: $.ctx() + '/products/files',
+    let upload_ajax = () => {
+    	$('#img_upload_btn').click((e)=>{
+			alert('iub click');
+            e.preventDefault();
+            let memberData = {
+					memberId : $.member().id
+			};
+            alert('memberID saved = '+memberData.memberId);
+            $('#img_upload_frm').ajaxForm({
+                url: $.ctx()+'/uploadImg/'+memberData.memberId,
+                dataType: 'json',
+                encType: "multipart/form-data",
                 type: 'POST',
-                data: fd,
-                async: false,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: d => {
-                    alert('seccess');
+                beforeSubmit: function() {
+                    if($('#photo').val() === ""){
+                         alert("사진을 선택하셔야 합니다.");
+                         return false;
+                    }else{
+                         let ext = $("#photo").val().split(".").pop().toLowerCase();
+                         if($.inArray(ext, ['jpg','png','jpeg']) == -1){
+                        	 alert('JPG, JPEG, PNG 형식의 파일만 업로드 할 수 있습니다.');
+                        	 return false;
+                         }
+                    }
                 },
-                error: e => {
-                    alert('error');
+                success: function(d) {
+                  alert(d.result);
                 }
-            });
-            //			} else {
-            //				alert('Image file uploading..');
-            //			}
+           }).submit();
         });
+		
     }
     let password_tooltip = () => {
     	$('#checkPassword').click(()=>{

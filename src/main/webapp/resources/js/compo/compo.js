@@ -810,7 +810,7 @@ compo = {
 		+'                    <img src="resources/img/player/player-signup-pg4-img-progress-10p.png" class="imgprogress10p" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="/>'
 		+'                </div>'
 		+'                <div class="fieldpicture">'
-		+'                    <div id="upload_pond"/></div>'
+		+'										<div id="upload_div"></div>	'
 		+'                </div>'
 		+'			</form>'
 		+'            </div>'
@@ -1336,6 +1336,19 @@ compo = {
 		+'       </div>';
 		        
 	},
+	input_uploadImg: ()=>{
+		return '<div class="row">'
+		+'<div id="img_upload_div" class="col-md-5  mb-5">'
+			+'<form id="img_upload_frm" encType="multipart/form-data">'
+			+'<label for="cc-expiration">사진 등록</label>'
+			+'<input type="file" id="photo" name="photo" class="form-control" id="photo" placeholder="" required>'
+			+'<div class="invalid-feedback">'
+			+'</div>'
+			+'<input type="submit" id="img_upload_btn">'
+			+'</form>'
+		+'</div>'
+		+'</div>'
+	},
 	update_photo_player : ()=>{
 		return'<div class="playerupdatepicture">'
         +'    <div style="width: 1440px; height: 100%; position:relative; margin:auto;">'
@@ -1349,18 +1362,6 @@ compo = {
         +'        </div>'
         +'        <div class="formupdate">'
         +'            <div class="fieldupdatepicture">'
-        +'                <div class="fieldbtn">'
-        +'                    <div class="btnuploadfile">'
-        +'                        사진 전송'
-        +'                    </div>'
-        +'                </div>'
-        +'                <div class="textcontentpg1">'
-        +'                    *.jpg, *.png 확장자만 전송 가능합니다. (~4MB 크기 제한)'
-        +'                </div>'
-        +'                <div class="textcontentpg11">'
-        +'                    자신을 표현하는 사진을 사용하거나 또는 개인정보나 민감한 정보가 나타나지 않은 사진을 사용하세요.'
-        +'                </div>'
-        +'            </div>'
         +'        </div>'
         +'        <div class="fieldnickname">'
         +'            <img src="resources/img/player/player-update-info-img-path-3@2x.png" class="imgpath1" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="/>'

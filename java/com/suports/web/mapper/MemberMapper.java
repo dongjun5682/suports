@@ -1,5 +1,6 @@
 package com.suports.web.mapper;
 
+import com.suports.web.domain.ImageDTO;
 import com.suports.web.domain.MemberDTO;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public interface MemberMapper {
 
 	// CREATE
 	public void insertAMember(MemberDTO mem);
+	public void insertAMemberPhoto(ImageDTO img);
 	
 	// READ
 	public List<?> selectListOfMembers(Map<?,?> map);
@@ -23,6 +25,7 @@ public interface MemberMapper {
 	
 	// UPDATE
 	public void updateAMember(MemberDTO mem);
+	public void updateAMemberPhoto(MemberDTO mem);
 	public Map<String, Object> selectProfile(Map<?,?> map);
 	
 	// DELETE

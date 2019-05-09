@@ -52,12 +52,10 @@
   		<mybatis-spring:scan base-package="com.suports.web"/>
   		
   		<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-                <property name="maxUploadSize" value="10000000" />
+                <property name="maxUploadSize" value="50000000" />
                 <property name="defaultEncoding" value="utf-8"></property>
         </bean> 
-    <bean id="uploadPath" class="java.lang.String">
-         <constructor-arg value="./fileuploads"/>
-<!--          <constructor-arg value="C:\\Users\\1027\\git\\repository7\\suports\\src\\main\\webapp\\resources\\img"/> -->
-                <!-- <constructor-arg value="//usr//local//tomcat9//webapps//ROOT//resources//img"/> -->
-    </bean>
+   <!--  <bean id="memberImgUploadPath" class="java.lang.String">
+         <constructor-arg value="/Users/yirekim/suports/src/main/webapp/resources/img/membres_photo/"/>
+    </bean> -->
 </beans>
