@@ -33,8 +33,6 @@ public class GameController {
 	@GetMapping("/game/overlap/{timeIndex}/{memberIndex}")
 	public int overlap(@PathVariable int timeIndex,
 			@PathVariable int memberIndex) {
-		
-		
 		int a = 0;
 		return a;
 	}

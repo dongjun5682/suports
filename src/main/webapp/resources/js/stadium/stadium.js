@@ -379,10 +379,10 @@ stadium = (() => {
         	if(position == 'roster_100'){
         		alert('포지션을 선택해주세요');
         	}else{
-        		$.getJSON($.ctx()+'/game/overlap/'+j.timeIndex+'/'+$.member().memberIndex,
-        				d=>{
-        					
-        				})
+//        		$.getJSON($.ctx()+'/game/overlap/'+j.timeIndex+'/'+$.member().memberIndex,
+//        				d=>{
+//        					
+//        				})
         		sessionStorage.setItem('posi', $('#roster_ball').parent().attr('id'));
         		$('#pay_btn_1').attr({'data-toggle':'modal','data-target':'#myModal'});
         		$('.modal-content').css({'border-radius':'6px','padding': '20px','margin-top': '189px','border': '5px solid #468044'}).html(compo.pay_btn(j));

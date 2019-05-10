@@ -75,10 +75,11 @@
 		TEAM_SPORT = #{sport},
 		TEAM_ADDR = #{address},
 		TEAM_EMBLEM = #{emblem},
-		TEAM_INFO = #{info},
-		WHERE TEAM_CAPTIN
+		TEAM_INFO = #{info}
+		WHERE TEAM_CAPTIN 
 		LIKE #{captain}
 	</update>
+	
 	
 	<select id="selectListOfTeams"
 	parameterType="com.suports.web.Proxy"
