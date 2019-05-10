@@ -10,6 +10,7 @@ stadium = (() => {
         compojs = js + '/compo/compo.js';
         homejs = js+ '/home/home.js';
         msessionjs = js+'/home/membersession.js'
+        chatjs = js + '/home/chat.js'
     };
     let onCreate = (d) => {
     	
@@ -18,6 +19,7 @@ stadium = (() => {
             $.getScript(compojs),
             $.getScript(homejs),
             $.getScript(memberjs),
+            
             $.Deferred(function(d) {
                 $(d.resolve);
             })

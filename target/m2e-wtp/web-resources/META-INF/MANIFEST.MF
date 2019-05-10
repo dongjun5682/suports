@@ -1,6 +1,10 @@
 Manifest-Version: 1.0
 <<<<<<< HEAD
+<<<<<<< HEAD
 Built-By: dongjun
+=======
+Built-By: 1027
+>>>>>>> jonghyeop
 Build-Jdk: 1.8.0_201
 =======
 Built-By: yirekim
