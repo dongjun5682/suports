@@ -13,10 +13,10 @@
 <script src="resources/js/signin/signin.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <!-- 챗봇 -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> 
+<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> 
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
 <!-- 챗봇 -->
 <link href="resources/css/fullscreenDemo.css" rel="stylesheet" type="text/css">
 
@@ -61,7 +61,6 @@
 <body>
 
 	<div id="content">
-
 	</div>
 	<!-- Fullsize Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">

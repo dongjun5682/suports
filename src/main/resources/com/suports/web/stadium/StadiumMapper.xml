@@ -18,8 +18,8 @@
 		<result property="timeIndex" column="TIME_INDEX" />
 		<result property="time" column="TIME" />
 		<result property="price" column="TIME_PRICE" />
-		
-		
+		<result property="date" column="DATE" />
+
 	</resultMap>
 
 	<select id="selectListStadium"
@@ -31,14 +31,15 @@
 		ORDER BY STADIUM_INDEX DESC) S, (SELECT
 		@ROWNUM:=0)TMP) S2
 		WHERE
-		S2.RNUM BETWEEN #{startRow} AND #{endRow};
+		S2.RNUM
+		BETWEEN #{startRow} AND #{endRow};
 	</select>
-	
+
 	<select id="countStadium" resultType="int">
 		SELECT COUNT(*) FROM
 		STADIUM
 	</select>
-	
+
 	<select id="searchStadium" resultMap="result"
 		parameterType="com.suports.web.Proxy">
 		SELECT S2.*
@@ -46,16 +47,18 @@
 		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
 		@ROWNUM:=0)TMP
 		WHERE S.STADIUM_ADDR LIKE '%${search}%') S2
-		WHERE S2.RNUM BETWEEN #{startRow} AND #{endRow};
+		WHERE S2.RNUM
+		BETWEEN #{startRow} AND #{endRow};
 	</select>
-		<select id="selectSeoulStadium" resultMap="result"
+	<select id="selectSeoulStadium" resultMap="result"
 		parameterType="com.suports.web.Proxy">
 		SELECT S2.*
 		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
 		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
 		@ROWNUM:=0)TMP
 		WHERE S.AREA_INDEX LIKE '10') S2
-		WHERE S2.RNUM BETWEEN #{startRow} AND #{endRow};
+		WHERE S2.RNUM BETWEEN
+		#{startRow} AND #{endRow};
 	</select>
 	<select id="selectIncheonStadium" resultMap="result"
 		parameterType="com.suports.web.Proxy">
@@ -64,7 +67,8 @@
 		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
 		@ROWNUM:=0)TMP
 		WHERE S.S.AREA_INDEX LIKE '11') S2
-		WHERE S2.RNUM BETWEEN #{startRow} AND #{endRow};
+		WHERE S2.RNUM BETWEEN
+		#{startRow} AND #{endRow};
 	</select>
 	<select id="selectGyeonggiStadium" resultMap="result"
 		parameterType="com.suports.web.Proxy">
@@ -73,11 +77,12 @@
 		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
 		@ROWNUM:=0)TMP
 		WHERE S.S.AREA_INDEX LIKE '12') S2
-		WHERE S2.RNUM BETWEEN #{startRow} AND #{endRow};
+		WHERE S2.RNUM BETWEEN
+		#{startRow} AND #{endRow};
 	</select>
-	<select id="countSearch" resultType="int"
-		parameterType="String">
-		SELECT COUNT(*)
+	<select id="countSearch" resultType="int" parameterType="String">
+		SELECT
+		COUNT(*)
 		FROM(SELECT S2.*
 		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
 		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
@@ -88,18 +93,26 @@
 		parameterType="String">
 		SELECT COUNT(*)
 		FROM(SELECT S2.*
-		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
-		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
+		FROM (SELECT
+		@ROWNUM:=@ROWNUM+1 AS RNUM, S.*
+		FROM (SELECT * FROM STADIUM ORDER BY
+		STADIUM_INDEX DESC) S, (SELECT
 		@ROWNUM:=0)TMP
-		WHERE S.AREA_INDEX LIKE '10') S2) S3;
+		WHERE S.AREA_INDEX LIKE
+		'10') S2) S3;
 	</select>
 	<select id="selectAllStadium" resultMap="result">
-		SELECT S.*,T1.TIME_INDEX,A.AREA_NAME,T1.TIME_PRICE,T1.TIME
-		FROM STADIUM S JOIN	AREA A
-				ON S.AREA_INDEX LIKE A.AREA_INDEX,
-		(SELECT STADIUM_INDEX,TIME_INDEX,TIME_PRICE,TIME
-					FROM TIME T 
-					WHERE TIME = '09:00') T1
+		SELECT
+		S.*,T1.TIME_INDEX,A.AREA_NAME,T1.TIME_PRICE,T1.TIME,T1.DATE
+		FROM
+		STADIUM S JOIN AREA A
+		ON S.AREA_INDEX LIKE A.AREA_INDEX,
+		(SELECT
+		STADIUM_INDEX,TIME_INDEX,TIME_PRICE,TIME,D.DATE
+		FROM TIME T,(SELECT DATE
+		FROM DATE
+		WHERE DATE LIKE '2019/05/10') D
+		WHERE TIME = '09:00') T1
 		WHERE S.STADIUM_INDEX LIKE T1.STADIUM_INDEX;
 	</select>
 

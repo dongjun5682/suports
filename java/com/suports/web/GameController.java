@@ -14,7 +14,7 @@ import com.suports.web.mapper.GameMapper;
 @RestController
 public class GameController {
 
-	@Autowired GameDTO gameDTO;
+	@Autowired GameDTO gmDTO;
 	@Autowired Map<String,Object> map;
 	@Autowired GameMapper gameMap;
 
@@ -23,7 +23,6 @@ public class GameController {
 		System.out.println(stadiumIndex);
 		IFunction i = (Object o)  -> gameMap.selectGame(stadiumIndex);
 		List<?> list= (List<?>) i.apply(stadiumIndex);
-		
 		System.out.println(list.toString());
 		map.clear();
 		map.put("position",list);
@@ -31,9 +30,16 @@ public class GameController {
 	}
 	
 	@GetMapping("/game/overlap/{timeIndex}/{memberIndex}")
-	public int overlap(@PathVariable int timeIndex,
+	public Map<?, ?> overlap(@PathVariable int timeIndex,
 			@PathVariable int memberIndex) {
-		int a = 0;
-		return a;
+		System.out.println("time : "+timeIndex);
+		System.out.println("member : "+memberIndex);
+		gmDTO.setTimeIndex(timeIndex);
+		IFunction i = (Object o) -> gameMap.selectOverlap(gmDTO);
+		List<?> list = (List<?>) i.apply(gmDTO);
+		map.clear();
+		map.put("ac", list);
+		System.out.println(list.toString());
+		return map;
 	}
 }

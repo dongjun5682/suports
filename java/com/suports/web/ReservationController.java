@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.suports.web.domain.AlramDTO;
 import com.suports.web.domain.GameDTO;
 import com.suports.web.domain.ReservationDTO;
+import com.suports.web.mapper.AlramMapper;
 import com.suports.web.mapper.GameMapper;
 import com.suports.web.mapper.PaymentMapper;
 import com.suports.web.mapper.ReservationMapper;
@@ -25,9 +27,13 @@ public class ReservationController {
 	@Autowired GameDTO gmDTO;
 	@Autowired Proxy pxy;
 	@Autowired ReservationDTO resDTO;
+	@Autowired AlramMapper alMap;
+	@Autowired ISupplier s;
+	@Autowired AlramDTO alDTO;
+	@Autowired IConsumer c;
 	
 	@GetMapping("/reservation/payment/{timeIndex}/{positionName}/{memberIndex}")
-	public ReservationDTO reservation(@PathVariable int timeIndex,
+	public Map<?, ?> reservation(@PathVariable int timeIndex,
 								@PathVariable String positionName,
 								@PathVariable int memberIndex){
 		Random random = new Random();
@@ -64,7 +70,21 @@ public class ReservationController {
 		i = (Object o) -> resMap.selectReservation(pxy);
 		resDTO = (ReservationDTO) i.apply(pxy);
 		
+		i = (Object o) -> gmMap.countMember(timeIndex);
+		int count = (int) i.apply(timeIndex);
+		
+		if(count == 22) {
+			s  = ()-> alMap.selectPayment();
+			alDTO.setMessage((String)s.get());
+		}else {
+			s  = ()-> alMap.selectReservation();
+			alDTO.setMessage((String)s.get());
+		}
+		System.out.println(alDTO.toString());
 		System.out.println(resDTO.toString());
-		return resDTO;
+		map.clear();
+		map.put("alram",alDTO);
+		map.put("res", resDTO);
+		return map;
 	}
 }

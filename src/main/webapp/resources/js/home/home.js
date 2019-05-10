@@ -59,14 +59,13 @@ home = (() => {
             $('#people').empty().attr('id', 'position').append(compo.solo_search());
         });
         home_list();
-        $.getScript($.js()+'/compo/compo.js',()=>{
-     	$.getScript($.js()+'/home/chat.js',()=>{
-        $(compo.chatbot()).appendTo('#myMpa');
-     	chat.init();
-      	});
-        });
+//        $.getScript($.js()+'/compo/compo.js',()=>{
+//     	$.getScript($.js()+'/home/chat.js',()=>{
+//        $(compo.chatbot()).appendTo('#myMpa');
+//     	chat.init();
+//      	});
+//        });
         $('.navbar-right a').click(function(e) {
-            alert('click :' + $(this).attr('id'));
             let _this = $(this).attr('id');
             switch (_this) {
                 case 'login':
@@ -109,7 +108,6 @@ home = (() => {
         });
         $('#stadium_list').click(() => {
             $('#content').css('margin-top', '80px');
-            alert('전체 운동장 보기');
             let arr = {
                 p: 1
             };
@@ -118,7 +116,6 @@ home = (() => {
 
         //로고 클릭시 새로 그리기
         $('.navbar-brand .logo').click(() => {
-        	alert('로고 클릭!!');
         	  $('#map').remove();
         	  $('#myMpa').remove();
         	  $('#content').empty().append(compo.content());
@@ -144,7 +141,6 @@ home = (() => {
             });
             home_list();
             $('#sear-btn').click(function() {
-                alert();
                 let search = {
                     p: 1,
                     s: ''
@@ -153,7 +149,6 @@ home = (() => {
             });
             $('#stadium_list').click(() => {
                 $('#content').css('margin-top', '80px');
-                alert('전체 운동장 보기');
                 let arr = {
                     p: 1
                 };
@@ -185,7 +180,6 @@ home = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.seoul_stadium').click(function() {
-                            alert(j.stadiumName);
                             stadium.list_detail(j);
                         });
                     }
@@ -206,7 +200,6 @@ home = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.Incheon_stadium').click(function() {
-                            alert(j.stadiumName);
                             stadium.list_detail(j);
                         });
                     }
@@ -227,7 +220,6 @@ home = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.gyeonggi_stadium').click(function() {
-                            alert(j.stadiumName);
                             stadium.list_detail(j);
                         });
                     }
@@ -251,7 +243,6 @@ home = (() => {
                 dataType: 'json',
                 contentType: "application/json; charset=utf-8",
                 success: d => {
-                    alert('ajax login : ' + d.id);
                     //멤버세션을 사용해서 어디서든 아이디를 호출 가능
                     $.extend(new MemberSession(d));
                     member.onCreate(d);

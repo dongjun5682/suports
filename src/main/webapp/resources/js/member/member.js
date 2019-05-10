@@ -28,7 +28,6 @@ member = (() => {
     };
     let setContentView = (d) => {
     	$('#map').remove();
-        alert('member!!!');
         $('#content').empty().append(compo.content());
         jQuery(function($) {
             $('#home').vidbg({
@@ -59,7 +58,6 @@ member = (() => {
 
         });
         $('.navbar-right a').click(function(e) {
-            alert('click :' + $(this).attr('id'));
             let _this = $(this).attr('id');
             switch (_this) {
                 case 'alram':
@@ -72,13 +70,11 @@ member = (() => {
                         .after(compo.alram_drop_btn());
                     break;
                 case 'exercise':
-                    alert('운동 클릭!');
                     $('#content').css('margin-top', '80px');
                     stadium.payment_reservation();
                     break;
                 case 'team':
                     $('#content').css('margin-top', '80px');
-                    alert('팀 클릭!');
                     let x = {
                         'page': 1
                     };
@@ -90,11 +86,9 @@ member = (() => {
                         'margin-top': '70px',
                         'height': '850px'
                     });
-                    alert('토너먼트 클릭!');
                     tour.tour_apply();
                     break;
                 case 'about':
-                    alert('소개 클릭!!');
                     break;
                 default:
                     break;
@@ -102,11 +96,6 @@ member = (() => {
         })
 
         $('#sear-btn').click(function() {
-            /*alert('addr : '+ $('.search-addr').val());
-            alert('date : '+ $('.search-date').val());
-            alert('time : '+ $('.search-time').val());
-            alert('sport : '+ $('.search-sports').val());
-            alert('position : '+ $('.search-position').val());*/
             let search = {
                 p: 1,
                 s: $('.search-addr').val()
@@ -122,7 +111,6 @@ member = (() => {
         });
         $('#stadium_list').click(() => {
             $('#content').css('margin-top', '80px');
-            alert('전체 운동장 보기');
             let arr = {
                 p: 1
             };
@@ -152,7 +140,6 @@ member = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.seoul_stadium').click(function() {
-                            alert(j.stadiumName);
                             stadium.list_detail_after(j);
                             
                         });
@@ -174,7 +161,6 @@ member = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.Incheon_stadium').click(function() {
-                            alert(j.stadiumName);
                             stadium.list_detail_after(j);
                         });
                     }
@@ -195,7 +181,6 @@ member = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.gyeonggi_stadium').click(function() {
-                            alert(j.stadiumName);
                             stadium.list_detail_after(j);
                         });
                     }
@@ -233,7 +218,6 @@ member = (() => {
     			dataType : 'json',
     			contentType : "application/json; charset=utf-8",
     			success : d => {
-    				alert('ajax update :');
     			},
     			error : e => {
     				alert('ajax fail');
@@ -330,12 +314,10 @@ member = (() => {
 
     let upload_ajax = () => {
     	$('#img_upload_btn').click((e)=>{
-			alert('iub click');
             e.preventDefault();
             let memberData = {
 					memberId : $.member().id
 			};
-            alert('memberID saved = '+memberData.memberId);
             $('#img_upload_frm').ajaxForm({
                 url: $.ctx()+'/uploadImg/'+memberData.memberId,
                 dataType: 'json',
