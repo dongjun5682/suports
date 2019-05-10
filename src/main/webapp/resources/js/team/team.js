@@ -1,4 +1,4 @@
-var team = team || {};
+var team = team || {}
 
 team = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';

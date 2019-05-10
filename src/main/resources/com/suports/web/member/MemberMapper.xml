@@ -18,6 +18,8 @@
   <result property="phone" column="PHONE"/>
   <result property="info" column="INFO"/>
   <result property="photo" column="PHOTO"/>
+  <result property="state" column="STATE"/>
+  <result property="disableDate" column="DISABLE_DATE"/>
   <result property="totalcount" column="TOTALCOUNT"/>
   <result property="rnum" column="RNUM"/>
   <result property="team" column="TEAM_INDEX"/>
@@ -49,7 +51,9 @@
 	<insert id="insertAMember"
 		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
 		statementType="PREPARED">
-		INSERT INTO MEMBER (
+		INSERT 
+		INTO MEMBER 
+		(
 		ID,
 		PASSWORD,
 		EMAIL,
@@ -79,11 +83,14 @@
 	<insert id="insertAMemberPhoto"
 		parameterType="com.suports.web.domain.ImageDTO" flushCache="true"
 		statementType="PREPARED">
-		INSERT INTO IMAGE (
+		INSERT 
+		INTO IMAGE 
+		(
 		IMAGE_NAME,
 		IMAGE_OWNER
 		)
-		VALUES (
+		VALUES 
+		(
 		#{imageName},
 		#{imageOwner}
 		)
@@ -91,7 +98,8 @@
 	<update id="updateAMember"
 		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
 		statementType="PREPARED" timeout="20">
-		UPDATE MEMBER SET
+		UPDATE 
+		MEMBER SET
 		NAME = #{name},
 		PASSWORD = #{password},
 		BIRTHDY = #{birth},
@@ -104,7 +112,8 @@
 	<update id="updateAMemberPhoto"
 		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
 		statementType="PREPARED" timeout="20">
-		UPDATE MEMBER SET
+		UPDATE 
+		MEMBER SET
 		PHOTO = #{photo}
 		WHERE ID
 		LIKE #{id}
@@ -112,9 +121,39 @@
 		<update id="updateAMemberTeamIndex"
 		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
 		statementType="PREPARED" timeout="20">
-		UPDATE MEMBER M SET 
+		UPDATE 
+		MEMBER M SET 
 		TEAM_INDEX = (SELECT TEAM_INDEX FROM TEAM T WHERE M.MEMBER_INDEX LIKE T.TEAM_CAPTIN)
 		WHERE MEMBER_INDEX
 		LIKE #{memberIndex}
 	</update>
+	<delete id="disableAMember"
+		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
+		statementType="PREPARED" timeout="20">
+		UPDATE 
+		MEMBER SET
+		state = 'pending',
+		disableDate = NOW()
+		WHERE ID LIKE #{id} 
+		AND PASSWORD LIKE #{password}
+	</delete>
+	<delete id="enableAMember"
+		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
+		statementType="PREPARED" timeout="20">
+		UPDATE 
+		MEMBER SET
+		STATE = 'resolved',
+		DISABLE_DATE = NULL
+		WHERE ID LIKE #{id}
+	</delete>
+	<delete id="deleteAMember"
+		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
+		statementType="PREPARED" timeout="20">
+		UPDATE 
+		MEMBER SET
+		STATE = 'resolved',
+		DISABLE_DATE = NULL
+		WHERE ID LIKE #{id} 
+		AND PASSWORD LIKE #{id}
+	</delete>
 </mapper>

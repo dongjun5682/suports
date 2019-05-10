@@ -30,16 +30,13 @@ public class MemmberController {
 	@Autowired MemberServiceImpl memberService;
 	@Autowired Map<String, Object> map;
 	
-	@PostMapping("/members")
+	@PutMapping("/members")
 	public Map<?,?> signup(@RequestBody MemberDTO mem) {
-		System.out.println(mem);
 
 		memberService.addAMember(mem);
 		
 		map.clear();
 		map.put("msg", "SUCCESS");
-		
-		System.out.println(mem);
 		
 		return map;
 	}
@@ -54,16 +51,28 @@ public class MemmberController {
 	
 	
 	}
-	@PutMapping("/members/{userid}")
-	public Map<?,?> update(@RequestBody MemberDTO mem, @PathVariable String userid) {
+	@PutMapping("/members/{trigger}/{userid}")
+	public Map<?,?> update(@RequestBody MemberDTO mem, @PathVariable String trigger, String userid) {
 
-		System.out.println("update param ========="+mem);
+		logger.info("update param ==trigger={} ==userid=",trigger, userid);
 		
-		memberService.modifyAMember(mem);
-		
+		switch (trigger) {
+		case "update":
+			memberService.modifyAMember(mem);
+			break;
+		case "disable":
+			memberService.disableAMember(mem);
+			break;
+		case "enable":
+			memberService.enableAMember(mem);
+			break;
+		default:
+			
+			break;
+		}
 		return map;
 	}
-
+	
 	@Transactional
 	@PostMapping("/uploadImg/{userid}")
 	public Map<?,?> fileUpload(MultipartHttpServletRequest request, @PathVariable String userid)throws Exception{

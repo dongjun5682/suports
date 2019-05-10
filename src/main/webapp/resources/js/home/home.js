@@ -59,12 +59,12 @@ home = (() => {
             $('#people').empty().attr('id', 'position').append(compo.solo_search());
         });
         home_list();
-        $.getScript($.js()+'/compo/compo.js',()=>{
-     	$.getScript($.js()+'/home/chat.js',()=>{
-        $(compo.chatbot()).appendTo('#myMpa');
-     	chat.init();
-      	});
-        });
+//        $.getScript($.js()+'/compo/compo.js',()=>{
+//     	$.getScript($.js()+'/home/chat.js',()=>{
+//        $(compo.chatbot()).appendTo('#myMpa');
+//     	chat.init();
+//      	});
+//        });
         $('.navbar-right a').click(function(e) {
             alert('click :' + $(this).attr('id'));
             let _this = $(this).attr('id');

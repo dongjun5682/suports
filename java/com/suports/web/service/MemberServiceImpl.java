@@ -92,6 +92,17 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
+	@Override
+	public void disableAMember(MemberDTO mem) {
+		memberMapper.disableAMember(mem);
+		
+	}
+	@Override
+	public void enableAMember(MemberDTO mem) {
+		memberMapper.enableAMember(mem);
+		
+	}
+
 
 	
 }
