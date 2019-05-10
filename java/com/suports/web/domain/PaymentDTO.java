@@ -8,7 +8,6 @@ import lombok.Data;
 
 @Data @Component @Lazy
 public  class PaymentDTO {
-	private int 
-					payment_Number;
-	private String payment_Date,access_code,payment_Key;
+	private int paymentNumber;
+	private String paymentKey,paymentDate,accessCode;
 }

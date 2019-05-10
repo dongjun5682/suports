@@ -24,4 +24,16 @@
 		ORDER BY G.GAME_INDEX;
 	</select>
 
+	<select id="selectGameIndex" parameterType="com.suports.web.domain.GameDTO" resultType="int">
+		SELECT GAME_INDEX
+		FROM GAME
+		WHERE TIME_INDEX = #{timeIndex}  AND POSITION_NAME = '${positionName}';
+	</select>
+	
+	<select id="updateMember" parameterType="com.suports.web.Proxy">
+		UPDATE GAME
+		SET MEMBER_INDEX = ${mIndex}
+		WHERE GAME_INDEX = ${gmNumber};
+	</select>
+	
 </mapper>
