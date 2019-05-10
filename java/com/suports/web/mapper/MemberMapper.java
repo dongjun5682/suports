@@ -27,6 +27,8 @@ public interface MemberMapper {
 	public void updateAMember(MemberDTO mem);
 	public void updateAMemberPhoto(MemberDTO mem);
 	public void updateAMemberTeamIndex(MemberDTO mem);
+	public void disableAMember(MemberDTO mem);
+	public void enableAMember(MemberDTO mem);
 	public Map<String, Object> selectProfile(Map<?,?> map);
 	
 	// DELETE

@@ -106,9 +106,8 @@ function allowDrop(ev) { ev.preventDefault(); }
 function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
 function drag2(ev) { ev.dataTransfer.setData("text", ev.target.id); }
 function drop(ev) { ev.preventDefault(); 
-var c = ev.dataTransfer.getData("text"); 
-
-ev.target.appendChild(document.getElementById(c));
+	var c = ev.dataTransfer.getData("text"); 
+	ev.target.appendChild(document.getElementById(c));
 } 
 
 </script>

@@ -28,6 +28,8 @@ public interface MemberService {
 	public void modifyAMember(MemberDTO mem);
 	public void modifyAMemberPhoto(MemberDTO mem);
 	public void modifyAMemberTeamIndex(MemberDTO mem);
+	public void disableAMember(MemberDTO mem);
+	public void enableAMember(MemberDTO mem);
 	public Map<String, Object> retrieveProfile(Map<?,?> map);
 	
 	// DELETE

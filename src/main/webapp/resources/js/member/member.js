@@ -50,10 +50,17 @@ member = (() => {
             $('#userBtn').after(compo.login_drop_btn());
             $('#user-drop').attr('style', '" "');
             $('#frofile').click(() => {
-                profile();
+            	member_update_frame();
+            	$('#update_mid_content').empty();
+            	profile();
             });
             $('#myteam').click(() => {
                 team.team_update_info();
+            });
+            $('#logout').click(() => {
+            	session.removeAttribute("member"); 
+            	window.location.reload();
+            	alert('location.reload and = '+$.member().id);
             });
 
         });
@@ -188,22 +195,29 @@ member = (() => {
             });
         });
     }
-
-    let profile =()=>{
+    let member_update_frame = ()=>{
     	$('#footer').remove();
-    	$('#content').empty().html(compo.update_player()).css('margin-top', '80px');
-    	password_tooltip();
-    	$('#profile_update').click(()=>{
+    	$('#content').empty().html(compo.member_update_frame());
+    	$('#profile_update').click(() => {
+    		$('#update_mid_content').empty();
     		profile();
     	});
-    	$('#profile_photo_update').click(()=>{
+    	$('#profile_photo_update').click(() => {
+    		$('#update_mid_content').empty();
     		profile_photo_update();
-    		$('.fieldupdatepicture').html(compo.input_uploadImg());
-			upload_ajax();
     	});
-    	$('.imgsignupbtnbg button[type=submit]').click(e=>{
+    	$('#profile_disable').click(() => {
+    		$('#update_mid_content').empty();
+    		profile_disable();
+    	});
+    }
+    let profile =()=>{
+    	$('#update_mid_content').append(compo.update_player());
+    	password_tooltip();
+    	$('#mem_update_btn').click((e)=>{
         	e.preventDefault();
-    		let updateData = {
+    		let update = {
+    				trigger : 'update',
     				id : $.member().id,
     				name : $('form input[name="memberName"]').val(),
     				password : $('form input[name="memberPassword"]').val(),
@@ -211,31 +225,27 @@ member = (() => {
     				characters : $('form select[id="memberSort"]').val(),
     				info : $('form input[name="memberInfo"]').val()
     		};
-    		$.ajax({
-    			url : $.ctx()+'/members/'+updateData.id,
-    			type : 'PUT',
-    			data : JSON.stringify(updateData),
-    			dataType : 'json',
-    			contentType : "application/json; charset=utf-8",
-    			success : d => {
-    			},
-    			error : e => {
-    				alert('ajax fail');
-    			}
-    		})
+    		update_ajax(update);
     	});
     }
+    let profile_disable = ()=>{
+    	$('#update_mid_content').append(compo.player_delete());
+    	$('#mem_disable_btn').click((e)=>{
+        	e.preventDefault();
+    		let update = {
+    				trigger : 'disable',
+					id : $.member().id,
+					password : $('form input[name="memberPassword"]').val()
+			};
+    		update_ajax(update);
+    	});
+    	
+    };
     let profile_photo_update = () => {
-        $('#content').empty().html(compo.update_photo_player());
-        $('.textcontentpg1').click(() => {
-            profile();
-        });
-        $('.textcontentpg11').click(() => {
-            profile_photo_update();
-            $('.fieldupdatepicture').html(compo.input_uploadImg());
-			upload_ajax();
-        });
-    }
+    	$('#update_mid_content').append(compo.update_photo_player());
+		$('.fieldupdatepicture').html(compo.input_uploadImg());
+		upload_ajax();
+    };
 
     // Sign Up { Modal, Date_Picker, Tool_Tip, Validate }
     let signup = () => {
@@ -294,7 +304,7 @@ member = (() => {
     					$('.beginbtn').click(() => {
     						$.ajax({
     							url : $.ctx()+'/members/',
-    							type : 'POST',
+    							type : 'PUT',
     							data : JSON.stringify(formdata5),
     							dataType : 'json',
     							contentType : "application/json; charset=utf-8",
@@ -310,8 +320,24 @@ member = (() => {
                })
            })
     	})
-    }
-
+    };
+    // switch_trigger, update.id json require   
+    let update_ajax = (update) => {
+    	$.ajax({
+			url : $.ctx()+'/members/'+update.trigger+'/'+update.id,
+			type : 'PUT',
+			data : JSON.stringify(update),
+			dataType : 'json',
+			contentType : "application/json; charset=utf-8",
+			success : d => {
+				window.location.reload();
+				alert('계정 정보가 업데이트 되어 로그아웃 되었습니다.');
+			},
+			error : e => {
+				alert('ajax fail');
+			}
+		})
+    };
     let upload_ajax = () => {
     	$('#img_upload_btn').click((e)=>{
             e.preventDefault();
@@ -341,7 +367,7 @@ member = (() => {
            }).submit();
         });
 		
-    }
+    };
     let password_tooltip = () => {
     	$('#checkPassword').click(()=>{
     		if($("#checkPassword").prop("checked")==true){
@@ -373,14 +399,19 @@ member = (() => {
 			'customClass': 'mytooltip-content',
 			'content': '<p>t</p>'
 				});   
-    }
+    };
+   
     return {
 
         onCreate:onCreate,
+        home_list_after:home_list_after,
+        signup:signup,
+        member_update_frame:member_update_frame,
         profile:profile,
         profile_photo_update:profile_photo_update,
-        signup:signup,
-        home_list_after:home_list_after,
+        profile_disable:profile_disable,
+        update_ajax:update_ajax,
+        upload_ajax:upload_ajax,
         password_tooltip:password_tooltip
     }
 })();

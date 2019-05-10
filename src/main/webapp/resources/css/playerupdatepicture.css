@@ -1,33 +1,6 @@
 
 .playerupdatepicture {
-  display: flex;
-  flex-flow: row nowrap;
-  /* flex-direction: row; */
-  justify-content: space-between;
-  /* width               : 100%; */
-  /* min-width           : 1440px; */
-  /* min-height          : 800px; */
-  position            : relative;
-  /* overflow            : hidden; */
-  /* margin              : 0px; */
-  /* -webkit-font-smoothing: antialiased; */
   -moz-osx-font-smoothing: grayscale;
-  /* background-color    : rgba(255, 255, 255, 1.0); */
-}
-a {
-  text-decoration     : none;
-}
-div {
-  -webkit-text-size-adjust: none;
-}
-.anima-full-width-a {
-  width               : 100%;
-}
-.anima-full-height-a {
-  height              : 100%;
-}
-div {
-  -webkit-text-size-adjust: none;
 }
 .playerupdatepicture .imgpath {
   background-color    : rgba(255,255,255,0.0);
@@ -40,29 +13,18 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  /* display: flex; */
 }
-.playerupdatepicture .imgsignupbtnbg {
+.upload_pic_btn {
+ width: 100%;
+  height: 100%;
   background-color: #22C781;
-  top: 620px;
-  border-radius: 4px;
-  height              : 59px;
   color: white;
-  width               : 508px;
-  position            : absolute;
-  /* margin              : 0; */
-  left                : 463px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
+  border-radius: 4px;
 }
 .playerupdatepicture .texttitlepg1 {
-  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 693px;
-  /* height              : auto; */
   width               : 133px;
   position            : absolute;
-  /* margin              : 0; */
   left                : 654px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
@@ -71,7 +33,6 @@ div {
   font-size           : 16.0px;
   color               : rgba(255, 255, 255, 1.0);
   text-align          : center;
-  /* line-height         : 19.0px; */
 }
 .playerupdatepicture .divexit {
   /* background-color    : rgba(255,255,255,0.0); */
@@ -91,27 +52,13 @@ div {
   line-height         : 22.0px;
 }
 .playerupdatepicture .formupdate {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* background-color    : rgba(255,255,255,0.0); */
-  top                 : 168px;
-  height: 428px;
-  width: 480px;
-  position            : absolute;
-  /* margin              : 0; */
-  left: 480px;
   -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
 }
 .playerupdatepicture .formupdate .fieldupdatepicture {
   background-color    : rgba(255,255,255,0.0);
-  /* top                 : 0px; */
   height: 100%;
   width: 100%;
   position            : relative;
-  /* margin              : 0; */
-  /* left                : 0px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -159,14 +106,10 @@ div {
   line-height         : 17.0px;
 }
 .playerupdatepicture .formupdate .fieldupdatepicture .textcontentpg1 {
-  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 380px;
   height              : auto;
   width: 100%;
   position            : absolute;
-  /* margin              : 0; */
-  /* text-align: center; */
-  /* justify-content: center; */
   left: 20px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
@@ -305,29 +248,9 @@ div {
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
-.playerupdatepicture .hsubtitlepg1 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 73px;
-  height              : 51px;
-  width               : 501px;
-  position            : absolute;
-  margin              : 0;
-  left                : 469px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-}
 .playerupdatepicture .hsubtitlepg1 .texthtitle {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : auto;
-  width               : 501px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
+  margin: 50px 50px;
   -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
   font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
   font-size           : 24.0px;
   color               : rgba(39, 44, 49, 1.0);
