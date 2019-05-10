@@ -305,8 +305,7 @@ member = (() => {
            						sports : formdata2.sports,
            						address : formdata2.address,
            						phone : formdata2.phone,
-           						info : formdata4.info,
-           						photo : 'default_profile.jpg'
+           						info : formdata4.info
     					};
     					$('.beginbtn').click(() => {
     						$.ajax({

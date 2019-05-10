@@ -27,6 +27,7 @@ public interface MemberService {
 	// UPDATE
 	public void modifyAMember(MemberDTO mem);
 	public void modifyAMemberPhoto(MemberDTO mem);
+	public void modifyAMemberTeamIndex(MemberDTO mem);
 	public Map<String, Object> retrieveProfile(Map<?,?> map);
 	
 	// DELETE

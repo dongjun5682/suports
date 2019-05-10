@@ -60,8 +60,7 @@
 		SPORTS,
 		ADDR,
 		PHONE,
-		INFO,
-		PHOTO
+		INFO
 		)
 		VALUES (
 		#{id},
@@ -74,8 +73,7 @@
 		#{sports},
 		#{address},
 		#{phone},
-		#{info},
-		#{photo}
+		#{info}
 		)
 	</insert>
 	<insert id="insertAMemberPhoto"
@@ -102,6 +100,7 @@
 		WHERE ID
 		LIKE #{id}
 	</update>
+	
 	<update id="updateAMemberPhoto"
 		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
 		statementType="PREPARED" timeout="20">
@@ -109,5 +108,13 @@
 		PHOTO = #{photo}
 		WHERE ID
 		LIKE #{id}
+	</update>
+		<update id="updateAMemberTeamIndex"
+		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
+		statementType="PREPARED" timeout="20">
+		UPDATE MEMBER M SET 
+		TEAM_INDEX = (SELECT TEAM_INDEX FROM TEAM T WHERE M.MEMBER_INDEX LIKE T.TEAM_CAPTIN)
+		WHERE MEMBER_INDEX
+		LIKE #{memberIndex}
 	</update>
 </mapper>

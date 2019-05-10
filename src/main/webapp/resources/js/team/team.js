@@ -201,7 +201,7 @@ team = (() => {
                             name: formdata.name,
                             avgage: formdata.avgage,
                             sort: formdata.sort,
-                            captain: $.member().id,
+                            captain: $.member().memberIndex,
                             address: formdata.address,
                             sport: formdata.sport,
                             style: formdata.style,
@@ -255,14 +255,14 @@ team = (() => {
     				name : $('input[name="teamName"]').val(),
     				avgage : $('input[name="teamAvgage"]').val(),
     				sort: $('input[name="teamSort"]').val(),
-    				style: $('input[name="teamStyle"]').val(),
-    				sport : $('select[id="teamSport"]').val(),
-    				address : $('input[name="teamLocation"]').val(),
-    				emblem : $('input[name="teamEmblem"]').val(),
+    				style: $('select[name="teamStyle"]').val(),
+    				sport : $('select[name="teamSport"]').val(),
+    				address : $('select[name="teamLocation"]').val(),
+    				emblem : $('select[name="teamEmblem"]').val(),
     				info : $('#teamInfo').val()
     		};
     		$.ajax({
-    			url : $.ctx()+'/teams/'+updateData.id,
+    			url : $.ctx()+'/teams/'+updateData.captain,
     			type : 'PUT',
     			data : JSON.stringify(updateData),
     			dataType : 'json',

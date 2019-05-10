@@ -86,6 +86,12 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
+	@Override
+	public void modifyAMemberTeamIndex(MemberDTO mem) {
+		memberMapper.updateAMemberTeamIndex(mem);
+		
+	}
+
 
 	
 }
