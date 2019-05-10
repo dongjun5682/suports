@@ -3994,8 +3994,8 @@ fieldset[disabled] .btn-default:hover {
 
 .btn-primary {
 	color: #fff;
-	background-color: #337ab7;
-	border-color: #2e6da4
+	background-color: #275228;
+	border-color: #275228
 }
 
 .btn-primary.focus,
@@ -7072,8 +7072,8 @@ button.list-group-item-danger.active:hover {
 
 .panel-default>.panel-heading {
 	color: #333;
-	background-color: #f5f5f5;
-	border-color: #ddd
+	background-color: #91b190;
+	border-color: #91b190
 }
 
 .panel-default>.panel-heading+.panel-collapse>.panel-body {

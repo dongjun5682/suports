@@ -61,8 +61,8 @@ home = (() => {
         home_list();
         $.getScript($.js()+'/compo/compo.js',()=>{
      	$.getScript($.js()+'/home/chat.js',()=>{
-        $(compo.chatbot()).appendTo('#myMpa');
-     	chat.init();
+     	$(compo.chatbot()).appendTo('#myMpa');	
+        chat.init();
       	});
         });
         $('.navbar-right a').click(function(e) {

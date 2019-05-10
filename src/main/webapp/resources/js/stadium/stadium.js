@@ -48,8 +48,6 @@ stadium = (() => {
 				alert('검색어를 입력하십시오');
 			}else{
 				alert('검색중 ');
-				let arr = {p:'1', s:search};
-				srch(arr);
 			}
 		});
         $(document).ready(function(){

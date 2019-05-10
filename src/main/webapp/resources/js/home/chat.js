@@ -23,33 +23,30 @@ chat=(()=>{
 	            setContentView(d);
 	        });
 	    };
-	let setContentView =(x)=>{
-		let arr = {p :1};
+	let setContentView =(d)=>{
+		$.extend(new MemberSession(d));
+		let id = sessionStorage.getItem('id');
+		let photo = sessionStorage.getItem('photo');
+		if(id==null){
+			id="로그인을 해주세요.";
+		}
+		if(photo==null){
+			photo="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg";
+		}
 		$('.msg_container_base').empty();
 		$('#btn-chat').click(function(){
 			let value = $('#btn-input').val();
 			$('<div class="row msg_container base_receive">'
 					+'                        <div class="col-md-2 col-xs-2 avatar">'
-					+'                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">'
+					+'                            <img src="'+photo+'" class=" img-responsive ">'
 					+'                            </div>'
 					+'                        <div class="col-xs-10 col-md-10 ">'
 					+'                            <div class="messages msg_receive">'
-					+'                                <p>'+value+'</p>'
+					+'                            <p>'+value+'</p>'
 					+'                        </div>'
 					+'                        </div>'
 					+'                    </div>').appendTo('.msg_container_base');
-			if(value!=null){
-				$('<div class="row msg_container base_sent">'
-						+'                        <div class="col-md-10 col-xs-10 ">'
-						+'                            <div class="messages msg_sent">'
-						+'                                <p>'+value+'</p>'
-						+'                            </div>'
-						+'                        </div>'
-						+'                        <div class="col-md-2 col-xs-2 avatar">'
-						+'                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">'
-						+'                        </div>'
-						+'                    </div>').appendTo('.msg_container_base');
-			};
+			$(".msg_container_base").scrollTop($(".msg_container_base")[0].scrollHeight);
 			$.ajax({
 				url : $.ctx()+'/chat/'+value,
 				type : 'post',
@@ -57,7 +54,19 @@ chat=(()=>{
 				dataType : 'json',
 				contentType : 'application/json',
 				success : d=>{
-					$('');
+							$('<div class="row msg_container base_sent">'
+		    				+'                        <div class="col-md-10 col-xs-10 ">'
+		    				+'                            <div class="messages msg_sent">'
+		    				+'                                <p>'+id+'</p>'
+		    				+'                            </div>'
+		    				+'                        </div>'
+		    				+'                        <div class="col-md-2 col-xs-2 avatar">'
+		    				+'                            <img src="resources/img/logo/logo.png" class=" img-responsive ">'
+		    				+'                        </div>'
+		    				+'                    </div>').appendTo('.msg_container_base');
+		    	
+							 
+							 $(".msg_container_base").scrollTop($(".msg_container_base")[0].scrollHeight);
 				},
 				error : e =>{
 
@@ -68,40 +77,26 @@ chat=(()=>{
 		
 	};
 	let bot=()=>{
-		/*$(document).on('click', '.panel-heading button.minim_chat_window', function (e) {
-			alert('xx');
-			var $this = $(this);
-		    if (!$this.hasClass('panel-collapsed')) {
-		        $this.parents('.panel').find('.panel-body').slideUp();
-		        $this.addClass('panel-collapsed');
-		        $this.removeClass('minus').addClass('minus');
-		        alert('xddx');
-		    } else {
-		        $this.parents('.panel').find('.panel-body').slideDown();
-		        $this.removeClass('panel-collapsed');
-		        $this.removeClass('minus').addClass('minus');
-		        alert('xSSddx');
-		        
-		    }
-		});*/
-		$(document).ready(function(){
-			  $('.more').click(function(){
-			    if($('.more').hasClass('more')){
-			       $('.more').addClass('close').removeClass('more');
-			       $('.board').css('visibility', 'visible');
-			    }else if($('.close').hasClass('close')){
-			       $('.close').addClass('more').removeClass('close');  
-			       $('.board').css('visibility', 'hidden');
-			    }
-			  });
-			});
-		$(document).on('focus', '.panel-footer input.chat_input', function (e) {
+		$(document).on('click', '.panel-heading span.icon_minim', function (e) {
 		    var $this = $(this);
+		    if (!$this.hasClass('panel-collapsed')) {
+		        $this.parents('.panel').find('.panel-body').slideToggle();
+		        $this.addClass('panel-collapsed');
+		        $this.removeClass('glyphicon-minus').addClass('glyphicon-plus');
+		    }else{
+		        $this.parents('.panel').find('.panel-body').slideToggle();
+		        $this.removeClass('panel-collapsed');
+		        $this.removeClass('glyphicon-plus').addClass('glyphicon-minus');
+
+		    }
+		});
+		$(document).on('focus', '.panel-footer input.chat_input', function (e) {
+			
+			var $this = $(this);
 		    if ($('#minim_chat_window').hasClass('panel-collapsed')) {
-		       $this.parents('.panel').find('.panel-body').slideDown();
-		       $('#minim_chat_window').removeClass('panel-collapsed');
-		       $('#minim_chat_window').removeClass('minus').addClass('minus');
-		       alert('xxdd');
+		        $this.parents('.panel').find('.panel-body').slideToggle();
+		        $('#minim_chat_window').removeClass('panel-collapsed');
+		        $('#minim_chat_window').removeClass('glyphicon-plus').addClass('glyphicon-minus');
 		    }
 		});
 		$(document).on('click', '#new_chat', function (e) {
@@ -111,8 +106,6 @@ chat=(()=>{
 		    var clone = $( "#chat_window_1" ).clone().appendTo( ".container" );
 		    clone.css("margin-left", size_total);
 		});
-		
-		
 		$(document).on('click', '.icon_close', function (e) {
 		    $( "#chat_window_1" ).remove();
 		});

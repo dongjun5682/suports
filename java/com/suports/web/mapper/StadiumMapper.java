@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.suports.web.Proxy;
+import com.suports.web.domain.ChatBotDTO;
 import com.suports.web.domain.StadiumDTO;
 
 @Repository
@@ -33,5 +34,7 @@ public interface StadiumMapper {
 	
 	//home stadium list
 	public List<?> selectAllStadium();
+	
+	public void chatBotAnswer(ChatBotDTO chd);
 	
 }

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.suports.web.domain.ChatBotDTO;
 import com.suports.web.domain.StadiumDTO;
+import com.suports.web.mapper.ChatBotMapper;
 import com.suports.web.mapper.StadiumMapper;
 import com.suports.web.service.StadiumServiceImpl;
 
@@ -26,7 +28,7 @@ public class StadiumController {
 	@Autowired Map<String,Object> map;
 	@Autowired StadiumMapper staMap;
 	@Autowired Proxy pxy;
-	
+	@Autowired ChatBotMapper chaMap;
 	
 	@GetMapping("/stadiums/page/{page}")
 	public Map<?,?> list(@PathVariable String page){
@@ -142,6 +144,7 @@ public class StadiumController {
 	}
 	@GetMapping("/stadiums")
 	public Map<?,?> list(){
+		
 		ISupplier s = ()-> staMap.selectAllStadium();
 		List<?> allStadium = (List<?>) s.get();
 		map.clear();
@@ -149,11 +152,17 @@ public class StadiumController {
 		map.put("home", allStadium);
 		return map;
 	}
-	@PostMapping("/chat/{value}")
-	public Map<?,?> chat(@PathVariable String value){
-		map.clear();
-		System.out.println(value);
-		return map;
-	}
+	
 
+	@PostMapping("/chat/{value}") 
+	public Map<?,?> chat(@PathVariable String value){ 
+		map.clear(); 
+		ChatBotDTO chat = new ChatBotDTO();
+		chat.setMsg(value);
+		IFunction i = (Object o) -> chaMap.Chatbot(chat);
+		System.out.println(i.apply(value));
+		ChatBotDTO ch = (ChatBotDTO) i.apply(value);
+		map.put("value", ch);
+		return map; 
+		}
 }

@@ -102,5 +102,6 @@
 					WHERE TIME = '09:00') T1
 		WHERE S.STADIUM_INDEX LIKE T1.STADIUM_INDEX;
 	</select>
+	
 
 </mapper>
