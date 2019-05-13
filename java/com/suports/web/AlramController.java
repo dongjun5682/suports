@@ -1,0 +1,30 @@
+package com.suports.web;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.suports.web.domain.AlramDTO;
+import com.suports.web.mapper.AlramMapper;
+
+@RestController
+public class AlramController {
+	
+	@Autowired Map<String,Object> map;
+	@Autowired AlramMapper alMap;
+	@Autowired AlramDTO alDTO;
+	@Autowired IFunction i;
+	
+	@GetMapping("alram/{memberIndex}")
+	public Map<?, ?> message(@PathVariable int memberIndex){
+		i = (Object o) -> alMap.seletMemberAlram(memberIndex);
+		List<?> list =  (List<?>) i.apply(memberIndex);
+		map.clear();
+		map.put("alram", list);
+		return map;
+	}
+}

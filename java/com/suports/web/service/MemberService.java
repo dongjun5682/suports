@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
+import com.suports.web.Proxy;
 import com.suports.web.domain.ImageDTO;
 import com.suports.web.domain.MemberDTO;
 
@@ -17,7 +18,7 @@ public interface MemberService {
 	public void addAMemberPhoto(ImageDTO img);
 	
 	// READ
-	public List<?> retrieveListOfMembers(Map<?,?> map);
+	public List<?> retrieveListOfMembers(Proxy pxy);
 	public List<MemberDTO> retrieveSomeOfMembers(Map<?,?> map);
 	public Map<String, Object> retrieveAMemberPic(MemberDTO mem);
 	public MemberDTO retrieveAMember(MemberDTO mem);
@@ -27,8 +28,10 @@ public interface MemberService {
 	// UPDATE
 	public void modifyAMember(MemberDTO mem);
 	public void modifyAMemberPhoto(MemberDTO mem);
+	public void modifyAMemberTeamIndex(MemberDTO mem);
+	public void disableAMember(MemberDTO mem);
+	public void enableAMember(MemberDTO mem);
 	public Map<String, Object> retrieveProfile(Map<?,?> map);
 	
 	// DELETE
-	public void removeAMember(MemberDTO mem);
 }

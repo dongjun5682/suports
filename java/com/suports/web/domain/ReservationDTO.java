@@ -8,10 +8,6 @@ import lombok.Data;
 
 @Data @Component @Lazy
 public  class ReservationDTO {
-	private int 
-					payment_Number,
-					reservation_Number,
-					member_Index,
-					game_Index;
-	private String reservation_Date,game_Date;
+	private int paymentNumber,gameIndex;
+	private String reservationNumber,reservationDate;
 }

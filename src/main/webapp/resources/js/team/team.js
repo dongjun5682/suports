@@ -1,4 +1,4 @@
-var team = team || {};
+var team = team || {}
 
 team = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
@@ -201,7 +201,7 @@ team = (() => {
                             name: formdata.name,
                             avgage: formdata.avgage,
                             sort: formdata.sort,
-                            captain: $.member().id,
+                            captain: $.member().memberIndex,
                             address: formdata.address,
                             sport: formdata.sport,
                             style: formdata.style,
@@ -230,71 +230,124 @@ team = (() => {
         })
 
     }
-    let team_update_info = () => {
-        $('#footer').remove();
-        $('#content').empty().html(compo.team_update_info());
+    let team_update_frame = () => {
+    	$('#footer').remove();
+    	$('#content').empty().html(compo.team_update_frame());
+    	team_update_info();
 
+        $('#team_members').click(() => {
+        	$('#update_mid_content').empty();
+        	team_members_list();
+        });
+        $('#team_add').click(() => {
+        	$('#update_mid_content').empty();
+        	team_add_memeber();
+        });
+        $('#team_sub').click(() => {
+        	$('#update_mid_content').empty();
+        	team_sub_member();
+        });
         $('#team_update_info').click(() => {
-            team_update_info();
+        	$('#update_mid_content').empty();
+        	team_update_info();
         });
         $('#team_update_emblem').click(() => {
-            team_update_emblem();
+        	$('#update_mid_content').empty();
+        	team_update_emblem();
         });
-
-        $('#team_update_photo').click(() => {
-            team_update_photo();
+        $('#team_trans').click(() => {
+        	$('#update_mid_content').empty();
+        	team_trans_captain();
         });
-
-        $('#team_manage').click(() => {
-            team_manage();
+        $('#team_diss').click(() => {
+        	$('#update_mid_content').empty();
+            team_diss_ever();
         });
-        $('#team_update_btn').click((e)=>{
+    }
+    let team_members_list = () => {
+    	$.getJSON($.ctx()+'/members/page/1', d => {
+//        	$.getJSON($.ctx()+'/members/page/'+x.page, d => {
+        		let table = '<table class="table table-striped"><tr>'
+    				+'<th>No.</th>'
+    				+'<th>이름</th>'
+    				+'<th>스포츠</th>'
+    				+'<th>포지션</th>'
+    				+'<th>위치</th>'
+    				+'<th> + </th>'
+    				+'</tr>'
+    			$.each(d.ls, (i,j) => {
+        			table += '<tr>'
+        	        +'<td>'+j.rnum+'</td>'
+        	        +'<td>'+j.name+'</td>'
+        	        +'<td>'+j.sports+'</td>'
+        	        +'<td>'+j.position+'</td>'
+        	        +'<td>'+j.address+'</td>'
+        	        +'<td> + 수정 </td>'
+        	        +'</tr>'
+    			});
+        		table += '</table>'
+        		$('#update_mid_content').append(table);
+        	})
+    };
+    let team_add_memeber = () => {
+    	$('#update_mid_content').append(compo.team_add_memeber());
+    }
+    let team_sub_member = () => {
+    	$('#update_mid_content').append(compo.team_sub_member());
+    }
+    let team_update_info = () => {
+    	$('#update_mid_content').append(compo.team_update_info());
+    	$('#team_update_btn').click((e)=>{
         	e.preventDefault();
         	let updateData = {
         			captain : $.member().memberIndex,
     				name : $('input[name="teamName"]').val(),
     				avgage : $('input[name="teamAvgage"]').val(),
     				sort: $('input[name="teamSort"]').val(),
-    				style: $('input[name="teamStyle"]').val(),
-    				sport : $('select[id="teamSport"]').val(),
-    				address : $('input[name="teamLocation"]').val(),
-    				emblem : $('input[name="teamEmblem"]').val(),
+    				style: $('select[name="teamStyle"]').val(),
+    				sport : $('select[name="teamSport"]').val(),
+    				address : $('select[name="teamLocation"]').val(),
+    				emblem : $('select[name="teamEmblem"]').val(),
     				info : $('#teamInfo').val()
     		};
     		$.ajax({
-    			url : $.ctx()+'/teams/'+updateData.id,
+    			url : $.ctx()+'/teams/'+updateData.captain,
     			type : 'PUT',
     			data : JSON.stringify(updateData),
     			dataType : 'json',
     			contentType : "application/json; charset=utf-8",
     			success : d => {
-    				alert('ajax update :');
+    				alert('팀 정보가 업데이트되었습니다.');
     			},
     			error : e => {
     				alert('ajax fail');
     			}
     		})
     	});
-    }
+    };
     let team_update_emblem = () => {
-        $('#content').empty().html(compo.team_update_emblem());
+    	$('#update_mid_content').append(compo.team_update_emblem());
+    };
+    let team_trans_captain = () => {
+    	
     }
-    let team_update_photo = () => {
-        $('#content').empty().html(compo.team_update_picture());
-    }
-    let team_manage = () => {
-        $('#content').empty().html(compo.team_manage());
+    let team_diss_ever = () => {
+    	
     }
     return {
         onCreate: onCreate,
         team_list: team_list,
+        team_list_after: team_list_after,
         team_detail: team_detail,
         team_create: team_create,
-        team_update_info: team_update_info,
+        team_update_frame: team_update_frame,
+        team_members_list:team_members_list,
+        team_add_memeber:team_add_memeber,
+        team_sub_member:team_sub_member,
+        team_update_info:team_update_info,
         team_update_emblem: team_update_emblem,
-        team_update_photo: team_update_photo,
-        team_manage: team_manage,
-        team_list_after: team_list_after
+        team_trans_captain:team_trans_captain,
+        team_diss_ever:team_diss_ever
     };
 
 })();

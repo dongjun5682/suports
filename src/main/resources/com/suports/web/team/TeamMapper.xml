@@ -17,6 +17,7 @@
   <result property="info" column="TEAM_INFO"/>
   <result property="avgage" column="TEAM_AGE"/>
   <result property="style" column="TEAM_STYLE"/>
+  <result property="tournamentIndex" column="TOURNAMENT_INDEX"/>
   <result property="totalcount" column="TOTALCOUNT"/>
   <result property="rnum" column="RNUM"/>
 </resultMap>
@@ -34,7 +35,8 @@
 		TEAM_ADDR address,
 		TEAM_INFO info,
 		TEAM_AGE avgage,
-		TEAM_STYLE style
+		TEAM_STYLE style,
+		TOURNAMENT_INDEX tournamentIndex
 		FROM TEAM
 		WHERE TEAM_NAME LIKE #{name}
 	</select>
@@ -75,10 +77,11 @@
 		TEAM_SPORT = #{sport},
 		TEAM_ADDR = #{address},
 		TEAM_EMBLEM = #{emblem},
-		TEAM_INFO = #{info},
-		WHERE TEAM_CAPTIN
+		TEAM_INFO = #{info}
+		WHERE TEAM_CAPTIN 
 		LIKE #{captain}
 	</update>
+	
 	
 	<select id="selectListOfTeams"
 	parameterType="com.suports.web.Proxy"
@@ -106,7 +109,7 @@
 		TEAM_INFO info,
 		TEAM_AGE avgage,
 		TEAM_STYLE style
-		FROM TEAM WHERE TEAM_CAPTAIN LIKE #{memberIndex};
+		FROM TEAM WHERE TEAM_CAPTIN LIKE #{memberIndex};
 	</select>
 	
 </mapper>

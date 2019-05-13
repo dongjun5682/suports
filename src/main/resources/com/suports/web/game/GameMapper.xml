@@ -11,7 +11,7 @@
 		<result property="date" column="GAME_DATE" />
 		<result property="timeIndex" column="TIME_INDEX" />
 		<result property="memberIndex" column="MEMBER_INDEX" />
-		<result property="photo" column="PHOTO"/>
+		<result property="photo" column="PHOTO" />
 	</resultMap>
 
 	<select id="selectGame" parameterType="int" resultMap="result">
@@ -20,8 +20,39 @@
 		FROM GAME G
 		LEFT JOIN MEMBER M
 		ON G.MEMBER_INDEX LIKE M.MEMBER_INDEX
-		WHERE G.TIME_INDEX LIKE #{value}
+		WHERE
+		G.TIME_INDEX LIKE #{value}
 		ORDER BY G.GAME_INDEX;
 	</select>
 
+	<select id="selectGameIndex"
+		parameterType="com.suports.web.domain.GameDTO" resultType="int">
+		SELECT
+		GAME_INDEX
+		FROM GAME
+		WHERE TIME_INDEX = #{timeIndex} AND POSITION_NAME =
+		'${positionName}';
+	</select>
+
+	<select id="updateMember" parameterType="com.suports.web.Proxy">
+		UPDATE GAME
+		SET
+		MEMBER_INDEX = ${mIndex}
+		WHERE GAME_INDEX = ${gmNumber};
+	</select>
+
+	<select id="selectOverlap"
+		parameterType="com.suports.web.domain.GameDTO" resultMap="result">
+		SELECT IFNULL(MEMBER_INDEX,0) AS memberIndex FROM GAME where TIME_INDEX = #{timeIndex};
+	</select>
+	
+	<select id="countMember" parameterType="int" resultType="int" >
+		SELECT count(MEMBER_INDEX) FROM GAME where time_index = #{value};
+	</select>
+	
+	<select id="selectGameMember" parameterType="int" resultMap="result" >
+		SELECT MEMBER_INDEX FROM GAME where time_index = #{value};
+	</select>
+	
+	
 </mapper>

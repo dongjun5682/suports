@@ -171,7 +171,7 @@
             }
 
             methods.hide(tooltip, options);
-            $('.fieldpassword').append(tooltip);
+            $('.texttitle').append(tooltip);
             methods.setPosition(tooltip, data);
 
         },
@@ -793,9 +793,9 @@ isNull = function (object) {
 	      seq = seq.slice(1) + pw.charAt(i);
 	      if ( lower.indexOf(seq) > -1 || upper.indexOf(seq) > -1 || numbers.indexOf(seq) > -1 || (o.noQwertySequences && qwerty.indexOf(seq) > -1) ) {
 	    	  return "<p style='line-height:200%;'>비밀번호 안전도 <span style='color:#E5E5E5'>|</span> <span style='color:#E3691E; font-weight:bold;'>낮음</span> " 
-		      + "<span style='color:#00B68E; font-weight:bold; font-size:16px; position: relative; top: 1.5px;'>―</span>"
-		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
-		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#00B68E; font-weight:bold; font-size:14px; position: relative; top: 1.5px;'>―</span>"
+		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:14px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:14px; position: relative; top: 1.5px;''>―</span>"
 		      + "<br/>"
 		      + "<span style='color:#878E96; font-weight:bold;'>안전도가 높은 비밀번호를 권장합니다.</span></p>";
 	      }
@@ -822,25 +822,25 @@ isNull = function (object) {
 		    }
 		    else if (lower + upper + numeric + special <= 2) {
 		      return "<p style='line-height:200%;'>비밀번호 안전도 <span style='color:#E5E5E5'>|</span> <span style='color:#E3691E; font-weight:bold;'>낮음</span> " 
-		      + "<span style='color:#00B68E; font-weight:bold; font-size:16px; position: relative; top: 1.5px;'>―</span>"
-		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
-		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#00B68E; font-weight:bold; font-size:14px; position: relative; top: 1.5px;'>―</span>"
+		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:14px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:14px; position: relative; top: 1.5px;''>―</span>"
 		      + "<br/>"
 		      + "<span style='color:#878E96; font-weight:bold;'>안전도가 높은 비밀번호를 권장합니다.</span></p>";
 		    }
 		    else if (lower + upper + numeric + special <= 3) {
 		      return "<p style='line-height:200%;'>비밀번호 안전도 <span style='color:#E5E5E5'>|</span> <span style='color:#F9D421; font-weight:bold;'>적정</span> "
-		      + "<span style='color:#00B68E; font-weight:bold; font-size:16px; position: relative; top: 1.5px;'>―</span>"
-		      + "<span style='color:#00939D; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
-		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#00B68E; font-weight:bold; font-size:14px; position: relative; top: 1.5px;'>―</span>"
+		      + "<span style='color:#00939D; font-weight:bold; font-size:14px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#E5E5E5; font-weight:bold; font-size:14px; position: relative; top: 1.5px;''>―</span>"
 		      + "<br/>"
 		      + "<span style='color:#878E96; font-weight:bold;'>안전하게 사용하실 수 있는 비밀번호 입니다.</span></p>";
 		    }
 		    else {
 		      return "<p style='line-height:200%;'>비밀번호 안전도 <span style='color:#212528'>|</span> <span style='color:#45D9FD; font-weight:bold;'>높음</span> "
-		      + "<span style='color:#00B68E; font-weight:bold; font-size:16px; position: relative; top: 1.5px;'>―</span>" 
-		      + "<span style='color:#00939D; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
-		      + "<span style='color:#006D99; font-weight:bold; font-size:16px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#00B68E; font-weight:bold; font-size:14px; position: relative; top: 1.5px;'>―</span>" 
+		      + "<span style='color:#00939D; font-weight:bold; font-size:14px; position: relative; top: 1.5px;''>―</span>"
+		      + "<span style='color:#006D99; font-weight:bold; font-size:14px; position: relative; top: 1.5px;''>―</span>"
 		      + "<br/>"
 		      + "<span style='color:#878E96; font-weight:bold;'>예측하기 힘든 비밀번호로 더욱 안전합니다.</span></p>";
 		    }
