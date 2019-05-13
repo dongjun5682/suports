@@ -15,4 +15,6 @@ public interface GameMapper {
 	public void updateMember(Proxy pxy);
 	public List<?> selectOverlap(GameDTO gmDTO);
 	public int countMember(int timeIndex);
+	
+	public List<?> selectGameMember(int timeIndex);
 }

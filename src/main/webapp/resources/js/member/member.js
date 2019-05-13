@@ -27,6 +27,10 @@ member = (() => {
         });
     };
     let setContentView = (d) => {
+    	login_after();
+
+    }
+    let login_after =()=>{
     	$('#map').remove();
         $('#content').empty().append(compo.content());
         jQuery(function($) {
@@ -41,14 +45,27 @@ member = (() => {
         });
         $('#home').attr('style', '" "');
         $('#rm_search').empty().append(compo.srch());
+        $('.logo').remove();
+        $('<a class="logo_login" href="#"><img src="resources/img/logo/logo.png" alt="logo"></a>').appendTo('.navbar-brand');
         $('#content').css('margin-top', '0');
         $('#footer').remove();
         $('#myMpa').after(compo.footer());
         home_list_after();
         $('#nav').empty().after(compo.login_nav());
         $('#userBtn').click(() => {
-            $('#userBtn').after(compo.login_drop_btn());
-            $('#user-drop').attr('style', '" "');
+        	$('#alram-drop').remove();
+            $('<div class="dropdown-menu" id="user-drop">'
+            		+'<ul>'
+            		+'<li id="frofile"><h3 class="black-text">프로필 관리<h3></li>'
+            		+'    <li class="divider"></li>'
+            		+'    <li id="friend"><h3 class="black-text">친구 초대하기<h3></li>'
+            		+'    <li class="divider"></li>'
+            		+'    <li id="myteam"><h3 class="black-text">My Team<h3></li>'
+            		+'    <li class="divider"></li>'
+            		+'    <li id="logout"><h3 class="black-text">로그아웃<h3></li>'
+            		+'  </ul>'
+            		+'</div>').appendTo('#userBtn');
+            
             $('#frofile').click(() => {
             	member_update_frame();
             	$('#update_mid_content').empty();
@@ -64,18 +81,20 @@ member = (() => {
             });
 
         });
+        $('#alramBtn').click(()=>{
+        	 $('#user-drop').remove();
+             $(compo.alram_drop_btn()).appendTo('#alramBtn');
+             $('.alram_list').empty();
+             $.getJSON($.ctx()+'/alram/'+$.member().memberIndex,d=>{
+                 $.each(d.alram,(i,j)=>{
+                 	$('	<li><h2 class="black-text" style="padding: 10px;">'+j.message+'<h2></li><li class="divider"></li>')
+                 	.appendTo('.alram_list');
+               })
+             })
+        });
         $('.navbar-right a').click(function(e) {
             let _this = $(this).attr('id');
             switch (_this) {
-                case 'alram':
-                    $('#user-drop').remove();
-                    $(this).attr({
-                            'class': 'dropdown-toggle',
-                            'data-toggle': 'dropdown',
-                            'aria-expanded': 'false'
-                        })
-                        .after(compo.alram_drop_btn());
-                    break;
                 case 'exercise':
                     $('#content').css('margin-top', '80px');
                     stadium.payment_reservation();
@@ -95,8 +114,7 @@ member = (() => {
                     });
                     tour.tour_apply();
                     break;
-                case 'about':
-                    break;
+             
                 default:
                     break;
             }
@@ -123,8 +141,12 @@ member = (() => {
             };
             stadium.list_after(arr);
         })
-
-
+        
+        $('.logo_login').click(()=>{
+        	$('.logo_login').remove();
+        	$('.navbar-right').remove();
+        	login_after();
+        })
     }
     let home_list_after = () => {
         let list_stadium_detail = '';
@@ -402,8 +424,8 @@ member = (() => {
     };
    
     return {
-
         onCreate:onCreate,
+        login_after:login_after,
         home_list_after:home_list_after,
         signup:signup,
         member_update_frame:member_update_frame,

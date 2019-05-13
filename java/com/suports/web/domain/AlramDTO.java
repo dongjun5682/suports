@@ -7,6 +7,6 @@ import lombok.Data;
 
 @Data @Component @Lazy
 public class AlramDTO {
-	private int alramIndex;
-	private String message;
+	private int alramIndex,memberIndex;
+	private String message,alramDate;
 }

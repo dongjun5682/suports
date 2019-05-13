@@ -47,6 +47,12 @@
 	</select>
 	
 	<select id="countMember" parameterType="int" resultType="int" >
-		SELECT count(MEMBER_INDEX) FROM GAME where time_index = 1;
+		SELECT count(MEMBER_INDEX) FROM GAME where time_index = #{value};
 	</select>
+	
+	<select id="selectGameMember" parameterType="int" resultMap="result" >
+		SELECT MEMBER_INDEX FROM GAME where time_index = #{value};
+	</select>
+	
+	
 </mapper>

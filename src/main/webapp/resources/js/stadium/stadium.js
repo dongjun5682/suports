@@ -466,11 +466,17 @@ stadium = (() => {
 //        	let cvv = $('.cvv').val();
 //        	let birthday = $('.birthday').val();
         	
-            $.getJSON($.ctx() + '/reservation/payment/' + arr.stadium.timeIndex + '/' + arr.posi + '/' + $.member().memberIndex, d=> {
+            $.getJSON($.ctx() + '/reservation/payment/' + arr.stadium.timeIndex + '/' + arr.posi + '/' + $.member().memberIndex+'/'+arr.stadium.stadiumIndex
+            		, d=> {
+            	let message = new Array();
+            	$.each(d.alram,(i,j)=>{
+            		alert(j.message);
+            		message[i] = j.message;
+            	})
             	let res = {
                     'stadium': arr.stadium,
                     'res': d.res,
-                    'messege' : d.alram.message
+                    'messege' : message
                 };
                 payment_reservation(res)
             })
@@ -480,43 +486,15 @@ stadium = (() => {
     let payment_reservation = j => {
         $('#content').empty().html(compo.payment_reservation(j));
         $('#footer').empty();
+        $('#alramBtn img').attr('src','resources/img/alram_after.png');
+        $.each(j.message,(i,j)=>{
+        	$('	<li><h2 class="black-text" style="padding: 10px;">'+j+'<h2></li><li class="divider"></li>')
+        	.appendTo('.alram_list');
+        })
         $('#pay_home').click(() => {
-            $('#content').empty().append(compo.content());
-            jQuery(function($) {
-                $('#home').vidbg({
-                    'mp4': 'resources/video/Fifa.mp4',
-                }, {
-                    // Options
-                    muted: true,
-                    loop: true,
-                    overlay: true,
-                });
-            });
-            $('#rm_search').append(compo.srch());
-            $('#content').css('margin-top', '0');
-            $('#footer').remove();
-            $('#myMpa').after(compo.footer());
-            $('#team_search').click(() => {
-                $('#position').empty().attr('id', 'people').append(compo.team_search());
-            });
-            $('#solo_search').click(() => {
-                $('#people').empty().attr('id', 'position').append(compo.solo_search());
-            });
-            home.home_list();
-            $('#sear-btn').click(function() {
-                let search = {
-                    p: 1,
-                    s: ''
-                }
-                stadium.srch();
-            });
-            $('#stadium_list').click(() => {
-                $('#content').css('margin-top', '80px');
-                let arr = {
-                    p: 1
-                };
-                stadium.list(arr);
-            })
+        	$('.logo_login').remove();
+        	$('.navbar-right').remove();
+            member.login_after();
         });
     }
     let srch = x => {

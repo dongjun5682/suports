@@ -16,7 +16,7 @@ public class Proxy {
 	gmNumber,mIndex;
 	private boolean existPrev, existNext;
 	private String search,resNumber;
-	
+	private String name;
 
     public void carryOut(Map<?,?> paramMap) {
 
@@ -49,12 +49,18 @@ public class Proxy {
 		search = (String) paramMap.get("search");
 		System.out.println(search);
 		System.out.println("total :" + totalCount);
+	
 		
+    }   
+    public void reservation(Map<?,?> paramMap) {
+    	
 		resNumber = (String) paramMap.get("resNumber");
 		gmNumber = (int) paramMap.get("gmNumber");
 		mIndex = (int) paramMap.get("mIndex");
-		
-		
-
-    }    
+    }
+    
+    public void alram(Map<?, ?> paramMap) {
+    	mIndex = (int) paramMap.get("mIndex");
+    	name = (String) paramMap.get("name");
+    }
 }

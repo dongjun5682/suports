@@ -116,5 +116,8 @@
 		WHERE S.STADIUM_INDEX LIKE T1.STADIUM_INDEX;
 	</select>
 	
-
+	<select id="selectStadiumName" parameterType="int" resultType="string">
+		SELECT STADIUM_NAME FROM STADIUM WHERE STADIUM_INDEX= #{value};
+	</select>
+	
 </mapper>

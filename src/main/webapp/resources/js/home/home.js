@@ -36,7 +36,7 @@ home = (() => {
         });
     };
     let setContentView = () => {
-    	 
+    
         $('#content').before(compo.header());
         $('#content').append(compo.content());
         jQuery(function($) {
@@ -59,12 +59,12 @@ home = (() => {
             $('#people').empty().attr('id', 'position').append(compo.solo_search());
         });
         home_list();
-        $.getScript($.js()+'/compo/compo.js',()=>{
-     	$.getScript($.js()+'/home/chat.js',()=>{
-     	$(compo.chatbot()).appendTo('#myMpa');	
-        chat.init();
-      	});
-        });
+//        $.getScript($.js()+'/compo/compo.js',()=>{
+//     	$.getScript($.js()+'/home/chat.js',()=>{
+//     	$(compo.chatbot()).appendTo('#myMpa');	
+//        chat.init();
+//      	});
+//        });
         $('.navbar-right a').click(function(e) {
             let _this = $(this).attr('id');
             switch (_this) {
@@ -117,7 +117,6 @@ home = (() => {
         //로고 클릭시 새로 그리기
         $('.navbar-brand .logo').click(() => {
         	  $('#map').remove();
-        	  $('#myMpa').remove();
         	  $('#content').empty().append(compo.content());
               jQuery(function($){
                   $('#home').vidbg({
@@ -154,12 +153,11 @@ home = (() => {
                 };
                 stadium.list(arr);
             })
+        
         })
     };
 
     let home_list = () => {
-    	/*$('#map').remove();
-    	$('#myMpa').remove();*/
         let list_stadium_detail = '';
         $.getJSON($.ctx() + '/stadiums', d => {
             $.each(d.home, (i, j) => {

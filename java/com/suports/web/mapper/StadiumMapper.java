@@ -37,4 +37,5 @@ public interface StadiumMapper {
 	
 	public void chatBotAnswer(ChatBotDTO chd);
 	
+	public String selectStadiumName(int stadiumIndex);
 }
