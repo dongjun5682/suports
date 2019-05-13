@@ -2,7 +2,7 @@ var member = member || {}
 
 member = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
-    let _, js, compojs, stadiumjs, tournamentjs, teamjs;
+    let _, js, compojs, stadiumjs, tournamentjs, teamjs,chatjs;
 
     let init = () => {
         _ = $.ctx();
@@ -11,6 +11,7 @@ member = (() => {
         stadiumjs = js + '/stadium/stadium.js';
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js + '/team/team.js';
+        chatjs = js + '/home/chat.js'
     };
     let onCreate = (d) => {
         init();
@@ -19,6 +20,7 @@ member = (() => {
             $.getScript(stadiumjs),
             $.getScript(tournamentjs),
             $.getScript(teamjs),
+            $.getScript(chatjs),
             $.Deferred(function(d) {
                 $(d.resolve);
             })
@@ -27,6 +29,10 @@ member = (() => {
         });
     };
     let setContentView = (d) => {
+    	default_view();
+    	/*chat.init(d);*/
+    };
+    let default_view=()=>{
     	$('#map').remove();
         $('#content').empty().append(compo.content());
         jQuery(function($) {
@@ -39,12 +45,24 @@ member = (() => {
                 overlay: true,
             });
         });
+       
         $('#home').attr('style', '" "');
         $('#rm_search').empty().append(compo.srch());
         $('#content').css('margin-top', '0');
         $('#footer').remove();
         $('#myMpa').after(compo.footer());
         home_list_after();
+       /* $.getScript($.js()+'/compo/compo.js',()=>{
+         	$.getScript($.js()+'/home/chat.js',()=>{
+         		$('#chat_body').hide().after( '<button id="chat_ball" style="margin-left: 1373px;width: 5%;margin-bottom: 40px;"><img src="resources/img/soccer-ball.png" style="width: 101%; margin-left: 127px;"></button>' );
+         			  $("#chat_ball").click(function(){
+         				  alert('클릭');
+         				 $('#chat_body').show();
+         				 chat.chat_bot();
+         			  });
+         		
+          	});
+        });*/
         $('#nav').empty().after(compo.login_nav());
         $('#userBtn').click(() => {
             $('#userBtn').after(compo.login_drop_btn());
@@ -64,6 +82,9 @@ member = (() => {
             });
 
         });
+
+
+
         $('.navbar-right a').click(function(e) {
             let _this = $(this).attr('id');
             switch (_this) {
@@ -126,6 +147,8 @@ member = (() => {
 
 
     }
+    
+    
     let home_list_after = () => {
         let list_stadium_detail = '';
         $.getJSON($.ctx() + '/stadiums', d => {

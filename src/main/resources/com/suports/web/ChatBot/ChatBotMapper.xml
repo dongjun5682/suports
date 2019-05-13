@@ -5,12 +5,10 @@
   
 <mapper namespace="com.suports.web.mapper.ChatBotMapper">
 <select id="Chatbot" resultType="com.suports.web.domain.ChatBotDTO" parameterType="com.suports.web.domain.ChatBotDTO">
-		SELECT S2.*
-		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, C.*
-		FROM (SELECT * FROM CHATBOT ORDER BY MSG DESC) C, (SELECT
-		@ROWNUM:=0)TMP
-		WHERE C.MSG LIKE '%{msg}%') S2;
+		SELECT MSG
+		FROM CHATBOT 
+		WHERE MSG LIKE #{msg}
+		ORDER BY RAND()
+		LIMIT 1;
 	</select>
-
-
 </mapper>

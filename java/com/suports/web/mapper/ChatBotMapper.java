@@ -1,6 +1,4 @@
 package com.suports.web.mapper;
-
-
 import org.springframework.stereotype.Repository;
 
 import com.suports.web.domain.ChatBotDTO;
@@ -8,5 +6,6 @@ import com.suports.web.domain.ChatBotDTO;
 @Repository
 public interface ChatBotMapper {
 
-	public String Chatbot(ChatBotDTO chat);
+	public ChatBotDTO Chatbot(ChatBotDTO chat);
+	
 }
