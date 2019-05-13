@@ -1,5 +1,6 @@
 package com.suports.web.mapper;
 
+import com.suports.web.Proxy;
 import com.suports.web.domain.ImageDTO;
 import com.suports.web.domain.MemberDTO;
 
@@ -16,7 +17,7 @@ public interface MemberMapper {
 	public void insertAMemberPhoto(ImageDTO img);
 	
 	// READ
-	public List<?> selectListOfMembers(Map<?,?> map);
+	public List<?> selectListOfMembers(Proxy pxy);
 	public List<MemberDTO> selectSomeOfMembers(Map<?,?> map);
 	public Map<String, Object> selectAMemberPic(MemberDTO mem);
 	public MemberDTO selectAMember(MemberDTO mem);
@@ -32,5 +33,4 @@ public interface MemberMapper {
 	public Map<String, Object> selectProfile(Map<?,?> map);
 	
 	// DELETE
-	public void deleteAMember(MemberDTO mem);
 }

@@ -51,7 +51,6 @@ home = (() => {
         });
         $('#myMpa').after(compo.footer());
         $('#rm_search').append(compo.srch());
-        $('#content').css('margin-top', '0');
         $('#team_search').click(() => {
             $('#position').empty().attr('id', 'people').append(compo.team_search());
         });
@@ -59,12 +58,12 @@ home = (() => {
             $('#people').empty().attr('id', 'position').append(compo.solo_search());
         });
         home_list();
-        $.getScript($.js()+'/compo/compo.js',()=>{
-     	$.getScript($.js()+'/home/chat.js',()=>{
-     	$(compo.chatbot()).appendTo('#myMpa');	
-        chat.init();
-      	});
-        });
+//        $.getScript($.js()+'/compo/compo.js',()=>{
+//     	$.getScript($.js()+'/home/chat.js',()=>{
+//     	$(compo.chatbot()).appendTo('#myMpa');	
+//        chat.init();
+//      	});
+//        });
         $('.navbar-right a').click(function(e) {
             let _this = $(this).attr('id');
             switch (_this) {
@@ -130,7 +129,6 @@ home = (() => {
                 });
             });
             $('#rm_search').append(compo.srch());
-            $('#content').css('margin-top', '0');
             $('#footer').remove();
             $('#myMpa').after(compo.footer());
             $('#team_search').click(() => {
@@ -230,6 +228,10 @@ home = (() => {
 
     let login = () => {
         $('.modal-content').html(compo.signin());
+        
+        $('.login100-social-item bg1').click(e => {
+        	
+        });
         $('.login100-form-btn').click(e => {
             e.preventDefault();
             let logindata = {
@@ -237,15 +239,41 @@ home = (() => {
                 password: $('form input[name="pass"]').val()
             };
             $.ajax({
-                url: $.ctx() + '/members/' + logindata.id,
+                url: $.ctx()+'/members/'+logindata.id,
                 type: 'POST',
                 data: JSON.stringify(logindata),
                 dataType: 'json',
                 contentType: "application/json; charset=utf-8",
                 success: d => {
-                    //멤버세션을 사용해서 어디서든 아이디를 호출 가능
-                    $.extend(new MemberSession(d));
-                    member.onCreate(d);
+                   if (d.state == 'pending') {
+                	   swal({
+                		   title: "비활성화 계정입니다!",
+                		   text: "탈퇴를 위해 비활성화된 계정입니다. 요청일("+d.disableDate+")로 부터 6일 후 계정이 삭제됩니다.",
+                		   icon: "warning",
+                		   buttons: ["취소","다시 활성화"],
+                		   dangerMode: true,
+                		 })
+                		 .then((willDelete) => {
+                		   if (willDelete) {
+                				$.ajax({
+                					url : $.ctx()+'/members/enable/'+logindata.id,
+                					type : 'PUT',
+                					data : JSON.stringify(logindata),
+                					dataType : 'json',
+                					contentType : "application/json; charset=utf-8",
+                					success : d => {}
+                				})
+                			   swal("계정이 다시 활성화 되었습니다.", {
+                		       icon: "success",
+                		     });
+                		   } else {
+                		     swal("비활성화 상태가 계속됩니다.");
+                		   }
+                		 });
+                   } else {
+                	   $.extend(new MemberSession(d));
+                	   member.onCreate(d);                	   
+                   }
                 },
                 error: e => {
                     alert('ajax fail');
@@ -254,7 +282,7 @@ home = (() => {
             $('#myModal').modal('hide');
         });
         $('#signupBtn_in_signin').click(() => {
-            signup();
+            member.signup();
         })
     }
     return {

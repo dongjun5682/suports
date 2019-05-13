@@ -1704,12 +1704,12 @@ mark {
 }
 
 .text-primary {
-	color: #337ab7
+	color: #22C781
 }
 
 a.text-primary:focus,
 a.text-primary:hover {
-	color: #286090
+	color: rgb(24, 139, 91)
 }
 
 .text-success {
@@ -1722,12 +1722,12 @@ a.text-success:hover {
 }
 
 .text-info {
-	color: #31708f
+	color: rgb(26, 158, 103)
 }
 
 a.text-info:focus,
 a.text-info:hover {
-	color: #245269
+	color: rgb(18, 104, 68)
 }
 
 .text-warning {
@@ -3426,10 +3426,6 @@ input[type=search] {
 	}
 }
 
-.form-group {
-	margin-bottom: 15px
-}
-
 .checkbox,
 .radio {
 	position: relative;
@@ -3993,30 +3989,30 @@ fieldset[disabled] .btn-default:hover {
 }
 
 .btn-primary {
-	color: #fff;
-	background-color: #275228;
-	border-color: #275228
+    color: white;
+    background-color: #22C781;
+    border-color: #22C781;
 }
 
 .btn-primary.focus,
 .btn-primary:focus {
 	color: #fff;
-	background-color: #286090;
-	border-color: #122b40
+	background-color: #22C781;
+	border-color: rgb(14, 78, 51)
 }
 
 .btn-primary:hover {
 	color: #fff;
-	background-color: #286090;
-	border-color: #204d74
+	background-color: rgb(22, 131, 85);
+	border-color: rgb(17, 92, 60)
 }
 
 .btn-primary.active,
 .btn-primary:active,
 .open>.dropdown-toggle.btn-primary {
 	color: #fff;
-	background-color: #286090;
-	border-color: #204d74
+	background-color: rgb(22, 131, 85);
+	border-color: rgb(17, 92, 60)
 }
 
 .btn-primary.active.focus,
@@ -4029,8 +4025,8 @@ fieldset[disabled] .btn-default:hover {
 .open>.dropdown-toggle.btn-primary:focus,
 .open>.dropdown-toggle.btn-primary:hover {
 	color: #fff;
-	background-color: #204d74;
-	border-color: #122b40
+	background-color: rgb(22, 131, 85);
+	border-color: rgb(17, 92, 60)
 }
 
 .btn-primary.active,
@@ -4357,7 +4353,6 @@ fieldset[disabled] .btn-link:hover {
 
 .btn-group-lg>.btn,
 .btn-lg {
-	padding: 10px 16px;
 	font-size: 18px;
 	line-height: 1.3333333;
 	border-radius: 6px

@@ -47,7 +47,7 @@ public class TeamController {
 		memberService.modifyAMemberTeamIndex(memberDTO);
 		
 		map.clear();
-		map.put("msg", "SUCCESS");
+		map.put("msg","성공");
 		
 		return map;
 	}
@@ -60,6 +60,8 @@ public class TeamController {
 		
 		teamService.modifyATeam(team);
 		
+		map.clear();
+		map.put("msg","성공");
 		return map;
 	}
 	
@@ -72,6 +74,7 @@ public class TeamController {
 	
 	@PostMapping("/teams/uploadFile")
 	public Map<?,?> fileupload(@RequestParam("file") MultipartFile file) throws Exception {
+		
 		
 		return map;
 	}

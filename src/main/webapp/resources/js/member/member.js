@@ -41,7 +41,6 @@ member = (() => {
         });
         $('#home').attr('style', '" "');
         $('#rm_search').empty().append(compo.srch());
-        $('#content').css('margin-top', '0');
         $('#footer').remove();
         $('#myMpa').after(compo.footer());
         home_list_after();
@@ -51,18 +50,15 @@ member = (() => {
             $('#user-drop').attr('style', '" "');
             $('#frofile').click(() => {
             	member_update_frame();
-            	$('#update_mid_content').empty();
-            	profile();
             });
             $('#myteam').click(() => {
-                team.team_update_info();
+            	team.team_update_frame();
             });
             $('#logout').click(() => {
             	session.removeAttribute("member"); 
             	window.location.reload();
             	alert('location.reload and = '+$.member().id);
             });
-
         });
         $('.navbar-right a').click(function(e) {
             let _this = $(this).attr('id');
@@ -195,9 +191,36 @@ member = (() => {
             });
         });
     }
+    let member_list = () => {
+//    	$.getJSON($.ctx()+'/members/page/1', d => {
+////    	$.getJSON($.ctx()+'/members/page/'+x.page, d => {
+//    		let table = '<table class="table table-striped"><tr>'
+//				+'<th>No.</th>'
+//				+'<th>이름</th>'
+//				+'<th>스포츠</th>'
+//				+'<th>포지션</th>'
+//				+'<th>위치</th>'
+//				+'<th> + </th>'
+//				+'</tr>'
+//    		$.each(d.ls, (i,j) => {
+//    			table += '<tr>'
+//    	        +'<td>'+j.rnum+'</td>'
+//    	        +'<td>'+j.name+'</td>'
+//    	        +'<td>'+j.sports+'</td>'
+//    	        +'<td>'+j.position+'</td>'
+//    	        +'<td>'+j.address+'</td>'
+//    	        +'<td> + 수정 </td>'
+//    	        +'</tr>'
+//			});
+//    		table += '</table>'
+//    		$('#update_mid_content').append(table);
+//    	})
+    };
     let member_update_frame = ()=>{
     	$('#footer').remove();
     	$('#content').empty().html(compo.member_update_frame());
+    	profile();
+    	
     	$('#profile_update').click(() => {
     		$('#update_mid_content').empty();
     		profile();
@@ -213,8 +236,8 @@ member = (() => {
     }
     let profile =()=>{
     	$('#update_mid_content').append(compo.update_player());
-    	password_tooltip();
-    	$('#mem_update_btn').click((e)=>{
+    	$('#mem_update_btn').click(e=>{
+			$('#mem_update_btn').attr('disabled', true);
         	e.preventDefault();
     		let update = {
     				trigger : 'update',
@@ -225,7 +248,21 @@ member = (() => {
     				characters : $('form select[id="memberSort"]').val(),
     				info : $('form input[name="memberInfo"]').val()
     		};
-    		update_ajax(update);
+    		$.ajax({
+    			url : $.ctx()+'/members/'+update.trigger+'/'+update.id,
+    			type : 'PUT',
+    			data : JSON.stringify(update),
+    			dataType : 'json',
+    			contentType : "application/json; charset=utf-8",
+    			success : d => {
+    				window.location.reload();
+    				alert('계정 정보가 업데이트 되어 로그아웃 되었습니다.');
+    			},
+    			error: function(xhr, option, error){
+    				alert(xhr.status);
+    				alert(error);
+    			}
+    		})
     	});
     }
     let profile_disable = ()=>{
@@ -243,6 +280,7 @@ member = (() => {
     };
     let profile_photo_update = () => {
     	$('#update_mid_content').append(compo.update_photo_player());
+    	$('#member_currnt_img').attr("src","resources/img/members_photo/"+$.member().photo);
 		$('.fieldupdatepicture').html(compo.input_uploadImg());
 		upload_ajax();
     };
@@ -264,7 +302,6 @@ member = (() => {
                 uiLibrary: 'bootstrap4'
     		});
     		$('.imgnextbtnbg').click(() => {
-    			$('.js-mytooltip').myTooltip('destroy');
     			let formdata2 = {
     					password : $('form input[name="memberPassword"]').val(),
     					birth : $('form input[name="memberBirth"]').val(),
@@ -288,6 +325,7 @@ member = (() => {
     							info : $('form input[name="memberInfo"]').val()
     					};
     					$('.modal-content').html(compo.signup_5());
+    					$('#load').attr("data-loading-text","<i class='fa fa-circle-o-notch fa-spin'></i>진행 중..");
     					let formdata5 = {
     							id : formdata.id,
     							password : formdata2.password,
@@ -301,7 +339,9 @@ member = (() => {
            						phone : formdata2.phone,
            						info : formdata4.info
     					};
-    					$('.beginbtn').click(() => {
+    					$('#load').click(() => {
+    						  $('#load').button('loading');
+    						  $('#load').attr('disabled', true);
     						$.ajax({
     							url : $.ctx()+'/members/',
     							type : 'PUT',
@@ -362,7 +402,16 @@ member = (() => {
                     }
                 },
                 success: function(d) {
-                  alert(d.result);
+                	function update(value){
+                	    let prevData = JSON.parse(sessionStorage.getItem('member'));
+                	    Object.keys(value).forEach(function(val, key){
+                	         prevData[val] = value[val];
+                	    })
+                	    sessionStorage.setItem('member', JSON.stringify(prevData));
+                	}
+                	update({photo: d.filename})
+                	$('#update_mid_content').empty();
+            		profile_photo_update();
                 }
            }).submit();
         });
@@ -406,6 +455,7 @@ member = (() => {
         onCreate:onCreate,
         home_list_after:home_list_after,
         signup:signup,
+        member_list:member_list,
         member_update_frame:member_update_frame,
         profile:profile,
         profile_photo_update:profile_photo_update,

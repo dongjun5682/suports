@@ -22,6 +22,7 @@ public class Proxy {
 
 		System.out.println("pageSize : "+ paramMap.get("pageSize"));
 		System.out.println("pageNum : "+ paramMap.get("pageNum"));
+		
 		pageSize = ((String)paramMap.get("pageSize") == null)	? 5 : Integer.parseInt((String) paramMap.get("pageSize"));
 		pageNum = ((String)paramMap.get("pageNum") == null) ? 1 : Integer.parseInt((String) paramMap.get("pageNum"));
 		totalCount = (int) paramMap.get("totalCount") ;
@@ -50,9 +51,9 @@ public class Proxy {
 		System.out.println(search);
 		System.out.println("total :" + totalCount);
 		
-		resNumber = (String) paramMap.get("resNumber");
-		gmNumber = (int) paramMap.get("gmNumber");
-		mIndex = (int) paramMap.get("mIndex");
+//		resNumber = (String) paramMap.get("resNumber");
+//		gmNumber = (int) paramMap.get("gmNumber");
+//		mIndex = (int) paramMap.get("mIndex");
 		
 		
 

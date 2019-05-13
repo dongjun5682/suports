@@ -4,29 +4,30 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.suports.web.mapper.MemberMapper">
-<resultMap id="selectresult" type="hashmap">
-  <id property="memberIndex" column="MEMBER_INDEX"/>
-  <result property="id" column="ID"/>
-  <result property="password" column="PASSWORD"/>
-  <result property="email" column="EMAIL"/>
-  <result property="name" column="NAME"/>  
-  <result property="birth" column="BIRTHDY"/>
-  <result property="position" column="POSITION"/>
-  <result property="characters" column="CHARACTERS"/>
-  <result property="sports" column="SPORTS"/>
-  <result property="address" column="ADDR"/>
-  <result property="phone" column="PHONE"/>
-  <result property="info" column="INFO"/>
-  <result property="photo" column="PHOTO"/>
-  <result property="state" column="STATE"/>
-  <result property="disableDate" column="DISABLE_DATE"/>
+
+<resultMap id="memberResult" type="com.suports.web.domain.MemberDTO">
+  <id property="memberIndex" column="MEMBER_INDEX" javaType="int"/>
+  <result property="id" column="ID" javaType="String"/>
+  <result property="password" column="PASSWORD" javaType="String"/>
+  <result property="email" column="EMAIL" javaType="String"/>
+  <result property="name" column="NAME" javaType="String"/>  
+  <result property="birth" column="BIRTHDY" javaType="String"/>
+  <result property="position" column="POSITION" javaType="String"/>
+  <result property="characters" column="CHARACTERS" javaType="String"/>
+  <result property="sports" column="SPORTS" javaType="String"/>
+  <result property="address" column="ADDR" javaType="String"/>
+  <result property="phone" column="PHONE" javaType="String"/>
+  <result property="info" column="INFO" javaType="String"/>
+  <result property="photo" column="PHOTO" javaType="String"/>
+  <result property="state" column="STATE" javaType="String"/>
+  <result property="disableDate" column="DISABLE_DATE" javaType="int"/>
+  <result property="teamIndex" column="TEAM_INDEX" javaType="int"/>
   <result property="totalcount" column="TOTALCOUNT"/>
   <result property="rnum" column="RNUM"/>
-  <result property="team" column="TEAM_INDEX"/>
-  
 </resultMap>
 	<select id="selectAMember" 
 	resultType="com.suports.web.domain.MemberDTO">
+		<![CDATA[
 		SELECT
 		MEMBER_INDEX memberIndex,
 		ID id,
@@ -41,16 +42,45 @@
 		PHONE phone,
 		INFO info,
 		PHOTO photo,
+		STATE state,
+		DISABLE_DATE disableDate,
 		TEAM_INDEX teamIndex
 		FROM MEMBER 
 		WHERE ID LIKE #{id}
-		<if test="password != null">
-			AND PASSWORD LIKE #{password}
-		</if>
+		AND PASSWORD LIKE #{password}
+		]]>
+	</select>
+	<select id="selectListOfMembers"
+		resultType="com.suports.web.domain.MemberDTO">
+		<![CDATA[
+		SELECT 
+		@ROWNUM := @ROWNUM+1 as rnum, 
+		MEMBER_INDEX memberIndex,
+		ID id,
+		PASSWORD password,
+		EMAIL email,
+		NAME name,
+		BIRTHDY birth,
+		POSITION position,
+		CHARACTERS characters,
+		SPORTS sports,
+		ADDR address,
+		PHONE phone,
+		INFO info,
+		PHOTO photo,
+		STATE state,
+		DISABLE_DATE disableDate,
+		TEAM_INDEX teamIndex
+		FROM MEMBER, (SELECT @ROWNUM := 0) N
+		]]>
+	</select>
+	<select id="countMembers" resultType="int">
+	SELECT COUNT(*) FROM MEMBER;
 	</select>
 	<insert id="insertAMember"
 		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
 		statementType="PREPARED">
+		<![CDATA[
 		INSERT 
 		INTO MEMBER 
 		(
@@ -79,10 +109,12 @@
 		#{phone},
 		#{info}
 		)
+		]]>
 	</insert>
 	<insert id="insertAMemberPhoto"
 		parameterType="com.suports.web.domain.ImageDTO" flushCache="true"
 		statementType="PREPARED">
+		<![CDATA[
 		INSERT 
 		INTO IMAGE 
 		(
@@ -94,10 +126,12 @@
 		#{imageName},
 		#{imageOwner}
 		)
+		]]>
 	</insert>
 	<update id="updateAMember"
 		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
 		statementType="PREPARED" timeout="20">
+		<![CDATA[
 		UPDATE 
 		MEMBER SET
 		NAME = #{name},
@@ -107,53 +141,52 @@
 		INFO = #{info}
 		WHERE ID
 		LIKE #{id}
+		]]>
 	</update>
 	
 	<update id="updateAMemberPhoto"
 		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
 		statementType="PREPARED" timeout="20">
+		<![CDATA[
 		UPDATE 
 		MEMBER SET
 		PHOTO = #{photo}
 		WHERE ID
 		LIKE #{id}
+		]]>
 	</update>
 		<update id="updateAMemberTeamIndex"
 		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
 		statementType="PREPARED" timeout="20">
+		<![CDATA[
 		UPDATE 
 		MEMBER M SET 
 		TEAM_INDEX = (SELECT TEAM_INDEX FROM TEAM T WHERE M.MEMBER_INDEX LIKE T.TEAM_CAPTIN)
 		WHERE MEMBER_INDEX
 		LIKE #{memberIndex}
+		]]>
 	</update>
 	<delete id="disableAMember"
 		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
 		statementType="PREPARED" timeout="20">
+		<![CDATA[
 		UPDATE 
 		MEMBER SET
-		state = 'pending',
-		disableDate = NOW()
+		STATE = 'pending',
+		DISABLE_DATE = NOW()
 		WHERE ID LIKE #{id} 
 		AND PASSWORD LIKE #{password}
+		]]>
 	</delete>
 	<delete id="enableAMember"
 		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
 		statementType="PREPARED" timeout="20">
+		<![CDATA[
 		UPDATE 
 		MEMBER SET
 		STATE = 'resolved',
 		DISABLE_DATE = NULL
 		WHERE ID LIKE #{id}
-	</delete>
-	<delete id="deleteAMember"
-		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
-		statementType="PREPARED" timeout="20">
-		UPDATE 
-		MEMBER SET
-		STATE = 'resolved',
-		DISABLE_DATE = NULL
-		WHERE ID LIKE #{id} 
-		AND PASSWORD LIKE #{id}
+		]]>
 	</delete>
 </mapper>
