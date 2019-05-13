@@ -12,18 +12,20 @@ public class Proxy {
 	blockSize,
 	startRow,endRow,
 	startPage,endPage,blockNum,
-	prevBlock,nextBlock,totalCount;
+	prevBlock,nextBlock,totalCount,
+	gmNumber,mIndex;
 	private boolean existPrev, existNext;
-	private String search;
-	
+	private String search,resNumber;
+	private String name;
 
     public void carryOut(Map<?,?> paramMap) {
 
 		System.out.println("pageSize : "+ paramMap.get("pageSize"));
 		System.out.println("pageNum : "+ paramMap.get("pageNum"));
+		
 		pageSize = ((String)paramMap.get("pageSize") == null)	? 5 : Integer.parseInt((String) paramMap.get("pageSize"));
 		pageNum = ((String)paramMap.get("pageNum") == null) ? 1 : Integer.parseInt((String) paramMap.get("pageNum"));
-		totalCount = (int) paramMap.get("totalCount");
+		totalCount = (int) paramMap.get("totalCount") ;
 		int pageCount = (totalCount % pageSize != 0) ?  totalCount/pageSize+1:totalCount/pageSize;
 		String _blockSize = (String)paramMap.get("blockSize");
 		blockSize = (_blockSize == null) ? 5 : Integer.parseInt(_blockSize);
@@ -48,6 +50,19 @@ public class Proxy {
 		search = (String) paramMap.get("search");
 		System.out.println(search);
 		System.out.println("total :" + totalCount);
+	
+		
+    }   
+    public void reservation(Map<?,?> paramMap) {
+    	
+		resNumber = (String) paramMap.get("resNumber");
+		gmNumber = (int) paramMap.get("gmNumber");
+		mIndex = (int) paramMap.get("mIndex");
+    }
+    
+    public void alram(Map<?, ?> paramMap) {
+    	mIndex = (int) paramMap.get("mIndex");
+    	name = (String) paramMap.get("name");
+    }
 
-    }    
 }

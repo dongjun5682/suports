@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.suports.web.Proxy;
 import com.suports.web.domain.ImageDTO;
 import com.suports.web.domain.MemberDTO;
 import com.suports.web.mapper.MemberMapper;
@@ -22,9 +23,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<?> retrieveListOfMembers(Map<?, ?> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<?> retrieveListOfMembers(Proxy pxy) {
+		return memberMapper.selectListOfMembers(pxy);
 	}
 
 	@Override
@@ -46,8 +46,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int countMembers() {
-		// TODO Auto-generated method stub
-		return 0;
+		return memberMapper.countMembers();
 	}
 
 	@Override
@@ -69,12 +68,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void removeAMember(MemberDTO mem) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void addAMemberPhoto(ImageDTO img) {
 		memberMapper.insertAMemberPhoto(img);
 		
@@ -83,6 +76,23 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void modifyAMemberPhoto(MemberDTO mem) {
 		memberMapper.updateAMemberPhoto(mem);
+		
+	}
+
+	@Override
+	public void modifyAMemberTeamIndex(MemberDTO mem) {
+		memberMapper.updateAMemberTeamIndex(mem);
+		
+	}
+
+	@Override
+	public void disableAMember(MemberDTO mem) {
+		memberMapper.disableAMember(mem);
+		
+	}
+	@Override
+	public void enableAMember(MemberDTO mem) {
+		memberMapper.enableAMember(mem);
 		
 	}
 

@@ -59,7 +59,7 @@ public class TeamServiceImpl implements TeamService {
 
 	@Override
 	public void modifyATeam(TeamDTO team) {
-		// TODO Auto-generated method stub
+		teamMapper.updateATeam(team);
 		
 	}
 

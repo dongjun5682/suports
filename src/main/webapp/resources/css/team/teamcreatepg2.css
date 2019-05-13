@@ -1,10 +1,10 @@
 
-.team-textcontent {
+.teamcreatepg2.team-textcontent {
   margin-top: 24px
 }
                    
-.teamInfo {
-  margin-top: 30px;
+.teamcreatepg2.teamInfo {
+  margin-top: 10px;
   width: 100%;
   height: 100px;
 }
@@ -19,21 +19,7 @@
   -moz-osx-font-smoothing: grayscale;
   background-color    : rgba(255, 255, 255, 1.0);
 }
-a {
-  text-decoration     : none;
-}
-div {
-  -webkit-text-size-adjust: none;
-}
-.anima-full-width-a {
-  width               : 100%;
-}
-.anima-full-height-a {
-  height              : 100%;
-}
-div {
-  -webkit-text-size-adjust: none;
-}
+
 .teamcreatepg2 .formfieldpg2 {
   background-color    : rgba(255,255,255,0.0);
   top                 : 133px;

@@ -7,6 +7,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.suports.web.domain.MemberDTO;
 import com.suports.web.domain.TeamDTO;
 import com.suports.web.mapper.TeamMapper;
+import com.suports.web.service.MemberServiceImpl;
 import com.suports.web.service.TeamServiceImpl;
 
 @RestController
@@ -25,20 +28,26 @@ public class TeamController {
 	private static final Logger logger = LoggerFactory.getLogger(TeamController.class);
 
 	@Autowired TeamDTO teamDTO;
+	@Autowired MemberDTO memberDTO;
 	@Autowired TeamServiceImpl teamService;
+	@Autowired MemberServiceImpl memberService;
 	@Autowired Map<String, Object> map;
 	@Autowired Proxy pxy;
 	@Autowired TeamMapper teamMap;
 	
+	@Transactional
 	@PostMapping("/teams")
-	public Map<?,?> createATeam(@RequestBody TeamDTO param) {
+	public Map<?,?> createATeam(@RequestBody TeamDTO team) {
 
-		System.out.println("team create in ===="+param);
+		System.out.println("team create in ===="+team);
 		
-		teamService.addATeam(param);
+		teamService.addATeam(team);
+		
+		memberDTO.setMemberIndex(team.getCaptain());
+		memberService.modifyAMemberTeamIndex(memberDTO);
 		
 		map.clear();
-		map.put("msg", "SUCCESS");
+		map.put("msg","성공");
 		
 		return map;
 	}
@@ -47,9 +56,12 @@ public class TeamController {
 	public Map<?,?> update(@RequestBody TeamDTO team, @PathVariable String userid) {
 
 		logger.info("update param ={}========"+team);
+	
 		
 		teamService.modifyATeam(team);
 		
+		map.clear();
+		map.put("msg","성공");
 		return map;
 	}
 	
@@ -62,6 +74,7 @@ public class TeamController {
 	
 	@PostMapping("/teams/uploadFile")
 	public Map<?,?> fileupload(@RequestParam("file") MultipartFile file) throws Exception {
+		
 		
 		return map;
 	}

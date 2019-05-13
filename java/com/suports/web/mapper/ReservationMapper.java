@@ -2,13 +2,12 @@ package com.suports.web.mapper;
 
 import org.springframework.stereotype.Repository;
 
+import com.suports.web.Proxy;
+import com.suports.web.domain.ReservationDTO;
+
 @Repository
 public interface ReservationMapper {
-	public void selectReservationList(); 
-	public void selectReservation();
-	public String selectReservation(String searchWord);
-	public int countReservation();
-	public boolean existsPayment(String searchword);
-	public void updateReservation(ReservationMapper res);
-	public void deleteReservation(ReservationMapper res);
+	
+	public void insertReservation(Proxy pxy);
+	public ReservationDTO selectReservation(Proxy pxy);
 }

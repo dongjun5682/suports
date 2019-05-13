@@ -9,9 +9,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.suports.web.domain.ChatBotDTO;
 import com.suports.web.domain.StadiumDTO;
+import com.suports.web.mapper.ChatBotMapper;
 import com.suports.web.mapper.StadiumMapper;
 import com.suports.web.service.StadiumServiceImpl;
 
@@ -25,7 +28,7 @@ public class StadiumController {
 	@Autowired Map<String,Object> map;
 	@Autowired StadiumMapper staMap;
 	@Autowired Proxy pxy;
-	
+	@Autowired ChatBotMapper chaMap;
 	
 	@GetMapping("/stadiums/page/{page}")
 	public Map<?,?> list(@PathVariable String page){
@@ -141,6 +144,7 @@ public class StadiumController {
 	}
 	@GetMapping("/stadiums")
 	public Map<?,?> list(){
+		
 		ISupplier s = ()-> staMap.selectAllStadium();
 		List<?> allStadium = (List<?>) s.get();
 		map.clear();
@@ -148,5 +152,27 @@ public class StadiumController {
 		map.put("home", allStadium);
 		return map;
 	}
+	
+
+	@GetMapping("/chatbot/value/{value}") 
+	public Map<?,?> chat(@PathVariable String value){ 
+		map.clear(); 
+		String val = "%"+value+"%";
+		System.out.println("여기탔다"+val);
+		ChatBotDTO chat = new ChatBotDTO();
+		chat.setMsg(val);
+		IFunction i = (Object o) -> chaMap.Chatbot(chat);
+		ChatBotDTO ch = (ChatBotDTO) i.apply(chat);
+		map.put("value", ch);
+		return map; 
+		}
+	/*
+	 * @GetMapping("/chatbot/value/{list}") public Map<?,?> chat_list(@PathVariable
+	 * String value){ map.clear(); String val = "%"+value+"%";
+	 * System.out.println("여기탔다"+val); ChatBotDTO chat = new ChatBotDTO();
+	 * chat.setMsg(val); IFunction i = (Object o) -> chaMap.Chatbot(chat);
+	 * ChatBotDTO ch = (ChatBotDTO) i.apply(chat);
+	 * System.out.println(i.apply(chat)); map.put("value", ch); return map; }
+	 */
 	
 }

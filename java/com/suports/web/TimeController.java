@@ -13,7 +13,7 @@ public class TimeController {
 	@Autowired Map<String, Object> map;
 	
 	@GetMapping("/time/stadium/{stadiumIndex}")
-	public Map<?, ?> TimeStadium(@PathVariable String stadiumIndex){
+	public Map<?, ?> timeStadium(@PathVariable String stadiumIndex){
 		System.out.println(" 타임 입장!!!!");
 		return map;
 	}

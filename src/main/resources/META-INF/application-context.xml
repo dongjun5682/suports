@@ -55,6 +55,17 @@
                 <property name="maxUploadSize" value="50000000" />
                 <property name="defaultEncoding" value="utf-8"></property>
         </bean> 
+        <bean id="connectionFactory"
+        class="org.springframework.social.facebook.connect.FacebookConnectionFactory">
+        <constructor-arg value="Client ID" /><!-- not yet. -->
+        <constructor-arg value="Secret Code" /> 
+    </bean>
+ 
+    <bean id="oAuth2Parameters"
+        class="org.springframework.social.oauth2.OAuth2Parameters">
+        <property name="scope" value="email" />
+        <property name="redirectUri" value="https://localhost:8443/Path..." />
+    </bean>
    <!--  <bean id="memberImgUploadPath" class="java.lang.String">
          <constructor-arg value="/Users/yirekim/suports/src/main/webapp/resources/img/membres_photo/"/>
     </bean> -->

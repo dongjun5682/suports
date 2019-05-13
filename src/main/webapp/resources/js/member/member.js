@@ -2,7 +2,7 @@ var member = member || {}
 
 member = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
-    let _, js, compojs, stadiumjs, tournamentjs, teamjs;
+    let _, js, compojs, stadiumjs, tournamentjs, teamjs,chatjs;
 
     let init = () => {
         _ = $.ctx();
@@ -11,6 +11,7 @@ member = (() => {
         stadiumjs = js + '/stadium/stadium.js';
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js + '/team/team.js';
+        chatjs = js + '/home/chat.js'
     };
     let onCreate = (d) => {
         init();
@@ -19,6 +20,7 @@ member = (() => {
             $.getScript(stadiumjs),
             $.getScript(tournamentjs),
             $.getScript(teamjs),
+            $.getScript(chatjs),
             $.Deferred(function(d) {
                 $(d.resolve);
             })
@@ -27,8 +29,10 @@ member = (() => {
         });
     };
     let setContentView = (d) => {
+    	login_after();
+    }
+    let login_after =()=>{
     	$('#map').remove();
-        alert('member!!!');
         $('#content').empty().append(compo.content());
         jQuery(function($) {
             $('#home').vidbg({
@@ -40,45 +44,73 @@ member = (() => {
                 overlay: true,
             });
         });
+       
         $('#home').attr('style', '" "');
         $('#rm_search').empty().append(compo.srch());
+        $('.logo').remove();
+        $('<a class="logo_login" href="#"><img src="resources/img/logo/logo.png" alt="logo"></a>').appendTo('.navbar-brand');
         $('#content').css('margin-top', '0');
         $('#footer').remove();
         $('#myMpa').after(compo.footer());
         home_list_after();
+       /* $.getScript($.js()+'/compo/compo.js',()=>{
+         	$.getScript($.js()+'/home/chat.js',()=>{
+         		$('#chat_body').hide().after( '<button id="chat_ball" style="margin-left: 1373px;width: 5%;margin-bottom: 40px;"><img src="resources/img/soccer-ball.png" style="width: 101%; margin-left: 127px;"></button>' );
+         			  $("#chat_ball").click(function(){
+         				  alert('클릭');
+         				 $('#chat_body').show();
+         				 chat.chat_bot();
+         			  });
+         		
+          	});
+        });*/
         $('#nav').empty().after(compo.login_nav());
         $('#userBtn').click(() => {
-            $('#userBtn').after(compo.login_drop_btn());
-            $('#user-drop').attr('style', '" "');
+        	$('#alram-drop').remove();
+            $('<div class="dropdown-menu" id="user-drop">'
+            		+'<ul>'
+            		+'<li id="frofile"><h3 class="black-text">프로필 관리<h3></li>'
+            		+'    <li class="divider"></li>'
+            		+'    <li id="friend"><h3 class="black-text">친구 초대하기<h3></li>'
+            		+'    <li class="divider"></li>'
+            		+'    <li id="myteam"><h3 class="black-text">My Team<h3></li>'
+            		+'    <li class="divider"></li>'
+            		+'    <li id="logout"><h3 class="black-text">로그아웃<h3></li>'
+            		+'  </ul>'
+            		+'</div>').appendTo('#userBtn');
+            
             $('#frofile').click(() => {
-                profile();
+            	member_update_frame();
             });
             $('#myteam').click(() => {
-                team.team_update_info();
+            	team.team_update_frame();
             });
-
+            $('#logout').click(() => {
+            	session.removeAttribute("member"); 
+            	window.location.reload();
+            	alert('location.reload and = '+$.member().id);
+            });
+        });
+        $('#alramBtn').click(()=>{
+        	 $('#user-drop').remove();
+             $(compo.alram_drop_btn()).appendTo('#alramBtn');
+             $('.alram_list').empty();
+             $.getJSON($.ctx()+'/alram/'+$.member().memberIndex,d=>{
+                 $.each(d.alram,(i,j)=>{
+                 	$('	<li><h2 class="black-text" style="padding: 10px;">'+j.message+'<h2></li><li class="divider"></li>')
+                 	.appendTo('.alram_list');
+               })
+             })
         });
         $('.navbar-right a').click(function(e) {
-            alert('click :' + $(this).attr('id'));
             let _this = $(this).attr('id');
             switch (_this) {
-                case 'alram':
-                    $('#user-drop').remove();
-                    $(this).attr({
-                            'class': 'dropdown-toggle',
-                            'data-toggle': 'dropdown',
-                            'aria-expanded': 'false'
-                        })
-                        .after(compo.alram_drop_btn());
-                    break;
                 case 'exercise':
-                    alert('운동 클릭!');
                     $('#content').css('margin-top', '80px');
                     stadium.payment_reservation();
                     break;
                 case 'team':
                     $('#content').css('margin-top', '80px');
-                    alert('팀 클릭!');
                     let x = {
                         'page': 1
                     };
@@ -90,23 +122,15 @@ member = (() => {
                         'margin-top': '70px',
                         'height': '850px'
                     });
-                    alert('토너먼트 클릭!');
                     tour.tour_apply();
                     break;
-                case 'about':
-                    alert('소개 클릭!!');
-                    break;
+             
                 default:
                     break;
             }
         })
 
         $('#sear-btn').click(function() {
-            /*alert('addr : '+ $('.search-addr').val());
-            alert('date : '+ $('.search-date').val());
-            alert('time : '+ $('.search-time').val());
-            alert('sport : '+ $('.search-sports').val());
-            alert('position : '+ $('.search-position').val());*/
             let search = {
                 p: 1,
                 s: $('.search-addr').val()
@@ -122,15 +146,20 @@ member = (() => {
         });
         $('#stadium_list').click(() => {
             $('#content').css('margin-top', '80px');
-            alert('전체 운동장 보기');
             let arr = {
                 p: 1
             };
             stadium.list_after(arr);
         })
-
-
+        
+        $('.logo_login').click(()=>{
+        	$('.logo_login').remove();
+        	$('.navbar-right').remove();
+        	login_after();
+        })
     }
+    
+    
     let home_list_after = () => {
         let list_stadium_detail = '';
         $.getJSON($.ctx() + '/stadiums', d => {
@@ -152,7 +181,6 @@ member = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.seoul_stadium').click(function() {
-                            alert(j.stadiumName);
                             stadium.list_detail_after(j);
                             
                         });
@@ -174,7 +202,6 @@ member = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.Incheon_stadium').click(function() {
-                            alert(j.stadiumName);
                             stadium.list_detail_after(j);
                         });
                     }
@@ -195,7 +222,6 @@ member = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.gyeonggi_stadium').click(function() {
-                            alert(j.stadiumName);
                             stadium.list_detail_after(j);
                         });
                     }
@@ -203,22 +229,56 @@ member = (() => {
             });
         });
     }
-
-    let profile =()=>{
+    let member_list = () => {
+//    	$.getJSON($.ctx()+'/members/page/1', d => {
+////    	$.getJSON($.ctx()+'/members/page/'+x.page, d => {
+//    		let table = '<table class="table table-striped"><tr>'
+//				+'<th>No.</th>'
+//				+'<th>이름</th>'
+//				+'<th>스포츠</th>'
+//				+'<th>포지션</th>'
+//				+'<th>위치</th>'
+//				+'<th> + </th>'
+//				+'</tr>'
+//    		$.each(d.ls, (i,j) => {
+//    			table += '<tr>'
+//    	        +'<td>'+j.rnum+'</td>'
+//    	        +'<td>'+j.name+'</td>'
+//    	        +'<td>'+j.sports+'</td>'
+//    	        +'<td>'+j.position+'</td>'
+//    	        +'<td>'+j.address+'</td>'
+//    	        +'<td> + 수정 </td>'
+//    	        +'</tr>'
+//			});
+//    		table += '</table>'
+//    		$('#update_mid_content').append(table);
+//    	})
+    };
+    let member_update_frame = ()=>{
     	$('#footer').remove();
-    	$('#content').empty().html(compo.update_player()).css('margin-top', '80px');
-    	password_tooltip();
-    	$('#profile_update').click(()=>{
+    	$('#content').empty().html(compo.member_update_frame());
+    	profile();
+    	
+    	$('#profile_update').click(() => {
+    		$('#update_mid_content').empty();
     		profile();
     	});
-    	$('#profile_photo_update').click(()=>{
+    	$('#profile_photo_update').click(() => {
+    		$('#update_mid_content').empty();
     		profile_photo_update();
-    		$('.fieldupdatepicture').html(compo.input_uploadImg());
-			upload_ajax();
     	});
-    	$('.imgsignupbtnbg button[type=submit]').click(e=>{
+    	$('#profile_disable').click(() => {
+    		$('#update_mid_content').empty();
+    		profile_disable();
+    	});
+    }
+    let profile =()=>{
+    	$('#update_mid_content').append(compo.update_player());
+    	$('#mem_update_btn').click(e=>{
+			$('#mem_update_btn').attr('disabled', true);
         	e.preventDefault();
-    		let updateData = {
+    		let update = {
+    				trigger : 'update',
     				id : $.member().id,
     				name : $('form input[name="memberName"]').val(),
     				password : $('form input[name="memberPassword"]').val(),
@@ -227,31 +287,41 @@ member = (() => {
     				info : $('form input[name="memberInfo"]').val()
     		};
     		$.ajax({
-    			url : $.ctx()+'/members/'+updateData.id,
+    			url : $.ctx()+'/members/'+update.trigger+'/'+update.id,
     			type : 'PUT',
-    			data : JSON.stringify(updateData),
+    			data : JSON.stringify(update),
     			dataType : 'json',
     			contentType : "application/json; charset=utf-8",
     			success : d => {
-    				alert('ajax update :');
+    				window.location.reload();
+    				alert('계정 정보가 업데이트 되어 로그아웃 되었습니다.');
     			},
-    			error : e => {
-    				alert('ajax fail');
+    			error: function(xhr, option, error){
+    				alert(xhr.status);
+    				alert(error);
     			}
     		})
     	});
     }
+    let profile_disable = ()=>{
+    	$('#update_mid_content').append(compo.player_delete());
+    	$('#mem_disable_btn').click((e)=>{
+        	e.preventDefault();
+    		let update = {
+    				trigger : 'disable',
+					id : $.member().id,
+					password : $('form input[name="memberPassword"]').val()
+			};
+    		update_ajax(update);
+    	});
+    	
+    };
     let profile_photo_update = () => {
-        $('#content').empty().html(compo.update_photo_player());
-        $('.textcontentpg1').click(() => {
-            profile();
-        });
-        $('.textcontentpg11').click(() => {
-            profile_photo_update();
-            $('.fieldupdatepicture').html(compo.input_uploadImg());
-			upload_ajax();
-        });
-    }
+    	$('#update_mid_content').append(compo.update_photo_player());
+    	$('#member_currnt_img').attr("src","resources/img/members_photo/"+$.member().photo);
+		$('.fieldupdatepicture').html(compo.input_uploadImg());
+		upload_ajax();
+    };
 
     // Sign Up { Modal, Date_Picker, Tool_Tip, Validate }
     let signup = () => {
@@ -270,7 +340,6 @@ member = (() => {
                 uiLibrary: 'bootstrap4'
     		});
     		$('.imgnextbtnbg').click(() => {
-    			$('.js-mytooltip').myTooltip('destroy');
     			let formdata2 = {
     					password : $('form input[name="memberPassword"]').val(),
     					birth : $('form input[name="memberBirth"]').val(),
@@ -294,6 +363,7 @@ member = (() => {
     							info : $('form input[name="memberInfo"]').val()
     					};
     					$('.modal-content').html(compo.signup_5());
+    					$('#load').attr("data-loading-text","<i class='fa fa-circle-o-notch fa-spin'></i>진행 중..");
     					let formdata5 = {
     							id : formdata.id,
     							password : formdata2.password,
@@ -305,13 +375,14 @@ member = (() => {
            						sports : formdata2.sports,
            						address : formdata2.address,
            						phone : formdata2.phone,
-           						info : formdata4.info,
-           						photo : 'default_profile.jpg'
+           						info : formdata4.info
     					};
-    					$('.beginbtn').click(() => {
+    					$('#load').click(() => {
+    						  $('#load').button('loading');
+    						  $('#load').attr('disabled', true);
     						$.ajax({
     							url : $.ctx()+'/members/',
-    							type : 'POST',
+    							type : 'PUT',
     							data : JSON.stringify(formdata5),
     							dataType : 'json',
     							contentType : "application/json; charset=utf-8",
@@ -327,16 +398,30 @@ member = (() => {
                })
            })
     	})
-    }
-
+    };
+    // switch_trigger, update.id json require   
+    let update_ajax = (update) => {
+    	$.ajax({
+			url : $.ctx()+'/members/'+update.trigger+'/'+update.id,
+			type : 'PUT',
+			data : JSON.stringify(update),
+			dataType : 'json',
+			contentType : "application/json; charset=utf-8",
+			success : d => {
+				window.location.reload();
+				alert('계정 정보가 업데이트 되어 로그아웃 되었습니다.');
+			},
+			error : e => {
+				alert('ajax fail');
+			}
+		})
+    };
     let upload_ajax = () => {
     	$('#img_upload_btn').click((e)=>{
-			alert('iub click');
             e.preventDefault();
             let memberData = {
 					memberId : $.member().id
 			};
-            alert('memberID saved = '+memberData.memberId);
             $('#img_upload_frm').ajaxForm({
                 url: $.ctx()+'/uploadImg/'+memberData.memberId,
                 dataType: 'json',
@@ -355,12 +440,21 @@ member = (() => {
                     }
                 },
                 success: function(d) {
-                  alert(d.result);
+                	function update(value){
+                	    let prevData = JSON.parse(sessionStorage.getItem('member'));
+                	    Object.keys(value).forEach(function(val, key){
+                	         prevData[val] = value[val];
+                	    })
+                	    sessionStorage.setItem('member', JSON.stringify(prevData));
+                	}
+                	update({photo: d.filename})
+                	$('#update_mid_content').empty();
+            		profile_photo_update();
                 }
            }).submit();
         });
 		
-    }
+    };
     let password_tooltip = () => {
     	$('#checkPassword').click(()=>{
     		if($("#checkPassword").prop("checked")==true){
@@ -392,14 +486,20 @@ member = (() => {
 			'customClass': 'mytooltip-content',
 			'content': '<p>t</p>'
 				});   
-    }
+    };
+   
     return {
-
         onCreate:onCreate,
+        login_after:login_after,
+        home_list_after:home_list_after,
+        signup:signup,
+        member_list:member_list,
+        member_update_frame:member_update_frame,
         profile:profile,
         profile_photo_update:profile_photo_update,
-        signup:signup,
-        home_list_after:home_list_after,
+        profile_disable:profile_disable,
+        update_ajax:update_ajax,
+        upload_ajax:upload_ajax,
         password_tooltip:password_tooltip
     }
 })();
