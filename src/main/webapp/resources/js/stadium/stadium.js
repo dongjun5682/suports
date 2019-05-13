@@ -368,10 +368,6 @@ stadium = (() => {
         initMap(j);
         });
      	$('#myMpa').append(compo.map(j));
-     	/*$('#myMpa').after('<p style="position: absolute;top: 2577px;right: 1558px;">주 소</p>'
-			+'<p style="position: absolute;top: 2601px;right: 1558px;font-size: 20px;">' + j.stadiumAddr + '</p>'
-		   +'<p style="position: absolute;top: 2642px;right: 1558px;">★★★★★</p>'
-		   +'<p style="position: absolute;top: 2670px;right: 1558px;">02-300-8509</p>');*/
      	$('#map').css({'width':'100%','height':'400px','margin-bottom':'300px'});  
     	//예약 확인 버튼
         $('#pay_btn_1').click(()=>{
@@ -383,7 +379,7 @@ stadium = (() => {
     			$('#footer').remove();
     			$('#content').empty();
     			let arr = {'stadium':j,'position': sessionStorage.getItem('posi')};
-    			alert(arr.position);
+    			alert(arr.stadium.timeIndex);
     			payment(arr);
         	});
         });
