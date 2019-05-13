@@ -154,15 +154,25 @@ public class StadiumController {
 	}
 	
 
-	@PostMapping("/chat/{value}") 
+	@GetMapping("/chatbot/value/{value}") 
 	public Map<?,?> chat(@PathVariable String value){ 
 		map.clear(); 
+		String val = "%"+value+"%";
+		System.out.println("여기탔다"+val);
 		ChatBotDTO chat = new ChatBotDTO();
-		chat.setMsg(value);
+		chat.setMsg(val);
 		IFunction i = (Object o) -> chaMap.Chatbot(chat);
-		System.out.println(i.apply(value));
-		ChatBotDTO ch = (ChatBotDTO) i.apply(value);
+		ChatBotDTO ch = (ChatBotDTO) i.apply(chat);
 		map.put("value", ch);
 		return map; 
 		}
+	/*
+	 * @GetMapping("/chatbot/value/{list}") public Map<?,?> chat_list(@PathVariable
+	 * String value){ map.clear(); String val = "%"+value+"%";
+	 * System.out.println("여기탔다"+val); ChatBotDTO chat = new ChatBotDTO();
+	 * chat.setMsg(val); IFunction i = (Object o) -> chaMap.Chatbot(chat);
+	 * ChatBotDTO ch = (ChatBotDTO) i.apply(chat);
+	 * System.out.println(i.apply(chat)); map.put("value", ch); return map; }
+	 */
+	
 }

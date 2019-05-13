@@ -2,7 +2,7 @@ var member = member || {}
 
 member = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
-    let _, js, compojs, stadiumjs, tournamentjs, teamjs;
+    let _, js, compojs, stadiumjs, tournamentjs, teamjs,chatjs;
 
     let init = () => {
         _ = $.ctx();
@@ -11,6 +11,7 @@ member = (() => {
         stadiumjs = js + '/stadium/stadium.js';
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js + '/team/team.js';
+        chatjs = js + '/home/chat.js'
     };
     let onCreate = (d) => {
         init();
@@ -19,6 +20,7 @@ member = (() => {
             $.getScript(stadiumjs),
             $.getScript(tournamentjs),
             $.getScript(teamjs),
+            $.getScript(chatjs),
             $.Deferred(function(d) {
                 $(d.resolve);
             })
@@ -28,7 +30,6 @@ member = (() => {
     };
     let setContentView = (d) => {
     	login_after();
-
     }
     let login_after =()=>{
     	$('#map').remove();
@@ -43,6 +44,7 @@ member = (() => {
                 overlay: true,
             });
         });
+       
         $('#home').attr('style', '" "');
         $('#rm_search').empty().append(compo.srch());
         $('.logo').remove();
@@ -51,6 +53,17 @@ member = (() => {
         $('#footer').remove();
         $('#myMpa').after(compo.footer());
         home_list_after();
+       /* $.getScript($.js()+'/compo/compo.js',()=>{
+         	$.getScript($.js()+'/home/chat.js',()=>{
+         		$('#chat_body').hide().after( '<button id="chat_ball" style="margin-left: 1373px;width: 5%;margin-bottom: 40px;"><img src="resources/img/soccer-ball.png" style="width: 101%; margin-left: 127px;"></button>' );
+         			  $("#chat_ball").click(function(){
+         				  alert('클릭');
+         				 $('#chat_body').show();
+         				 chat.chat_bot();
+         			  });
+         		
+          	});
+        });*/
         $('#nav').empty().after(compo.login_nav());
         $('#userBtn').click(() => {
         	$('#alram-drop').remove();
@@ -148,6 +161,8 @@ member = (() => {
         	login_after();
         })
     }
+    
+    
     let home_list_after = () => {
         let list_stadium_detail = '';
         $.getJSON($.ctx() + '/stadiums', d => {
