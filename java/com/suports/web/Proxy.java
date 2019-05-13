@@ -22,6 +22,7 @@ public class Proxy {
 
 		System.out.println("pageSize : "+ paramMap.get("pageSize"));
 		System.out.println("pageNum : "+ paramMap.get("pageNum"));
+		
 		pageSize = ((String)paramMap.get("pageSize") == null)	? 5 : Integer.parseInt((String) paramMap.get("pageSize"));
 		pageNum = ((String)paramMap.get("pageNum") == null) ? 1 : Integer.parseInt((String) paramMap.get("pageNum"));
 		totalCount = (int) paramMap.get("totalCount") ;
@@ -63,4 +64,5 @@ public class Proxy {
     	mIndex = (int) paramMap.get("mIndex");
     	name = (String) paramMap.get("name");
     }
+
 }

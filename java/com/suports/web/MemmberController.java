@@ -2,12 +2,14 @@ package com.suports.web;
 
 import java.io.File;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.suports.web.domain.ImageDTO;
 import com.suports.web.domain.MemberDTO;
+import com.suports.web.mapper.MemberMapper;
 import com.suports.web.service.MemberServiceImpl;
 
 @RestController
@@ -29,6 +32,34 @@ public class MemmberController {
 	@Autowired ImageDTO imageDTO;
 	@Autowired MemberServiceImpl memberService;
 	@Autowired Map<String, Object> map;
+	@Autowired Proxy pxy;
+	@Autowired MemberMapper memberMapper;
+	
+	@GetMapping("/members/page/{page}")
+	public Map<?,?> list(@PathVariable String page) 
+	{
+		logger.info("=========MEMBER ! LIST=========");
+		
+		map.clear();
+		map.put("pageNum", page);
+		map.put("pageSize", "12");
+		map.put("blockSize", "5");
+		ISupplier c = ()-> memberMapper.countMembers();
+		map.put("totalCount", c.get());
+		pxy.carryOut(map);
+		
+		IFunction i = (Object o)-> memberMapper.selectListOfMembers(pxy);
+		
+		List<?> ls = (List<?>) i.apply(pxy);
+		
+		map.clear();
+		map.put("members", ls);
+		map.put("pxy", pxy);
+		
+		System.out.println(" ls members : "+ls.toString());
+	
+		return map;
+	}
 	
 	@PutMapping("/members")
 	public Map<?,?> signup(@RequestBody MemberDTO mem) {
@@ -39,22 +70,23 @@ public class MemmberController {
 		map.put("msg", "SUCCESS");
 		
 		return map;
-	}
-	
+    }
+
 	@PostMapping("/members/{userid}")
 	public MemberDTO login(@RequestBody MemberDTO mem, @PathVariable String userid) {
 		
-		memberDTO = memberService.retrieveAMember(mem);
+		MemberDTO loginData = new MemberDTO();
+		loginData = memberService.retrieveAMember(mem);
 		
+		logger.info("Login in mem = {}",loginData);
 		
-		return memberDTO;
-	
-	
+		return loginData;
 	}
+	
 	@PutMapping("/members/{trigger}/{userid}")
 	public Map<?,?> update(@RequestBody MemberDTO mem, @PathVariable String trigger, String userid) {
 
-		logger.info("update param ==trigger={} ==userid=",trigger, userid);
+		logger.info("update param ==trigger={} ==userid={}",trigger, userid);
 		
 		switch (trigger) {
 		case "update":
@@ -70,6 +102,9 @@ public class MemmberController {
 			
 			break;
 		}
+		map.clear();
+		map.put("msg","성공");
+		
 		return map;
 	}
 	
@@ -79,6 +114,7 @@ public class MemmberController {
 		logger.info("============== fileUpload(){}=================", "ENTER");
 		String result = "";
 		Iterator<String> it = request.getFileNames();
+		map.clear();
 		if(it.hasNext()){
 			MultipartFile file = request.getFile(it.next());
             logger.info("file upload result:{}", "success");
@@ -89,6 +125,7 @@ public class MemmberController {
             logger.info("upload file:{}", file.getOriginalFilename());
             
             String filename = file.getOriginalFilename();
+            map.put("filename", filename);
             File dest = new File(MEMBER_PHOTO_PATH + filename);
             file.transferTo(dest);
             result = "전송 완료";
@@ -107,8 +144,7 @@ public class MemmberController {
             result = "전송 실패";
         }
 		
-        map.clear();
         map.put("result", result);
         return map;
- }
+	}
 }

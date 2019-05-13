@@ -3,7 +3,6 @@ package com.suports.web.mapper;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
-
 import com.suports.web.Proxy;
 import com.suports.web.domain.AlramDTO;
 

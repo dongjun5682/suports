@@ -68,18 +68,18 @@ div {
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
+button#load {
+  width: 100%;
+  height: 100%;
+}
 .playersignuppg5 .beginbtn {
-  background-color: #22C781;
   top                 : 578px;
   border-radius: 4px;
   height              : 88px;
   width               : 378px;
   position            : absolute;
-  margin              : 0;
   left                : 76px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
+  -ms-transform 
 }
 .playersignuppg5 .beginbtn .btnstartweb {
   background-color    : rgba(255,255,255,0.0);

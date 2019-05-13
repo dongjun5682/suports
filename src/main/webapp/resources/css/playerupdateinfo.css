@@ -2,14 +2,38 @@
   z-index: 99;
 }
 
+.teamupdateinfo {
+  marign: auto auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgba(255, 255, 255, 1.0);
+}
+
+.fieldform {
+  margin-bottom: 12px;
+}
+
+img#member_currnt_img {
+  display: block;
+  justify-content: center;
+  max-height: 400px;
+  max-width: 400px;
+  margin: auto auto 50px auto;
+}
 div#update_mid_content {
   position: fixed;
-  top: 50px;
-  left: 500px;
+  left: 400px;
   right: 500px;
   /* display: contents; */
 }
 
+input#img_upload_btn{
+  width: 300px;
+  height: 60px;
+  background-color: #22C781;
+  color: white;
+  border-radius: 4px;
+}
 .member_delete form.member_delete_form {
   margin-top: 150px;
 }
@@ -26,7 +50,8 @@ div#update_mid_content {
   font-size: 16.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: left;
-  line-height: 19.0px;
+  line-height: 20.0px;
+  margin: 20px auto 10px auto;
 }
 
 .mem_up_side_text_css {
@@ -56,7 +81,7 @@ img.right_content_img {
   left: 150px;
 }
 
-.playerupdateinfo .texttitlepg11 {
+.texttitlepg11 {
   -ms-transform: rotate(0deg);
   /* IE 9 */
   font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
@@ -70,6 +95,13 @@ img.right_content_img {
   width: 100%;
   height: 100%;
   background-color: #22C781;
+  color: white;
+  border-radius: 4px;
+}
+button.upload_btns2 {
+  width: 100%;
+  height: 100%;
+  background-color: #00C5FF;
   color: white;
   border-radius: 4px;
 }
@@ -125,7 +157,7 @@ img.right_content_img {
   height: 59px;
   width: 300px;
   margin: auto auto;
-  margin-top: 60px;
+  margin-top: 40px;
   -ms-transform: rotate(0deg);
   /* IE 9 */
 }
@@ -170,7 +202,7 @@ img.right_content_img {
   transform: rotate(0deg);
 }
 
-.playerupdateinfo .formupdate .fieldnickname1 .textcontentpg1 {
+.fieldnickname1 .textcontentpg1 {
   -ms-transform: rotate(0deg);
   /* IE 9 */
   transform: rotate(0deg);
@@ -220,7 +252,7 @@ img.right_content_img {
   transform: rotate(0deg);
 }
 
-.playerupdateinfo .formupdate .fieldfullname .textcontentpg1 {
+.formupdate .fieldfullname .textcontentpg1 {
   background-color: rgba(255, 255, 255, 0.0);
   top: 19px;
   height: auto;
@@ -383,7 +415,7 @@ img.right_content_img {
   transform: rotate(0deg);
 }
 
-.playerupdateinfo .formupdate .fieldbirth .imgbirthbg1 {
+.formupdate .fieldbirth .imgbirthbg1 {
   background-color: rgba(255, 255, 255, 0.0);
   top: 28px;
   height: 28px;
@@ -403,7 +435,7 @@ img.right_content_img {
   transform: rotate(0deg);
 }
 
-.playerupdateinfo .formupdate .fieldbirth .imgbirthbg2 {
+.formupdate .fieldbirth .imgbirthbg2 {
   background-color: rgba(255, 255, 255, 0.0);
   top: 28px;
   height: 28px;
@@ -423,82 +455,88 @@ img.right_content_img {
   transform: rotate(0deg);
 }
 
-.playerupdateinfo .formupdate .fieldloctypetime {
-  background-color: rgba(255, 255, 255, 0.0);
-  top: 232px;
-  height: 55px;
-  width: 473px;
-  position: absolute;
-  margin: 0;
-  left: 0px;
+.formupdate .fieldloctypetime {
+  /* background-color: rgba(255, 255, 255, 0.0); */
+  margin-bottom: 12px;
+  display: -webkit-box;
+  /* top: 232px; */
+  /* height: 55px; */
+  /* width: 473px; */
+  /* position: absolute; */
+  /* margin: 0; */
+  /* left: 0px; */
   -ms-transform: rotate(0deg);
   /* IE 9 */
-  -webkit-transform: rotate(0deg);
+  /* -webkit-transform: rotate(0deg); */
   /* Chrome, Safari, Opera */
-  transform: rotate(0deg);
+  /* transform: rotate(0deg); */
 }
 
-.playerupdateinfo .formupdate .fieldloctypetime .imgbirthbg {
-  background-color: rgba(255, 255, 255, 0.0);
-  top: 27px;
-  height: 28px;
-  box-sizing: border-box;
-  width: 175px;
-  position: absolute;
-  margin: 0;
-  left: 298px;
-  border-radius: 1px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgba(222, 227, 232, 1.0);
+.formupdate .fieldloctypetime .imgbirthbg {
+  /* background-color: rgba(255, 255, 255, 0.0); */
+  /* top: 27px; */
+  /* height: 28px; */
+  width: 30%;
+  /* box-sizing: border-box; */
+  /* width: 175px; */
+  /* position: absolute; */
+  /* margin: 0; */
+  /* left: 298px; */
+  /* border-radius: 1px; */
+  /* border-style: solid; */
+  /* border-width: 1px; */
+  /* border-color: rgba(222, 227, 232, 1.0); */
   -ms-transform: rotate(0deg);
   /* IE 9 */
-  -webkit-transform: rotate(0deg);
+  /* -webkit-transform: rotate(0deg); */
   /* Chrome, Safari, Opera */
-  transform: rotate(0deg);
+  /* transform: rotate(0deg); */
 }
 
-.playerupdateinfo .formupdate .fieldloctypetime .imgbirthbg1 {
-  background-color: rgba(255, 255, 255, 0.0);
-  top: 27px;
-  height: 28px;
-  box-sizing: border-box;
-  width: 139px;
-  position: absolute;
-  margin: 0;
-  left: 152px;
-  border-radius: 1px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgba(222, 227, 232, 1.0);
+.formupdate .fieldloctypetime .imgbirthbg1 {
+  /* background-color: rgba(255, 255, 255, 0.0); */
+  /* top: 27px; */
+  /* height: 28px; */
+  width: 30%;
+  margin: auto 5% auto 5%;
+  /* box-sizing: border-box; */
+  /* width: 139px; */
+  /* position: absolute; */
+  /* margin: 0; */
+  /* left: 152px; */
+  /* border-radius: 1px; */
+  /* border-style: solid; */
+  /* border-width: 1px; */
+  /* border-color: rgba(222, 227, 232, 1.0); */
   -ms-transform: rotate(0deg);
   /* IE 9 */
-  -webkit-transform: rotate(0deg);
+  /* -webkit-transform: rotate(0deg); */
   /* Chrome, Safari, Opera */
-  transform: rotate(0deg);
+  /* transform: rotate(0deg); */
 }
 
-.playerupdateinfo .formupdate .fieldloctypetime .imgbirthbg2 {
-  background-color: rgba(255, 255, 255, 0.0);
-  top: 27px;
-  height: 28px;
-  box-sizing: border-box;
-  width: 139px;
-  position: absolute;
-  margin: 0;
-  left: 7px;
-  border-radius: 1px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgba(222, 227, 232, 1.0);
+.formupdate .fieldloctypetime .imgbirthbg2 {
+  /* background-color: rgba(255, 255, 255, 0.0); */
+  /* top: 27px; */
+  width: 30%;
+  /* height: 28px; */
+  /* box-sizing: border-box; */
+  /* width: 139px; */
+  /* position: absolute; */
+  /* margin: 0; */
+  /* left: 7px; */
+  /* border-radius: 1px; */
+  /* border-style: solid; */
+  /* border-width: 1px; */
+  /* border-color: rgba(222, 227, 232, 1.0); */
   -ms-transform: rotate(0deg);
   /* IE 9 */
-  -webkit-transform: rotate(0deg);
+  /* -webkit-transform: rotate(0deg); */
   /* Chrome, Safari, Opera */
-  transform: rotate(0deg);
+  /* transform: rotate(0deg); */
 }
 
-.playerupdateinfo .formupdate .fieldloctypetime .textyear {
+.formupdate .fieldloctypetime .textyear {
   background-color: rgba(255, 255, 255, 0.0);
   top: 28px;
   height: 25px;
@@ -517,8 +555,7 @@ img.right_content_img {
   text-align: center;
   line-height: 35.0px;
 }
-
-.playerupdateinfo .formupdate .fieldloctypetime .textmonth {
+.formupdate .fieldloctypetime .textmonth {
   background-color: rgba(255, 255, 255, 0.0);
   top: 28px;
   height: 25px;
@@ -537,8 +574,7 @@ img.right_content_img {
   text-align: center;
   line-height: 35.0px;
 }
-
-.playerupdateinfo .formupdate .fieldloctypetime .textday {
+.formupdate .fieldloctypetime .textday {
   background-color: rgba(255, 255, 255, 0.0);
   top: 28px;
   height: 25px;
@@ -558,7 +594,7 @@ img.right_content_img {
   line-height: 35.0px;
 }
 
-.playerupdateinfo .formupdate .fieldloctypetime .texttitlepg13 {
+.formupdate .fieldloctypetime .texttitlepg13 {
   background-color: rgba(255, 255, 255, 0.0);
   top: 0px;
   height: auto;
@@ -578,27 +614,27 @@ img.right_content_img {
   line-height: 17.0px;
 }
 
-.playerupdateinfo .formupdate .fieldloctypetime .texttitlepg11 {
-  background-color: rgba(255, 255, 255, 0.0);
-  top: 0px;
-  height: auto;
-  width: 137px;
-  position: absolute;
-  margin: 0;
-  left: 149px;
+.formupdate .fieldloctypetime .texttitlepg11 {
+  /* background-color: rgba(255, 255, 255, 0.0); */
+  /* top: 0px; */
+  /* height: auto; */
+  /* width: 137px; */
+  /* position: absolute; */
+  /* margin: 0; */
+  /* left: 149px; */
   -ms-transform: rotate(0deg);
   /* IE 9 */
-  -webkit-transform: rotate(0deg);
+  /* -webkit-transform: rotate(0deg); */
   /* Chrome, Safari, Opera */
-  transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
-  font-size: 14.0px;
-  color: rgba(0, 0, 0, 1.0);
-  text-align: left;
-  line-height: 17.0px;
+  /* transform: rotate(0deg); */
+  /* font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif; */
+  /* font-size: 14.0px; */
+  /* color: rgba(0, 0, 0, 1.0); */
+  /* text-align: left; */
+  /* line-height: 17.0px; */
 }
 
-.playerupdateinfo .formupdate .fieldloctypetime .texttitlepg12 {
+.formupdate .fieldloctypetime .texttitlepg12 {
   background-color: rgba(255, 255, 255, 0.0);
   top: 0px;
   height: auto;
@@ -726,7 +762,7 @@ img.right_content_img {
   transform: rotate(0deg);
 }
 
-.playerupdateinfo .formupdate .fieldfirstname .textcontentpg1 {
+.formupdate .fieldfirstname .textcontentpg1 {
   -ms-transform: rotate(0deg);
   /* IE 9 */
   font-family: "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
@@ -777,7 +813,7 @@ img.right_content_img {
   transform: rotate(0deg);
 }
 
-.playerupdateinfo .fieldnickname .textcontentpg1 {
+.fieldnickname .textcontentpg1 {
   background-color: rgba(255, 255, 255, 0.0);
   top: 19px;
   height: auto;
@@ -837,14 +873,14 @@ img.right_content_img {
   line-height: 19.0px;
 }
 
-.playerupdateinfo .hsubtitlepg1 {
+.hsubtitlepg1 {
   margin: 50px 50px;
   -ms-transform: rotate(0deg);
   /* IE 9 */
   transform: rotate(0deg);
 }
 
-.playerupdateinfo .hsubtitlepg1 .texthtitle {
+.hsubtitlepg1 .texthtitle {
   -ms-transform: rotate(0deg);
   /* IE 9 */
   font-size: 24.0px;

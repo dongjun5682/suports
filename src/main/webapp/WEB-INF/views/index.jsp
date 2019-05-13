@@ -7,11 +7,11 @@
 <link rel="icon" href="resources/img/logo/favicon.ico" type="image/x-icon">
 <title>SUPORTS</title>
 
-<script src='//unpkg.com/popper.js@1/dist/umd/popper.min.js'></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap"></script>
 <script src="resources/js/signin/signin.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="resources/js/com/popper.min.js"></script>
+<!-- <script src="resources/js/com/jquery.min.3.3.1.js"></script> -->
+<script src="resources/js/com/jquery.min.3.4.0.js"></script>
 <!-- 챗봇 -->
 <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> 
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="resources/css/com/myTooltip.css">
 <link rel="stylesheet" href="resources/css/com/bootstrap3.css">
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
-<link rel="stylesheet" href="resources/css/chatbot.css">
+<!-- <link rel="stylesheet" href="resources/css/chatbot.css"> -->
 <link rel="stylesheet" href="resources/css/datepicker/datapicker.min.css">
 
 <!-- modal css -->
@@ -52,17 +52,13 @@
 <link rel="stylesheet" href="resources/css/team/teamcreatepg4.css">
 <link rel="stylesheet" href="resources/css/team/teamcreatepg5.css">
 <link rel="stylesheet" href="resources/css/team/teammanageplayers.css">
-<link rel="stylesheet" href="resources/css/team/teamupdateemblem.css">
-<link rel="stylesheet" href="resources/css/team/teamupdateinfo.css">
-<link rel="stylesheet" href="resources/css/team/teamupdatepicture.css">
 <link rel="stylesheet" href="resources/css/team/team_detail_list.css">
 
 </head>
 <body>
 
-	<div id="content">
+<div id="content">
 	</div>
-	<!-- Fullsize Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content"></div>
@@ -79,14 +75,17 @@
 		<div class="modal-dialog" role="document">
 			<div id="modal-content3"></div>
 		</div>
-	</div>
-	<div id="myMpa">
-	</div>
+</div>
+
+<div id="myMpa">
+
+</div>
 	<script src="resources/js/app.js"></script>
 	<script src="resources/js/check.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/com/router.js"></script>
 	<script src="resources/js/com/myTooltip.js"></script>
+	<script src="resources/js/com/sweetalert.min.js"></script>
 	<script src="resources/js/com/datapicker.min.js"></script>
 	<script src="resources/js/com/datapicker.ko-kr.js"></script>
 	<script src="resources/js/com/fileupload.js"></script>
@@ -110,6 +109,22 @@ function drop(ev) { ev.preventDefault();
 	ev.target.appendChild(document.getElementById(c));
 } 
 
+/* window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '359128634725982',
+    xfbml      : true,
+    version    : 'v3.3'
+  });
+  FB.AppEvents.logPageView();
+};
+
+(function(d, s, id){
+   var js, fjs = d.getElementsByTagName(s)[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement(s); js.id = id;
+   js.src = "https://connect.facebook.net/en_US/sdk.js";
+   fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk')); */
 </script>
 
 </body>
