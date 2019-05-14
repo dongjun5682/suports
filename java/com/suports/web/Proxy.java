@@ -61,8 +61,13 @@ public class Proxy {
     }
     
     public void alram(Map<?, ?> paramMap) {
+    	
     	mIndex = (int) paramMap.get("mIndex");
     	name = (String) paramMap.get("name");
+    	
+    	System.out.println("mIndex : " + mIndex);
+    	System.out.println("name : " + name);
+    	
     }
 
 }

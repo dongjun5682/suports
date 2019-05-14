@@ -106,8 +106,7 @@ member = (() => {
             let _this = $(this).attr('id');
             switch (_this) {
                 case 'exercise':
-                    $('#content').css('margin-top', '80px');
-                    stadium.payment_reservation();
+                	stadium.stadium_res();
                     break;
                 case 'team':
                     $('#content').css('margin-top', '80px');

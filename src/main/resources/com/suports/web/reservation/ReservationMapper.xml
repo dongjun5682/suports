@@ -5,9 +5,17 @@
 <mapper namespace="com.suports.web.mapper.ReservationMapper">
 	<resultMap id="result" type="hashmap">
 		<id property="paymentNumber" column="PAYMENTE_NUMBER" />
-		<result property="reservationNumber" column="RESERVATION_NUMBER" />
+		<result property="reservationNumber"
+			column="RESERVATION_NUMBER" />
 		<result property="reservationDate" column="RESERVATION_DATE" />
 		<result property="gameIndex" column="GAME_INDEX" />
+		<result property="stadiumName" column="STADIUM_NAME" />
+		<result property="photo" column="STADIUM_PHOTO" />
+		<result property="date" column="DATE" />
+		<result property="time" column="TIME" />
+		<result property="resNumber" column="RESERVATION_NUMBER" />
+		<result property="resDate" column="RESERVATION_DATE" />
+		<result property="accessCode" column="ACCESS_CODE" />
 	</resultMap>
 
 	<select id="insertReservation"
@@ -16,15 +24,36 @@
 		VALUES('${resNumber}',${gmNumber})
 	</select>
 
-	<select id="selectReservation" parameterType="com.suports.web.Proxy"
+	<select id="selectReservation"
+		parameterType="com.suports.web.Proxy"
 		resultType="com.suports.web.domain.ReservationDTO">
 		SELECT PAYMENT_NUMBER AS paymentNumber,
-				RESERVATION_NUMBER AS reservationNumber,
-				RESERVATION_DATE AS reservationDate,
-				GAME_INDEX AS gameIndex
+		RESERVATION_NUMBER
+		AS reservationNumber,
+		RESERVATION_DATE AS reservationDate,
+		GAME_INDEX AS
+		gameIndex
 		FROM RESERVATION
 		WHERE GAME_INDEX = #{gmNumber};
 	</select>
 
+
+	<select id="selectReservationList" parameterType="string"
+		resultMap="result">
+		SELECT
+		RES3.STADIUM_NAME,RES3.STADIUM_PHOTO,RES3.DATE,RES3.TIME,RES3.RESERVATION_NUMBER,RES3.RESERVATION_DATE,ACCESS_CODE
+		FROM PAYMENT P ,(SELECT
+		RES2.STADIUM_NAME,RES2.STADIUM_PHOTO,RES2.DATE,RES2.TIME,R.RESERVATION_NUMBER,R.RESERVATION_DATE,R.PAYMENT_NUMBER
+		FROM RESERVATION R,(SELECT
+		S.STADIUM_NAME,S.STADIUM_PHOTO,D.DATE,RES1.TIME,RES1.GAME_INDEX
+		FROM STADIUM S, DATE D,(SELECT STADIUM_INDEX,DATE_INDEX,TIME,G.GAME_INDEX
+		FROM TIME T ,(SELECT GAME_INDEX,TIME_INDEX FROM GAME WHERE
+		MEMBER_INDEX = #{value}) G
+		WHERE T.TIME_INDEX LIKE G.TIME_INDEX) RES1
+		WHERE RES1.STADIUM_INDEX LIKE S.STADIUM_INDEX AND D.DATE_INDEX LIKE
+		RES1.DATE_INDEX) RES2
+		WHERE R.GAME_INDEX LIKE RES2.GAME_INDEX) RES3
+		WHERE P.PAYMENT_NUMBER LIKE RES3.PAYMENT_NUMBER;
+	</select>
 </mapper>
 

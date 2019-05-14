@@ -36,6 +36,7 @@ public class ReservationController {
 	@Autowired AlramDTO alDTO;
 	@Autowired IConsumer c;
 	@Autowired StadiumMapper stMap;
+	@Autowired IFunction i;
 	
 	@Transactional
 	@GetMapping("/reservation/payment/{timeIndex}/{positionName}/{memberIndex}/{stadiumIndex}")
@@ -52,7 +53,7 @@ public class ReservationController {
 		gmDTO.setTimeIndex(timeIndex);
 		gmDTO.setPositionName(positionName);
 		System.out.println("게임번호 가져오기 1");
-		IFunction i = (Object o) -> gmMap.selectGameIndex(gmDTO);
+		i = (Object o) -> gmMap.selectGameIndex(gmDTO);
 		String reservationNumber = String.valueOf(random.nextInt((9000000)+1000000));
 		map.clear();
 		map.put("resNumber", reservationNumber);
@@ -97,7 +98,7 @@ public class ReservationController {
 			System.out.println("22명 다 찼으면 결제!!7 ");
 			c = (Object o) -> alMap.insertPayment(pxy);
 			c.accept(memberIndex);
-			
+			String mIndex = String.valueOf(memberIndex);
 			//알림 보내줄 MEMBER_INDEX 리스트로뽑아오기
 			i = (Object o) -> gmMap.selectGameMember(timeIndex);
 			list = (List<?>) i.apply(timeIndex);
@@ -111,8 +112,19 @@ public class ReservationController {
 				c = (Object o) -> alMap.insertPayment(pxy);
 				c.accept(pxy);
 			}
-			i = (Object o) -> alMap.seletMemberAlram(memberIndex);
-			list = (List<?>) i.apply(memberIndex);
+			
+			i = (Object o) -> alMap.seletMemberAlram(mIndex);
+			list = (List<?>) i.apply(mIndex);
+			
+			String time = String.valueOf(timeIndex);
+			i = (Object o) -> payMap.selectPayments(time);
+			List<?> pay = (List<?>) i.apply(time);
+		
+			for (int j = 0; j < pay.size(); j++) {
+				String num = pay.get(j).toString().substring(pay.get(j).toString().lastIndexOf("=")+1).replaceAll("}","");
+				c = (Object o) -> payMap.updateAccessCode(num);
+				c.accept(num);
+			}
 			/*
 			 * 경기장의 타임인덱스 같은 경기장에 멤버들을 뽑아와서 예약확정 해주기
 			 * SELECT MEMBER_INDEX FROM GAME WHERE TIME_INDEX = 1;
@@ -126,15 +138,26 @@ public class ReservationController {
 			pxy.alram(map);
 			c = (Object o) -> alMap.insertReservation(pxy);
 			c.accept(pxy);
-			
-			i = (Object o) -> alMap.seletMemberAlram(memberIndex);
-			list = (List<?>) i.apply(memberIndex);
+			String mIndex = String.valueOf(memberIndex);
+			i = (Object o) -> alMap.seletMemberAlram(mIndex);
+			list = (List<?>) i.apply(mIndex);
 			
 		}
 		System.out.println(resDTO.toString());
 		map.clear();
 		map.put("alram",list);
 		map.put("res", resDTO);
+		return map;
+	}
+	@GetMapping("/reservation/list/{memberIndex}")
+	public Map<?, ?> list(@PathVariable String memberIndex){
+		
+		i = (Object o) -> resMap.selectReservationList(memberIndex);
+		List<?> list = (List<?>) i.apply(memberIndex);
+		
+		System.out.println("resList : " + list.toString());
+		map.clear();
+		map.put("res", list);
 		return map;
 	}
 }

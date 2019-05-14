@@ -21,10 +21,12 @@ public class AlramController {
 	
 	@GetMapping("alram/{memberIndex}")
 	public Map<?, ?> message(@PathVariable int memberIndex){
-		i = (Object o) -> alMap.seletMemberAlram(memberIndex);
-		List<?> list =  (List<?>) i.apply(memberIndex);
+		String mIndex = String.valueOf(memberIndex);
+		i = (Object o) -> alMap.seletMemberAlram(mIndex);
+		List<?> list =  (List<?>) i.apply(mIndex);
 		map.clear();
 		map.put("alram", list);
+		System.out.println("alram : "+ list.toString());
 		return map;
 	}
 }
