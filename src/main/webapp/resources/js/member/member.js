@@ -49,7 +49,7 @@ member = (() => {
         $('#rm_search').empty().append(compo.srch());
         $('.logo').remove();
         $('<a class="logo_login" href="#"><img src="resources/img/logo/logo.png" alt="logo"></a>').appendTo('.navbar-brand');
-        $('#content').css('margin-top', '0');
+        $('#content');
         $('#footer').remove();
         $('#myMpa').after(compo.footer());
         home_list_after();

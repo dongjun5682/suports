@@ -23,7 +23,7 @@
   <result property="disableDate" column="DISABLE_DATE" javaType="int"/>
   <result property="teamIndex" column="TEAM_INDEX" javaType="int"/>
   <result property="totalcount" column="TOTALCOUNT"/>
-  <result property="rnum" column="RNUM"/>
+  <result property="rnum" column="rnum"/>
 </resultMap>
 	<select id="selectAMember" 
 	resultType="com.suports.web.domain.MemberDTO">
@@ -54,7 +54,7 @@
 		resultType="com.suports.web.domain.MemberDTO">
 		<![CDATA[
 		SELECT 
-		@ROWNUM := @ROWNUM+1 as rnum, 
+		@ROWNUM := @ROWNUM+1 as rnum,
 		MEMBER_INDEX memberIndex,
 		ID id,
 		PASSWORD password,
@@ -72,10 +72,17 @@
 		DISABLE_DATE disableDate,
 		TEAM_INDEX teamIndex
 		FROM MEMBER, (SELECT @ROWNUM := 0) N
+		WHERE TEAM_INDEX LIKE #{teamIndex}
+		ORDER BY rnum DESC
+		LIMIT #{startRow}, #{pageSize}
 		]]>
 	</select>
 	<select id="countMembers" resultType="int">
 	SELECT COUNT(*) FROM MEMBER;
+	</select>
+	<select id="countATeamMembers" resultType="int">
+	SELECT COUNT(*) FROM MEMBER
+	WHERE TEAM_INDEX LIKE #{teamIndex};
 	</select>
 	<insert id="insertAMember"
 		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"

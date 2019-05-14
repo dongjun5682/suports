@@ -35,21 +35,24 @@ public class MemmberController {
 	@Autowired Proxy pxy;
 	@Autowired MemberMapper memberMapper;
 	
-	@GetMapping("/members/page/{page}")
-	public Map<?,?> list(@PathVariable String page) 
+	@GetMapping("/members/page/{page}/{teamIndex}")
+	public Map<?,?> aTeamMemberlist(@PathVariable String page, @PathVariable int teamIndex) 
 	{
-		logger.info("=========MEMBER ! LIST=========");
+		logger.info("1=========MEMBER ! LIST========={} and {}", page, teamIndex);
 		
+		MemberDTO mem = new MemberDTO();
+		mem.setTeamIndex(teamIndex);
+
 		map.clear();
 		map.put("pageNum", page);
+		map.put("teamIndex", teamIndex);
 		map.put("pageSize", "12");
 		map.put("blockSize", "5");
-		ISupplier c = ()-> memberMapper.countMembers();
+		ISupplier c = ()-> memberMapper.countATeamMembers(teamIndex);
 		map.put("totalCount", c.get());
 		pxy.carryOut(map);
 		
 		IFunction i = (Object o)-> memberMapper.selectListOfMembers(pxy);
-		
 		List<?> ls = (List<?>) i.apply(pxy);
 		
 		map.clear();

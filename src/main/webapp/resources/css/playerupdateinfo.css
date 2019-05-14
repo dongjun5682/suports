@@ -1,7 +1,10 @@
 .formupdate {
   z-index: 99;
 }
-
+ul#member_List_Paging {
+  display: table;
+  margin: 20px auto auto auto;
+}
 .teamupdateinfo {
   marign: auto auto;
   -webkit-font-smoothing: antialiased;

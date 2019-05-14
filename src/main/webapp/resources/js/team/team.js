@@ -237,7 +237,11 @@ team = (() => {
 
         $('#team_members').click(() => {
         	$('#update_mid_content').empty();
-        	team_members_list();
+        	let x = {
+                    'page': 1,
+                    'teamIndex' : $.member().teamIndex
+                };
+        	team_members_list(x);
         });
         $('#team_add').click(() => {
         	$('#update_mid_content').empty();
@@ -264,31 +268,103 @@ team = (() => {
             team_diss_ever();
         });
     }
-    let team_members_list = () => {
-    	$.getJSON($.ctx()+'/members/page/1', d => {
-//        	$.getJSON($.ctx()+'/members/page/'+x.page, d => {
-        		let table = '<table class="table table-striped"><tr>'
-    				+'<th>No.</th>'
-    				+'<th>이름</th>'
-    				+'<th>스포츠</th>'
-    				+'<th>포지션</th>'
-    				+'<th>위치</th>'
-    				+'<th> + </th>'
-    				+'</tr>'
-    			$.each(d.ls, (i,j) => {
-        			table += '<tr>'
+    let team_members_list = (x) => {
+    	$('#update_mid_content').empty();
+        	$.getJSON($.ctx()+'/members/page/'+x.page+'/'+x.teamIndex, d => {
+        		let listTitle = '<div class="hsubtitlepg1"><div class="texthtitle">팀 선수 목록</div></div>';
+        		
+        		let table = compo.member_detail_table();   
+        		
+    			$.each(d.members, (i,j) => {
+    				let memberInfo = {
+    					memberIndex : j.memberIndex
+    				}
+    				table += '<tr>'
         	        +'<td>'+j.rnum+'</td>'
-        	        +'<td>'+j.name+'</td>'
+        	        +'<td><a href="#" class="memberDetail" name="'+j.memberIndex+'">'+j.name+'</a></td>'
         	        +'<td>'+j.sports+'</td>'
         	        +'<td>'+j.position+'</td>'
         	        +'<td>'+j.address+'</td>'
-        	        +'<td> + 수정 </td>'
+        	        +'<td><button type="button" class="memberEdit" name="'+j.memberIndex+'"><i class="far fa-edit"></i></button></td>'
         	        +'</tr>'
     			});
         		table += '</table>'
-        		$('#update_mid_content').append(table);
+
+        		let pageTag = '<ul class="pagination" id="member_List_Paging">';
+				
+				if(d.pxy.existPrev){
+					pageTag += '<li class="prev-item"><a href="#" class="paging">&laquo;</a></li>';
+				} else {
+					pageTag += '<li class="prev-item"><a href="#">x</a></li>';
+				};
+				
+				let i = 0;
+				for(i = d.pxy.startPage; i <= d.pxy.endPage; i++){
+					if (d.pxy.pageNum == i){
+						pageTag += '<li class="page-item active"><a href="#" class="paging">'+i+'</a></li>';
+					} else {
+						pageTag += '<li class="page-item"><a href="#" class="paging">'+i+'</a></li>';
+					}
+				};
+				
+				if(d.pxy.existNext){
+					pageTag += '<li class="next-item"><a href="#" class="paging">&raquo;</a></li>';
+				} else {
+					pageTag += '<li class="next-item"><a href="#">x</a></li>';
+				};
+				pageTag += '</ul>'
+				
+				let middleContent = listTitle + table + pageTag;
+				
+				$('#update_mid_content').append(middleContent);				
+				
+				$('.memberDetail').click(function(){
+					alert($(this).memberInfo);
+        		});
+				$('.memberEdit').click(function(){
+					team_member_edit($(this).attr('name'));
+        		});
+				
+				$('.page-item')
+				.click(function(){
+					let x2 = {
+						page : $(this).text(),
+						teamIndex : $.member().teamIndex
+					}
+					team_members_list(x2);
+				});
+				$('.prev-item')
+				.click(function(){
+					let prev_item = {
+							teamIndex : $.member().teamIndex,
+							page : d.pxy.prevBlock
+						}
+					team_members_list(prev_item);
+				});
+				$('.next-item')
+				.click(function(){
+					let next_item = {
+							teamIndex : $.member().teamIndex,
+							page : d.pxy.nextBlock
+					}
+					team_members_list(next_item);
+				});
         	})
     };
+    let team_member_detail = (x) => {
+    	let member_detail = ''
+    		+'<div class="member_detail">'
+    		+'    <div id="member_current_photo">'
+    		+'        <img src="#" id="member_currnt_img">'
+    		+'    </div>'
+    		+'    <div class="hsubtitlepg1">이름</div>'
+    		+'    <div class="subline">김댕청</div>'
+    		+'</div>'
+    		$('.modal-content').html(member_detail);
+    }
+    let team_member_edit = (x) => {
+    	alert(x.memberIndex);
+    }
     let team_add_memeber = () => {
     	$('#update_mid_content').append(compo.team_add_memeber());
     }
@@ -347,7 +423,9 @@ team = (() => {
         team_update_info:team_update_info,
         team_update_emblem: team_update_emblem,
         team_trans_captain:team_trans_captain,
-        team_diss_ever:team_diss_ever
+        team_diss_ever:team_diss_ever,
+        team_member_detail:team_member_detail,
+        team_member_edit:team_member_edit
     };
 
 })();
