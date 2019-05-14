@@ -39,9 +39,24 @@ stadium = (() => {
         $('#map').empty();
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
+        
         $('#map_button').click(() => {
-            $('#content').empty().html(compo.stadium_list_sidebar());
+        $('#content').empty().html(compo.stadium_list_sidebar());
+        $(document).ready(function() {
+            sMap();
         });
+        $('.col-md-9').append(compo.map());
+        $('#map').css({
+            'width': '100%',
+            'height': '400px',
+            'margin-bottom': '300px'
+        });
+        });
+        $('#search').on('keydown',function(event){
+    	    if(event.keyCode ==13){
+    	    $('#area_srch').click();
+    	    }
+    	    });
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if (search === '') {
@@ -882,7 +897,6 @@ stadium = (() => {
         });
 
     };
-
     function initMap(j) {
         j.latitude = parseFloat(j.latitude);
         j.hardness = parseFloat(j.hardness);
@@ -892,6 +906,20 @@ stadium = (() => {
         };
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+    function sMap() {
+        var uluru = {
+            lat: 37.549074,
+            lng: 126.982150
+        };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
             center: uluru
         });
         var marker = new google.maps.Marker({

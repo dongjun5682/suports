@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.suports.web.domain.ChatBotDTO;
@@ -29,6 +28,8 @@ public class StadiumController {
 	@Autowired StadiumMapper staMap;
 	@Autowired Proxy pxy;
 	@Autowired ChatBotMapper chaMap;
+	@Autowired ChatBotDTO cto;
+	
 	
 	@GetMapping("/stadiums/page/{page}")
 	public Map<?,?> list(@PathVariable String page){
@@ -96,6 +97,25 @@ public class StadiumController {
 		System.out.println(ls.toString());
 		return map;
 	}
+	@GetMapping("/chatbot/search/{search}")
+	public Map<?,?> searchSeoulChat(	
+			@PathVariable("search") String search) {
+		logger.info("=======서울 리스트 진입 ======");
+		String se = search;
+		System.out.println(search);
+		ISupplier c = ()-> staMap.countSeoulSearch();
+		map.clear();
+		map.put("search", se);
+		map.put("totalCount",c.get());
+		pxy.carryOut(map);
+		IFunction i = (Object o)-> staMap.selectSeoulStadium(pxy);
+		List<?> ls = (List<?>) i.apply(pxy);
+		map.clear();
+		map.put("pxy", pxy);
+		map.put("srch", ls);
+		System.out.println(ls.toString());
+		return map;
+	}
 	@GetMapping("/incheon/search/{search}/{page}")
 	public Map<?,?> searchIncheon(	
 			@PathVariable("search") String search,	
@@ -112,6 +132,42 @@ public class StadiumController {
 		map.put("totalCount",c.get());
 		pxy.carryOut(map);
 		IFunction i = (Object o)-> staMap.selectIncheonStadium(pxy);
+		List<?> ls = (List<?>) i.apply(pxy);
+		map.clear();
+		map.put("pxy", pxy);
+		map.put("srch", ls);
+		System.out.println(ls.toString());
+		return map;
+	}
+	@GetMapping("/incheon/search/{search}")
+	public Map<?,?> searchIncheonChat(@PathVariable("search") String search) {
+		logger.info("=======인천 리스트 진입 ======");
+		String se = search;
+		System.out.println(search);
+		ISupplier c = ()-> staMap.countIncheonSearch();
+		map.clear();
+		map.put("search", se);
+		map.put("totalCount",c.get());
+		pxy.carryOut(map);
+		IFunction i = (Object o)-> staMap.selectIncheonStadium(pxy);
+		List<?> ls = (List<?>) i.apply(pxy);
+		map.clear();
+		map.put("pxy", pxy);
+		map.put("srch", ls);
+		System.out.println(ls.toString());
+		return map;
+	}
+	@GetMapping("/gyeonggi/search/{search}")
+	public Map<?,?> searchGyeonggiChat(@PathVariable("search") String search) {
+		logger.info("=======경기도 리스트 진입 ======");
+		String se = search;
+		System.out.println(search);
+		ISupplier c = ()-> staMap.countGyeonggiSearch();
+		map.clear();
+		map.put("search", se);
+		map.put("totalCount",c.get());
+		pxy.carryOut(map);
+		IFunction i = (Object o)-> staMap.selectGyeonggiStadium(pxy);
 		List<?> ls = (List<?>) i.apply(pxy);
 		map.clear();
 		map.put("pxy", pxy);
@@ -144,7 +200,6 @@ public class StadiumController {
 	}
 	@GetMapping("/stadiums")
 	public Map<?,?> list(){
-		
 		ISupplier s = ()-> staMap.selectAllStadium();
 		List<?> allStadium = (List<?>) s.get();
 		map.clear();
@@ -152,8 +207,6 @@ public class StadiumController {
 		map.put("home", allStadium);
 		return map;
 	}
-	
-
 	@GetMapping("/chatbot/value/{value}") 
 	public Map<?,?> chat(@PathVariable String value){ 
 		map.clear(); 
@@ -161,18 +214,10 @@ public class StadiumController {
 		System.out.println("여기탔다"+val);
 		ChatBotDTO chat = new ChatBotDTO();
 		chat.setMsg(val);
-		IFunction i = (Object o) -> chaMap.Chatbot(chat);
+		IFunction i = (Object o) -> chaMap.ChatBot(chat);
 		ChatBotDTO ch = (ChatBotDTO) i.apply(chat);
+		System.out.println(ch);
 		map.put("value", ch);
 		return map; 
 		}
-	/*
-	 * @GetMapping("/chatbot/value/{list}") public Map<?,?> chat_list(@PathVariable
-	 * String value){ map.clear(); String val = "%"+value+"%";
-	 * System.out.println("여기탔다"+val); ChatBotDTO chat = new ChatBotDTO();
-	 * chat.setMsg(val); IFunction i = (Object o) -> chaMap.Chatbot(chat);
-	 * ChatBotDTO ch = (ChatBotDTO) i.apply(chat);
-	 * System.out.println(i.apply(chat)); map.put("value", ch); return map; }
-	 */
-	
 }

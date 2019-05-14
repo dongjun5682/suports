@@ -4,11 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.suports.web.mapper.ChatBotMapper">
-<select id="Chatbot" resultType="com.suports.web.domain.ChatBotDTO" parameterType="com.suports.web.domain.ChatBotDTO">
-		SELECT MSG
+<select id="ChatBot" resultType="com.suports.web.domain.ChatBotDTO" parameterType="com.suports.web.domain.ChatBotDTO">
+		SELECT *
 		FROM CHATBOT 
 		WHERE MSG LIKE #{msg}
 		ORDER BY RAND()
-		LIMIT 1;
+		LIMIT 1
 	</select>
 </mapper>
