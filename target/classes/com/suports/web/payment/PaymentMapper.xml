@@ -3,8 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.suports.web.mapper.PaymentMapper">
-<resultMap id="result" type="hashmap">
- 
+	<resultMap id="result" type="hashmap">
+ 	<result property="pay" column="PAYMENT_NUMBER" />
+ 	
 </resultMap>
 
 <select id="insertPayment" parameterType="string">
@@ -12,4 +13,13 @@
 	VALUES('${value}');
 </select>
 
+	<select id="selectPayments" parameterType="string" resultMap="result" >
+		SELECT R.PAYMENT_NUMBER AS PAY
+		FROM RESERVATION R,(SELECT GAME_INDEX FROM GAME where time_index = #{value}) G
+		WHERE R.GAME_INDEX LIKE G.GAME_INDEX
+	</select>
+	
+	<select id="updateAccessCode" parameterType="string">
+		UPDATE PAYMENT SET ACCESS_CODE = '1' WHERE PAYMENT_NUMBER LIKE #{value};
+	</select>
 </mapper>

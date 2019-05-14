@@ -49,21 +49,19 @@ public class StadiumController {
 		System.out.println(ls.toString());
 		return map;
 	}
-	@GetMapping("/stadiums/search/{search}/{page}")
+	@GetMapping("/stadiums/search/{word}/{page}")
 	public Map<?,?> search(	
-			@PathVariable("search") String search,	
-			@PathVariable("page") String page) {
+			@PathVariable String word,	
+			@PathVariable String page) {
 		logger.info("=======경기장 리스트 진입 ======");
-		String se = search;
-		System.out.println(search);
-		ISupplier c = ()-> staMap.countSearch(se);
+		String search = word;
+		ISupplier c = ()-> staMap.countSearch(search);
 		map.clear();
-		map.put("search", se);
+		map.put("search", search);
 		map.put("pageNum", page);
 		map.put("pageSize", "12");
 		map.put("blockSize", "5");
 		map.put("totalCount",c.get());
-
 		pxy.carryOut(map);
 		IFunction i = (Object o)-> staMap.searchStadium(pxy);
 		List<?> ls = (List<?>) i.apply(pxy);

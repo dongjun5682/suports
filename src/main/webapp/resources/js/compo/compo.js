@@ -1030,8 +1030,7 @@ compo = {
 		+'  </div>'
 		+'  <div class="row">'
 		+'    <div class="col-md-6" style=" border: 1px solid #bbbbbb; border-width: 0px 1px 0px 0px;">'
-		+'      <div class="imagesss">'
-		+'        <img src="resources/img/stadium/field.jpg" style="width: 83%;margin-left: 80px;">'
+		+'      <div class="row" id="sta_photo">'
 		+'      </div>'
 		+'    </div>'
 		+'  <div class="row">'
@@ -1051,7 +1050,7 @@ compo = {
 		+'    </div>'
 		+'      <div class="col-md-6" style="margin: 40px auto auto 450px;">'
 		+'      <button class="btn hover1" id="pay_home" style="width: 22%;padding: 10px; background-color: #ced5da;">홈으로</button>'
-		+'  <button class="btn hover2"  style="width: 22%;padding: 10px; background-color: #eae6e6;">결제 예약 목록</button>'
+		+'  <button class="btn hover2 resBtn"  style="width: 22%;padding: 10px; background-color: #eae6e6;">결제 예약 목록</button>'
 		+'    </div>'
 		+'  </div>'
 		+'</div>';
