@@ -960,8 +960,22 @@ stadium = (() => {
          });
 
      });
-
     }
+    function sMap() {
+        var uluru = {
+            lat: 37.549074,
+            lng: 126.982150
+        };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+
     return {
         onCreate: onCreate,
         list: list,

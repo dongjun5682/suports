@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="resources/css/com/myTooltip.css">
 <link rel="stylesheet" href="resources/css/com/bootstrap3.css">
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
-<!-- <link rel="stylesheet" href="resources/css/chatbot.css"> -->
+<link rel="stylesheet" href="resources/css/chatbot.css"> 
 <link rel="stylesheet" href="resources/css/datepicker/datapicker.min.css">
 
 <!-- modal css -->

@@ -2132,10 +2132,10 @@ team_update_picture: ()=>{
 		return'<div id="map"></div>';
 	},
 	chatbot : ()=>{
-		return '<div id="chat_main" action="nextpage.php" name="formname"> '
-		+'<div class="container" id="chat_body">'
-	    +'<div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:950px;">'
-	        +'<div class="col-xs-12 col-md-12" style="margin-left: 119px;" >'
+		return '<div id="chat_main"> '
+				+'<div class="container" id="chat_body">'
+				+'<div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:950px;">'
+	        +'<div class="col-xs-12 col-md-12" id="c_b" style="margin-left: 119px;" >'
 	          +'<div class="panel panel-default">'
 	                +'<div class="panel-heading top-bar">'
 	                    +'<div class="col-md-8 col-xs-8">'
@@ -2176,7 +2176,7 @@ team_update_picture: ()=>{
 	                    +'<div class="input-group">'
 	                        +'<input id="chat_input" type="text" class="form-control input-sm chat_input" placeholder="내용을 입력하십시오...." />'
 	                        +'<span class="input-group-btn">'
-	                        +'<button class="btn btn-primary btn-sm" id="btn-chat" style="background-color: #275228; border-color: #275228; ">보내기</button>'
+	                        +'<button class="btn btn-primary btn-sm" id="btn-chat" style="background-color: #275228; border-color: #275228;" autocomplete="off">보내기</button>'
 	                        +'</span>'
 	                    +'</div>'
 	                +'</div>'
