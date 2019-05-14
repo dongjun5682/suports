@@ -165,6 +165,8 @@ home = (() => {
             })
         
         })
+        
+       
     };
 
     let home_list = () => {
@@ -293,6 +295,8 @@ home = (() => {
             member.signup();
         })
     }
+   
+    
     return {
         onCreate: onCreate,
         home_list: home_list,

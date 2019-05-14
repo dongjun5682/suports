@@ -23,6 +23,7 @@ public interface MemberService {
 	public Map<String, Object> retrieveAMemberPic(MemberDTO mem);
 	public MemberDTO retrieveAMember(MemberDTO mem);
 	public int countMembers();
+	public int countATeamMembers(int teamIndex);
 	public boolean existAMemberId(MemberDTO mem);
 	
 	// UPDATE
