@@ -235,49 +235,48 @@ stadium = (() => {
         let html = '<div class="a-team" id="roster_100"  ondrop="drop(event)" ondragover="allowDrop(event)"> ' +
             '<img src="resources/img/football.png" draggable="false" ondragstart="drag(event)" id="roster_ball" width="50" height="50"> ' +
             '</div> ' +
-            '<div class="a-team" id="GK_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 80px;position: absolute;bottom: -640px;"></div>' +
+            '<div class="a-team" id="GK_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 80px;position: absolute; margin-top: 180px;"></div>' +
             '<div class="a-team" id="DF_9" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;"></div>' +
-            '<div class="a-team" id="DF_8" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -560px;"></div>' +
-            '<div class="a-team" id="DF_7" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -730px;"></div>' +
-            '<div class="a-team" id="DF_6" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -880px;"></div>' +
-            '<div class="a-team" id="MF_5" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -450px;"></div>' +
-            '<div class="a-team" id="MF_4" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -620px;"></div>' +
-            '<div class="a-team" id="MF_3" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -800px;"></div>' +
-            '<div class="a-team" id="FW_2" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -380px;"></div>' +
-            '<div class="a-team" id="FW_1" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -640px;"></div>' +
-            '<div class="a-team" id="FW_0" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -860px;"></div>' +
-            '<div class="b-team" id="FW_11" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 670px;position: absolute;bottom: -380px;"></div>' +
-            '<div class="b-team" id="FW_12" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 660px;position: absolute;bottom: -640px;"></div>' +
-            '<div class="b-team" id="FW_13" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 670px;position: absolute;bottom: -900px;"></div>' +
-            '<div class="b-team" id="MF_14" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 760px;position: absolute;bottom: -780px;"></div>' +
-            '<div class="b-team" id="MF_15" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 760px;position: absolute;bottom: -510px;"></div>' +
-            '<div class="b-team" id="MF_16" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 850px;position: absolute;bottom: -640px;"></div>' +
-            '<div class="b-team" id="DF_17" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -880px;"></div>' +
-            '<div class="b-team" id="DF_18" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -730px;"></div>' +
-            '<div class="b-team" id="DF_19" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -560px;"></div>' +
-            '<div class="b-team" id="DF_20" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;"></div>' +
-            '<div class="b-team" id="GK_21" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 1100px;position: absolute;bottom: -640px;"></div>';
+            '<div class="a-team" id="DF_8" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;margin-top:130px"></div>' +
+            '<div class="a-team" id="DF_7" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;margin-top:240px"></div>' +
+            '<div class="a-team" id="DF_6" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;margin-top:360px"></div>' +
+            '<div class="a-team" id="MF_5" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;margin-top:320px"></div>' +
+            '<div class="a-team" id="MF_4" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;margin-top:180px"></div>' +
+            '<div class="a-team" id="MF_3" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;margin-top:50px"></div>' +
+            '<div class="a-team" id="FW_2" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;margin-top:350px"></div>' +
+            '<div class="a-team" id="FW_1" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;margin-top:180px"></div>' +
+            '<div class="a-team" id="FW_0" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;"></div>' +
+            '<div class="b-team" id="FW_11" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 670px;position: absolute;"></div>' +
+            '<div class="b-team" id="FW_12" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 670px;position: absolute;margin-top:180px;"></div>' +
+            '<div class="b-team" id="FW_13" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 675px;position: absolute;margin-top:350px"></div>' +
+            '<div class="b-team" id="MF_14" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 760px;position: absolute;margin-top:100px;"></div>' +
+            '<div class="b-team" id="MF_15" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 760px;position: absolute;margin-top:270px;"></div>' +
+            '<div class="b-team" id="MF_16" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 850px;position: absolute;margin-top:190px;"></div>' +
+            '<div class="b-team" id="DF_17" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 935px;position: absolute;"></div>' +
+            '<div class="b-team" id="DF_18" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 935px;position: absolute;margin-top:130px;"></div>' +
+            '<div class="b-team" id="DF_19" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 935px;position: absolute;margin-top:240px;"></div>' +
+            '<div class="b-team" id="DF_20" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 935px;position: absolute;margin-top:350px;"></div>' +
+            '<div class="b-team" id="GK_21" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 1100px;position: absolute;margin-top: 180px;"></div>';
 
         $('#sta_photo').css({
             'background-image': 'url(resources/img/field.png)',
             'width': '100%',
             'margin-top': '50px',
-            'margin-bottom': '100px',
-            'height': '930px'
+            'height': '720px'
         }).html(html);
         $.getJSON($.ctx() + '/game/position/' + j.stadiumIndex, d => {
             $.each(d.position, (i, j) => {
                 if (j.position === 'FW_' + i && j.memberIndex != null) {
-                    $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#FW_' + i);
+                    $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#FW_' + i);
                     $('#roster_' + i).attr('ondrop', 'drag(event)');
                 } else if (j.position === 'MF_' + i && j.memberIndex != null) {
-                    $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#MF_' + i);
+                    $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#MF_' + i);
                     $('#roster_' + i).attr('ondrop', 'drag(event)');
                 } else if (j.position === 'DF_' + i && j.memberIndex != null) {
-                    $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#DF_' + i);
+                    $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#DF_' + i);
                     $('#roster_' + i).attr('ondrop', 'drag(event)');
                 } else if (j.position === 'GK_' + i && j.memberIndex != null) {
-                    $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#GK_' + i);
+                    $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#GK_' + i);
                     $('#roster_' + i).attr('ondrop', 'drag(event)');
                 }
             });
@@ -308,9 +307,10 @@ stadium = (() => {
         	   +'<p style="position: absolute;top: 2642px;right: 80px;">★★★★★</p>'
         	   +'<p style="position: absolute;top: 2670px;right: 80px;">02-300-8509</p>');*/
         $('#map').css({
-            'width': '100%',
+            'width': '1270px',
             'height': '400px',
-            'margin-bottom': '300px'
+            'margin-bottom': '100px',
+            'margin-left':'235px'
         });
         //예약 확인 버튼
         $('#pay_btn_1').click(() => {
@@ -356,9 +356,10 @@ stadium = (() => {
         });
         $('#myMpa').append(compo.map(j));
         $('#map').css({
-            'width': '100%',
+        	'width': '1270px',
             'height': '400px',
-            'margin-bottom': '300px'
+            'margin-bottom': '100px',
+            'margin-left':'235px'
         });
         //예약 확인 버튼
         $('#pay_btn_1').click(() => {
@@ -432,7 +433,7 @@ stadium = (() => {
     let payment_reservation = j => {
         $('#content').empty().html(compo.payment_reservation(j));
         $('#footer').empty();
-        position_map(j);
+        position_map_res(j.stadium);
         $('#alramBtn img').attr('src','resources/img/alram_after.png');
         $.each(j.message,(i,j)=>{
         	$('	<li><h2 class="black-text" style="padding: 10px;">'+j+'<h2></li><li class="divider"></li>')
@@ -909,49 +910,48 @@ stadium = (() => {
     	 let html = '<div class="a-team" id="roster_100" ondrop="drop(event)" ondragover="allowDrop(event)"> ' +
          '<img src="resources/img/' + $.member().photo + '" draggable="true" ondragstart="drag(event)" id="roster_ball" width="50" height="50"> ' +
          '</div> ' +
-         '<div class="a-team" id="GK_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 100px;position: absolute;bottom: -650px;"></div>' +
+         '<div class="a-team" id="GK_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 80px;position: absolute; margin-top: 180px;"></div>' +
          '<div class="a-team" id="DF_9" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;"></div>' +
-         '<div class="a-team" id="DF_8" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -560px;"></div>' +
-         '<div class="a-team" id="DF_7" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -730px;"></div>' +
-         '<div class="a-team" id="DF_6" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;bottom: -880px;"></div>' +
-         '<div class="a-team" id="MF_5" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -450px;"></div>' +
-         '<div class="a-team" id="MF_4" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -620px;"></div>' +
-         '<div class="a-team" id="MF_3" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;bottom: -800px;"></div>' +
-         '<div class="a-team" id="FW_2" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -380px;"></div>' +
-         '<div class="a-team" id="FW_1" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -640px;"></div>' +
-         '<div class="a-team" id="FW_0" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;bottom: -860px;"></div>' +
-         '<div class="b-team" id="FW_11" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 670px;position: absolute;bottom: -380px;"></div>' +
-         '<div class="b-team" id="FW_12" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 660px;position: absolute;bottom: -640px;"></div>' +
-         '<div class="b-team" id="FW_13" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 670px;position: absolute;bottom: -900px;"></div>' +
-         '<div class="b-team" id="MF_14" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 760px;position: absolute;bottom: -780px;"></div>' +
-         '<div class="b-team" id="MF_15" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 760px;position: absolute;bottom: -510px;"></div>' +
-         '<div class="b-team" id="MF_16" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 850px;position: absolute;bottom: -640px;"></div>' +
-         '<div class="b-team" id="DF_17" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -880px;"></div>' +
-         '<div class="b-team" id="DF_18" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -730px;"></div>' +
-         '<div class="b-team" id="DF_19" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;bottom: -560px;"></div>' +
-         '<div class="b-team" id="DF_20" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 974px;position: absolute;"></div>' +
-         '<div class="b-team" id="GK_21" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 1100px;position: absolute;bottom: -640px;"></div>';
+         '<div class="a-team" id="DF_8" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;margin-top:130px"></div>' +
+         '<div class="a-team" id="DF_7" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;margin-top:240px"></div>' +
+         '<div class="a-team" id="DF_6" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;margin-top:360px"></div>' +
+         '<div class="a-team" id="MF_5" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;margin-top:320px"></div>' +
+         '<div class="a-team" id="MF_4" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;margin-top:180px"></div>' +
+         '<div class="a-team" id="MF_3" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 383px;position: absolute;margin-top:50px"></div>' +
+         '<div class="a-team" id="FW_2" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;margin-top:350px"></div>' +
+         '<div class="a-team" id="FW_1" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;margin-top:180px"></div>' +
+         '<div class="a-team" id="FW_0" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 515px;position: absolute;"></div>' +
+         '<div class="b-team" id="FW_11" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 670px;position: absolute;"></div>' +
+         '<div class="b-team" id="FW_12" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 670px;position: absolute;margin-top:180px;"></div>' +
+         '<div class="b-team" id="FW_13" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 675px;position: absolute;margin-top:350px"></div>' +
+         '<div class="b-team" id="MF_14" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 760px;position: absolute;margin-top:100px;"></div>' +
+         '<div class="b-team" id="MF_15" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 760px;position: absolute;margin-top:270px;"></div>' +
+         '<div class="b-team" id="MF_16" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 850px;position: absolute;margin-top:190px;"></div>' +
+         '<div class="b-team" id="DF_17" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 935px;position: absolute;"></div>' +
+         '<div class="b-team" id="DF_18" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 935px;position: absolute;margin-top:130px;"></div>' +
+         '<div class="b-team" id="DF_19" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 935px;position: absolute;margin-top:240px;"></div>' +
+         '<div class="b-team" id="DF_20" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 935px;position: absolute;margin-top:350px;"></div>' +
+         '<div class="b-team" id="GK_21" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 1100px;position: absolute;margin-top: 180px;"></div>';
 
      $('#sta_photo').css({
          'background-image': 'url(resources/img/field.png)',
          'width': '100%',
          'margin-top': '50px',
-         'margin-bottom': '100px',
-         'height': '930px'
+         'height': '720px'
      }).html(html);
      $.getJSON($.ctx() + '/game/position/' + j.stadiumIndex, d => {
          $.each(d.position, (i, j) => {
              if (j.position === 'FW_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#FW_' + i);
+                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#FW_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              } else if (j.position === 'MF_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#MF_' + i);
+                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#MF_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              } else if (j.position === 'DF_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#DF_' + i);
+                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#DF_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              } else if (j.position === 'GK_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px" style="margin-top:15px"> ').appendTo('#GK_' + i);
+                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#GK_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              }
              if(j.memberIndex == $.member().memberIndex){
@@ -960,8 +960,77 @@ stadium = (() => {
          });
 
      });
-
     }
+    let position_map_res =(j)=>{
+    	 let html = '<div class="empty" style="width:50px; height:100px;"> ' +
+         '</div> ' +
+         '<div class="res_team_a" id="GK_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 60px;position: absolute; margin-top: 180px;"></div>' +
+         '<div class="res_team_a" id="DF_9" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 180px;position: absolute;"></div>' +
+         '<div class="res_team_a" id="DF_8" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 180px;position: absolute;margin-top:130px"></div>' +
+         '<div class="res_team_a" id="DF_7" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 180px;position: absolute;margin-top:240px"></div>' +
+         '<div class="res_team_a" id="DF_6" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 180px;position: absolute;margin-top:360px"></div>' +
+         '<div class="res_team_a" id="MF_5" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 280px;position: absolute;margin-top:320px"></div>' +
+         '<div class="res_team_a" id="MF_4" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 280px;position: absolute;margin-top:180px"></div>' +
+         '<div class="res_team_a" id="MF_3" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 280px;position: absolute;margin-top:50px"></div>' +
+         '<div class="res_team_a" id="FW_2" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 380px;position: absolute;margin-top:350px"></div>' +
+         '<div class="res_team_a" id="FW_1" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 380px;position: absolute;margin-top:180px"></div>' +
+         '<div class="res_team_a" id="FW_0" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 380px;position: absolute;"></div>' +
+         '<div class="res_team_b" id="FW_11" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 520px;position: absolute;"></div>' +
+         '<div class="res_team_b" id="FW_12" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 520px;position: absolute;margin-top:180px;"></div>' +
+         '<div class="res_team_b" id="FW_13" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 520px;position: absolute;margin-top:350px"></div>' +
+         '<div class="res_team_b" id="MF_14" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 600px;position: absolute;margin-top:100px;"></div>' +
+         '<div class="res_team_b" id="MF_15" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 600px;position: absolute;margin-top:270px;"></div>' +
+         '<div class="res_team_b" id="MF_16" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 650px;position: absolute;margin-top:190px;"></div>' +
+         '<div class="res_team_b" id="DF_17" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 720px;position: absolute;"></div>' +
+         '<div class="res_team_b" id="DF_18" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 720px;position: absolute;margin-top:130px;"></div>' +
+         '<div class="res_team_b" id="DF_19" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 720px;position: absolute;margin-top:240px;"></div>' +
+         '<div class="res_team_b" id="DF_20" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 720px;position: absolute;margin-top:350px;"></div>' +
+         '<div class="res_team_b" id="GK_21" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 850px;position: absolute;margin-top: 180px;"></div>';
+
+     $('#sta_photo').css({
+         'background-image': 'url(resources/img/field_2.png)',
+         'width': '94%',
+         'margin-top': '50px',
+         'height': '640px'
+     }).html(html);
+     alert(j.stadiumIndex);
+     $.getJSON($.ctx() + '/game/position/'+ j.stadiumIndex, d => {
+         $.each(d.position, (i, j) => {
+             if (j.position === 'FW_' + i && j.memberIndex != null) {
+                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#FW_' + i);
+                 $('#roster_' + i).attr('ondrop', 'drag(event)');
+             } else if (j.position === 'MF_' + i && j.memberIndex != null) {
+                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#MF_' + i);
+                 $('#roster_' + i).attr('ondrop', 'drag(event)');
+             } else if (j.position === 'DF_' + i && j.memberIndex != null) {
+                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#DF_' + i);
+                 $('#roster_' + i).attr('ondrop', 'drag(event)');
+             } else if (j.position === 'GK_' + i && j.memberIndex != null) {
+                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#GK_' + i);
+                 $('#roster_' + i).attr('ondrop', 'drag(event)');
+             }
+             if(j.memberIndex == $.member().memberIndex){
+             	$('#footer').empty().removeAttr('style');
+             }
+         });
+
+     });
+    }
+    function sMap() {
+        var uluru = {
+            lat: 37.549074,
+            lng: 126.982150
+        };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+
     return {
         onCreate: onCreate,
         list: list,
@@ -977,6 +1046,7 @@ stadium = (() => {
         srch_incheon: srch_incheon,
         srch_gyeonggi: srch_gyeonggi,
         stadium_res:stadium_res,
-        position_map:position_map
+        position_map:position_map,
+        position_map_res:position_map_res
     }
 })();

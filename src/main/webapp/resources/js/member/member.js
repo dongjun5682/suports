@@ -49,17 +49,18 @@ member = (() => {
         $('#rm_search').empty().append(compo.srch());
         $('.logo').remove();
         $('<a class="logo_login" href="#"><img src="resources/img/logo/logo.png" alt="logo"></a>').appendTo('.navbar-brand');
-        $('#content').css('margin-top', '0');
+        $('#content');
         $('#footer').remove();
         $('#myMpa').after(compo.footer());
         home_list_after();
-       /* $.getScript($.js()+'/compo/compo.js',()=>{
+      /*  $.getScript($.js()+'/compo/compo.js',()=>{
          	$.getScript($.js()+'/home/chat.js',()=>{
+         		$(compo.chatbot()).appendTo('#myMpa');	
          		$('#chat_body').hide().after( '<button id="chat_ball" style="margin-left: 1373px;width: 5%;margin-bottom: 40px;"><img src="resources/img/soccer-ball.png" style="width: 101%; margin-left: 127px;"></button>' );
          			  $("#chat_ball").click(function(){
          				  alert('클릭');
          				 $('#chat_body').show();
-         				 chat.chat_bot();
+         				 	chat.chat_bot();
          			  });
          		
           	});
@@ -499,6 +500,6 @@ member = (() => {
         profile_disable:profile_disable,
         update_ajax:update_ajax,
         upload_ajax:upload_ajax,
-        password_tooltip:password_tooltip
+        password_tooltip:password_tooltip,
     }
 })();

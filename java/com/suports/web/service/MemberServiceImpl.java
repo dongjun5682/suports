@@ -48,6 +48,10 @@ public class MemberServiceImpl implements MemberService {
 	public int countMembers() {
 		return memberMapper.countMembers();
 	}
+	@Override
+	public int countATeamMembers(int teamIndex) {
+		return memberMapper.countATeamMembers(teamIndex);
+	}
 
 	@Override
 	public boolean existAMemberId(MemberDTO mem) {
@@ -96,6 +100,7 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
+	
 
 	
 }

@@ -8,7 +8,6 @@
 <title>SUPORTS</title>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap"></script>
-<script src="resources/js/signin/signin.js"></script>
 <script src="resources/js/com/popper.min.js"></script>
 <!-- <script src="resources/js/com/jquery.min.3.3.1.js"></script> -->
 <script src="resources/js/com/jquery.min.3.4.0.js"></script>
@@ -20,14 +19,16 @@
  --><!-- 챗봇 -->
 <link href="resources/css/fullscreenDemo.css" rel="stylesheet" type="text/css">
 
-
 <!-- default css -->
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/com/myTooltip.css">
 <link rel="stylesheet" href="resources/css/com/bootstrap3.css">
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
-<!-- <link rel="stylesheet" href="resources/css/chatbot.css"> -->
+<link rel="stylesheet" href="resources/css/chatbot.css"> 
 <link rel="stylesheet" href="resources/css/datepicker/datapicker.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" 
+integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" 
+crossorigin="anonymous">
 
 <!-- modal css -->
 <link rel="stylesheet" href="resources/css/modal.css">
@@ -76,7 +77,6 @@
 			<div id="modal-content3"></div>
 		</div>
 </div>
-
 <div id="myMpa">
 
 </div>
@@ -89,7 +89,6 @@
 	<script src="resources/js/com/datapicker.min.js"></script>
 	<script src="resources/js/com/datapicker.ko-kr.js"></script>
 	<script src="resources/js/com/fileupload.js"></script>
- 	<script src="resources/js/signin/signin.js"></script> 
 
 	<script src="resources/js/home/home.js"></script>
 	<script src="resources/js/compo/compo.js"></script>
@@ -97,6 +96,7 @@
 	<script src="resources/js/com/util.js"></script>
     <script src="resources/js/vidbg.js"></script>
     <script src="resources/js/home/chat.js"></script>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     
 <script>
 app.run('<%=application.getContextPath()%>');
@@ -109,22 +109,6 @@ function drop(ev) { ev.preventDefault();
 	ev.target.appendChild(document.getElementById(c));
 } 
 
-/* window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '359128634725982',
-    xfbml      : true,
-    version    : 'v3.3'
-  });
-  FB.AppEvents.logPageView();
-};
-
-(function(d, s, id){
-   var js, fjs = d.getElementsByTagName(s)[0];
-   if (d.getElementById(id)) {return;}
-   js = d.createElement(s); js.id = id;
-   js.src = "https://connect.facebook.net/en_US/sdk.js";
-   fjs.parentNode.insertBefore(js, fjs);
- }(document, 'script', 'facebook-jssdk')); */
 </script>
 
 </body>

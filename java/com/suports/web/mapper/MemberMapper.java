@@ -22,6 +22,7 @@ public interface MemberMapper {
 	public Map<String, Object> selectAMemberPic(MemberDTO mem);
 	public MemberDTO selectAMember(MemberDTO mem);
 	public int countMembers();
+	public int countATeamMembers(int teamIndex);
 	public boolean existAMemberId(MemberDTO mem);
 	
 	// UPDATE

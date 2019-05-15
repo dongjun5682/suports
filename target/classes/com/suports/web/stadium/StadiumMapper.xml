@@ -66,9 +66,9 @@
 		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
 		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
 		@ROWNUM:=0)TMP
-		WHERE S.S.AREA_INDEX LIKE '11') S2
+		WHERE S.AREA_INDEX LIKE '11') S2
 		WHERE S2.RNUM BETWEEN
-		#{startRow} AND #{endRow};
+		#{startRow} AND #{endRow}
 	</select>
 	<select id="selectGyeonggiStadium" resultMap="result"
 		parameterType="com.suports.web.Proxy">
@@ -76,9 +76,9 @@
 		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
 		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
 		@ROWNUM:=0)TMP
-		WHERE S.S.AREA_INDEX LIKE '12') S2
+		WHERE S.AREA_INDEX LIKE '12') S2
 		WHERE S2.RNUM BETWEEN
-		#{startRow} AND #{endRow};
+		#{startRow} AND #{endRow}
 	</select>
 	<select id="countSearch" resultType="int" parameterType="string">
 		SELECT COUNT(*)
@@ -98,7 +98,31 @@
 		STADIUM_INDEX DESC) S, (SELECT
 		@ROWNUM:=0)TMP
 		WHERE S.AREA_INDEX LIKE
-		'10') S2) S3;
+		'10') S2) S3
+	</select>
+	<select id="countIncheonSearch" resultType="int"
+		parameterType="String">
+		SELECT COUNT(*)
+		FROM(SELECT S2.*
+		FROM (SELECT
+		@ROWNUM:=@ROWNUM+1 AS RNUM, S.*
+		FROM (SELECT * FROM STADIUM ORDER BY
+		STADIUM_INDEX DESC) S, (SELECT
+		@ROWNUM:=0)TMP
+		WHERE S.AREA_INDEX LIKE
+		'11') S2) S3
+	</select>
+	<select id="countGyeonggiSearch" resultType="int"
+		parameterType="String">
+		SELECT COUNT(*)
+		FROM(SELECT S2.*
+		FROM (SELECT
+		@ROWNUM:=@ROWNUM+1 AS RNUM, S.*
+		FROM (SELECT * FROM STADIUM ORDER BY
+		STADIUM_INDEX DESC) S, (SELECT
+		@ROWNUM:=0)TMP
+		WHERE S.AREA_INDEX LIKE
+		'12') S2) S3
 	</select>
 	<select id="selectAllStadium" resultMap="result">
 		SELECT

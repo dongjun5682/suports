@@ -165,6 +165,8 @@ home = (() => {
             })
         
         })
+        
+       
     };
 
     let home_list = () => {
@@ -238,9 +240,7 @@ home = (() => {
 
     let login = () => {
         $('.modal-content').html(compo.signin());
-        
         $('.login100-social-item bg1').click(e => {
-        	
         });
         $('.login100-form-btn').click(e => {
             e.preventDefault();
@@ -295,6 +295,8 @@ home = (() => {
             member.signup();
         })
     }
+   
+    
     return {
         onCreate: onCreate,
         home_list: home_list,

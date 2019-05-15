@@ -3058,21 +3058,38 @@ th {
 	background-color: #f9f9f9
 }
 .a-team{
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     margin: 10px;
     padding: 10px;
     border: 2px solid #fffafa;
     border-radius: 100px;
 }
 .b-team {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     margin: 10px;
     padding: 10px;
     border: 2px solid #fffafa;
     border-radius: 100px;
 }
+.res_team_a{
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #fffafa;
+    border-radius: 100px;
+}
+.res_team_b {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #fffafa;
+    border-radius: 100px;
+}
+
 .table-hover>tbody>tr:hover {
 	background-color: #f5f5f5
 }
@@ -5888,15 +5905,14 @@ fieldset[disabled] .navbar-inverse .btn-link:hover {
 
 .pagination>li>a,
 .pagination>li>span {
-	position: relative;
-	float: left;
-	padding: 6px 12px;
-	margin-left: -1px;
-	line-height: 1.42857143;
-	color: #337ab7;
-	text-decoration: none;
-	background-color: #fff;
-	border: 1px solid #ddd
+    position: relative;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #2EA9DE;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #DEE2E6;
 }
 
 .pagination>li:first-child>a,
@@ -5928,11 +5944,11 @@ fieldset[disabled] .navbar-inverse .btn-link:hover {
 .pagination>.active>span,
 .pagination>.active>span:focus,
 .pagination>.active>span:hover {
-	z-index: 3;
-	color: #fff;
-	cursor: default;
-	background-color: #337ab7;
-	border-color: #337ab7
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #00C5FF;
+    border-color: #00b7ec;
 }
 
 .pagination>.disabled>a,

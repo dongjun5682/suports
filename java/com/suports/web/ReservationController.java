@@ -151,10 +151,9 @@ public class ReservationController {
 	}
 	@GetMapping("/reservation/list/{memberIndex}")
 	public Map<?, ?> list(@PathVariable String memberIndex){
-		
+		System.out.println(memberIndex);
 		i = (Object o) -> resMap.selectReservationList(memberIndex);
 		List<?> list = (List<?>) i.apply(memberIndex);
-		
 		System.out.println("resList : " + list.toString());
 		map.clear();
 		map.put("res", list);

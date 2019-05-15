@@ -26,6 +26,9 @@ public interface StadiumMapper {
 	
 	public int countStadium();
 	public int countSeoulSearch();
+	public int countIncheonSearch();
+	public int countGyeonggiSearch();
+	
 	
 	public int countSearch(String search);
 	
@@ -38,4 +41,6 @@ public interface StadiumMapper {
 	public void chatBotAnswer(ChatBotDTO chd);
 	
 	public String selectStadiumName(int stadiumIndex);
+
+	
 }

@@ -7,7 +7,6 @@
 		<id property="paymentNumber" column="PAYMENTE_NUMBER" />
 		<result property="reservationNumber"
 			column="RESERVATION_NUMBER" />
-		<result property="reservationDate" column="RESERVATION_DATE" />
 		<result property="gameIndex" column="GAME_INDEX" />
 		<result property="stadiumName" column="STADIUM_NAME" />
 		<result property="photo" column="STADIUM_PHOTO" />
