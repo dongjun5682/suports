@@ -3058,21 +3058,38 @@ th {
 	background-color: #f9f9f9
 }
 .a-team{
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     margin: 10px;
     padding: 10px;
     border: 2px solid #fffafa;
     border-radius: 100px;
 }
 .b-team {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     margin: 10px;
     padding: 10px;
     border: 2px solid #fffafa;
     border-radius: 100px;
 }
+.res_team_a{
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #fffafa;
+    border-radius: 100px;
+}
+.res_team_b {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #fffafa;
+    border-radius: 100px;
+}
+
 .table-hover>tbody>tr:hover {
 	background-color: #f5f5f5
 }
