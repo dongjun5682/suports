@@ -84,7 +84,7 @@
 	
 	
 	<select id="selectListOfTeams"
-	parameterType="com.suports.web.Proxy"
+	parameterType="com.suports.web.cmm.Proxy"
 	resultMap="selectresult">
 	SELECT T2.*
 	FROM (SELECT  @ROWNUM:=@ROWNUM+1 AS RNUM, T.*

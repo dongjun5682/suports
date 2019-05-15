@@ -1,4 +1,4 @@
-package com.suports.web;
+package com.suports.web.cmm;
 
 import java.util.Map;
 import org.springframework.context.annotation.Lazy;
@@ -27,7 +27,6 @@ public class Proxy {
 		pageSize = ((String)paramMap.get("pageSize") == null)	? 5 : Integer.parseInt((String) paramMap.get("pageSize"));
 		pageNum = ((String)paramMap.get("pageNum") == null) ? 1 : Integer.parseInt((String) paramMap.get("pageNum"));
 		totalCount = (int) paramMap.get("totalCount");
-		teamIndex = (int) paramMap.get("teamIndex");
 		
 		int pageCount = (totalCount % pageSize != 0) ?  totalCount/pageSize+1:totalCount/pageSize;
 		String _blockSize = (String)paramMap.get("blockSize");
@@ -52,6 +51,7 @@ public class Proxy {
 		
 		prevBlock = startPage - pageSize;
 		nextBlock = startPage + pageSize;
+		
 		search = (String) paramMap.get("search");
 		System.out.println(search);
 		System.out.println("total :" + totalCount);

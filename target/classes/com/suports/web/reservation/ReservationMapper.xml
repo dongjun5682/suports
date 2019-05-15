@@ -18,13 +18,13 @@
 	</resultMap>
 
 	<select id="insertReservation"
-		parameterType="com.suports.web.Proxy">
+		parameterType="com.suports.web.cmm.Proxy">
 		INSERT INTO RESERVATION(RESERVATION_NUMBER,GAME_INDEX)
 		VALUES('${resNumber}',${gmNumber})
 	</select>
 
 	<select id="selectReservation"
-		parameterType="com.suports.web.Proxy"
+		parameterType="com.suports.web.cmm.Proxy"
 		resultType="com.suports.web.domain.ReservationDTO">
 		SELECT PAYMENT_NUMBER AS paymentNumber,
 		RESERVATION_NUMBER

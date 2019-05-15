@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import com.suports.web.Proxy;
+import com.suports.web.cmm.Proxy;
 import com.suports.web.domain.ImageDTO;
 import com.suports.web.domain.MemberDTO;
 

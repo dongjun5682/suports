@@ -34,7 +34,7 @@
 		'${positionName}';
 	</select>
 
-	<select id="updateMember" parameterType="com.suports.web.Proxy">
+	<select id="updateMember" parameterType="com.suports.web.cmm.Proxy">
 		UPDATE GAME
 		SET
 		MEMBER_INDEX = ${mIndex}

@@ -1497,9 +1497,6 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 .l_4 .m_segment img {
 	float: right;
 }
-#user-drop ul li h3{
-	padding:13px;
-}
 
 .course-people{
 	color:green;

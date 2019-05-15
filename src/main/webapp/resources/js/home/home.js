@@ -123,6 +123,7 @@ home = (() => {
         $('.navbar-brand .logo').click(() => {
         	  $('#map').remove();
         	  $('#content').empty().append(compo.content());
+        	  $('#content').css('margin-top','0px');
               jQuery(function($){
                   $('#home').vidbg({
                       'mp4': 'resources/video/Fifa.mp4',

@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.suports.web.cmm.IFunction;
+import com.suports.web.cmm.ISupplier;
+import com.suports.web.cmm.Proxy;
 import com.suports.web.domain.MemberDTO;
 import com.suports.web.domain.TeamDTO;
 import com.suports.web.mapper.TeamMapper;

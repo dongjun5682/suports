@@ -1,6 +1,6 @@
 package com.suports.web.mapper;
 
-import com.suports.web.Proxy;
+import com.suports.web.cmm.Proxy;
 import com.suports.web.domain.MemberDTO;
 import com.suports.web.domain.TeamDTO;
 

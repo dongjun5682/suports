@@ -127,7 +127,7 @@ team = (() => {
                     $('#content').html(compo.team_detail_list());
                 })
             });
-            let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:800px;">'
+            let html = '<nav> <ul class="col-md-12 pagination">'
             if (d.pxy.existPrev) {
                 html += '<li class="prevBlock"><a href="#">&laquo;</a></li>';
             }

@@ -1,5 +1,6 @@
 var stadium = stadium || {}
 
+
 stadium = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
     let _, js, compojs, memberjs, msessionjs;
@@ -92,7 +93,7 @@ stadium = (() => {
                         list_detail(j);
                     });
             });
-            let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:500px;">'
+            let html = '<nav> <ul class="col-md-12 pagination">'
             if (d.pxy.existPrev) {
                 html += '<li class="prevBlock"><a href="#">&laquo;</a></li>';
             }
@@ -182,7 +183,7 @@ stadium = (() => {
                         list_detail_after(j);
                     });
             });
-            let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:500px;">'
+            let html = '<nav> <ul class="col-md-12 pagination">'
             if (d.pxy.existPrev) {
                 html += '<li class="prevBlock"><a href="#">&laquo;</a></li>';
             }
@@ -261,22 +262,22 @@ stadium = (() => {
         $('#sta_photo').css({
             'background-image': 'url(resources/img/field.png)',
             'width': '100%',
-            'margin-top': '50px',
+            'margin-top': '110px',
             'height': '720px'
         }).html(html);
         $.getJSON($.ctx() + '/game/position/' + j.stadiumIndex, d => {
             $.each(d.position, (i, j) => {
                 if (j.position === 'FW_' + i && j.memberIndex != null) {
-                    $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#FW_' + i);
+                    $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#FW_' + i);
                     $('#roster_' + i).attr('ondrop', 'drag(event)');
                 } else if (j.position === 'MF_' + i && j.memberIndex != null) {
-                    $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#MF_' + i);
+                    $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#MF_' + i);
                     $('#roster_' + i).attr('ondrop', 'drag(event)');
                 } else if (j.position === 'DF_' + i && j.memberIndex != null) {
-                    $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#DF_' + i);
+                    $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#DF_' + i);
                     $('#roster_' + i).attr('ondrop', 'drag(event)');
                 } else if (j.position === 'GK_' + i && j.memberIndex != null) {
-                    $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#GK_' + i);
+                    $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#GK_' + i);
                     $('#roster_' + i).attr('ondrop', 'drag(event)');
                 }
             });
@@ -302,16 +303,18 @@ stadium = (() => {
             initMap(j);
         });
         $('#myMpa').append(compo.map(j));
-        /*$('#myMpa').after('<p style="position: absolute;top: 2577px;right: 80px;">주 소</p>'
-        		+'<p style="position: absolute;top: 2601px;right: 80px;font-size: 19px;">' + j.stadiumAddr + '</p>'
-        	   +'<p style="position: absolute;top: 2642px;right: 80px;">★★★★★</p>'
-        	   +'<p style="position: absolute;top: 2670px;right: 80px;">02-300-8509</p>');*/
+        $('#myMpa').before('		<div class="col-md-4" style="margin: auto auto 30px 220px;">'
+		+'			<h1> 위치 </h1>'
+		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
+		+'		</div>');
         $('#map').css({
             'width': '1270px',
             'height': '400px',
             'margin-bottom': '100px',
             'margin-left':'235px'
         });
+        
+        
         //예약 확인 버튼
         $('#pay_btn_1').click(() => {
             alert('로그인을 하시오');
@@ -402,6 +405,31 @@ stadium = (() => {
         $('#map').remove(); // 확인 및 결제 예약 맵 삭제
         $('#content').empty().html(compo.payment(arr)).css('margin-top', '100px');
         $('#payment_reservation').click(() => {
+        	IMP.request_pay({
+        	    pg : 'html5_inicis', // version 1.1.0부터 지원.
+        	    pay_method : 'card',
+        	    merchant_uid : 'merchant_' + new Date().getTime(),
+        	    name : '주문명:결제테스트',
+        	    amount : 14000,
+        	    buyer_email : 'iamport@siot.do',
+        	    buyer_name : '구매자이름',
+        	    buyer_tel : '010-1234-5678',
+        	    buyer_addr : '서울특별시 강남구 삼성동',
+        	    buyer_postcode : '123-456',
+        	    m_redirect_url : 'https://www.yourdomain.com/payments/complete'
+        	}, function(rsp) {
+        	    if ( rsp.success ) {
+        	        var msg = '결제가 완료되었습니다.';
+        	        msg += '고유ID : ' + rsp.imp_uid;
+        	        msg += '상점 거래ID : ' + rsp.merchant_uid;
+        	        msg += '결제 금액 : ' + rsp.paid_amount;
+        	        msg += '카드 승인번호 : ' + rsp.apply_num;
+        	    } else {
+        	        var msg = '결제에 실패하였습니다.';
+        	        msg += '에러내용 : ' + rsp.error_msg;
+        	    }
+        	    alert(msg);
+        	});
         	// 나중에 유효성 검사 하기
 //        	let first_name = $('.name_1').val();
 //        	let last_name = $('.name_2').val();
@@ -413,20 +441,20 @@ stadium = (() => {
 //        	let cvv = $('.cvv').val();
 //        	let birthday = $('.birthday').val();
         	
-            $.getJSON($.ctx() + '/reservation/payment/' + arr.stadium.timeIndex + '/' + arr.posi + '/' + $.member().memberIndex+'/'+arr.stadium.stadiumIndex
-            		, d=> {
-            	let message = new Array();
-            	$.each(d.alram,(i,j)=>{
-            		alert(j.message);
-            		message[i] = j.message;
-            	})
-            	let res = {
-                    'stadium': arr.stadium,
-                    'res': d.res,
-                    'messege' : message
-                };
-                payment_reservation(res)
-            })
+//            $.getJSON($.ctx() + '/reservation/payment/' + arr.stadium.timeIndex + '/' + arr.posi + '/' + $.member().memberIndex+'/'+arr.stadium.stadiumIndex
+//            		, d=> {
+//            	let message = new Array();
+//            	$.each(d.alram,(i,j)=>{
+//            		alert(j.message);
+//            		message[i] = j.message;
+//            	})
+//            	let res = {
+//                    'stadium': arr.stadium,
+//                    'res': d.res,
+//                    'messege' : message
+//                };
+//                payment_reservation(res)
+//            })
         })
 
     }
@@ -480,7 +508,7 @@ stadium = (() => {
                         list_detail(j);
                     });
             });
-            let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:400px;">'
+            let html = '<nav> <ul class="col-md-12 pagination">'
             if (d.pxy.existPrev) {
                 html += '<li class="prevBlock"><a href="#">&laquo;</a></li>';
             }
@@ -566,7 +594,7 @@ stadium = (() => {
                         list_detail(j);
                     });
             });
-            let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:400px;">'
+            let html = '<nav> <ul class="col-md-12 pagination">'
             if (d.pxy.existPrev) {
                 html += '<li class="prevBlock"><a href="#">&laquo;</a></li>';
             }
@@ -779,7 +807,7 @@ stadium = (() => {
                         list_detail_after(j);
                     });
             });
-            let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:400px;">'
+            let html = '<nav> <ul class="col-md-12 pagination">'
             if (d.pxy.existPrev) {
                 html += '<li class="prevBlock"><a href="#">&laquo;</a></li>';
             }
@@ -908,7 +936,7 @@ stadium = (() => {
     }
     let position_map =(j)=>{
     	 let html = '<div class="a-team" id="roster_100" ondrop="drop(event)" ondragover="allowDrop(event)"> ' +
-         '<img src="resources/img/' + $.member().photo + '" draggable="true" ondragstart="drag(event)" id="roster_ball" width="50" height="50"> ' +
+         '<img src="resources/img/logo/' + $.member().photo + '" draggable="true" ondragstart="drag(event)" id="roster_ball" width="50" height="50"> ' +
          '</div> ' +
          '<div class="a-team" id="GK_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 80px;position: absolute; margin-top: 180px;"></div>' +
          '<div class="a-team" id="DF_9" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;"></div>' +
@@ -936,22 +964,22 @@ stadium = (() => {
      $('#sta_photo').css({
          'background-image': 'url(resources/img/field.png)',
          'width': '100%',
-         'margin-top': '50px',
+         'margin-top': '110px',
          'height': '720px'
      }).html(html);
      $.getJSON($.ctx() + '/game/position/' + j.stadiumIndex, d => {
          $.each(d.position, (i, j) => {
              if (j.position === 'FW_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#FW_' + i);
+                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#FW_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              } else if (j.position === 'MF_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#MF_' + i);
+                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#MF_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              } else if (j.position === 'DF_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#DF_' + i);
+                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#DF_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              } else if (j.position === 'GK_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#GK_' + i);
+                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#GK_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              }
              if(j.memberIndex == $.member().memberIndex){
@@ -990,23 +1018,23 @@ stadium = (() => {
      $('#sta_photo').css({
          'background-image': 'url(resources/img/field_2.png)',
          'width': '94%',
-         'margin-top': '50px',
+         'margin-top': '110px',
          'height': '640px'
      }).html(html);
      alert(j.stadiumIndex);
      $.getJSON($.ctx() + '/game/position/'+ j.stadiumIndex, d => {
          $.each(d.position, (i, j) => {
              if (j.position === 'FW_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#FW_' + i);
+                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#FW_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              } else if (j.position === 'MF_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#MF_' + i);
+                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#MF_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              } else if (j.position === 'DF_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#DF_' + i);
+                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#DF_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              } else if (j.position === 'GK_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#GK_' + i);
+                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#GK_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              }
              if(j.memberIndex == $.member().memberIndex){
