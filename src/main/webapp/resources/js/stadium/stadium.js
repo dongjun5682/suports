@@ -404,32 +404,9 @@ stadium = (() => {
         $('#footer').empty();
         $('#map').remove(); // 확인 및 결제 예약 맵 삭제
         $('#content').empty().html(compo.payment(arr)).css('margin-top', '100px');
-        $('#payment_reservation').click(() => {
-        	IMP.request_pay({
-        	    pg : 'html5_inicis', // version 1.1.0부터 지원.
-        	    pay_method : 'card',
-        	    merchant_uid : 'merchant_' + new Date().getTime(),
-        	    name : '주문명:결제테스트',
-        	    amount : 14000,
-        	    buyer_email : 'iamport@siot.do',
-        	    buyer_name : '구매자이름',
-        	    buyer_tel : '010-1234-5678',
-        	    buyer_addr : '서울특별시 강남구 삼성동',
-        	    buyer_postcode : '123-456',
-        	    m_redirect_url : 'https://www.yourdomain.com/payments/complete'
-        	}, function(rsp) {
-        	    if ( rsp.success ) {
-        	        var msg = '결제가 완료되었습니다.';
-        	        msg += '고유ID : ' + rsp.imp_uid;
-        	        msg += '상점 거래ID : ' + rsp.merchant_uid;
-        	        msg += '결제 금액 : ' + rsp.paid_amount;
-        	        msg += '카드 승인번호 : ' + rsp.apply_num;
-        	    } else {
-        	        var msg = '결제에 실패하였습니다.';
-        	        msg += '에러내용 : ' + rsp.error_msg;
-        	    }
-        	    alert(msg);
-        	});
+        $('#payment_reservation').click(e=> {
+        	alert(arr.stadium.price);
+        	payment_page(arr);
         	// 나중에 유효성 검사 하기
 //        	let first_name = $('.name_1').val();
 //        	let last_name = $('.name_2').val();
@@ -440,21 +417,6 @@ stadium = (() => {
 //        	let validThru = $('.validThru').val();
 //        	let cvv = $('.cvv').val();
 //        	let birthday = $('.birthday').val();
-        	
-//            $.getJSON($.ctx() + '/reservation/payment/' + arr.stadium.timeIndex + '/' + arr.posi + '/' + $.member().memberIndex+'/'+arr.stadium.stadiumIndex
-//            		, d=> {
-//            	let message = new Array();
-//            	$.each(d.alram,(i,j)=>{
-//            		alert(j.message);
-//            		message[i] = j.message;
-//            	})
-//            	let res = {
-//                    'stadium': arr.stadium,
-//                    'res': d.res,
-//                    'messege' : message
-//                };
-//                payment_reservation(res)
-//            })
         })
 
     }
@@ -1058,7 +1020,48 @@ stadium = (() => {
             map: map
         });
     }
-
+    let payment_page =(arr)=>{
+    	alert(arr.timeIndex);
+    	IMP.init('imp41361307');
+    	IMP.request_pay({
+    	    pg : 'html5_inicis', // version 1.1.0부터 지원.
+    	    pay_method : 'card',
+    	    merchant_uid : 'merchant_' + new Date().getTime(),
+    	    name : '주문명:결제테스트',
+    	    amount : 100,
+    	    buyer_email : 'iamport@siot.do',
+    	    buyer_name : '서동준',
+    	    buyer_tel : '010-1234-5678',
+    	    buyer_addr : '서울특별시 강남구 삼성동',
+    	    buyer_postcode : '123-456',
+    	}, function(rsp) {
+    	    if ( rsp.success ) {
+    	        var msg = '결제가 완료되었습니다.';
+    	        msg += '고유ID : ' + rsp.imp_uid;
+    	        msg += '상점 거래ID : ' + rsp.merchant_uid;
+    	        msg += '결제 금액 : ' + rsp.paid_amount;
+    	        msg += '카드 승인번호 : ' + rsp.apply_num;
+    	    } else {
+    	        var msg = '결제에 실패하였습니다.';
+    	        msg += '에러내용 : ' + rsp.error_msg;
+    	    }
+            $.getJSON($.ctx() + '/reservation/payment/' + arr.stadium.timeIndex + '/' + arr.posi + '/' + $.member().memberIndex+'/'+arr.stadium.stadiumIndex
+            		, d=> {
+            	let message = new Array();
+            	$.each(d.alram,(i,j)=>{
+            		alert(j.message);
+            		message[i] = j.message;
+            	})
+            	let res = {
+                    'stadium': arr.stadium,
+                    'res': d.res,
+                    'messege' : message
+                };
+                payment_reservation(res)
+            })
+    	});
+		
+    }
     return {
         onCreate: onCreate,
         list: list,
@@ -1075,6 +1078,7 @@ stadium = (() => {
         srch_gyeonggi: srch_gyeonggi,
         stadium_res:stadium_res,
         position_map:position_map,
-        position_map_res:position_map_res
+        position_map_res:position_map_res,
+        payment_page:payment_page
     }
 })();

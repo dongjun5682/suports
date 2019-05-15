@@ -12,9 +12,10 @@
 <!-- <script src="resources/js/com/jquery.min.3.3.1.js"></script> -->
 <script src="resources/js/com/jquery.min.3.4.0.js"></script>
 
-<!--아임포트-->
+<!-- 아임포트 -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<link rel="stylesheet" href="resources/css/import.css">
+
 
 <!-- 챗봇 -->
 <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> 
@@ -104,7 +105,6 @@ crossorigin="anonymous">
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     
 <script>
-IMP.init('imp41361307');
 app.run('<%=application.getContextPath()%>');
 
 function allowDrop(ev) { ev.preventDefault(); }
