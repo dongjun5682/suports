@@ -10,12 +10,12 @@
 		<result property="memberIndex" column="MEMBER_INDEX" />
 </resultMap>
 
-	<select id="insertReservation"  parameterType="com.suports.web.Proxy" resultType="com.suports.web.domain.AlramDTO">
+	<select id="insertReservation"  parameterType="com.suports.web.cmm.Proxy" resultType="com.suports.web.domain.AlramDTO">
 		INSERT INTO ALRAM(MESSAGE,MEMBER_INDEX)
 		VALUES('${name} 결제 예약 되었습니다.', #{mIndex});
 	</select>
 	
-	<select id="insertPayment"  parameterType="com.suports.web.Proxy" resultType="com.suports.web.domain.AlramDTO">
+	<select id="insertPayment"  parameterType="com.suports.web.cmm.Proxy" resultType="com.suports.web.domain.AlramDTO">
 		INSERT INTO ALRAM(MESSAGE,MEMBER_INDEX)
 		VALUES('${name} 예약이 확정 되었습니다.', #{mIndex});
 	</select>

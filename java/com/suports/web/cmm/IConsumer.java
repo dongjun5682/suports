@@ -1,4 +1,4 @@
-package com.suports.web;
+package com.suports.web.cmm;
 
 @FunctionalInterface
 public interface IConsumer {

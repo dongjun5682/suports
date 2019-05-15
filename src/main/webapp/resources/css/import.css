@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+body.imp-payment-progress {
+	position: static
+}
+
+body.imp-payment-progress>:not (.imp-dialog ) {
+	display: none
+}
+
+.imp-dialog {
+	display:flex;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99999;
+}
+
+.imp-dialog .imp-frame-pc.imp-frame-danal, .imp-dialog .imp-frame-pc.imp-frame-danal_tpay
+	{
+	left: 50% !important;
+	margin-left: -345px;
+	width: 720px !important;
+	height: 700px !important;
+	margin-top: 50px;
+}
+
+.imp-dialog .imp-frame-pc.imp-frame-mobilians {
+	left: 50% !important;
+	margin-left: -250px;
+	width: 500px !important;
+	height: 700px !important;
+	margin-top: 50px;
+}
+
+.imp-dialog .imp-header {
+	display: none;
+	background: transparent;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 25px;
+}
+
+.imp-dialog .imp-close {
+	text-decoration: none;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	background:
+		url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAAAVlpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KTMInWQAAAV1JREFUOBHNkz1Ow0AQhWMHioggUSFEyRGAggp6KqDhDHAFOioU/loQoqDlGhyAgmtQ0gEO31jz1iPbcZyOlUY7fvvem9mdZDD472vY0mDegrVBGaBF54qELuPYSNQkc4FjkHNCAu2JSLLkHxvsZ+Gg9FAXUw4M+CI+8zy/cuIvezQ1sx9iDOeS/YOwZT7m0VgqcITgOpwars5WOXvke9vPY8EgqVIJTxDeVXCZWWdPZLuOL9fOZ35G03tnjbyznS4zDaPNWe91iNE+hGlRFK/s74R19k0stNJ1six7w/QlqPXWAepOdWUbwDPULeKAPL7p3GGohMzqA7DzY0xvRWSfayrCCsIHBHGaKmTTr/+kQo0q1busuZl+Z+ktocrUOr2ppM3/tKY9hDiBuOfkaCa9TE8BLhyUXpxUYQSy7qiun0gh0W02wWbyYhUJgkcj7cMpRb2JsBfhNjrqBfwBsGIgzBGH3EgAAAAASUVORK5CYII=');
+}
+
+.imp-dialog.pc .imp-frame-danal-certification {
+	width: 410px !important;
+	height: 660px !important;
+	margin: 10px auto;
+	background: #fff;
+}
+
+.imp-dialog.pc.certification-danal {
+	background: rgb(255, 255, 255);
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.imp-dialog.pc.certification-danal .imp-header {
+	display: block;
+	width: 410px;
+	margin: 0 auto;
+}
+
+.imp-dialog.pc.certification-danal .imp-header .imp-close {
+	top: 18px;
+	right: 25px;
+	width: 19px;
+	height: 19px;
+}
+
+.imp-dialog.mobile.ios {
+	position: absolute;
+}
+
+.imp-dialog.mobile.certification-danal .imp-header {
+	display: block;
+}
+
+.imp-dialog.mobile.certification-danal .imp-header .imp-close {
+	top: 6px;
+	right: 10px;
+	width: 19px;
+	height: 19px;
+}
+
+.imp-dialog.pc.payment-settle_firm {
+	background: rgb(221, 221, 221);
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.imp-dialog.pc .imp-frame-settle_firm {
+	width: 410px !important;
+	height: 700px !important;
+	margin: 10px auto;
+	background: #fff;
+}
+
+.imp-dialog.pc.payment-kakaopay {
+	background: rgb(221, 221, 221);
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.imp-dialog.pc.payment-kakaopay .imp-frame-kakaopay {
+	width: 426px !important;
+	height: 550px !important;
+	left: 50% !important;
+	top: 50% !important;
+	margin-left: -213px !important;
+	margin-top: -275px !important;
+}

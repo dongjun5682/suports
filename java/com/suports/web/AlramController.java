@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.suports.web.cmm.IFunction;
 import com.suports.web.domain.AlramDTO;
 import com.suports.web.mapper.AlramMapper;
 
@@ -26,7 +27,6 @@ public class AlramController {
 		List<?> list =  (List<?>) i.apply(mIndex);
 		map.clear();
 		map.put("alram", list);
-		System.out.println("alram : "+ list.toString());
 		return map;
 	}
 }

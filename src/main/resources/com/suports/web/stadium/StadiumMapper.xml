@@ -23,7 +23,7 @@
 	</resultMap>
 
 	<select id="selectListStadium"
-		parameterType="com.suports.web.Proxy" resultMap="result">
+		parameterType="com.suports.web.cmm.Proxy" resultMap="result">
 		SELECT S2.*
 		FROM
 		(SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
@@ -41,7 +41,7 @@
 	</select>
 
 	<select id="searchStadium" resultMap="result"
-		parameterType="com.suports.web.Proxy">
+		parameterType="com.suports.web.cmm.Proxy">
 		SELECT S2.*
 		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
 		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
@@ -51,7 +51,7 @@
 		BETWEEN #{startRow} AND #{endRow};
 	</select>
 	<select id="selectSeoulStadium" resultMap="result"
-		parameterType="com.suports.web.Proxy">
+		parameterType="com.suports.web.cmm.Proxy">
 		SELECT S2.*
 		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
 		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
@@ -61,7 +61,7 @@
 		#{startRow} AND #{endRow};
 	</select>
 	<select id="selectIncheonStadium" resultMap="result"
-		parameterType="com.suports.web.Proxy">
+		parameterType="com.suports.web.cmm.Proxy">
 		SELECT S2.*
 		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
 		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
@@ -71,7 +71,7 @@
 		#{startRow} AND #{endRow}
 	</select>
 	<select id="selectGyeonggiStadium" resultMap="result"
-		parameterType="com.suports.web.Proxy">
+		parameterType="com.suports.web.cmm.Proxy">
 		SELECT S2.*
 		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
 		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
@@ -142,7 +142,7 @@
 	<select id="selectStadiumName" parameterType="int" resultType="string">
 		SELECT STADIUM_NAME FROM STADIUM WHERE STADIUM_INDEX= #{value};
 	</select>
-	<select id="mapLocation" parameterType="com.suports.web.Proxy" resultMap="result">
+	<select id="mapLocation" parameterType="com.suports.web.cmm.Proxy" resultMap="result">
 		SELECT S2.*
 		FROM
 		(SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*

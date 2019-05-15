@@ -11,6 +11,12 @@
 <script src="resources/js/com/popper.min.js"></script>
 <!-- <script src="resources/js/com/jquery.min.3.3.1.js"></script> -->
 <script src="resources/js/com/jquery.min.3.4.0.js"></script>
+
+<!-- 아임포트 -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<link rel="stylesheet" href="resources/css/import.css">
+
+
 <!-- 챗봇 -->
 <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> 
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 

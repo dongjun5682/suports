@@ -1,4 +1,4 @@
-package com.suports.web;
+package com.suports.web.cmm;
 
 import java.util.Map;
 import org.springframework.context.annotation.Lazy;
@@ -52,6 +52,7 @@ public class Proxy {
 		
 		prevBlock = startPage - pageSize;
 		nextBlock = startPage + pageSize;
+		
 		search = (String) paramMap.get("search");
 		System.out.println(search);
 		System.out.println("total :" + totalCount);
