@@ -383,9 +383,7 @@ compo = {
 		+'  </div>'
 		+'</div>'; 
 	},
-	map :()=>{
-		
-	},
+	
 	stadium_list_content : ()=>{
 		return '<div class="map_list">'
 		  +'<div id="asearch" class="row stadium-row">'

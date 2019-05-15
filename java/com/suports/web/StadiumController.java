@@ -221,4 +221,24 @@ public class StadiumController {
 		map.put("value", ch);
 		return map; 
 		}
+	/*
+	 * @GetMapping("/map") public Map<?,?> map_list(){ map.clear(); ISupplier c =
+	 * ()-> staMap.countStadium(); map.put("totalCount", c.get()); ISupplier s =
+	 * ()-> staMap.mapLocation(); List<?> allStadium = (List<?>) s.get();
+	 * map.clear(); System.out.println(allStadium.toString()); map.put("map_lo",
+	 * allStadium); return map; }
+	 */
+	@GetMapping("/map")
+	public Map<?,?> map_list(){
+		logger.info("=======list  maplist 진입 ======");
+		map.clear();
+		ISupplier c = ()-> staMap.countStadium();
+		map.put("totalCount", c.get());
+		System.out.println("aaaaa"+c.get().toString());
+		IFunction i = (Object o)-> staMap.mapLocation();
+		List<?> ls = (List<?>) i.apply(c);
+		map.put("map_lo", ls);
+		System.out.println(ls.toString());
+		return map;
+	}
 }

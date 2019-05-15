@@ -70,6 +70,7 @@ home = (() => {
 //         		
 //          	});
 //        });
+
         $('.navbar-right a').click(function(e) {
             let _this = $(this).attr('id');
             switch (_this) {

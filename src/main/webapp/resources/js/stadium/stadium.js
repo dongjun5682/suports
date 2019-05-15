@@ -40,9 +40,61 @@ stadium = (() => {
         $('#map').empty();
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
-        $('#map_button').click(() => {
+        $('#map_button').click(() =>{
             $('#content').empty().html(compo.stadium_list_sidebar());
+            alert('지도');
+            $('.col-md-9').append(compo.map());
+            var locations = new Array();
+            $(document).ready(function initialize(d) {
+            	$.getJSON($.ctx() + '/map',d => {
+            	$.each(d.map_lo, (i, j) => {
+            		let date = new Object();
+            		/*j.latitude = parseFloat(j.latitude);
+                    j.hardness = parseFloat(j.hardness);*/
+            		date.name = j.stadiumName;
+            		date.latitude = j.latitude;
+            		date.hardness = j.hardness;
+            		locations.push(date);
+          });
+             	$('#map').css({
+                    'width': '100%',
+                    'height': '716px',
+                    'margin-bottom': '300px'
+                });
+             	var map = new google.maps.Map(document.getElementById('map'), {
+          		    zoom: 12,
+          		    center: new google.maps.LatLng(37.549012, 126.988546),
+          		    mapTypeId: google.maps.MapTypeId.ROADMAP
+          		   });
+            $.each(locations,(i,j)=>{
+            	 
+          		   var infowindow = new google.maps.InfoWindow();
+          		   var marker,i;
+          			 marker = new google.maps.Marker
+          			 ({id:i,
+          		     position: new google.maps.LatLng(j.latitude,j.hardness), 
+          		     map: map 
+          		     });
+          		    
+          		     google.maps.event.addListener(marker, 'click', (function(marker, i) {
+          		       return function() {
+          		         infowindow.setContent(j.name);
+          		         infowindow.open(map, marker);
+          		       }
+          		     })(marker, i));
+          		     if(marker)
+          		     {
+          		       marker.addListener('click', function() {
+          		         map.setZoom(15);
+          		         map.setCenter(this.getPosition());
+          		       });
+          		       };
+          	
+            });
+            	
         });
+        });
+     });       
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if (search === '') {
