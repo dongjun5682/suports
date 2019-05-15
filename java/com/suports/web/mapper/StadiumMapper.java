@@ -42,5 +42,7 @@ public interface StadiumMapper {
 	
 	public String selectStadiumName(int stadiumIndex);
 
+	public List<?> mapLocation();
+
 	
 }

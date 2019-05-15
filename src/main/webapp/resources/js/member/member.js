@@ -53,9 +53,9 @@ member = (() => {
         $('#footer').remove();
         $('#myMpa').after(compo.footer());
         home_list_after();
-      /*  $.getScript($.js()+'/compo/compo.js',()=>{
+        $.getScript($.js()+'/compo/compo.js',()=>{
          	$.getScript($.js()+'/home/chat.js',()=>{
-         		$(compo.chatbot()).appendTo('#myMpa');	
+         		$(compo.chatbot()).appendTo('#footer');	
          		$('#chat_body').hide().after( '<button id="chat_ball" style="margin-left: 1373px;width: 5%;margin-bottom: 40px;"><img src="resources/img/soccer-ball.png" style="width: 101%; margin-left: 127px;"></button>' );
          			  $("#chat_ball").click(function(){
          				  alert('클릭');
@@ -64,7 +64,7 @@ member = (() => {
          			  });
          		
           	});
-        });*/
+        });
         $('#nav').empty().after(compo.login_nav());
         $('#userBtn').click(() => {
         	$('#alram-drop').remove();
