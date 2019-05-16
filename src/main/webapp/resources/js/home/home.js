@@ -82,6 +82,7 @@ home = (() => {
                 case 'team':
                     $('#content').css('margin-top', '80px');
                     $('#map').remove();
+                    alert($.member().teamIndex);
                     team.onCreate();
                     break;
                 case 'tourment':
@@ -282,7 +283,8 @@ home = (() => {
                 		 });
                    } else {
                 	   $.extend(new MemberSession(d));
-                	   member.onCreate(d);                	   
+                	   member.onCreate(d);         
+                	   $('.modal-content').empty();
                    }
                 },
                 error: e => {

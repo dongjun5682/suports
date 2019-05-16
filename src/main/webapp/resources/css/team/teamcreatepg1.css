@@ -5,25 +5,91 @@
   min-height          : 680px;
   position            : relative;
   overflow            : hidden;
-  margin-top              : 80px;
+  margin-top              : 40px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color    : rgba(255, 255, 255, 1.0);
 }
-a {
-  text-decoration     : none;
+
+.carousel-inner img {
+    width: 50%;
+    height: 50%;
+    margin-top: 50px;
 }
-div {
-  -webkit-text-size-adjust: none;
+.teamupdateemblem div#emblemCarousel {
+    height: 400px;
+    width: 620px;
 }
-.anima-full-width-a {
-  width               : 100%;
+.teamcreatepg3 div#emblemCarousel {
+    height: 400px;
+    width: 620px;
 }
-.anima-full-height-a {
-  height              : 100%;
+.teamcreatepg2 textarea#teamInfo {
+    height: 80px;
 }
-div {
-  -webkit-text-size-adjust: none;
+
+.create_team_title {
+  top                 : 45px;
+  height              : 50px;
+  width: 480px;
+  position            : absolute;
+  left: 380px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+}
+
+.create_team_title_css {
+  /* width               : 500px; */
+  position            : absolute;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+  font-size           : 22.0px;
+  color               : rgba(39, 44, 49, 1.0);
+  text-align          : left;
+  line-height         : 50.0px;
+}
+.create_team_middle_form {
+  top: 128px;
+  height: 420px;
+  width: 480px;
+  position            : absolute;
+  left: 380px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+}
+.team_create_titles {
+  font-size: 18px;
+  font-weight: 500;
+  color: #212528;
+  text-align: left;
+  margin-left: 10px;
+  margin-bottom: 4px;
+}
+.team_create_subforms {
+  margin-bottom: 6px;
+}
+.team_create_subforms_multi {
+  margin-bottom: 6px;
+  width: 100%;
+  display: -webkit-box;
+}
+.team_create_titles_multi {
+  font-size: 18px;
+  font-weight: 500;
+  color: #212528;
+  text-align: left;
+  margin-left: 10px;
+  margin-bottom: 2px;
+  display: block;
+}
+
+
+.team_create_multiforms {
+    width: 30%;
+}
+
+.team_create_multiforms_ank {
+    width: 30%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 .teamcreatepg1 .imgrightcontentteam {
   background-color    : rgba(255,255,255,0.0);
@@ -38,16 +104,15 @@ div {
   transform           : rotate(0deg);
 }
 .teamcreatepg1 .fieldbtn {
-  background-color    : rgba(255,255,255,0.0);
+  color: white;
   top                 : 566px;
   height              : 68px;
   width               : 378px;
   position            : absolute;
-  margin              : 0;
+  border-radius: 4px;
+  background-color: #00C5FF;
   left                : 151px;
   -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
 }
 .teamcreatepg1 .hsubtitlepg1 {
   background-color    : rgba(255,255,255,0.0);

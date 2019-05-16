@@ -22,6 +22,7 @@ public interface MemberService {
 	public List<MemberDTO> retrieveSomeOfMembers(Map<?,?> map);
 	public Map<String, Object> retrieveAMemberPic(MemberDTO mem);
 	public MemberDTO retrieveAMember(MemberDTO mem);
+	public MemberDTO retrieveAMemberDetail(MemberDTO mem);
 	public int countMembers();
 	public int countATeamMembers(int teamIndex);
 	public boolean existAMemberId(MemberDTO mem);

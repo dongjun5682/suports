@@ -9,14 +9,14 @@
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap"></script>
 <script src="resources/js/com/popper.min.js"></script>
-<!-- <script src="resources/js/com/jquery.min.3.3.1.js"></script> -->
+<script src="resources/js/com/jquery.min.3.3.1.js"></script>
 <script src="resources/js/com/jquery.min.3.4.0.js"></script>
 <!-- 챗봇 -->
 <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> 
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
- --><!-- 챗봇 -->
+<!-- 챗봇 -->
 <link href="resources/css/fullscreenDemo.css" rel="stylesheet" type="text/css">
 
 <!-- default css -->
@@ -90,12 +90,12 @@ crossorigin="anonymous">
 	<script src="resources/js/com/datapicker.ko-kr.js"></script>
 	<script src="resources/js/com/fileupload.js"></script>
 
-	<script src="resources/js/home/home.js"></script>
 	<script src="resources/js/compo/compo.js"></script>
-	<script src="resources/js/member/member.js"></script>
 	<script src="resources/js/com/util.js"></script>
-    <script src="resources/js/vidbg.js"></script>
+	<script src="resources/js/home/home.js"></script>
     <script src="resources/js/home/chat.js"></script>
+	<script src="resources/js/member/member.js"></script>
+    <script src="resources/js/vidbg.js"></script>
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     
 <script>

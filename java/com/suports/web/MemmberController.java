@@ -20,7 +20,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.suports.web.domain.ImageDTO;
 import com.suports.web.domain.MemberDTO;
-import com.suports.web.mapper.MemberMapper;
 import com.suports.web.service.MemberServiceImpl;
 
 @RestController
@@ -33,7 +32,6 @@ public class MemmberController {
 	@Autowired MemberServiceImpl memberService;
 	@Autowired Map<String, Object> map;
 	@Autowired Proxy pxy;
-	@Autowired MemberMapper memberMapper;
 	
 	@GetMapping("/members/page/{page}/{teamIndex}")
 	public Map<?,?> aTeamMemberlist(@PathVariable String page, @PathVariable int teamIndex) 
@@ -48,11 +46,11 @@ public class MemmberController {
 		map.put("teamIndex", teamIndex);
 		map.put("pageSize", "12");
 		map.put("blockSize", "5");
-		ISupplier c = ()-> memberMapper.countATeamMembers(teamIndex);
+		ISupplier c = ()-> memberService.countATeamMembers(teamIndex);
 		map.put("totalCount", c.get());
 		pxy.carryOut(map);
 		
-		IFunction i = (Object o)-> memberMapper.selectListOfMembers(pxy);
+		IFunction i = (Object o)-> memberService.retrieveListOfMembers(pxy);
 		List<?> ls = (List<?>) i.apply(pxy);
 		
 		map.clear();
@@ -63,7 +61,20 @@ public class MemmberController {
 	
 		return map;
 	}
+	@GetMapping("/members/detail/{memberIndex}")
+	public MemberDTO MemberDetail(@PathVariable String memberIndex) 
+	{
+		logger.info("1=========MEMBER ! Detail========={}", memberIndex);
+		
+		MemberDTO mem = new MemberDTO();
+		int memIndex = Integer.parseInt(memberIndex);
+		mem.setMemberIndex(memIndex);
 	
+		mem = memberService.retrieveAMemberDetail(mem);
+		
+		logger.info("3 return DTO mem ==={}", mem);
+		return mem;
+	}
 	@PutMapping("/members")
 	public Map<?,?> signup(@RequestBody MemberDTO mem) {
 

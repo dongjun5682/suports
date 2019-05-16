@@ -1,6 +1,37 @@
 .formupdate {
   z-index: 99;
 }
+.mem_up_side_menu .mem_up_side_texts a#team_sub:hover {
+    color: #c72227;
+}
+.mem_up_side_menu .mem_up_side_texts a#team_diss:hover {
+    color: #c72227;
+}
+.member_detail {
+  margin-top: 20px;
+}
+.detail_title {
+  font-size: 15px;
+  -moz-box-sizing: content-box;
+  color: #485057;
+  -o-text-overflow: ellipsis;
+  font: normal normal bold 15px/1 Arial, Helvetica, sans-serif;
+}
+
+.detail_line {
+  margin: 10px auto 10px auto;
+  width: 300px;
+  border: 0.1px solid #CED4DA;
+  color: #485057;
+
+}
+.detail_textarea {
+  margin: 10px auto 20px auto;
+  width: 300px;
+  height: 120px;
+  color: #485057;
+
+}
 ul#member_List_Paging {
   display: table;
   margin: 20px auto auto auto;
@@ -21,12 +52,13 @@ img#member_currnt_img {
   justify-content: center;
   max-height: 400px;
   max-width: 400px;
-  margin: auto auto 50px auto;
+  margin: auto auto 30px auto;
+  border-radius: 4px;
 }
 div#update_mid_content {
   position: fixed;
   left: 400px;
-  right: 500px;
+  right: 400px;
   /* display: contents; */
 }
 
@@ -36,6 +68,7 @@ input#img_upload_btn{
   background-color: #22C781;
   color: white;
   border-radius: 4px;
+  margin-top: 50px;
 }
 .member_delete form.member_delete_form {
   margin-top: 150px;
@@ -66,7 +99,6 @@ input#img_upload_btn{
 
 img.right_content_img {
   background-color: rgba(255, 255, 255, 0.0);
-  width: 450px;
   -ms-transform: rotate(0deg);
   /* IE 9 */
 }
@@ -75,13 +107,14 @@ img.right_content_img {
   position: fixed;
   right: 0;
   float: right;
+  right: -500px;
 }
 
 .member_update_sides {
   position: fixed;
   float: left;
   top: 200px;
-  left: 150px;
+  left: 120px;
 }
 
 .texttitlepg11 {
@@ -160,7 +193,7 @@ button.upload_btns2 {
   height: 59px;
   width: 300px;
   margin: auto auto;
-  margin-top: 40px;
+  margin-top: 50px;
   -ms-transform: rotate(0deg);
   /* IE 9 */
 }
@@ -744,8 +777,8 @@ button.upload_btns2 {
 }
 
 .playerupdateinfo .formupdate .fieldfirstname {
-  width: 100%;
-  margin-top: 10px;
+  /* width: 100%; */
+  margin-top: 15px;
   -ms-transform: rotate(0deg);
   /* IE 9 */
 }

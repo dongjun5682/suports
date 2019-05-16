@@ -50,6 +50,22 @@
 		AND PASSWORD LIKE #{password}
 		]]>
 	</select>
+	<select id="selectAMemberDetail" 
+	resultType="com.suports.web.domain.MemberDTO">
+		<![CDATA[
+		SELECT
+		NAME name,
+		EMAIL email,
+		BIRTHDY birth,
+		ADDR address,
+		PHONE phone,
+		INFO info,
+		PHOTO photo,
+		STATE state
+		FROM MEMBER 
+		WHERE MEMBER_INDEX LIKE #{memberIndex}
+		]]>
+	</select>
 	<select id="selectListOfMembers"
 		resultType="com.suports.web.domain.MemberDTO">
 		<![CDATA[

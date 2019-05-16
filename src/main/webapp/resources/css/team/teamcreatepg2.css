@@ -1,3 +1,33 @@
+textarea#teamInfo {
+    height: 80px;
+}
+
+button.team_create_next_btn {
+    background-color: #00C5FF;
+    font-size: 18px;
+    font-weight: 600;
+    height              : 52px;
+    width               : 128px;
+    position            : absolute;
+    left                : 0px;
+    color: white;
+    border-radius: 4px;
+    -ms-transform       : rotate(0deg); /* IE 9 */
+
+}
+
+button.team_create_cancle_btn {
+    background-color: #F2F4F6;
+    font-size: 18px;
+    font-weight: 600;
+    height: 50px;
+    width: 128px;
+    color: #73919D;
+    position: absolute;
+    left: 0px;
+    border-radius: 4px;
+    -ms-transform: rotate(0deg);
+}
 
 .teamcreatepg2.team-textcontent {
   margin-top: 24px
@@ -573,11 +603,11 @@
   transform           : rotate(0deg);
 }
 .teamcreatepg2 .fieldbtm .imgbtmbg {
-  background-color    : rgba(255, 255, 255, 1.0);
-  top                 : 4px;
-  height              : 106px;
-  width               : 710px;
-  position            : absolute;
+  /* background-color    : rgba(255, 255, 255, 1.0); */
+  /* top                 : 4px; */
+  /* height              : 106px; */
+  /* width               : 710px; */
+  /* position            : absolute; */
   margin              : 0;
   left                : 2px;
   -ms-transform       : rotate(0deg); /* IE 9 */
@@ -585,31 +615,20 @@
   transform           : rotate(0deg);
 }
 .teamcreatepg2 .fieldbtm .btnnextstep {
-  background-color    : rgba(255,255,255,0.0);
+  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 33px;
-  height              : 52px;
-  width               : 128px;
-  position            : absolute;
+  /* height              : 52px; */
+  /* width               : 128px; */
+  /* position            : absolute; */
   margin              : 0;
   left                : 592px;
   -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  /* -webkit-transform   : rotate(0deg); */ /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
-.teamcreatepg2 .fieldbtm .btnnextstep .imgnextbtnbg {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 52px;
-  width               : 128px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-}
+
 .teamcreatepg2 .fieldbtm .btnnextstep .textnext {
-  background-color    : rgba(255,255,255,0.0);
+  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 11px;
   height              : auto;
   width               : 80px;
@@ -626,29 +645,18 @@
   line-height         : 24.0px;
 }
 .teamcreatepg2 .fieldbtm .btnprevstep {
-  background-color    : rgba(255,255,255,0.0);
+  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 33px;
-  height              : 53px;
-  width               : 128px;
+  /* height              : 53px; */
+  /* width               : 128px; */
   position            : absolute;
-  margin              : 0;
+  /* margin              : 0; */
   left                : 454px;
   -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
+  /* -webkit-transform   : rotate(0deg); */ /* Chrome, Safari, Opera */
+  /* transform           : rotate(0deg); */
 }
-.teamcreatepg2 .fieldbtm .btnprevstep .imgprevbtnbg {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 53px;
-  width               : 128px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-}
+
 .teamcreatepg2 .fieldbtm .btnprevstep .textprev {
   background-color    : rgba(255,255,255,0.0);
   top                 : 12px;
@@ -667,28 +675,28 @@
   line-height         : 24.0px;
 }
 .teamcreatepg2 .fieldbtm .imgprogressbar {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 11px;
-  width               : 791px;
+  /* background-color    : rgba(255,255,255,0.0); */
+  /* top                 : 0px; */
+  /* height              : 11px; */
+  /* width               : 791px; */
   position            : absolute;
-  margin              : 0;
+  /* margin              : 0; */
   left                : 1px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
 .teamcreatepg2 .fieldbtm .imgprogress10p {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 9px;
-  width               : 105px;
+  /* background-color    : rgba(255,255,255,0.0); */
+  /* top                 : 0px; */
+  /* height              : 9px; */
+  width: 105px;
   position            : absolute;
-  margin              : 0;
+  /* margin              : 0; */
   left                : 0px;
   -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
+  /* -webkit-transform   : rotate(0deg); */ /* Chrome, Safari, Opera */
+  /* transform           : rotate(0deg); */
 }
 /* .anima-animate-appear prefix for appear animations */
 .anima-animate-appear {
