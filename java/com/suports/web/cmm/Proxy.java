@@ -52,7 +52,7 @@ public class Proxy {
 		
 		prevBlock = startPage - pageSize;
 		nextBlock = startPage + pageSize;
-		
+
 		search = (String) paramMap.get("search");
 		System.out.println(search);
 		System.out.println("total :" + totalCount);

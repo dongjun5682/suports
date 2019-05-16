@@ -21,6 +21,7 @@ public interface MemberMapper {
 	public List<MemberDTO> selectSomeOfMembers(Map<?,?> map);
 	public Map<String, Object> selectAMemberPic(MemberDTO mem);
 	public MemberDTO selectAMember(MemberDTO mem);
+	public MemberDTO selectAMemberDetail(MemberDTO mem);
 	public int countMembers();
 	public int countATeamMembers(int teamIndex);
 	public boolean existAMemberId(MemberDTO mem);

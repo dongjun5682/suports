@@ -87,7 +87,7 @@ member = (() => {
             	team.team_update_frame();
             });
             $('#logout').click(() => {
-            	session.removeAttribute("member"); 
+            	sessionStorage.removeItem("member"); 
             	window.location.reload();
             	alert('location.reload and = '+$.member().id);
             });

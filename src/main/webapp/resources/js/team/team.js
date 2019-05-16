@@ -106,7 +106,6 @@ team = (() => {
     let team_list_after = (x) => {
         $('#content').empty();
         $('#footer').remove();
-        alert($.member().teamIndex);
         if ($.member().teamIndex === 0) {
             $('#content').html(compo.team_content());
         } else {
@@ -179,7 +178,7 @@ team = (() => {
         $('#modal-content2').html(compo.team_create_1());
         $('.fieldbtn').click(() => {
             $('#modal-content2').html(compo.team_create_2());
-            $('.textnext').click(() => {
+            $('.team_create_next_btn').click(() => {
                 let formdata = {
                     name: $('input[name="teamName"]').val(),
                     avgage: $('input[name="teamAge"]').val(),
@@ -190,12 +189,13 @@ team = (() => {
                     info: $('#teamInfo').val()
                 };
                 $('#modal-content2').html(compo.team_create_3());
-                $('.textnext').click(() => {
+                emblem_carousel();
+                $('.team_create_next_btn').click(() => {
                     let formdata2 = {
-                        emblem: 'default_emblem.jpg'
+                        emblem: $('.carousel-inner div.active').attr('name')
                     };
                     $('#modal-content2').html(compo.team_create_4());
-                    $('.textnext').click(() => {
+                    $('.team_create_next_btn').click(() => {
                         $('#modal-content2').html(compo.team_create_5());
                         let formdata3 = {
                             name: formdata.name,
@@ -281,7 +281,7 @@ team = (() => {
     				}
     				table += '<tr>'
         	        +'<td>'+j.rnum+'</td>'
-        	        +'<td><a href="#" class="memberDetail" name="'+j.memberIndex+'">'+j.name+'</a></td>'
+        	        +'<td><button type="button" class="memberDetail" name="'+j.memberIndex+'" data-toggle="modal" data-target="#myModal">'+j.name+'</button></td>'
         	        +'<td>'+j.sports+'</td>'
         	        +'<td>'+j.position+'</td>'
         	        +'<td>'+j.address+'</td>'
@@ -292,12 +292,6 @@ team = (() => {
 
         		let pageTag = '<ul class="pagination" id="member_List_Paging">';
 				
-				if(d.pxy.existPrev){
-					pageTag += '<li class="prev-item"><a href="#" class="paging">&laquo;</a></li>';
-				} else {
-					pageTag += '<li class="prev-item"><a href="#">x</a></li>';
-				};
-				
 				let i = 0;
 				for(i = d.pxy.startPage; i <= d.pxy.endPage; i++){
 					if (d.pxy.pageNum == i){
@@ -306,12 +300,7 @@ team = (() => {
 						pageTag += '<li class="page-item"><a href="#" class="paging">'+i+'</a></li>';
 					}
 				};
-				
-				if(d.pxy.existNext){
-					pageTag += '<li class="next-item"><a href="#" class="paging">&raquo;</a></li>';
-				} else {
-					pageTag += '<li class="next-item"><a href="#">x</a></li>';
-				};
+	
 				pageTag += '</ul>'
 				
 				let middleContent = listTitle + table + pageTag;
@@ -319,7 +308,7 @@ team = (() => {
 				$('#update_mid_content').append(middleContent);				
 				
 				$('.memberDetail').click(function(){
-					alert($(this).memberInfo);
+					team_member_detail($(this).attr('name'));
         		});
 				$('.memberEdit').click(function(){
 					team_member_edit($(this).attr('name'));
@@ -333,37 +322,30 @@ team = (() => {
 					}
 					team_members_list(x2);
 				});
-				$('.prev-item')
-				.click(function(){
-					let prev_item = {
-							teamIndex : $.member().teamIndex,
-							page : d.pxy.prevBlock
-						}
-					team_members_list(prev_item);
-				});
-				$('.next-item')
-				.click(function(){
-					let next_item = {
-							teamIndex : $.member().teamIndex,
-							page : d.pxy.nextBlock
-					}
-					team_members_list(next_item);
-				});
         	})
     };
     let team_member_detail = (x) => {
-    	let member_detail = ''
-    		+'<div class="member_detail">'
-    		+'    <div id="member_current_photo">'
-    		+'        <img src="#" id="member_currnt_img">'
-    		+'    </div>'
-    		+'    <div class="hsubtitlepg1">이름</div>'
-    		+'    <div class="subline">김댕청</div>'
-    		+'</div>'
-    		$('.modal-content').html(member_detail);
+    	 $.getJSON($.ctx() + '/members/detail/'+x, d => {
+    		 let member_detail = ''
+    	    		+'<div class="member_detail">'
+    	    		+'    <div id="member_current_photo">'
+    	    		+'        <img src="resources/img/members_photo/'+d.photo+'" id="member_currnt_img">'
+    	    		+'    </div>'
+    	    		+'    <div class="detail_title">멤버 정보</div>'
+    	    		+'    <div class="detail_line">'+d.name+'</div>'
+    	    		+'    <div class="detail_line">'+d.email+'</div>'
+    	    		+'    <div class="detail_line">'+d.birth+'</div>'
+    	    		+'    <div class="detail_line">'+d.phone+'</div>'
+    	    		+'    <div class="detail_line">'+d.state+'</div>'
+    	    		+'    <div class="detail_title">About</div>'
+    	    		+'    <div class="detail_textarea">'+d.info+'</div>'
+    	    		+'</div>'
+    	    		$('.modal-content').html(member_detail);
+    	 })
+    	
     }
     let team_member_edit = (x) => {
-    	alert(x.memberIndex);
+    	
     }
     let team_add_memeber = () => {
     	$('#update_mid_content').append(compo.team_add_memeber());
@@ -403,6 +385,10 @@ team = (() => {
     };
     let team_update_emblem = () => {
     	$('#update_mid_content').append(compo.team_update_emblem());
+    	emblem_carousel();
+    	$("#emblemCarousel").on('slide.bs.carousel', function(event){
+		    alert("The index number I am about to slide to is : " + event.to);
+		  });
     };
     let team_trans_captain = () => {
     	
@@ -410,8 +396,46 @@ team = (() => {
     let team_diss_ever = () => {
     	
     }
+    let emblem_carousel = () => {
+    	$(document).ready(function(){
+    		  // Activate the Carousel. Pause it when you move the mouse over it
+    		  $("#emblemCarousel").carousel({interval: false, pause: "hover"});
+    		        
+    		  // Enable Carousel Indicators
+    		  $(".item1").click(function(){
+    		    $("#emblemCarousel").carousel(0);
+    		  });
+    		  $(".item2").click(function(){
+    		    $("#emblemCarousel").carousel(1);
+    		  });
+    		  $(".item3").click(function(){
+    		    $("#emblemCarousel").carousel(2);
+    		  });
+    		  $(".item4").click(function(){
+    			  $("#emblemCarousel").carousel(3);
+    		  });
+    		  $(".item5").click(function(){
+    			  $("#emblemCarousel").carousel(4);
+    		  });
+    		  $(".item6").click(function(){
+    			  $("#emblemCarousel").carousel(5);
+    		  });
+    		  $(".item7").click(function(){
+    			  $("#emblemCarousel").carousel(6);
+    		  });
+    		    
+    		  // Enable Carousel Controls
+    		  $(".carousel-control-prev").click(function(){
+    		    $("#emblemCarousel").carousel("prev");
+    		  });
+    		  $(".carousel-control-next").click(function(){
+    		    $("#emblemCarousel").carousel("next");
+    		  });
+    		});
+    }
     return {
         onCreate: onCreate,
+        emblem_carousel:emblem_carousel,
         team_list: team_list,
         team_list_after: team_list_after,
         team_detail: team_detail,

@@ -100,6 +100,11 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
+	@Override
+	public MemberDTO retrieveAMemberDetail(MemberDTO mem) {
+		return memberMapper.selectAMemberDetail(mem);
+	}
+
 	
 
 	
