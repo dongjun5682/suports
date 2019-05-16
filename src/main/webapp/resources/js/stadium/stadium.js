@@ -52,8 +52,10 @@ stadium = (() => {
             		/*j.latitude = parseFloat(j.latitude);
                     j.hardness = parseFloat(j.hardness);*/
             		date.name = j.stadiumName;
+            		date.addr = j.stadiumAddr;
             		date.latitude = j.latitude;
             		date.hardness = j.hardness;
+            		date.photo = j.stadiumPhoto;
             		locations.push(date);
           });
              	$('#map').css({
@@ -78,8 +80,10 @@ stadium = (() => {
           		    
           		     google.maps.event.addListener(marker, 'click', (function(marker, i) {
           		       return function() {
-          		         infowindow.setContent(j.name);
+          		         infowindow.setContent(j.name,j.addr);
           		         infowindow.open(map, marker);
+          		         alert(j.name);
+          		         $('#content').compo.stadium_list_detail(j);
           		       }
           		     })(marker, i));
           		     if(marker)
@@ -89,9 +93,8 @@ stadium = (() => {
           		         map.setCenter(this.getPosition());
           		       });
           		       };
-          	
             });
-            	
+           
         });
         });
      });       
