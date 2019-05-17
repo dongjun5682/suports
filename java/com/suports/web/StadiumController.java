@@ -215,19 +215,13 @@ public class StadiumController {
 		System.out.println("여기탔다"+val);
 		ChatBotDTO chat = new ChatBotDTO();
 		chat.setMsg(val);
-		IFunction i = (Object o) -> chaMap.ChatBot(chat);
+		IFunction i = (Object o) -> chaMap.chatBot(chat);
 		ChatBotDTO ch = (ChatBotDTO) i.apply(chat);
 		System.out.println(ch);
 		map.put("value", ch);
 		return map; 
 		}
-	/*
-	 * @GetMapping("/map") public Map<?,?> map_list(){ map.clear(); ISupplier c =
-	 * ()-> staMap.countStadium(); map.put("totalCount", c.get()); ISupplier s =
-	 * ()-> staMap.mapLocation(); List<?> allStadium = (List<?>) s.get();
-	 * map.clear(); System.out.println(allStadium.toString()); map.put("map_lo",
-	 * allStadium); return map; }
-	 */
+
 	@GetMapping("/map")
 	public Map<?,?> map_list(){
 		logger.info("=======list  maplist 진입 ======");
@@ -235,7 +229,7 @@ public class StadiumController {
 		ISupplier c = ()-> staMap.countStadium();
 		map.put("totalCount", c.get());
 		System.out.println("aaaaa"+c.get().toString());
-		IFunction i = (Object o)-> staMap.mapLocation();
+		IFunction i = (Object o)-> staMap.selectAllStadium();
 		List<?> ls = (List<?>) i.apply(c);
 		map.put("map_lo", ls);
 		System.out.println(ls.toString());

@@ -86,7 +86,7 @@ chat=(()=>{
     				+'                            </div>'
     				+'                        </div>'
     				+'                        <div class="col-md-2 col-xs-2 avatar">'
-    				+'                            <img src="resources/img/logo/logo.png" class=" img-responsive ">'
+    				+'                        <img src="resources/img/logo/logo.png" class=" img-responsive ">'
     				+'                        </div>'
     				+'                    </div>').appendTo('.msg_container_base');
 					 $(".msg_container_base").scrollTop($(".msg_container_base")[0].scrollHeight);
@@ -108,9 +108,6 @@ chat=(()=>{
 					$('#footer').css('margin-top', '-44px');
 					$('#content').html(compo.signin());
 					$('#chat_main').empty();
-					$('.login100-social-item bg1').click(e => {
-			        	
-			        });
 			        $('.login100-form-btn').click(e => {
 			            e.preventDefault();
 			            let logindata = {
@@ -129,8 +126,7 @@ chat=(()=>{
 			                		   title: "비활성화 계정입니다!",
 			                		   text: "탈퇴를 위해 비활성화된 계정입니다. 요청일("+d.disableDate+")로 부터 6일 후 계정이 삭제됩니다.",
 			                		   icon: "warning",
-			                		   buttons: ["취소","다시 활성화"],
-			                		   dangerMode: true,
+			               		   dangerMode: true,
 			                		 })
 			                		 .then((willDelete) => {
 			                		   if (willDelete) {
@@ -183,6 +179,7 @@ chat=(()=>{
 		    	                    	$('#map').empty();
 		    	                        $('#footer').empty();
 		    	                        stadium.list_detail(j);
+		    	                        $('#chat_main').remove();
 		    	                        $('#c_b').css('margin-bottom','84px');
 		    	                        $(".msg_container_base").scrollTop($(".msg_container_base")[0].scrollHeight);	
 			        				}).appendTo('.msg_container_base');
@@ -208,6 +205,7 @@ chat=(()=>{
 		    	                    	$('#map').empty();
 		    	                        $('#footer').empty();
 		    	                        stadium.list_detail(j);
+		    	                        $('#chat_main').remove();
 		    	                        $('#c_b').css('margin-bottom','84px');
 		    	                        $(".msg_container_base").scrollTop($(".msg_container_base")[0].scrollHeight);	
 			        				}).appendTo('.msg_container_base');
@@ -286,8 +284,10 @@ chat=(()=>{
 		});
 		$(document).on('click', '.icon_close', function (e) {
 		    $( "#chat_window_1" ).remove();
+		    
 		});
 	}
+	
 	
 	return{init:init,bot:bot,chat_bot:chat_bot,chat_answer:chat_answer}
 })();

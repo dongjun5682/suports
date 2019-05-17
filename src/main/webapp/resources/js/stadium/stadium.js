@@ -36,32 +36,32 @@ stadium = (() => {
         list(arr);
     }
     let list = (x) => {
+    	$('#chat_main').remove();
         $('#content').css('margin-top', '80px');
         $('#map').empty();
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
         $('#map_button').click(() =>{
             $('#content').empty().html(compo.stadium_list_sidebar());
-            alert('지도');
             $('.col-md-9').append(compo.map());
             var locations = new Array();
             $(document).ready(function initialize(d) {
             	$.getJSON($.ctx() + '/map',d => {
             	$.each(d.map_lo, (i, j) => {
             		let date = new Object();
-            		/*j.latitude = parseFloat(j.latitude);
-                    j.hardness = parseFloat(j.hardness);*/
             		date.name = j.stadiumName;
             		date.addr = j.stadiumAddr;
             		date.latitude = j.latitude;
             		date.hardness = j.hardness;
             		date.photo = j.stadiumPhoto;
+            		date.date = j.date;
+            		date.time = j.time;
             		locations.push(date);
           });
              	$('#map').css({
                     'width': '100%',
-                    'height': '716px',
-                    'margin-bottom': '300px'
+                    'height': '716px'
+                    
                 });
              	var map = new google.maps.Map(document.getElementById('map'), {
           		    zoom: 12,
@@ -69,35 +69,47 @@ stadium = (() => {
           		    mapTypeId: google.maps.MapTypeId.ROADMAP
           		   });
             $.each(locations,(i,j)=>{
-            	 
+            		
           		   var infowindow = new google.maps.InfoWindow();
           		   var marker,i;
           			 marker = new google.maps.Marker
           			 ({id:i,
           		     position: new google.maps.LatLng(j.latitude,j.hardness), 
-          		     map: map 
+          		     map: map
           		     });
           		    
           		     google.maps.event.addListener(marker, 'click', (function(marker, i) {
           		       return function() {
-          		         infowindow.setContent(j.name,j.addr);
-          		         infowindow.open(map, marker);
-          		         alert(j.name);
-          		         $('#content').compo.stadium_list_detail(j);
-          		       }
+          		    	   infowindow.setContent('<div class="map_se">'
+          		        		 				+'<h3>' + j.name +'</h3>'
+          		        		 				+ '<p>' + j.addr +'</p>'
+          		        		 				+ '<img src="' + j.photo +'">' 
+          		        		 				+ '<p>디테일을 보시려면 더블클릭 하세요.</p>'
+          		        		 				+ '<a id="map_select" style="font-size: 26px;">Go to Stadium</a></div>');
+          		         					infowindow.open(map, marker);
+          		         					$('#map_select').click(function(e){
+          		         						let arr={stadiumName:j.name,stadiumAddr:j.addr,stadiumPhoto:j.photo,date:j.date,time:j.time,latitude:j.latitude,hardness:j.hardness};
+          		         						$('#content').html(compo.stadium_list_detail(j));
+          		         						$('#chat_main').remove();
+          		         						list_detail(arr);
+          		         					});
+          		       		}
           		     })(marker, i));
-          		     if(marker)
-          		     {
+          		     {if(marker)
           		       marker.addListener('click', function() {
           		         map.setZoom(15);
           		         map.setCenter(this.getPosition());
           		       });
           		       };
             });
-           
         });
         });
      });       
+        $('#search').on('keydown',function(event){
+    	    if(event.keyCode ==13){
+    	    $('#area_srch').click();
+    	    }
+    	    });
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if (search === '') {
@@ -114,7 +126,7 @@ stadium = (() => {
             $("#selectBox").on("change", function() {
                 console.log($(this).find("option[value='" + $(this).val() + "']").text())
                 if ($(this).val() == 'inc') {
-                    srch_incheon(x);
+                	srch_incheon(x);
                 } else if ($(this).val() == 'seo') {
                     srch_seoul(x);
                 } else if ($(this).val() == 'gy') {
@@ -189,19 +201,83 @@ stadium = (() => {
                 };
                 list(arr);
             })
-
         });
-
     }
     let list_after = (x) => {
-        $('#map').empty();
+    	$('#chat_main').remove();
+    	$('#map').empty();
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
         $('#map_button').click(() => {
             $('#content').empty().html(compo.stadium_list_sidebar());
+            $('.col-md-9').append(compo.map());
+            var locations = new Array();
+            $(document).ready(function initialize(d) {
+            	$.getJSON($.ctx() + '/map',d => {
+            	$.each(d.map_lo, (i, j) => {
+            		let date = new Object();
+            		date.name = j.stadiumName;
+            		date.addr = j.stadiumAddr;
+            		date.latitude = j.latitude;
+            		date.hardness = j.hardness;
+            		date.photo = j.stadiumPhoto;
+            		date.date = j.date;
+            		date.time = j.time;
+            		locations.push(date);
+          });
+             	$('#map').css({
+                    'width': '100%',
+                    'height': '716px'
+                    
+                });
+             	var map = new google.maps.Map(document.getElementById('map'), {
+          		    zoom: 12,
+          		    center: new google.maps.LatLng(37.549012, 126.988546),
+          		    mapTypeId: google.maps.MapTypeId.ROADMAP
+          		   });
+            $.each(locations,(i,j)=>{
+            		
+          		   var infowindow = new google.maps.InfoWindow();
+          		   var marker,i;
+          			 marker = new google.maps.Marker
+          			 ({id:i,
+          		     position: new google.maps.LatLng(j.latitude,j.hardness), 
+          		     map: map
+          		     });
+          		    
+          		     google.maps.event.addListener(marker, 'click', (function(marker, i) {
+          		       return function() {
+          		    	   infowindow.setContent('<div class="map_se">'
+          		        		 				+'<h3>' + j.name +'</h3>'
+          		        		 				+ '<p>' + j.addr +'</p>'
+          		        		 				+ '<img src="' + j.photo +'">' 
+          		        		 				+ '<p>디테일을 보시려면 더블클릭 하세요.</p>'
+          		        		 				+ '<a id="map_select" style="font-size: 26px;">Go to Stadium</a></div>');
+          		         					infowindow.open(map, marker);
+          		         					$('#map_select').click(function(e){
+          		         						let arr={stadiumName:j.name,stadiumAddr:j.addr,stadiumPhoto:j.photo,date:j.date,time:j.time,latitude:j.latitude,hardness:j.hardness};
+          		         						$('#content').html(compo.stadium_list_detail(j));
+          		         						$('#chat_main').remove();
+          		         						list_detail_after(arr);
+          		         					});
+          		       		}
+          		     })(marker, i));
+          		     {if(marker)
+          		       marker.addListener('click', function() {
+          		         map.setZoom(15);
+          		         map.setCenter(this.getPosition());
+          		       });
+          		       };
+            });
         });
+        });
+        });
+        $('#search').on('keydown',function(event){
+    	    if(event.keyCode ==13){
+    	    $('#area_srch').click();
+    	    }
+    	    });
         $('#area_srch').on('click', () => {
-            alert('검색 클릭')
             let search = $('#search').val();
             if ($.fn.nullChecker(search)) {
                 alert('검색어를 입력하십시오');
@@ -212,6 +288,18 @@ stadium = (() => {
                 };
                 srch_after(arr);
             }
+        });
+        $(document).ready(function() {
+            $("#selectBox").on("change", function() {
+                console.log($(this).find("option[value='" + $(this).val() + "']").text())
+                if ($(this).val() == 'inc') {
+                	srch_incheon(x);
+                } else if ($(this).val() == 'seo') {
+                    srch_seoul(x);
+                } else if ($(this).val() == 'gy') {
+                    srch_gyeonggi(x);
+                }
+            });
         });
         $.getJSON($.ctx() + '/stadiums/page/' + x.p, d => {
             $('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
@@ -287,7 +375,8 @@ stadium = (() => {
 
     //드래그앤드랍 업데이트
     let list_detail = (j) => {
-        $('#content').html(compo.stadium_list_detail(j));
+        $('#chat_main').remove();
+    	$('#content').html(compo.stadium_list_detail(j));
         let html = '<div class="a-team" id="roster_100"  ondrop="drop(event)" ondragover="allowDrop(event)"> ' +
             '<img src="resources/img/football.png" draggable="false" ondragstart="drag(event)" id="roster_ball" width="50" height="50"> ' +
             '</div> ' +
@@ -343,9 +432,9 @@ stadium = (() => {
         $('#footer').attr('style', 'position: fixed;left: 0;bottom: 0;width: 100%;background-color: #8cff88;color: white;text-align: center;padding-bottom: 5px;padding-bottom: 34px;-top: 5px;padding-top: 0px;"')
         $('#footer').html('<div class="navbar-brand">' +
             '<div class= col-ms-1>' +
-            '<a class="logo" href="index.html">' +
+            '<a class="logo" href="index.html" style="margin-right: 1230px;">' +
             '<img src="resources/img/logo/logo.png" alt="logo"></a>' +
-            '<button type="button" id="pay_btn_1" class="btn hover2" data-toggle="modal" data-target="#myModal" style="width: 35%;padding: 16px;background-color: #ffffff;margin-bottom: 38px;">' +
+            '<button type="button" id="pay_btn_1" class="btn hover2" data-toggle="modal" data-target="#myModal" style="width: 9%;padding: 16px;background-color: #ffffff;margin-bottom: 46px;">' +
             '<span style="color:black">예약하기</span>' +
             '</button>' +
             '</div>' +
@@ -391,6 +480,7 @@ stadium = (() => {
     }
 
     let list_detail_after = (j) => {
+    	$('#chat_main').remove();
         $('#content').html(compo.stadium_list_detail(j));
         position_map(j);
         $('#footer').css('.section', 'padding-bottom:78px;');
@@ -398,9 +488,9 @@ stadium = (() => {
         $('#footer').attr('style', 'position: fixed;left: 0;bottom: 0;width: 100%;background-color: #8cff88;color: white;text-align: center;padding-bottom: 5px;padding-bottom: 34px;-top: 5px;padding-top: 0px;"')
         $('#footer').html('<div class="navbar-brand">' +
             '<div class= col-ms-1>' +
-            '<a class="logo" href="index.html">' +
+            '<a class="logo" href="index.html" style="margin-right: 1230px;">' +
             '<img src="resources/img/logo/logo.png" alt="logo"></a>' +
-            '<button type="button" id="pay_btn_1" class="btn hover2" style="width: 35%;padding: 16px;background-color: #ffffff;margin-bottom: 38px;">' +
+            '<button type="button" id="pay_btn_1" class="btn hover2"style="width: 9%;padding: 16px;background-color: #ffffff;margin-bottom: 46px;">' +
             '<span style="color:black">예약하기</span>' +
             '</button>' +
             '</div>' +
@@ -498,7 +588,6 @@ stadium = (() => {
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
         $('#content').css('margin-top', '80px');
-        alert('asdasd');
         let url = $.ctx() + '/stadiums/search/' + x.s + '/' + x.p;
         $.getJSON(url, d => {
             $('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
@@ -795,6 +884,7 @@ stadium = (() => {
     };
 
     let srch_after = x => {
+    	
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
         $('#content').css('margin-top', '80px');
