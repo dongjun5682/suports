@@ -27,7 +27,8 @@ public class Proxy {
 		pageSize = ((String)paramMap.get("pageSize") == null)	? 5 : Integer.parseInt((String) paramMap.get("pageSize"));
 		pageNum = ((String)paramMap.get("pageNum") == null) ? 1 : Integer.parseInt((String) paramMap.get("pageNum"));
 		totalCount = (int) paramMap.get("totalCount");
-		/* teamIndex = (int) paramMap.get("teamIndex"); */
+		
+		teamIndex = (paramMap.get("teamIndex") == null) ? 0 : (int) paramMap.get("teamIndex");
 		
 		int pageCount = (totalCount % pageSize != 0) ?  totalCount/pageSize+1:totalCount/pageSize;
 		String _blockSize = (String)paramMap.get("blockSize");

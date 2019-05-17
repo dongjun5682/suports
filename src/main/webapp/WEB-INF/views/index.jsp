@@ -6,16 +6,19 @@
 <link rel="shortcut icon" href="resources/img/logo/favicon.ico" type="image/x-icon">
 <link rel="icon" href="resources/img/logo/favicon.ico" type="image/x-icon">
 <title>SUPORTS</title>
+<!-- 
+<!-- Cookie Consent -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap"></script>
 <script src="resources/js/com/popper.min.js"></script>
-<script src="resources/js/com/jquery.min.3.3.1.js"></script>
+<!-- <script src="resources/js/com/jquery.min.3.3.1.js"></script> -->
 <script src="resources/js/com/jquery.min.3.4.0.js"></script>
 
 <!-- 아임포트 -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <link rel="stylesheet" href="resources/css/import.css">
-
 
 <!-- 챗봇 -->
 <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> 
@@ -32,6 +35,7 @@
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
 <link rel="stylesheet" href="resources/css/chatbot.css"> 
 <link rel="stylesheet" href="resources/css/datepicker/datapicker.min.css">
+<link rel="stylesheet" type="text/css" href="https://csshake.surge.sh/csshake.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" 
 integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" 
 crossorigin="anonymous">
@@ -64,25 +68,27 @@ crossorigin="anonymous">
 </head>
 <body>
 
-<div id="content">
-	</div>
+<div id="content"></div>
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content"></div>
 		</div>
 	</div>
-	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
-		aria-hidden="true">
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
-			<div id="modal-content2"></div>
+			<div class="modal-content2"></div>
 		</div>
 	</div>
-	<div class="modal fade" id="myModal_tour" tabindex="-1" role="dialog"
-		aria-hidden="true">
+	<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content3"></div>
+		</div>
+	</div>
+	<div class="modal fade" id="myModal_tour" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div id="modal-content3"></div>
 		</div>
-</div>
+	</div>
 <div id="myMpa">
 
 </div>
@@ -92,8 +98,8 @@ crossorigin="anonymous">
 	<script src="resources/js/com/router.js"></script>
 	<script src="resources/js/com/myTooltip.js"></script>
 	<script src="resources/js/com/sweetalert.min.js"></script>
-	<script src="resources/js/com/datapicker.min.js"></script>
-	<script src="resources/js/com/datapicker.ko-kr.js"></script>
+	<script src="resources/js/com/datepicker.min.js"></script>
+	<script src="resources/js/com/datepicker.ko-kr.js"></script>
 	<script src="resources/js/com/fileupload.js"></script>
 
 	<script src="resources/js/compo/compo.js"></script>
@@ -103,6 +109,7 @@ crossorigin="anonymous">
 	<script src="resources/js/member/member.js"></script>
     <script src="resources/js/vidbg.js"></script>
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    
     
 <script>
 app.run('<%=application.getContextPath()%>');
@@ -115,6 +122,27 @@ function drop(ev) { ev.preventDefault();
 	ev.target.appendChild(document.getElementById(c));
 } 
 
+window.addEventListener("load", function(){
+	window.cookieconsent.initialise({
+		 "palette": {
+			    "popup": {
+			      "background": "#ffffff",
+			      "text": "#495a61"
+			    },
+			    "button": {
+			      "background": "#22c781",
+			      "text": "#ffffff"
+	    }
+	  },
+	  "showLink": false,
+	  "theme": "classic",
+	  "position": "bottom-left",
+	  "content": {
+	    "message": "이 웹 사이트는 귀하가 당사 웹 사이트에서 최상의 경험을 할 수 있도록 쿠키를 사용합니다.",
+	    "dismiss": "알겠습니다!"
+	  }
+	})});
+ 
 </script>
 
 </body>

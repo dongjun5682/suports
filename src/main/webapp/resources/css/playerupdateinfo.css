@@ -1,13 +1,16 @@
 .formupdate {
   z-index: 99;
 }
+a#profile_disable:hover {
+    color: red;
+}
 .mem_up_side_menu .mem_up_side_texts a#team_sub:hover {
     color: #c72227;
 }
 .mem_up_side_menu .mem_up_side_texts a#team_diss:hover {
     color: #c72227;
 }
-.member_detail {
+.member_detail_modal {
   margin-top: 20px;
 }
 .detail_title {
@@ -47,7 +50,7 @@ ul#member_List_Paging {
   margin-bottom: 12px;
 }
 
-img#member_currnt_img {
+img.member_currnt_img {
   display: block;
   justify-content: center;
   max-height: 400px;
@@ -135,11 +138,13 @@ img.right_content_img {
   border-radius: 4px;
 }
 button.upload_btns2 {
-  width: 100%;
-  height: 100%;
-  background-color: #00C5FF;
-  color: white;
-  border-radius: 4px;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #00C5FF;
+    color: white;
+    border-radius: 4px;
 }
 
 .playerupdateinfo .fieldpassword {
@@ -923,4 +928,5 @@ button.upload_btns2 {
   color: rgba(39, 44, 49, 1.0);
   text-align: center;
   line-height: 50.0px;
+    font-weight: bolder;
 }

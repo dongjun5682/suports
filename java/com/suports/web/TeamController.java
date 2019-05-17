@@ -1,6 +1,5 @@
 package com.suports.web;
 
-
 import java.util.List;
 import java.util.Map;
 
@@ -13,9 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.suports.web.cmm.IFunction;
 import com.suports.web.cmm.ISupplier;
@@ -40,7 +37,7 @@ public class TeamController {
 	
 	@Transactional
 	@PostMapping("/teams")
-	public Map<?,?> createATeam(@RequestBody TeamDTO team) {
+	public Map<?,?> newTeam(@RequestBody TeamDTO team) {
 
 		System.out.println("team create in ===="+team);
 		
@@ -56,10 +53,9 @@ public class TeamController {
 	}
 	
 	@PutMapping("/teams/{userid}")
-	public Map<?,?> update(@RequestBody TeamDTO team, @PathVariable String userid) {
+	public Map<?,?> updates(@RequestBody TeamDTO team, @PathVariable String userid) {
 
 		logger.info("update param ={}========"+team);
-	
 		
 		teamService.modifyATeam(team);
 		
@@ -67,18 +63,20 @@ public class TeamController {
 		map.put("msg","성공");
 		return map;
 	}
-	
-	@PostMapping("/teams/{userid}")
-	public TeamDTO check(@RequestBody TeamDTO param, @PathVariable String userid) {
-				
-		return teamDTO;
-	
-	}
-	
-	@PostMapping("/teams/uploadFile")
-	public Map<?,?> fileupload(@RequestParam("file") MultipartFile file) throws Exception {
+	@Transactional
+	@PutMapping("/teams/dissolve/{userid}")
+	public Map<?,?> dissolve(@RequestBody TeamDTO team, @PathVariable String userid) {
+
+		logger.info("dissolve param ={}========"+team);
 		
+		MemberDTO mem = new MemberDTO();
+		mem.setTeamIndex(team.getTeamIndex());
 		
+		memberService.modifyAMemberTeamIndex(mem);
+		teamService.removeATeam(team);
+		
+		map.clear();
+		map.put("msg","성공");
 		return map;
 	}
 	

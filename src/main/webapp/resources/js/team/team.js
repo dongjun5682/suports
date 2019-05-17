@@ -208,7 +208,6 @@ team = (() => {
                             info: formdata.info,
                             emblem: formdata2.emblem
                         };
-                        alert(formdata3.address + '  ==  ' + formdata3.sport + '  ==  ' + formdata3.info + '  ==  ' + formdata3.emblem + "  ==  " + formdata3.name);
                         $('#team-create-btn').click(() => {
                             $.ajax({
                                 url: $.ctx() + '/teams/',
@@ -232,20 +231,16 @@ team = (() => {
     }
     let team_update_frame = () => {
     	$('#footer').remove();
-    	$('#content').empty().html(compo.team_update_frame());
+    	$('#content').html(compo.team_update_frame());
     	team_update_info();
 
         $('#team_members').click(() => {
         	$('#update_mid_content').empty();
         	let x = {
-                    'page': 1,
-                    'teamIndex' : $.member().teamIndex
+                    page: 1,
+                    teamIndex : $.member().teamIndex
                 };
         	team_members_list(x);
-        });
-        $('#team_add').click(() => {
-        	$('#update_mid_content').empty();
-        	team_add_memeber();
         });
         $('#team_sub').click(() => {
         	$('#update_mid_content').empty();
@@ -264,7 +259,6 @@ team = (() => {
         	team_trans_captain();
         });
         $('#team_diss').click(() => {
-        	$('#update_mid_content').empty();
             team_diss_ever();
         });
     }
@@ -272,13 +266,11 @@ team = (() => {
     	$('#update_mid_content').empty();
         	$.getJSON($.ctx()+'/members/page/'+x.page+'/'+x.teamIndex, d => {
         		let listTitle = '<div class="hsubtitlepg1"><div class="texthtitle">팀 선수 목록</div></div>';
-        		
+        	
+        		let addAMember = compo.team_add_memeber_input();
         		let table = compo.member_detail_table();   
         		
     			$.each(d.members, (i,j) => {
-    				let memberInfo = {
-    					memberIndex : j.memberIndex
-    				}
     				table += '<tr>'
         	        +'<td>'+j.rnum+'</td>'
         	        +'<td><button type="button" class="memberDetail" name="'+j.memberIndex+'" data-toggle="modal" data-target="#myModal">'+j.name+'</button></td>'
@@ -290,7 +282,7 @@ team = (() => {
     			});
         		table += '</table>'
 
-        		let pageTag = '<ul class="pagination" id="member_List_Paging">';
+        		let pageTag = '<ul class="pagination" id="member_List_Paging">'
 				
 				let i = 0;
 				for(i = d.pxy.startPage; i <= d.pxy.endPage; i++){
@@ -300,11 +292,9 @@ team = (() => {
 						pageTag += '<li class="page-item"><a href="#" class="paging">'+i+'</a></li>';
 					}
 				};
-	
 				pageTag += '</ul>'
 				
-				let middleContent = listTitle + table + pageTag;
-				
+				let middleContent = listTitle + addAMember + table + pageTag;
 				$('#update_mid_content').append(middleContent);				
 				
 				$('.memberDetail').click(function(){
@@ -314,48 +304,95 @@ team = (() => {
 					team_member_edit($(this).attr('name'));
         		});
 				
-				$('.page-item')
-				.click(function(){
+				$('.page-item').click(function(){
 					let x2 = {
 						page : $(this).text(),
 						teamIndex : $.member().teamIndex
 					}
 					team_members_list(x2);
 				});
+				$('.add_btn').click(function(){
+					$('.modal-content3').empty();
+						let incase = '';
+					if ($('#search_type_add').val() == 'name') {
+						incase = 'name';
+					} 
+					if ($('#search_type_add').val() == 'email') {
+						incase = 'email';
+					} 
+					if ($('#search_type_add').val() == 'phone') {
+						incase = 'phone';
+					} 
+					let searching = $('#search_words_add').val();
+					$.getJSON($.ctx() + '/members/'+incase+'/'+searching, d => {
+						let add_member_detail = ''
+							+'<div class="member_detail">'
+							+'    <div class="member_current_photo">'
+							+'        <img src="resources/img/members_photo/'+d.photo+'" class="member_currnt_img">'
+							+'    </div>'
+							+'    <div class="detail_title">멤버 정보</div>'
+							+'    <div class="detail_line">'+d.name+'</div>'
+							+'    <div class="detail_line">'+d.email+'</div>'
+							+'    <div class="detail_line">'+d.birth+'</div>'
+							+'    <div class="detail_line">'+d.address+'</div>'
+							+'    <div class="detail_line">'+d.phone+'</div>'
+							+'    <div class="detail_line">'+d.state+'</div>'
+							+'    <div class="detail_button"><button type="button" class="send_join_req_btn">가입요청</button></div>'
+							+'</div>'
+							$('.modal-content3').html(add_member_detail);
+					})
+				});
         	})
     };
     let team_member_detail = (x) => {
     	 $.getJSON($.ctx() + '/members/detail/'+x, d => {
-    		 let member_detail = ''
-    	    		+'<div class="member_detail">'
-    	    		+'    <div id="member_current_photo">'
-    	    		+'        <img src="resources/img/members_photo/'+d.photo+'" id="member_currnt_img">'
-    	    		+'    </div>'
-    	    		+'    <div class="detail_title">멤버 정보</div>'
-    	    		+'    <div class="detail_line">'+d.name+'</div>'
-    	    		+'    <div class="detail_line">'+d.email+'</div>'
-    	    		+'    <div class="detail_line">'+d.birth+'</div>'
-    	    		+'    <div class="detail_line">'+d.phone+'</div>'
-    	    		+'    <div class="detail_line">'+d.state+'</div>'
-    	    		+'    <div class="detail_title">About</div>'
-    	    		+'    <div class="detail_textarea">'+d.info+'</div>'
-    	    		+'</div>'
-    	    		$('.modal-content').html(member_detail);
+    		 let aMember_detail = ''
+ 	    		+'<div class="member_detail">'
+ 	    		+'    <div class="member_current_photo">'
+ 	    		+'        <img src="resources/img/members_photo/'+d.photo+'" class="member_currnt_img">'
+ 	    		+'    </div>'
+ 	    		+'    <div class="detail_title">멤버 정보</div>'
+ 	    		+'    <div class="detail_line">'+d.name+'</div>'
+ 	    		+'    <div class="detail_line">'+d.email+'</div>'
+ 	    		+'    <div class="detail_line">'+d.birth+'</div>'
+ 	    		+'    <div class="detail_line">'+d.phone+'</div>'
+ 	    		+'    <div class="detail_line">'+d.state+'</div>'
+ 	    		+'    <div class="detail_title">About</div>'
+ 	    		+'    <div class="detail_textarea">'+d.info+'</div>'
+ 	    		+'</div>'
+ 	    		$('.modal-content').html(aMember_detail);
     	 })
-    	
     }
     let team_member_edit = (x) => {
-    	
+    	$('#update_mid_content').append(compo.team_member_edit());
     }
-    let team_add_memeber = () => {
-    	$('#update_mid_content').append(compo.team_add_memeber());
-    }
+
     let team_sub_member = () => {
     	$('#update_mid_content').append(compo.team_sub_member());
+    	$('.fieldbtn').click(()=>{
+    		let subData = {
+        			teamIndex : $.member().teamIndex,
+    				id : $('input[id="id"]').val()
+    		};
+    		$.ajax({
+    			url : $.ctx()+'/members/'+subData.teamIndex,
+    			type : 'PUT',
+    			data : JSON.stringify(subData),
+    			dataType : 'json',
+    			contentType : "application/json; charset=utf-8",
+    			success : d => {
+    				alert('팀원  방출');
+    				member.login_after();
+    			},
+    			error : e => {
+    				alert('ajax fail');
+    			}
+    		})
+    	})
     }
     let team_update_info = () => {
     	$('#update_mid_content').append(compo.team_update_info());
-    	$('#team_update_btn').click((e)=>{
+    	$('.upload_btns2').click((e)=>{
         	e.preventDefault();
         	let updateData = {
         			captain : $.member().memberIndex,
@@ -365,7 +402,6 @@ team = (() => {
     				style: $('select[name="teamStyle"]').val(),
     				sport : $('select[name="teamSport"]').val(),
     				address : $('select[name="teamLocation"]').val(),
-    				emblem : $('select[name="teamEmblem"]').val(),
     				info : $('#teamInfo').val()
     		};
     		$.ajax({
@@ -376,6 +412,7 @@ team = (() => {
     			contentType : "application/json; charset=utf-8",
     			success : d => {
     				alert('팀 정보가 업데이트되었습니다.');
+    				member.login_after();
     			},
     			error : e => {
     				alert('ajax fail');
@@ -386,15 +423,63 @@ team = (() => {
     let team_update_emblem = () => {
     	$('#update_mid_content').append(compo.team_update_emblem());
     	emblem_carousel();
-    	$("#emblemCarousel").on('slide.bs.carousel', function(event){
-		    alert("The index number I am about to slide to is : " + event.to);
-		  });
-    };
+    	 $('.upload_btns2').click(() => {
+    		 let emb = {
+    				 	teamIndex : $.member().teamIndex,
+    	                emblem : $('.carousel-inner div.active').attr('name')
+    	            };
+             $.ajax({
+                 url: $.ctx() + '/teams/'+emb.teamIndex,
+                 type: 'PUT',
+                 data: JSON.stringify(emb),
+                 dataType: 'json',
+                 contentType: "application/json; charset=utf-8",
+                 success: d => {
+                     $('#myModal').modal('hide');
+                     alert('emblem updated');
+                 },
+                 error: e => {
+                     alert('ajax fail');
+                 }
+             })
+         })
+   
+    }
     let team_trans_captain = () => {
     	
     }
     let team_diss_ever = () => {
-    	
+    	swal({
+ 		   title: "팀 해체!",
+ 		   text: "주의: 팀 해체를 하시면 모든 팀원들이 팀 귀속에서 해제되고 별도의 알림이 가지 않습니다.",
+ 		   icon: "warning",
+ 		   buttons: ["취소","해체 결정"],
+ 		   dangerMode: true,
+ 		 })
+ 		 .then((willDelete) => {
+ 		   if (willDelete) {
+ 			   let dissData = {
+ 					   teamIndex : $.member().teamIndex
+ 			   }
+ 				$.ajax({
+ 					url : $.ctx()+'/teams/dissolve/'+dissData.teamIndex,
+ 					type : 'PUT',
+ 					data : JSON.stringify(dissData),
+ 					dataType : 'json',
+ 					contentType : "application/json; charset=utf-8",
+ 					success : d => {
+ 						swal("팀이 정상적으로 해체되었습니다. 업데이트를 위해 로그아웃 됩니다.", {
+ 			 		       icon: "info",
+ 			 		       button: false
+ 			 		     });
+ 						sessionStorage.removeItem("member"); 
+ 		            	window.location.reload();
+ 					}
+ 				})
+ 		   } else {
+ 		     swal("팀이 유지됩니다.");
+ 		   }
+ 		 });
     }
     let emblem_carousel = () => {
     	$(document).ready(function(){
@@ -434,18 +519,17 @@ team = (() => {
     		});
     }
     return {
-        onCreate: onCreate,
+        onCreate:onCreate,
         emblem_carousel:emblem_carousel,
-        team_list: team_list,
-        team_list_after: team_list_after,
-        team_detail: team_detail,
-        team_create: team_create,
-        team_update_frame: team_update_frame,
+        team_list:team_list,
+        team_list_after:team_list_after,
+        team_detail:team_detail,
+        team_create:team_create,
+        team_update_frame:team_update_frame,
         team_members_list:team_members_list,
-        team_add_memeber:team_add_memeber,
         team_sub_member:team_sub_member,
         team_update_info:team_update_info,
-        team_update_emblem: team_update_emblem,
+        team_update_emblem:team_update_emblem,
         team_trans_captain:team_trans_captain,
         team_diss_ever:team_diss_ever,
         team_member_detail:team_member_detail,

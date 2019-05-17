@@ -1,9 +1,13 @@
-
+/* 
 /* Modal */
 .modal-open {
 	overflow: hidden
 }
-
+.modal-content3 {
+    background-color: white;
+    border-radius: 4px;
+    margin-top: 24px;
+}
 .modal {
 	display: none;
 	margin: auto auto auto auto;
@@ -95,3 +99,4 @@
 	height: 50px;
 	overflow: scroll
 }
+ */

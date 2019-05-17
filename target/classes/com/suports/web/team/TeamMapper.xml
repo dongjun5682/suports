@@ -3,40 +3,27 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
 <mapper namespace="com.suports.web.mapper.TeamMapper">
 
-<resultMap id="selectresult" type="hashmap">
-  <id property="index" column="TEAM_INDEX"/>
-  <result property="name" column="TEAM_NAME"/>
-  <result property="emblem" column="TEAM_EMBLEM"/>
-  <result property="captain" column="TEAM_CAPTIN"/>
-  <result property="sport" column="TEAM_SPORT"/>
-  <result property="sort" column="TEAM_SORT"/>
-  <result property="address" column="TEAM_ADDR"/>
-  <result property="info" column="TEAM_INFO"/>
-  <result property="avgage" column="TEAM_AGE"/>
-  <result property="style" column="TEAM_STYLE"/>
-  <result property="tournamentIndex" column="TOURNAMENT_INDEX"/>
-  <result property="totalcount" column="TOTALCOUNT"/>
+<resultMap id="teamResult" type="com.suports.web.domain.TeamDTO">
+  <id property="teamIndex" column="TEAM_INDEX" javaType="int"/>
+  <result property="name" column="TEAM_NAME" javaType="String"/>
+  <result property="emblem" column="TEAM_EMBLEM" javaType="String"/>
+  <result property="captain" column="TEAM_CAPTIN" javaType="int"/>
+  <result property="sport" column="TEAM_SPORT" javaType="String"/>
+  <result property="sort" column="TEAM_SORT" javaType="String"/>
+  <result property="address" column="TEAM_ADDR" javaType="String"/>
+  <result property="info" column="TEAM_INFO" javaType="String"/>
+  <result property="avgage" column="TEAM_AGE" javaType="String"/>
+  <result property="style" column="TEAM_STYLE" javaType="String"/>
+  <result property="tournamentIndex" column="TOURNAMENT_INDEX" javaType="int" />
+  <result property="totalcount" column="TOTALCOUNT" />
   <result property="rnum" column="RNUM"/>
 </resultMap>
 
 	<select id="selectATeam" 
-	resultType="com.suports.web.domain.TeamDTO">
-		SELECT
-		MEMBER_INDEX memberIndex,
-		TEAM_INDEX index,
-		TEAM_NAME name,
-		TEAM_EMBLEM emblem,
-		TEAM_CAPTIN captain,
-		TEAM_SPORT sport,
-		TEAM_SORT sort,
-		TEAM_ADDR address,
-		TEAM_INFO info,
-		TEAM_AGE avgage,
-		TEAM_STYLE style,
-		TOURNAMENT_INDEX tournamentIndex
+	resultMap="teamResult">
+		SELECT *
 		FROM TEAM
 		WHERE TEAM_NAME LIKE #{name}
 	</select>
@@ -69,6 +56,7 @@
 	<update id="updateATeam"
 		parameterType="com.suports.web.domain.TeamDTO" flushCache="true"
 		statementType="PREPARED" timeout="20">
+		<if test="emblem == null">
 		UPDATE TEAM SET
 		TEAM_NAME = #{name},
 		TEAM_AGE = #{avgage},
@@ -76,16 +64,29 @@
 		TEAM_STYLE = #{style},
 		TEAM_SPORT = #{sport},
 		TEAM_ADDR = #{address},
-		TEAM_EMBLEM = #{emblem},
 		TEAM_INFO = #{info}
 		WHERE TEAM_CAPTIN 
 		LIKE #{captain}
+		</if>
+		<if test="emblem != null">
+		UPDATE TEAM SET
+		TEAM_EMBLEM = #{emblem}
+		WHERE TEAM_INDEX 
+		LIKE #{teamIndex}
+		</if>
 	</update>
-	
+	<delete id="deleteATeam"
+		parameterType="com.suports.web.domain.TeamDTO" flushCache="true"
+		statementType="PREPARED" timeout="20">
+		DELETE 
+		FROM TEAM
+		WHERE TEAM_INDEX
+		LIKE #{teamIndex}
+	</delete>
 	
 	<select id="selectListOfTeams"
 	parameterType="com.suports.web.cmm.Proxy"
-	resultMap="selectresult">
+	resultMap="teamResult">
 	SELECT T2.*
 	FROM (SELECT  @ROWNUM:=@ROWNUM+1 AS RNUM, T.*
 			FROM (SELECT * FROM TEAM ORDER BY TEAM_INDEX DESC) T, (SELECT @ROWNUM:=0)TMP) T2 

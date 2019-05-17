@@ -71,7 +71,7 @@ public class TeamServiceImpl implements TeamService {
 
 	@Override
 	public void removeATeam(TeamDTO team) {
-		// TODO Auto-generated method stub
+		teamMapper.deleteATeam(team);
 		
 	}
 }
