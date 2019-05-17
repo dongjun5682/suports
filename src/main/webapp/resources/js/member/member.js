@@ -47,6 +47,14 @@ member = (() => {
        
         $('#home').attr('style', '" "');
         $('#rm_search').empty().append(compo.srch());
+        $('#datepicker').datepicker({
+			locale: 'ko-kr',
+            uiLibrary: 'bootstrap4',
+            format : 'yyyy/mm/dd',
+            autoPick: 'true',
+            date:''
+		});
+        $('#datepicker').css({'margin-top':'10px','border-radius':' 4px'});
         $('.logo').remove();
         $('<a class="logo_login" href="#"><img src="resources/img/logo/logo.png" alt="logo"></a>').appendTo('.navbar-brand');
         $('#content');

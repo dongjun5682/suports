@@ -58,6 +58,7 @@ home = (() => {
             autoPick: 'true',
             date:''
 		});
+        $('#datepicker').css({'margin-top':'10px','border-radius':' 4px'});
         $('#team_search').click(() => {
             $('#position').empty().attr('id', 'people').append(compo.team_search());
         });
