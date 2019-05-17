@@ -1,20 +1,14 @@
-input[type="button"] {
-  background-color: #22C781;
-  color: white;
-  font-size: 24px;
-  margin-top: 24px;
-}                       
-.playersignuppg5 {
+
+.teamcreatepg5 {
   width               : 100%;
-  min-width           : 1024px;
-  min-height          : 780px;
+  min-width           : 1100px;
+  min-height          : 680px;
   position            : relative;
   overflow            : hidden;
   margin-top              : 80px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color    : rgba(255, 255, 255, 1.0);
-  border-radius: 8px;
 }
 a {
   text-decoration     : none;
@@ -31,180 +25,69 @@ div {
 div {
   -webkit-text-size-adjust: none;
 }
-.playersignuppg5 .rightcontentpg1 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 780px;
-  width               : 540px;
+.teamcreatepg5 .fieldbtn {
+  background-color: #00C5FF;
+  top                 : 556px;
+  color: white;
+  height              : 78px;
+  font-size: 18px;
+  width               : 440px;
+  font-weight: bold;
   position            : absolute;
-  margin              : 0;
-  left                : 484px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-}
-.playersignuppg5 .rightcontentpg1 .shadow {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 780px;
-  width               : 30px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-  opacity             : 0.6;
-}
-.playersignuppg5 .rightcontentpg1 .gradientbg {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 780px;
-  width               : 510px;
-  position            : absolute;
-  margin              : 0;
-  left                : 30px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-}
-button#load {
-  width: 100%;
-  height: 100%;
-}
-.playersignuppg5 .beginbtn {
-  top                 : 578px;
   border-radius: 4px;
-  height              : 88px;
-  width               : 378px;
-  position            : absolute;
-  left                : 76px;
-  -ms-transform 
+  /* margin              : 0; */
+  left                : 120px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
 }
-.playersignuppg5 .beginbtn .btnstartweb {
+.teamcreatepg5 .hsubtitlepg1 {
   background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : 88px;
-  width               : 378px;
+  top                 : 128px;
+  height              : 93px;
+  width               : 385px;
+  position            : absolute;
+  margin              : 0;
+  left                : 147px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+.teamcreatepg5 .hsubtitlepg1 .texthcontent {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 61px;
+  height              : auto;
+  width               : 385px;
   position            : absolute;
   margin              : 0;
   left                : 0px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
+  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+  font-size           : 18.0px;
+  color               : rgba(57, 63, 69, 1.0);
+  text-align          : center;
+  line-height         : 32.0px;
 }
-.playersignuppg5 .beginbtn .btnstart {
+.teamcreatepg5 .hsubtitlepg1 .texthtitle {
   background-color    : rgba(255,255,255,0.0);
-  top                 : 29px;
+  top                 : 0px;
   height              : auto;
-  width               : 345px;
+  width               : 350px;
   position            : absolute;
   margin              : 0;
-  left                : 17px;
+  left                : 18px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
   font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
   font-size           : 24.0px;
-  color               : rgba(255, 255, 255, 1.0);
-  text-align          : center;
-  line-height         : 29.0px;
-}
-.playersignuppg5 .hsubtitle {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 138px;
-  height              : 306px;
-  width               : 385px;
-  position            : absolute;
-  margin              : 0;
-  left                : 80px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-}
-.playersignuppg5 .hsubtitle .hcontent {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 88px;
-  height              : auto;
-  width               : 385px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
-  font-size           : 22.0px;
-  color               : rgba(57, 63, 69, 1.0);
-  text-align          : left;
-  line-height         : 18.0px;
-}
-.playersignuppg5 .hsubtitle .hcontent .span1 {
-  line-height         : 32.0px;
-}
-.playersignuppg5 .hsubtitle .hcontent .span2 {
-  font-size           : 18.0px;
-  line-height         : 32.0px;
-}
-.playersignuppg5 .hsubtitle .hcontent1 {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 256px;
-  height              : auto;
-  width               : 387px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
-  font-size           : 22.0px;
-  color               : rgba(57, 63, 69, 1.0);
-  text-align          : left;
-  line-height         : 32.0px;
-}
-.playersignuppg5 .hsubtitle .htitle {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : auto;
-  width               : 385px;
-  position            : absolute;
-  margin              : 0;
-  left                : 0px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
-  font-size           : 38.0px;
   color               : rgba(39, 44, 49, 1.0);
-  text-align          : left;
-  line-height         : 50.0px;
+  text-align          : center;
+  line-height         : 51.0px;
 }
-.playersignuppg5 .imgtree {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 50px;
-  height              : 343px;
-  width               : 179px;
-  position            : absolute;
-  margin              : 0;
-  left                : 602px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-}
-.playersignuppg5 .imgballboy {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 118px;
-  height              : 645px;
-  width               : 257px;
-  position            : absolute;
-  margin              : 0;
-  left                : 704px;
-  -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
-}
-.playersignuppg5 .logo {
+.teamcreatepg5 .logo {
   background-color    : rgba(255,255,255,0.0);
   top                 : 50px;
   height              : 40px;
@@ -216,7 +99,7 @@ button#load {
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
-.playersignuppg5 .logo .logobox {
+.teamcreatepg5 .logo .logobox {
   background-color    : rgba(255,255,255,0.0);
   top                 : 0px;
   height              : 40px;
@@ -227,4 +110,95 @@ button#load {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
+}
+.teamcreatepg5 .imgrightcontentfinish {
+  background-color    : rgba(255,255,255,0.0);
+  top                 : 0px;
+  height              : 680px;
+  width               : 479px;
+  position            : absolute;
+  margin              : 0;
+  left                : 621px;
+  -ms-transform       : rotate(0deg); /* IE 9 */
+  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
+  transform           : rotate(0deg);
+}
+/* .anima-animate-appear prefix for appear animations */
+.anima-animate-appear {
+  opacity             : 0;
+  display             : block;
+  -webkit-animation   : anima-reveal 0.3s ease-in-out 1 normal forwards;
+  -moz-animation      : anima-reveal 0.3s ease-in 1 normal forwards;
+  -o-animation        : anima-reveal 0.3s ease-in-out 1 normal forwards;
+  animation           : anima-reveal 0.3s ease-in-out 1 normal forwards;
+}
+.anima-animate-disappear {
+  opacity             : 1;
+  display             : block;
+  -webkit-animation   : anima-reveal 0.3s ease-in-out 1 reverse forwards;
+  -moz-animation      : anima-reveal 0.3s ease-in 1 normal forwards;
+  -o-animation        : anima-reveal 0.3s ease-in-out 1 reverse forwards;
+  animation           : anima-reveal 0.3s ease-in-out 1 reverse forwards;
+}
+.anima-animate-nodelay {
+  -webkit-animation-delay: 0;
+  -moz-animation-delay: 0;
+  -o-animation-delay  : 0;
+  animation-delay     : 0;
+}
+@-webkit-keyframes anima-reveal {
+  0%
+   
+  {
+      opacity: 0;
+    }
+  
+    
+  100%
+   
+  {
+      opacity: 1;
+    }
+}
+@-moz-keyframes anima-reveal {
+  0%
+   
+  {
+      opacity: 0;
+    }
+  
+    
+  100%
+   
+  {
+      opacity: 1;
+    }
+}
+@-o-keyframes anima-reveal {
+  0%
+   
+  {
+      opacity: 0;
+    }
+  
+    
+  100%
+   
+  {
+      opacity: 1;
+    }
+}
+@keyframes anima-reveal {
+  0%
+   
+  {
+      opacity: 0;
+    }
+  
+    
+  100%
+   
+  {
+      opacity: 1;
+    }
 }

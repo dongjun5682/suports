@@ -1,3 +1,7 @@
+textarea#team_create_textarea {
+    resize: none;
+    height: 400px;
+} 
 
 .teamcreatepg4 {
   width               : 100%;
@@ -26,16 +30,16 @@ div {
   -webkit-text-size-adjust: none;
 }
 .teamcreatepg4 .fieldpicture {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 138px;
-  height              : 392px;
-  width               : 436px;
+  /* background-color    : rgba(255,255,255,0.0); */
+  top: 120px;
+  height: 400px;
+  width: 640px;
   position            : absolute;
-  margin              : 0;
-  left                : 371px;
+  /* margin              : 0; */
+  left: 380px;
   -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
+  /* -webkit-transform   : rotate(0deg); */ /* Chrome, Safari, Opera */
+  /* transform           : rotate(0deg); */
 }
 .teamcreatepg4 .fieldpicture .imgpath {
   background-color    : rgba(255,255,255,0.0);
@@ -91,21 +95,22 @@ div {
   line-height         : 17.0px;
 }
 .teamcreatepg4 .fieldpicture .texttitle {
-  background-color    : rgba(255,255,255,0.0);
-  top                 : 0px;
-  height              : auto;
-  width               : 359px;
-  position            : absolute;
-  margin              : 0;
-  left                : 3px;
+  /* background-color    : rgba(255,255,255,0.0); */
+  /* top                 : 0px; */
+  /* height              : auto; */
+  /* width               : 359px; */
+  /* position            : absolute; */
+  /* margin              : 0; */
+  /* left                : 3px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
-  -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  transform           : rotate(0deg);
+  /* -webkit-transform   : rotate(0deg); */ /* Chrome, Safari, Opera */
+  /* transform           : rotate(0deg); */
   font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size           : 18.0px;
-  color               : rgba(0, 0, 0, 1.0);
-  text-align          : left;
+  /* color               : rgba(0, 0, 0, 1.0); */
+  /* text-align          : left; */
   line-height         : 21.0px;
+  margin-bottom: 8px;
 }
 .teamcreatepg4 .hsubtitle {
   background-color    : rgba(255,255,255,0.0);

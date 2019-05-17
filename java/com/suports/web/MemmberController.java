@@ -33,27 +33,30 @@ public class MemmberController {
 	@Autowired MemberDTO memberDTO;
 	@Autowired ImageDTO imageDTO;
 	@Autowired MemberServiceImpl memberService;
-	@Autowired Map<String, Object> map;
 	@Autowired Proxy pxy;
+	@Autowired IFunction i;
+	@Autowired ISupplier c;
+	@Autowired Map<String, Object> map;
 	
 	@GetMapping("/members/page/{page}/{teamIndex}")
-	public Map<?,?> aTeamMemberlist(@PathVariable String page, @PathVariable int teamIndex) 
+	public Map<?,?> list(@PathVariable String page, @PathVariable int teamIndex) 
 	{
-		logger.info("1=========MEMBER ! LIST========={} and {}", page, teamIndex);
+		logger.info("===MEMBER LIST==={} and {}", page, teamIndex);
 		
 		MemberDTO mem = new MemberDTO();
 		mem.setTeamIndex(teamIndex);
 
 		map.clear();
+		
+		c = ()-> memberService.countATeamMembers(teamIndex);
 		map.put("pageNum", page);
 		map.put("teamIndex", teamIndex);
 		map.put("pageSize", "12");
 		map.put("blockSize", "5");
-		ISupplier c = ()-> memberService.countATeamMembers(teamIndex);
 		map.put("totalCount", c.get());
 		pxy.carryOut(map);
 		
-		IFunction i = (Object o)-> memberService.retrieveListOfMembers(pxy);
+		i = (Object o)-> memberService.retrieveListOfMembers(pxy);
 		List<?> ls = (List<?>) i.apply(pxy);
 		
 		map.clear();
@@ -64,16 +67,40 @@ public class MemmberController {
 		return map;
 	}
 	@GetMapping("/members/detail/{memberIndex}")
-	public MemberDTO MemberDetail(@PathVariable String memberIndex) 
+	public MemberDTO detail(@PathVariable int memberIndex) 
 	{
+		logger.info("===MEMBER Detail==={}", memberIndex);
 		
 		MemberDTO mem = new MemberDTO();
-		int memIndex = Integer.parseInt(memberIndex);
-		mem.setMemberIndex(memIndex);
-	
-		mem = memberService.retrieveAMemberDetail(mem);
+		mem.setMemberIndex(memberIndex);
 		
-		return mem;
+		return memberService.retrieveAMemberDetail(mem);
+	}
+	@GetMapping("/members/{incase}/{searching}")
+	public MemberDTO find(@PathVariable String incase, @PathVariable String searching) 
+	{
+		logger.info("===MEMBER A New Member ==={},{}", incase, searching);
+		
+		MemberDTO mem = new MemberDTO();
+	
+		if(searching != null) {
+			switch (incase) {
+			case "name":
+				mem.setName(searching);
+				break;
+			case "email":
+				mem.setEmail(searching);
+				break;
+			case "phone":
+				mem.setPhone(searching);
+				break;
+			default:
+				
+				break;
+			}
+		}
+		return memberService.retrieveAMemberDetail(mem);
+
 	}
 	@PutMapping("/members")
 	public Map<?,?> signup(@RequestBody MemberDTO mem) {
@@ -87,30 +114,18 @@ public class MemmberController {
     }
 
 	@PostMapping("/members/{userid}")
-	public MemberDTO login(@RequestBody MemberDTO mem, @PathVariable String userid) {
+	public MemberDTO login(@RequestBody MemberDTO mem, @PathVariable String userid)throws Exception {
 		
-		MemberDTO loginData = new MemberDTO();
-		loginData = memberService.retrieveAMember(mem);
-		return loginData;
+		logger.info("===LOGIN DTO ==={}",mem);
+		
+		return memberService.retrieveAMember(mem);
 	}
 	
-	@PutMapping("/members/{trigger}/{userid}")
-	public Map<?,?> update(@RequestBody MemberDTO mem, @PathVariable String trigger, String userid) {
+	@PutMapping("/members/{userid}")
+	public Map<?,?> updates(@RequestBody MemberDTO mem, @PathVariable String userid) {
 
-		switch (trigger) {
-		case "update":
-			memberService.modifyAMember(mem);
-			break;
-		case "disable":
-			memberService.disableAMember(mem);
-			break;
-		case "enable":
-			memberService.enableAMember(mem);
-			break;
-		default:
-			
-			break;
-		}
+		logger.info("update param {}", mem);
+		memberService.modifyAMember(mem);
 		map.clear();
 		map.put("msg","성공");
 		
@@ -120,7 +135,7 @@ public class MemmberController {
 	@Transactional
 	@PostMapping("/uploadImg/{userid}")
 	public Map<?,?> fileUpload(MultipartHttpServletRequest request, @PathVariable String userid)throws Exception{
-		logger.info("============== fileUpload(){}=================", "ENTER");
+		logger.info("=== FILE UPLOAD {}====", request);
 		String result = "";
 		Iterator<String> it = request.getFileNames();
 		map.clear();

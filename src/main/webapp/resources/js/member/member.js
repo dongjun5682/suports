@@ -89,7 +89,6 @@ member = (() => {
             $('#logout').click(() => {
             	sessionStorage.removeItem("member"); 
             	window.location.reload();
-            	alert('location.reload and = '+$.member().id);
             });
         });
         $('#alramBtn').click(()=>{
@@ -289,11 +288,17 @@ member = (() => {
     }
     let profile =()=>{
     	$('#update_mid_content').append(compo.update_player());
+    	password_tooltip();
+		$('#datepicker').datepicker({
+			locale: 'ko-kr',
+            uiLibrary: 'bootstrap4',
+            
+            	
+		});
     	$('#mem_update_btn').click(e=>{
 			$('#mem_update_btn').attr('disabled', true);
         	e.preventDefault();
     		let update = {
-    				trigger : 'update',
     				id : $.member().id,
     				name : $('form input[name="memberName"]').val(),
     				password : $('form input[name="memberPassword"]').val(),
@@ -302,14 +307,14 @@ member = (() => {
     				info : $('form input[name="memberInfo"]').val()
     		};
     		$.ajax({
-    			url : $.ctx()+'/members/'+update.trigger+'/'+update.id,
+    			url : $.ctx()+'/members/'+update.id,
     			type : 'PUT',
     			data : JSON.stringify(update),
     			dataType : 'json',
     			contentType : "application/json; charset=utf-8",
     			success : d => {
+    				alert('계정 정보가 업데이트되어 로그아웃 되었습니다.');
     				window.location.reload();
-    				alert('계정 정보가 업데이트 되어 로그아웃 되었습니다.');
     			},
     			error: function(xhr, option, error){
     				alert(xhr.status);
@@ -323,7 +328,6 @@ member = (() => {
     	$('#mem_disable_btn').click((e)=>{
         	e.preventDefault();
     		let update = {
-    				trigger : 'disable',
 					id : $.member().id,
 					password : $('form input[name="memberPassword"]').val()
 			};
@@ -333,7 +337,7 @@ member = (() => {
     };
     let profile_photo_update = () => {
     	$('#update_mid_content').append(compo.update_photo_player());
-    	$('#member_currnt_img').attr("src","resources/img/members_photo/"+$.member().photo);
+    	$('.member_currnt_img').attr("src","resources/img/members_photo/"+$.member().photo);
 		$('.fieldupdatepicture').html(compo.input_uploadImg());
 		upload_ajax();
     };
@@ -414,10 +418,10 @@ member = (() => {
            })
     	})
     };
-    // switch_trigger, update.id json require   
+    // update.id json require   
     let update_ajax = (update) => {
     	$.ajax({
-			url : $.ctx()+'/members/'+update.trigger+'/'+update.id,
+			url : $.ctx()+'/members/'+update.id,
 			type : 'PUT',
 			data : JSON.stringify(update),
 			dataType : 'json',

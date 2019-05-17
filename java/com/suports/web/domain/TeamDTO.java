@@ -7,6 +7,6 @@ import lombok.Data;
 
 @Data @Component @Lazy
 public class TeamDTO {
-	private int teamIndex, tournamentIndex, captain;
+	private int teamIndex, tournamentIndex, captain,rnum;
 	private String name, emblem, sport, sort, address, info, avgage, style;
 }

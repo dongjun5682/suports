@@ -36,7 +36,7 @@ home = (() => {
         });
     };
     let setContentView = () => {
-    
+    	
         $('#content').before(compo.header());
         $('#content').append(compo.content()).css('margin-top','0px');
         jQuery(function($) {
@@ -51,6 +51,13 @@ home = (() => {
         });
         $('#myMpa').after(compo.footer());
         $('#rm_search').append(compo.srch());
+        $('#datepicker').datepicker({
+			locale: 'ko-kr',
+            uiLibrary: 'bootstrap4',
+            format : 'yyyy/mm/dd',
+            autoPick: 'true',
+            date:''
+		});
         $('#team_search').click(() => {
             $('#position').empty().attr('id', 'people').append(compo.team_search());
         });
@@ -148,6 +155,7 @@ home = (() => {
                 });
             });
             $('#rm_search').append(compo.srch());
+            
             $('#footer').remove();
             $('#myMpa').after(compo.footer());
             $('#team_search').click(() => {
@@ -259,6 +267,7 @@ home = (() => {
         $('.login100-form-btn').click(e => {
             e.preventDefault();
             let logindata = {
+            	state : 'disabled',
                 id: $('form input[name="username"]').val(),
                 password: $('form input[name="pass"]').val()
             };
@@ -285,13 +294,14 @@ home = (() => {
                 					data : JSON.stringify(logindata),
                 					dataType : 'json',
                 					contentType : "application/json; charset=utf-8",
-                					success : d => {}
+                					success : d => {
+                						swal("계정이 다시 활성화 되었습니다.", {
+                             		       icon: "success",
+                             		     });
+                					}
                 				})
-                			   swal("계정이 다시 활성화 되었습니다.", {
-                		       icon: "success",
-                		     });
                 		   } else {
-                		     swal("비활성화 상태가 계속됩니다.");
+                		     swal("비활성화 상태가 유지됩니다.");
                 		   }
                 		 });
                    } else {
