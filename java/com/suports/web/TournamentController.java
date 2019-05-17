@@ -31,7 +31,6 @@ public class TournamentController {
 		memDTO.setMemberIndex(Integer.parseInt(userid));
 		IFunction i = (Object o)-> teamMap.selectTeam(memDTO);
 		teamDTO = (TeamDTO) i.apply(memDTO);
-		//동적 으로 숫자값 던지기
 		return teamDTO;
 	}
 }

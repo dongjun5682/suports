@@ -60,14 +60,12 @@ public class MemmberController {
 		map.put("members", ls);
 		map.put("pxy", pxy);
 		
-		System.out.println(" ls members : "+ls.toString());
 	
 		return map;
 	}
 	@GetMapping("/members/detail/{memberIndex}")
 	public MemberDTO MemberDetail(@PathVariable String memberIndex) 
 	{
-		logger.info("1=========MEMBER ! Detail========={}", memberIndex);
 		
 		MemberDTO mem = new MemberDTO();
 		int memIndex = Integer.parseInt(memberIndex);
@@ -75,7 +73,6 @@ public class MemmberController {
 	
 		mem = memberService.retrieveAMemberDetail(mem);
 		
-		logger.info("3 return DTO mem ==={}", mem);
 		return mem;
 	}
 	@PutMapping("/members")
@@ -94,17 +91,12 @@ public class MemmberController {
 		
 		MemberDTO loginData = new MemberDTO();
 		loginData = memberService.retrieveAMember(mem);
-		
-		logger.info("Login in mem = {}",loginData);
-		
 		return loginData;
 	}
 	
 	@PutMapping("/members/{trigger}/{userid}")
 	public Map<?,?> update(@RequestBody MemberDTO mem, @PathVariable String trigger, String userid) {
 
-		logger.info("update param ==trigger={} ==userid={}",trigger, userid);
-		
 		switch (trigger) {
 		case "update":
 			memberService.modifyAMember(mem);

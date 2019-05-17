@@ -36,8 +36,6 @@ public class StadiumController {
 	
 	@GetMapping("/stadiums/page/{page}")
 	public Map<?,?> list(@PathVariable String page){
-		logger.info("=======list  asdasd 진입 ======");
-		System.out.println(page);
 		map.clear();
 		map.put("pageNum", page);
 		map.put("pageSize", "12");
@@ -45,18 +43,19 @@ public class StadiumController {
 		ISupplier c = ()-> staMap.countStadium();
 		map.put("totalCount", c.get());
 		pxy.carryOut(map);
-		IFunction i = (Object o)-> staMap.selectListStadium(pxy);
+		IFunction i = (Object o)-> staMap.allStadium(pxy);
 		List<?> ls = (List<?>) i.apply(pxy);
 		map.clear();
 		map.put("ls", ls);
 		map.put("pxy", pxy);
-		System.out.println(ls.toString());
 		return map;
 	}
-	@GetMapping("/stadiums/search/{word}/{page}")
+	@GetMapping("/stadiums/search/{word}/{page}/{date}/{time}")
 	public Map<?,?> search(	
 			@PathVariable String word,	
-			@PathVariable String page) {
+			@PathVariable String page,
+			@PathVariable String date,
+			@PathVariable String time) {
 		logger.info("=======경기장 리스트 진입 ======");
 		String search = word;
 		ISupplier c = ()-> staMap.countSearch(search);
@@ -65,14 +64,15 @@ public class StadiumController {
 		map.put("pageNum", page);
 		map.put("pageSize", "12");
 		map.put("blockSize", "5");
+		map.put("date","2019/05/10");
+		map.put("time",time);
 		map.put("totalCount",c.get());
-		pxy.carryOut(map);
+		pxy.search(map);
 		IFunction i = (Object o)-> staMap.searchStadium(pxy);
 		List<?> ls = (List<?>) i.apply(pxy);
 		map.clear();
 		map.put("pxy", pxy);
 		map.put("srch", ls);
-		System.out.println(ls.toString());
 		return map;
 	}
 	@GetMapping("/seoul/search/{search}/{page}")
@@ -81,7 +81,6 @@ public class StadiumController {
 			@PathVariable("page") String page) {
 		logger.info("=======서울 리스트 진입 ======");
 		String se = search;
-		System.out.println(search);
 		ISupplier c = ()-> staMap.countSeoulSearch();
 		map.clear();
 		map.put("search", se);
@@ -95,7 +94,6 @@ public class StadiumController {
 		map.clear();
 		map.put("pxy", pxy);
 		map.put("srch", ls);
-		System.out.println(ls.toString());
 		return map;
 	}
 	@GetMapping("/chatbot/search/{search}")
@@ -123,7 +121,6 @@ public class StadiumController {
 			@PathVariable("page") String page) {
 		logger.info("=======인천 리스트 진입 ======");
 		String se = search;
-		System.out.println(search);
 		ISupplier c = ()-> staMap.countSeoulSearch();
 		map.clear();
 		map.put("search", se);
@@ -137,14 +134,12 @@ public class StadiumController {
 		map.clear();
 		map.put("pxy", pxy);
 		map.put("srch", ls);
-		System.out.println(ls.toString());
 		return map;
 	}
 	@GetMapping("/incheon/search/{search}")
 	public Map<?,?> searchIncheonChat(@PathVariable("search") String search) {
 		logger.info("=======인천 리스트 진입 ======");
 		String se = search;
-		System.out.println(search);
 		ISupplier c = ()-> staMap.countIncheonSearch();
 		map.clear();
 		map.put("search", se);
@@ -155,14 +150,12 @@ public class StadiumController {
 		map.clear();
 		map.put("pxy", pxy);
 		map.put("srch", ls);
-		System.out.println(ls.toString());
 		return map;
 	}
 	@GetMapping("/gyeonggi/search/{search}")
 	public Map<?,?> searchGyeonggiChat(@PathVariable("search") String search) {
 		logger.info("=======경기도 리스트 진입 ======");
 		String se = search;
-		System.out.println(search);
 		ISupplier c = ()-> staMap.countGyeonggiSearch();
 		map.clear();
 		map.put("search", se);
@@ -173,14 +166,12 @@ public class StadiumController {
 		map.clear();
 		map.put("pxy", pxy);
 		map.put("srch", ls);
-		System.out.println(ls.toString());
 		return map;
 	}
 	@GetMapping("/gyeonggi/search/{search}/{page}")
 	public Map<?,?> searchGyeonggi(	
 			@PathVariable("search") String search,	
 			@PathVariable("page") String page) {
-		logger.info("=======경기도 리스트 진입 ======");
 		String se = search;
 		System.out.println(search);
 		ISupplier c = ()-> staMap.countSeoulSearch();
@@ -196,15 +187,14 @@ public class StadiumController {
 		map.clear();
 		map.put("pxy", pxy);
 		map.put("srch", ls);
-		System.out.println(ls.toString());
 		return map;
 	}
 	@GetMapping("/stadiums")
 	public Map<?,?> list(){
-		ISupplier s = ()-> staMap.selectAllStadium();
+		ISupplier s = ()-> staMap.areaAllStadium();
 		List<?> allStadium = (List<?>) s.get();
-		map.clear();
 		System.out.println(allStadium.toString());
+		map.clear();
 		map.put("home", allStadium);
 		return map;
 	}
@@ -212,7 +202,6 @@ public class StadiumController {
 	public Map<?,?> chat(@PathVariable String value){ 
 		map.clear(); 
 		String val = "%"+value+"%";
-		System.out.println("여기탔다"+val);
 		ChatBotDTO chat = new ChatBotDTO();
 		chat.setMsg(val);
 		IFunction i = (Object o) -> chaMap.ChatBot(chat);
@@ -221,24 +210,14 @@ public class StadiumController {
 		map.put("value", ch);
 		return map; 
 		}
-	/*
-	 * @GetMapping("/map") public Map<?,?> map_list(){ map.clear(); ISupplier c =
-	 * ()-> staMap.countStadium(); map.put("totalCount", c.get()); ISupplier s =
-	 * ()-> staMap.mapLocation(); List<?> allStadium = (List<?>) s.get();
-	 * map.clear(); System.out.println(allStadium.toString()); map.put("map_lo",
-	 * allStadium); return map; }
-	 */
 	@GetMapping("/map")
 	public Map<?,?> map_list(){
-		logger.info("=======list  maplist 진입 ======");
 		map.clear();
 		ISupplier c = ()-> staMap.countStadium();
 		map.put("totalCount", c.get());
-		System.out.println("aaaaa"+c.get().toString());
 		IFunction i = (Object o)-> staMap.mapLocation();
 		List<?> ls = (List<?>) i.apply(c);
 		map.put("map_lo", ls);
-		System.out.println(ls.toString());
 		return map;
 	}
 }

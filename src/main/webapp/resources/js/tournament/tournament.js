@@ -49,10 +49,7 @@ tour =(()=>{
    	   $('#footer').remove();
 	   $('.tournament-content button').click(function(e){
    		let _this = $(this).attr('id');
-   		alert($.member().memberIndex);
    		$.getJSON($.ctx()+'/tournament/'+$.member().memberIndex , d=>{
-   			alert(d.captain);
-   			
    			if(d.captain === null){
    				alert(_this + '주장만 신청 가능!!');
    				$('#myModal_tour').modal("hide");
@@ -64,7 +61,6 @@ tour =(()=>{
    																		,'width': '300px'
    																		,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.r_16 .m_segment .r_16_1').html('<span>'
    						+'<a href="#">'
@@ -82,7 +78,6 @@ tour =(()=>{
    						,'width': '300px'
    						,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.r_16 .m_segment .r_16_2').html('<span>'
    						+'<a href="#">'
@@ -100,7 +95,6 @@ tour =(()=>{
    						,'width': '300px'
    						,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.r_16 .m_segment .r_16_3').html('<span>'
    						+'<a href="#">'
@@ -118,7 +112,6 @@ tour =(()=>{
    						,'width': '300px'
    						,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.r_16 .m_segment .r_16_4').html('<span>'
    						+'<a href="#">'
@@ -136,7 +129,6 @@ tour =(()=>{
    						,'width': '300px'
    						,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.r_16 .m_segment .r_16_5').html('<span>'
    						+'<a href="#">'
@@ -154,7 +146,6 @@ tour =(()=>{
    						,'width': '300px'
    						,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.r_16 .m_segment .r_16_6').html('<span>'
    						+'<a href="#">'
@@ -172,7 +163,6 @@ tour =(()=>{
    						,'width': '300px'
    						,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.r_16 .m_segment .r_16_7').html('<span>'
    						+'<a href="#">'
@@ -190,7 +180,6 @@ tour =(()=>{
    						,'width': '300px'
    						,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.r_16 .m_segment .r_16_8').html('<span>'
    						+'<a href="#">'
@@ -207,7 +196,6 @@ tour =(()=>{
    						,'width': '300px'
    						,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.l_16 .m_segment .l_16_1').html('<span>'
    								+'              <a href="#">'
@@ -224,7 +212,6 @@ tour =(()=>{
    						,'width': '300px'
    						,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.l_16 .m_segment .l_16_2').html('<span>'
    								+'              <a href="#">'
@@ -241,7 +228,6 @@ tour =(()=>{
    						,'width': '300px'
    						,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.l_16 .m_segment .l_16_3').html('<span>'
    								+'              <a href="#">'
@@ -258,7 +244,6 @@ tour =(()=>{
    						,'width': '300px'
    						,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.l_16 .m_segment .l_16_4').html('<span>'
    								+'              <a href="#">'
@@ -275,7 +260,6 @@ tour =(()=>{
    						,'width': '300px'
    						,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.l_16 .m_segment .l_16_5').html('<span>'
    								+'              <a href="#">'
@@ -292,7 +276,6 @@ tour =(()=>{
    						,'width': '300px'
    						,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.l_16 .m_segment .l_16_6').html('<span>'
    								+'              <a href="#">'
@@ -309,7 +292,6 @@ tour =(()=>{
    						,'width': '300px'
    						,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.l_16 .m_segment .l_16_7').html('<span>'
    								+'              <a href="#">'
@@ -326,7 +308,6 @@ tour =(()=>{
    						,'width': '300px'
    						,'margin': '300px'});
    					$('.btn-primary').click(()=>{
-   						alert('확인 클릭!!');
    						$('#myModal_tour').modal('hide');
    						$('.l_16 .m_segment .l_16_8').html('<span>'
    								+'              <a href="#">'

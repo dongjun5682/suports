@@ -83,7 +83,6 @@ home = (() => {
                 case 'team':
                     $('#content').css('margin-top', '80px');
                     $('#map').remove();
-                    alert($.member().teamIndex);
                     team.onCreate();
                     break;
                 case 'tourment':
@@ -96,22 +95,33 @@ home = (() => {
         })
         $('#sear-btn').click(function() {
             /*alert('addr : '+ $('.search-addr').val());
-            alert('date : '+ $('.search-date').val());
-            alert('time : '+ $('.search-time').val());
+          
+          	/stadiums/page/{page}
+          	 * 
             alert('sport : '+ $('.search-sports').val());
             alert('position : '+ $('.search-position').val());*/
+        	  alert('time : '+ $('.search-time').val());
+        	  alert('date : '+ $('.search-date').val());
+        	if($('.search-addr').val() == '모두보기'){
+        		let x = {p:1};
+        		stadium.list_after(x);
+        	}else if($('.search-addr').val() == ''){
+        	}
             let search = {
                 p: 1,
-                s: $('.search-addr').val()
+                s: $('.search-addr').val(),
+                d: $('.search-time').val(),
+                t: $('search-date').val()
             };
-            if (search.s === '') {
-                let arr = {
-                    p: 1
-                };
-                stadium.list(arr);
-            } else {
-                stadium.srch(search);
-            }
+            
+//            if (search.s == '') {
+//                let arr = {
+//                    p: 1
+//                };
+//                stadium.list(arr);
+//            } else {
+//                stadium.srch(search);
+//            }
         });
         $('#stadium_list').click(() => {
             $('#content').css('margin-top', '80px');
@@ -189,7 +199,7 @@ home = (() => {
                             '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                             '    </div>' +
                             '    <div class="course-people">' +
-                            '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                            '      <span class="course-price course-free">' + j.people + '/' + 22 + '</span>' +
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.seoul_stadium').click(function() {
@@ -209,7 +219,7 @@ home = (() => {
                             '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                             '    </div>' +
                             '    <div class="course-people">' +
-                            '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                            '      <span class="course-price course-free">' + j.people + '/' + 22 + '</span>' +
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.Incheon_stadium').click(function() {
@@ -229,7 +239,7 @@ home = (() => {
                             '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                             '    </div>' +
                             '    <div class="course-people">' +
-                            '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                            '      <span class="course-price course-free">' + j.people + '/' + 22 + '</span>' +
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.gyeonggi_stadium').click(function() {

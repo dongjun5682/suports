@@ -19,10 +19,12 @@
 		<result property="time" column="TIME" />
 		<result property="price" column="TIME_PRICE" />
 		<result property="date" column="DATE" />
+		<result property="people" column="PEOPLE" />
+
 
 	</resultMap>
 
-	<select id="selectListStadium"
+	<select id="allStadium"
 		parameterType="com.suports.web.cmm.Proxy" resultMap="result">
 		SELECT S2.*
 		FROM
@@ -42,13 +44,23 @@
 
 	<select id="searchStadium" resultMap="result"
 		parameterType="com.suports.web.cmm.Proxy">
-		SELECT S2.*
-		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
-		FROM (SELECT * FROM STADIUM ORDER BY STADIUM_INDEX DESC) S, (SELECT
-		@ROWNUM:=0)TMP
-		WHERE S.STADIUM_ADDR LIKE '%${search}%') S2
-		WHERE S2.RNUM
-		BETWEEN #{startRow} AND #{endRow};
+		SELECT T2.*,COUNT(G.MEMBER_INDEX) AS PEOPLE
+		FROM GAME G,(SELECT
+		S.STADIUM_INDEX,S.STADIUM_NAME,S.STADIUM_PHOTO,S.STADIUM_ADDR,S.LATITUDE,S.HARDNESS,T1.TIME_INDEX,A.AREA_NAME,T1.TIME_PRICE,T1.TIME,T1.DATE
+		FROM
+		STADIUM S JOIN AREA A
+		ON S.AREA_INDEX LIKE A.AREA_INDEX,
+		(SELECT
+		STADIUM_INDEX,TIME_INDEX,TIME_PRICE,TIME,D.DATE
+		FROM TIME T,(SELECT
+		DATE
+		FROM DATE
+		WHERE DATE LIKE '#{date}') D
+		WHERE TIME = '#{time}') T1
+		WHERE S.STADIUM_INDEX LIKE T1.STADIUM_INDEX AND S.STADIUM_ADDR LIKE
+		'%#{search}%') T2
+		WHERE G.TIME_INDEX LIKE T2.TIME_INDEX
+		GROUP BY T2.TIME_INDEX;
 	</select>
 	<select id="selectSeoulStadium" resultMap="result"
 		parameterType="com.suports.web.cmm.Proxy">
@@ -81,12 +93,14 @@
 		#{startRow} AND #{endRow}
 	</select>
 	<select id="countSearch" resultType="int" parameterType="string">
-		SELECT COUNT(*)
+		SELECT
+		COUNT(*)
 		FROM(SELECT S2.*
-				FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
-							FROM (SELECT * 
-										FROM STADIUM ORDER BY STADIUM_INDEX DESC) S,(SELECT	@ROWNUM:=0)TMP
-										WHERE S.STADIUM_ADDR LIKE '%${value}%') S2) S3;
+		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
+		FROM (SELECT *
+		FROM STADIUM ORDER BY STADIUM_INDEX DESC) S,(SELECT
+		@ROWNUM:=0)TMP
+		WHERE S.STADIUM_ADDR LIKE '%${value}%') S2) S3;
 	</select>
 	<select id="countSeoulSearch" resultType="int"
 		parameterType="string">
@@ -124,25 +138,36 @@
 		WHERE S.AREA_INDEX LIKE
 		'12') S2) S3
 	</select>
-	<select id="selectAllStadium" resultMap="result">
+	<select id="areaAllStadium" resultMap="result">
 		SELECT
-		S.*,T1.TIME_INDEX,A.AREA_NAME,T1.TIME_PRICE,T1.TIME,T1.DATE
+		T2.*,COUNT(G.MEMBER_INDEX) AS PEOPLE
+		FROM GAME G,(SELECT
+		S.STADIUM_INDEX,S.STADIUM_NAME,S.STADIUM_PHOTO,S.STADIUM_ADDR,S.LATITUDE,S.HARDNESS,
+		T1.TIME_INDEX,A.AREA_NAME,T1.TIME_PRICE,T1.TIME,T1.DATE
 		FROM
-		STADIUM S JOIN AREA A
+		STADIUM S
+		JOIN AREA A
 		ON S.AREA_INDEX LIKE A.AREA_INDEX,
 		(SELECT
 		STADIUM_INDEX,TIME_INDEX,TIME_PRICE,TIME,D.DATE
-		FROM TIME T,(SELECT DATE
+		FROM TIME T,(SELECT
+		DATE
 		FROM DATE
 		WHERE DATE LIKE '2019/05/10') D
 		WHERE TIME = '09:00') T1
-		WHERE S.STADIUM_INDEX LIKE T1.STADIUM_INDEX;
+		WHERE S.STADIUM_INDEX LIKE T1.STADIUM_INDEX) T2
+		WHERE G.TIME_INDEX LIKE
+		T2.TIME_INDEX
+		GROUP BY T2.TIME_INDEX;
 	</select>
-	
-	<select id="selectStadiumName" parameterType="int" resultType="string">
-		SELECT STADIUM_NAME FROM STADIUM WHERE STADIUM_INDEX= #{value};
+
+	<select id="selectStadiumName" parameterType="int"
+		resultType="string">
+		SELECT STADIUM_NAME FROM STADIUM WHERE STADIUM_INDEX=
+		#{value};
 	</select>
-	<select id="mapLocation" parameterType="com.suports.web.cmm.Proxy" resultMap="result">
+	<select id="mapLocation"
+		parameterType="com.suports.web.cmm.Proxy" resultMap="result">
 		SELECT S2.*
 		FROM
 		(SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
@@ -152,5 +177,5 @@
 		WHERE
 		S2.RNUM
 	</select>
-	
+
 </mapper>

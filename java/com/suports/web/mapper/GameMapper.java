@@ -10,7 +10,7 @@ import com.suports.web.domain.GameDTO;
 @Repository
 public interface GameMapper {
 	
-	public List<?> selectGame(int index);
+	public List<?> selectGame(String index);
 	public int selectGameIndex(GameDTO gmDTO);
 	public void updateMember(Proxy pxy);
 	public List<?> selectOverlap(GameDTO gmDTO);

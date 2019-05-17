@@ -84,6 +84,8 @@ ul,ol{
 
 .white-text {
 	color: #FFF;
+	font-size: 70px;
+    margin-bottom: 50px;
 }
 
 blockquote {
@@ -262,7 +264,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 
 #header.transparent-nav .main-menu li a {
-	color:green;
+	color:#149C65;
 	font-size:16px;
 }
 
@@ -1284,7 +1286,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 
 .booking-form{
-	    background: rgba(0, 0, 0, 0.4);
+	    background: rgba(0, 0, 0, 0.5);
     padding: 40px;
     border-radius: 6px;
 }

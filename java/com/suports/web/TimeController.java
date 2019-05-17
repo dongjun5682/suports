@@ -14,7 +14,6 @@ public class TimeController {
 	
 	@GetMapping("/time/stadium/{stadiumIndex}")
 	public Map<?, ?> timeStadium(@PathVariable String stadiumIndex){
-		System.out.println(" 타임 입장!!!!");
 		return map;
 	}
 }

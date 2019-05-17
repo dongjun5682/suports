@@ -14,14 +14,14 @@
 		<result property="photo" column="PHOTO" />
 	</resultMap>
 
-	<select id="selectGame" parameterType="int" resultMap="result">
+	<select id="selectGame" parameterType="string" resultMap="result">
 		SELECT
 		GAME_INDEX,POSITION_NAME,TIME_INDEX,M.PHOTO,G.MEMBER_INDEX
 		FROM GAME G
 		LEFT JOIN MEMBER M
 		ON G.MEMBER_INDEX LIKE M.MEMBER_INDEX
 		WHERE
-		G.TIME_INDEX LIKE #{stadiumIndex}
+		G.TIME_INDEX LIKE #{value}
 		ORDER BY G.GAME_INDEX;
 	</select>
 
@@ -37,8 +37,8 @@
 	<select id="updateMember" parameterType="com.suports.web.cmm.Proxy">
 		UPDATE GAME
 		SET
-		MEMBER_INDEX = ${mIndex}
-		WHERE GAME_INDEX = ${gmNumber};
+		MEMBER_INDEX = #{mIndex}
+		WHERE GAME_INDEX = #{gmNumber};
 	</select>
 
 	<select id="selectOverlap"

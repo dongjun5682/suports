@@ -20,10 +20,12 @@ public class GameController {
 	@Autowired Map<String,Object> map;
 	@Autowired GameMapper gameMap;
 
-	@GetMapping("/game/position/{stadiumIndex}")
-	public Map<?,?> positionList(@PathVariable int stadiumIndex){
-		IFunction i = (Object o)  -> gameMap.selectGame(stadiumIndex);
-		List<?> list= (List<?>) i.apply(stadiumIndex);
+	@GetMapping("/game/position/{timeIndex}")
+	public Map<?,?> positionList(@PathVariable String timeIndex){
+		IFunction i = (Object o)  -> gameMap.selectGame(timeIndex);
+		List<?> list= (List<?>) i.apply(timeIndex);
+		System.out.println(list.toString());
+		System.out.println(timeIndex);
 		map.clear();
 		map.put("position",list);
 		return map;

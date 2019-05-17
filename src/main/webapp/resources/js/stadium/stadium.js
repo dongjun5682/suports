@@ -42,15 +42,16 @@ stadium = (() => {
         $('#content').empty().html(compo.stadium_list_sidebar());
         $('#map_button').click(() =>{
             $('#content').empty().html(compo.stadium_list_sidebar());
-            alert('지도');
             $('.col-md-9').append(compo.map());
             var locations = new Array();
             $(document).ready(function initialize(d) {
             	$.getJSON($.ctx() + '/map',d => {
             	$.each(d.map_lo, (i, j) => {
             		let date = new Object();
-            		/*j.latitude = parseFloat(j.latitude);
-                    j.hardness = parseFloat(j.hardness);*/
+            		/*
+					 * j.latitude = parseFloat(j.latitude); j.hardness =
+					 * parseFloat(j.hardness);
+					 */
             		date.name = j.stadiumName;
             		date.addr = j.stadiumAddr;
             		date.latitude = j.latitude;
@@ -82,7 +83,6 @@ stadium = (() => {
           		       return function() {
           		         infowindow.setContent(j.name,j.addr);
           		         infowindow.open(map, marker);
-          		         alert(j.name);
           		         $('#content').compo.stadium_list_detail(j);
           		       }
           		     })(marker, i));
@@ -197,11 +197,11 @@ stadium = (() => {
         $('#map').empty();
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
+        $('#content').css('margin-top','80px');
         $('#map_button').click(() => {
             $('#content').empty().html(compo.stadium_list_sidebar());
         });
         $('#area_srch').on('click', () => {
-            alert('검색 클릭')
             let search = $('#search').val();
             if ($.fn.nullChecker(search)) {
                 alert('검색어를 입력하십시오');
@@ -285,7 +285,6 @@ stadium = (() => {
     }
 
 
-    //드래그앤드랍 업데이트
     let list_detail = (j) => {
         $('#content').html(compo.stadium_list_detail(j));
         let html = '<div class="a-team" id="roster_100"  ondrop="drop(event)" ondragover="allowDrop(event)"> ' +
@@ -320,7 +319,7 @@ stadium = (() => {
             'margin-top': '110px',
             'height': '720px'
         }).html(html);
-        $.getJSON($.ctx() + '/game/position/' + j.stadiumIndex, d => {
+        $.getJSON($.ctx() + '/game/position/' + j.timeIndex, d => {
             $.each(d.position, (i, j) => {
                 if (j.position === 'FW_' + i && j.memberIndex != null) {
                     $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#FW_' + i);
@@ -339,29 +338,32 @@ stadium = (() => {
 
         });
         $('#footer').css('.section', 'padding-bottom:78px;');
-        $('#footer').css('.section', 'background-color: #1db91d9e;');
-        $('#footer').attr('style', 'position: fixed;left: 0;bottom: 0;width: 100%;background-color: #8cff88;color: white;text-align: center;padding-bottom: 5px;padding-bottom: 34px;-top: 5px;padding-top: 0px;"')
+        $('#footer').attr('style', 'position: fixed;left: 0;bottom: 0;width: 100%;background-color: #00A86B;color: white;text-align: center;padding-bottom: 5px;padding-bottom: 34px;-top: 5px;padding-top: 0px;"')
         $('#footer').html('<div class="navbar-brand">' +
-            '<div class= col-ms-1>' +
-            '<a class="logo" href="index.html">' +
-            '<img src="resources/img/logo/logo.png" alt="logo"></a>' +
+            '<div class= col-md-12>' +
+            '<div class="col-md-2">'+
+            '<a class="logo" href="index.html"><img src="resources/img/logo/logo.png" alt="logo"></a>' +
+    		'			<span>'+j.stadiumName+'</span>'+
+            '</div>'+
+            '<div class="col-md-10">'+
+    		'			<span>'+j.date+'</span><br>'+
+    		'			<span>경기 시간 '+j.time+'</span>'+
             '<button type="button" id="pay_btn_1" class="btn hover2" data-toggle="modal" data-target="#myModal" style="width: 35%;padding: 16px;background-color: #ffffff;margin-bottom: 38px;">' +
             '<span style="color:black">예약하기</span>' +
             '</button>' +
-            '</div>' +
-            '<div class= col-ms-11>' +
-            '</div>' +
+            '</div>'+
             '</div>' +
             '</div>');
-        //map 설정 ////
+        // map 설정 ////
         $(document).ready(function() {
             initMap(j);
         });
+        $('#myMpa').append('		<div class="col-md-4" style="margin: auto auto 30px 220px;">'
+        		+'			<h1> 위치 </h1>'
+        		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
+        		+'		</div>');
         $('#myMpa').append(compo.map(j));
-        $('#myMpa').before('		<div class="col-md-4" style="margin: auto auto 30px 220px;">'
-		+'			<h1> 위치 </h1>'
-		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
-		+'		</div>');
+       
         $('#map').css({
             'width': '1270px',
             'height': '400px',
@@ -370,9 +372,8 @@ stadium = (() => {
         });
         
         
-        //예약 확인 버튼
+        // 예약 확인 버튼
         $('#pay_btn_1').click(() => {
-            alert('로그인을 하시오');
             $('#pay_btn_1').attr({
                 'data-target': '#myModal',
                 'data-toggle': 'modal'
@@ -380,7 +381,6 @@ stadium = (() => {
             home.login();
         });
         $('#a-team').click((d) => {
-            alert('로그인을 하시오');
             $('#a-team').attr({
                 'data-target': '#myModal',
                 'data-toggle': 'modal'
@@ -408,7 +408,7 @@ stadium = (() => {
             '</div>' +
             '</div>' +
             '</div>');
-        //map 설정 ////
+        // map 설정 ////
         $(document).ready(function() {
             initMap(j);
         });
@@ -419,12 +419,12 @@ stadium = (() => {
             'margin-bottom': '100px',
             'margin-left':'235px'
         });
-        //예약 확인 버튼
+        // 예약 확인 버튼
         $('#pay_btn_1').click(() => {
             let position = $('#roster_ball').parent().attr('id');
             let ac_code = 0;
             if (position == 'roster_100') {
-                alert('포지션을 선택해주세요');
+            	swal('포지션을 선택해주세요');
             } else {
             	sessionStorage.setItem('posi', $('#roster_ball').parent().attr('id'));
                 $('#pay_btn_1').attr({
@@ -434,7 +434,7 @@ stadium = (() => {
                 $('.modal-content').css({
                     'border-radius': '6px',
                     'padding': '20px',
-                    'margin-top': '189px',
+                    'margin-top': '160px',
                     'border': '5px solid #468044'
                 }).html(compo.pay_btn(j));
                 $('.btn-primary').css({
@@ -450,6 +450,8 @@ stadium = (() => {
                         'posi': sessionStorage.getItem('posi')
                     };
                     payment(arr);
+                    $('.col-md-4').remove();
+// payment_page(arr);
                 });
             }
         });
@@ -457,21 +459,34 @@ stadium = (() => {
 
     let payment = arr => {
         $('#footer').empty();
-        $('#map').remove(); // 확인 및 결제 예약 맵 삭제
+        $('#map').remove();
         $('#content').empty().html(compo.payment(arr)).css('margin-top', '100px');
-        $('#payment_reservation').click(e=> {
-        	alert(arr.stadium.price);
-        	payment_page(arr);
+        $('#payment_btn').click(e=> {
+			// payment_page(arr);
+        	 $.getJSON($.ctx() + '/reservation/payment/' + arr.stadium.timeIndex + '/' + arr.posi + '/' + $.member().memberIndex+'/'+arr.stadium.stadiumIndex
+              		, d=> {
+              	let message = new Array();
+              	$.each(d.alram,(i,j)=>{
+              		message[i] = j.message;
+              	})
+              	let res = {
+                      'stadium': arr.stadium,
+                      'res': d.res,
+                      'messege' : message
+                  };
+                  payment_reservation(res)
+              })
+
         	// 나중에 유효성 검사 하기
-//        	let first_name = $('.name_1').val();
-//        	let last_name = $('.name_2').val();
-//        	let card_1 = $('.cardnumber_1').val();
-//        	let card_2 = $('.cardnumber_2').val();
-//        	let card_3 = $('.cardnumber_3').val();
-//        	let card_4 = $('.cardnumber_4').val();
-//        	let validThru = $('.validThru').val();
-//        	let cvv = $('.cvv').val();
-//        	let birthday = $('.birthday').val();
+// let first_name = $('.name_1').val();
+// let last_name = $('.name_2').val();
+// let card_1 = $('.cardnumber_1').val();
+// let card_2 = $('.cardnumber_2').val();
+// let card_3 = $('.cardnumber_3').val();
+// let card_4 = $('.cardnumber_4').val();
+// let validThru = $('.validThru').val();
+// let cvv = $('.cvv').val();
+// let birthday = $('.birthday').val();
         })
 
     }
@@ -498,8 +513,7 @@ stadium = (() => {
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
         $('#content').css('margin-top', '80px');
-        alert('asdasd');
-        let url = $.ctx() + '/stadiums/search/' + x.s + '/' + x.p;
+        let url = $.ctx() + '/stadiums/search/' + x.s + '/' + x.p+'/'+x.d+'/'+x.t;
         $.getJSON(url, d => {
             $('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
             $.each(d.srch, (i, j) => {
@@ -984,7 +998,7 @@ stadium = (() => {
          'margin-top': '110px',
          'height': '720px'
      }).html(html);
-     $.getJSON($.ctx() + '/game/position/' + j.stadiumIndex, d => {
+     $.getJSON($.ctx() + '/game/position/' + j.timeIndex, d => {
          $.each(d.position, (i, j) => {
              if (j.position === 'FW_' + i && j.memberIndex != null) {
                  $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#FW_' + i);
@@ -1039,7 +1053,7 @@ stadium = (() => {
          'height': '640px'
      }).html(html);
      alert(j.stadiumIndex);
-     $.getJSON($.ctx() + '/game/position/'+ j.stadiumIndex, d => {
+     $.getJSON($.ctx() + '/game/position/'+ j.timeIndex, d => {
          $.each(d.position, (i, j) => {
              if (j.position === 'FW_' + i && j.memberIndex != null) {
                  $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#FW_' + i);
@@ -1076,7 +1090,6 @@ stadium = (() => {
         });
     }
     let payment_page =(arr)=>{
-    	alert(arr.timeIndex);
     	IMP.init('imp41361307');
     	IMP.request_pay({
     	    pg : 'html5_inicis', // version 1.1.0부터 지원.
@@ -1104,7 +1117,6 @@ stadium = (() => {
             		, d=> {
             	let message = new Array();
             	$.each(d.alram,(i,j)=>{
-            		alert(j.message);
             		message[i] = j.message;
             	})
             	let res = {
