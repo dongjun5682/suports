@@ -58,19 +58,20 @@ home = (() => {
             $('#people').empty().attr('id', 'position').append(compo.solo_search());
         });
         home_list();
-//        $.getScript($.js()+'/compo/compo.js',()=>{
-//         	$.getScript($.js()+'/home/chat.js',()=>{
-//         		$(compo.chatbot()).appendTo('#myMpa');	
-//         		$('#chat_body').hide().after( '<button id="chat_ball" style="margin-left: 1373px;width: 5%;margin-bottom: 40px;"><img src="resources/img/soccer-ball.png" style="width: 101%; margin-left: 127px;"></button>' );
-//         			  $("#chat_ball").click(function(){
-//         				  alert('클릭');
-//         				 $('#chat_body').show();
-//         				 	chat.chat_bot();
-//         			  });
-//         		
-//          	});
-//        });
-
+        $.getScript($.js()+'/compo/compo.js',()=>{
+         	$.getScript($.js()+'/home/chat.js',()=>{
+         		$('#myMpa').before(compo.chatbot());
+         		$('#chat_body').hide().after( '<button id="chat_ball" style="margin-left: 1373px;width: 4%;margin-bottom: 40px;"><img src="resources/img/soccer-ball.png" style="width: 101%; margin-left: 127px;"></button>' );
+         		$('#chat_ball').css('z-index', '0');
+         			  $("#chat_ball").click(function(){
+         				  alert('클릭');
+         				 alert('홈 챗봇');
+         				 $('#chat_body').show();
+         				 	chat.chat_bot();
+         			  });
+         		
+          	});
+        });
         $('.navbar-right a').click(function(e) {
             let _this = $(this).attr('id');
             switch (_this) {

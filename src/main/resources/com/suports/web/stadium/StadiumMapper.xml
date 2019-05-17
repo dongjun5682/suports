@@ -166,16 +166,4 @@
 		SELECT STADIUM_NAME FROM STADIUM WHERE STADIUM_INDEX=
 		#{value};
 	</select>
-	<select id="mapLocation"
-		parameterType="com.suports.web.cmm.Proxy" resultMap="result">
-		SELECT S2.*
-		FROM
-		(SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, S.*
-		FROM (SELECT * FROM STADIUM
-		ORDER BY STADIUM_INDEX DESC) S, (SELECT
-		@ROWNUM:=0)TMP) S2
-		WHERE
-		S2.RNUM
-	</select>
-
 </mapper>

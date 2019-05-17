@@ -5,6 +5,6 @@ import com.suports.web.domain.ChatBotDTO;
 
 @Repository
 public interface ChatBotMapper {
-	public ChatBotDTO ChatBot(ChatBotDTO chat);
+	public ChatBotDTO chatBot(ChatBotDTO chat);
 	
 }

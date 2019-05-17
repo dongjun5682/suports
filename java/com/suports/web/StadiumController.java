@@ -204,18 +204,20 @@ public class StadiumController {
 		String val = "%"+value+"%";
 		ChatBotDTO chat = new ChatBotDTO();
 		chat.setMsg(val);
-		IFunction i = (Object o) -> chaMap.ChatBot(chat);
+		IFunction i = (Object o) -> chaMap.chatBot(chat);
 		ChatBotDTO ch = (ChatBotDTO) i.apply(chat);
 		System.out.println(ch);
 		map.put("value", ch);
 		return map; 
 		}
+	
 	@GetMapping("/map")
 	public Map<?,?> map_list(){
 		map.clear();
 		ISupplier c = ()-> staMap.countStadium();
 		map.put("totalCount", c.get());
-		IFunction i = (Object o)-> staMap.mapLocation();
+		System.out.println("aaaaa"+c.get().toString());
+		IFunction i = (Object o)-> staMap.areaAllStadium();
 		List<?> ls = (List<?>) i.apply(c);
 		map.put("map_lo", ls);
 		return map;

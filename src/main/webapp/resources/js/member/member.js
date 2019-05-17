@@ -53,7 +53,7 @@ member = (() => {
         $('#footer').remove();
         $('#myMpa').after(compo.footer());
         home_list_after();
-        $.getScript($.js()+'/compo/compo.js',()=>{
+     /*   $.getScript($.js()+'/compo/compo.js',()=>{
          	$.getScript($.js()+'/home/chat.js',()=>{
          		$(compo.chatbot()).appendTo('#footer');	
          		$('#chat_body').hide().after( '<button id="chat_ball" style="margin-left: 1373px;width: 5%;margin-bottom: 40px;"><img src="resources/img/soccer-ball.png" style="width: 101%; margin-left: 127px;"></button>' );
@@ -64,7 +64,7 @@ member = (() => {
          			  });
          		
           	});
-        });
+        });*/
         $('#nav').empty().after(compo.login_nav());
         $('#userBtn').click(() => {
         	$('#alram-drop').remove();
@@ -162,6 +162,21 @@ member = (() => {
     
     let home_list_after = () => {
         let list_stadium_detail = '';
+       /* $.getScript($.js()+'/compo/compo.js',()=>{
+         	$.getScript($.js()+'/home/chat.js',()=>{
+         		$('#myMpa').before(compo.chatbot());
+         		alert('home_list_after 챗');
+         		$('#chat_body').hide().after( '<button id="chat_ball" style="margin-left: 1373px;width: 4%;margin-bottom: 40px;"><img src="resources/img/soccer-ball.png" style="width: 101%; margin-left: 127px;"></button>' );
+         		
+         		$('#chat_ball').css('z-index', '0');
+         			  $("#chat_ball").click(function(){
+         				  alert('클릭');
+         				 $('#chat_body').show();
+         				 	chat.chat_bot();
+         			  });
+         		
+          	});
+        });*/
         $.getJSON($.ctx() + '/stadiums', d => {
             $.each(d.home, (i, j) => {
                 if (j.areaName == '서울') {
