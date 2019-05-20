@@ -284,11 +284,9 @@ chat=(()=>{
 			          		        		 				+ '<a id="map_select" style="font-size: 26px;">Go to Stadium</a></div>');
 			          		         					infowindow.open(map, marker);
 			          		         					$('#map_select').click(function(e){
-			          		         						alert('보류');
-			          		         					/*	let arr={stadiumName:j.name,stadiumAddr:j.addr,stadiumPhoto:j.photo,date:j.date,time:j.time,latitude:j.latitude,hardness:j.hardness};
-			          		         						$('#content').html(compo.stadium_list_detail(j));
-			          		         						$('#chat_main').remove();*/
-			          		         						/*stadium.list_detail(arr);*/
+			          		         						let arr={stadiumName:j.name,stadiumAddr:j.addr,stadiumPhoto:j.photo,date:j.date,time:j.time,latitude:j.latitude,hardness:j.hardness};
+			          		         						stadium.list_field_position(arr);
+			          		         						
 			          		         					});
 			          		       		}
 			          		     })(marker, i));

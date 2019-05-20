@@ -94,28 +94,31 @@ member = (() => {
             	} else {
             		let teamData = {
             				teamIndex : $.member().teamIndex
-            		}
+            				}
             		$.ajax({
-            			 url: $.ctx()+'/teams/myteam/'+teamData.teamIndex,
-            			 type: 'PUT',
-            			 data: JSON.stringify(teamData),
-            			 dataType: 'json',
-            			 contentType: "application/json; charset=utf-8",
-            			 success: d => {
-            				 $('.team_member_details').remove();
-            				 team.team_detail(d);
-            			 },
-            			 error: e => {
-                             alert('ajax fail');
-                         }
-            		 });
+            			url: $.ctx()+'/teams/myteam/'+teamData.teamIndex,
+            			type: 'PUT',
+            			data: JSON.stringify(teamData),
+            			dataType: 'json',
+            			contentType: "application/json; charset=utf-8",
+            			success: d => {
+            				if($.member().memberIndex == d.captain){
+            					team.team_update_frame();
+            				} else {
+            					$('.team_member_details').remove();
+            					team.team_detail(d);
+            				}
+            			},
+            			error: e => {
+            				alert('ajax fail');
+            			}
+            		});
             	}
-         
-        });
-            $('#logout').click(() => {
-            	sessionStorage.removeItem("member"); 
-            	window.location.reload();
             });
+            $('#logout').click(() => {
+        		sessionStorage.removeItem("member"); 
+        		window.location.reload();
+        	});
         });
         $('#alramBtn').click(()=>{
         	 $('#user-drop').remove();
