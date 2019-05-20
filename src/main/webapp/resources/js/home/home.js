@@ -55,6 +55,7 @@ home = (() => {
 			locale: 'ko-kr',
             uiLibrary: 'bootstrap4',
             format : 'yyyy-mm-dd',
+            autoShow: 'true',
             autoPick: 'true'
 		});
         $('.search-date').css({'margin-top':'10px','border-radius':' 4px'});
