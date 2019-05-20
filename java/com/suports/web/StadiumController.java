@@ -176,7 +176,6 @@ public class StadiumController {
 			@PathVariable("search") String search,	
 			@PathVariable("page") String page) {
 		String se = search;
-		System.out.println(search);
 		ISupplier c = ()-> staMap.countSeoulSearch();
 		map.clear();
 		map.put("search", se);
@@ -196,7 +195,6 @@ public class StadiumController {
 	public Map<?,?> list(){
 		ISupplier s = ()-> staMap.areaAllStadium();
 		List<?> allStadium = (List<?>) s.get();
-		System.out.println(allStadium.toString());
 		map.clear();
 		map.put("home", allStadium);
 		return map;
@@ -209,7 +207,6 @@ public class StadiumController {
 		chat.setMsg(val);
 		IFunction i = (Object o) -> chaMap.chatBot(chat);
 		ChatBotDTO ch = (ChatBotDTO) i.apply(chat);
-		System.out.println(ch);
 		map.put("value", ch);
 		return map; 
 		}
@@ -219,7 +216,6 @@ public class StadiumController {
 		map.clear();
 		ISupplier c = ()-> staMap.countStadium();
 		map.put("totalCount", c.get());
-		System.out.println("aaaaa"+c.get().toString());
 		IFunction i = (Object o)-> staMap.areaAllStadium();
 		List<?> ls = (List<?>) i.apply(c);
 		map.put("map_lo", ls);

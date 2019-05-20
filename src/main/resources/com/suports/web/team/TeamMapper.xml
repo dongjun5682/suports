@@ -20,12 +20,11 @@
   <result property="totalcount" column="TOTALCOUNT" />
   <result property="rnum" column="RNUM"/>
 </resultMap>
-
 	<select id="selectATeam" 
 	resultMap="teamResult">
 		SELECT *
 		FROM TEAM
-		WHERE TEAM_NAME LIKE #{name}
+		WHERE TEAM_INDEX LIKE #{teamIndex}
 	</select>
 	<insert id="insertATeam"
 		parameterType="com.suports.web.domain.TeamDTO" flushCache="true"

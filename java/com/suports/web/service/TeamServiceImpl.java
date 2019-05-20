@@ -41,8 +41,7 @@ public class TeamServiceImpl implements TeamService {
 
 	@Override
 	public TeamDTO retrieveATeam(TeamDTO team) {
-		// TODO Auto-generated method stub
-		return null;
+		return teamMapper.selectATeam(team);
 	}
 
 	@Override

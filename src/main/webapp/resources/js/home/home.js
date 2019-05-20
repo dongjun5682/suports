@@ -51,14 +51,13 @@ home = (() => {
         });
         $('#myMpa').after(compo.footer());
         $('#rm_search').append(compo.srch());
-        $('#datepicker').datepicker({
+        $('input[name="gameDate"]').datepicker({
 			locale: 'ko-kr',
             uiLibrary: 'bootstrap4',
             format : 'yyyy-mm-dd',
-            autoPick: 'true',
-            date:''
+            autoPick: 'true'
 		});
-        $('#datepicker').css({'margin-top':'10px','border-radius':' 4px'});
+        $('.search-date').css({'margin-top':'10px','border-radius':' 4px'});
         $('#team_search').click(() => {
             $('#position').empty().attr('id', 'people').append(compo.team_search());
         });
@@ -108,10 +107,10 @@ home = (() => {
         		stadium.list(x);
         	}else{
             let search = {
-                p: 1,
-                s: $('.search-addr').val(),
-                d: $('#datepicker').val(),
-                t: $('.search-time').val()
+            		p: 1,
+                    s: $('.search-addr').val(),
+                    d: $('.search-date').val(),
+                    t: $('.search-time').val()
             };
             alert($('.search-addr').val());
             stadium.srch(search);
@@ -158,11 +157,19 @@ home = (() => {
               	});
                 });*/
             $('#sear-btn').click(function() {
+            	if($('.search-addr').val() == '모두보기'){
+            		let x = {p:1};
+            		stadium.list(x);
+            	}else{
                 let search = {
                     p: 1,
-                    s: ''
-                }
-                stadium.srch();
+                    s: $('.search-addr').val(),
+                    d: $('.search-date').val(),
+                    t: $('.search-time').val()
+                };
+                alert($('.search-addr').val());
+                stadium.srch(search);
+            	}
             });
             $('#stadium_list').click(() => {
                 $('#content').css('margin-top', '80px');
@@ -262,21 +269,25 @@ home = (() => {
         $('.login100-form-btn').click(e => {
             e.preventDefault();
             let logindata = {
-            	state : 'disabled',
                 id: $('form input[name="username"]').val(),
                 password: $('form input[name="pass"]').val()
             };
             $.ajax({
-                url: $.ctx()+'/members/'+logindata.id,
-                type: 'POST',
+                url: $.ctx()+'/members/login/'+logindata.id,
+                type: 'PUT',
                 data: JSON.stringify(logindata),
                 dataType: 'json',
                 contentType: "application/json; charset=utf-8",
                 success: d => {
-                   if (d.state == 'pending') {
+                	let logindata2 = {
+                			id : d.id,
+                			state : d.state,
+                			disableDate : d.disableDate
+                	}
+                   if (logindata2.state == 'pending') {
                 	   swal({
                 		   title: "비활성화 계정입니다!",
-                		   text: "탈퇴를 위해 비활성화된 계정입니다. 요청일("+d.disableDate+")로 부터 6일 후 계정이 삭제됩니다.",
+                		   text: "탈퇴를 위해 비활성화된 계정입니다. 요청일("+logindata2.disableDate+")로 부터 6일 후 계정이 자동으로 삭제됩니다.",
                 		   icon: "warning",
                 		   buttons: ["취소","다시 활성화"],
                 		   dangerMode: true,
@@ -284,13 +295,13 @@ home = (() => {
                 		 .then((willDelete) => {
                 		   if (willDelete) {
                 				$.ajax({
-                					url : $.ctx()+'/members/enable/'+logindata.id,
+                					url : $.ctx()+'/members/'+logindata.id,
                 					type : 'PUT',
-                					data : JSON.stringify(logindata),
+                					data : JSON.stringify(logindata2),
                 					dataType : 'json',
                 					contentType : "application/json; charset=utf-8",
                 					success : d => {
-                						swal("계정이 다시 활성화 되었습니다.", {
+                						swal("활동 재게!", "계정이 다시 활성화 되었습니다.", {
                              		       icon: "success",
                              		     });
                 					}

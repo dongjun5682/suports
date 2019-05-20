@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
 <link rel="shortcut icon" href="resources/img/logo/favicon.ico" type="image/x-icon">
 <link rel="icon" href="resources/img/logo/favicon.ico" type="image/x-icon">
 <title>SUPORTS</title>
-<!-- 
 <!-- Cookie Consent -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
@@ -32,10 +33,11 @@
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/com/myTooltip.css">
 <link rel="stylesheet" href="resources/css/com/bootstrap3.css">
+<link rel="stylesheet" href="resources/css/com/tingle.min.css">
+<link rel="stylesheet" href="resources/css/com/animate.min.css">
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
 <link rel="stylesheet" href="resources/css/chatbot.css"> 
 <link rel="stylesheet" href="resources/css/datepicker/datapicker.min.css">
-<link rel="stylesheet" type="text/css" href="https://csshake.surge.sh/csshake.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" 
 integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" 
 crossorigin="anonymous">
@@ -49,21 +51,9 @@ crossorigin="anonymous">
 
 <!-- player css -->
 <link rel="stylesheet" href="resources/css/playersignuppg1.css">
-<link rel="stylesheet" href="resources/css/playersignuppg2.css">
-<link rel="stylesheet" href="resources/css/playersignuppg3.css">
-<link rel="stylesheet" href="resources/css/playersignuppg4.css">
-<link rel="stylesheet" href="resources/css/playersignuppg5.css">
-<link rel="stylesheet" href="resources/css/playerupdateinfo.css">
-<link rel="stylesheet" href="resources/css/playerupdatepicture.css">
 
 <!-- team css -->
 <link rel="stylesheet" href="resources/css/team/teamcreatepg1.css">
-<link rel="stylesheet" href="resources/css/team/teamcreatepg2.css">
-<link rel="stylesheet" href="resources/css/team/teamcreatepg3.css">
-<link rel="stylesheet" href="resources/css/team/teamcreatepg4.css">
-<link rel="stylesheet" href="resources/css/team/teamcreatepg5.css">
-<link rel="stylesheet" href="resources/css/team/teammanageplayers.css">
-<link rel="stylesheet" href="resources/css/team/team_detail_list.css">
 
 </head>
 <body>
@@ -94,13 +84,13 @@ crossorigin="anonymous">
 </div>
 	<script src="resources/js/app.js"></script>
 	<script src="resources/js/check.js"></script>
-	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/bootstrap3.min.js"></script>
 	<script src="resources/js/com/router.js"></script>
 	<script src="resources/js/com/myTooltip.js"></script>
 	<script src="resources/js/com/sweetalert.min.js"></script>
+	<script src="resources/js/com/tingle.min.js"></script>
 	<script src="resources/js/com/datepicker.min.js"></script>
 	<script src="resources/js/com/datepicker.ko-kr.js"></script>
-	<script src="resources/js/com/fileupload.js"></script>
 
 	<script src="resources/js/compo/compo.js"></script>
 	<script src="resources/js/com/util.js"></script>
@@ -143,6 +133,25 @@ window.addEventListener("load", function(){
 	  }
 	})});
  
+var modal = new tingle.modal({
+    footer: false,
+    stickyFooter: false,
+    closeMethods: ['overlay', 'button', 'escape'],
+    closeLabel: "Close",
+    cssClass: ['custom-class-1', 'custom-class-2'],
+    onOpen: function() {
+        console.log('modal open');
+    },
+    onClose: function() {
+        console.log('modal closed');
+    },
+    beforeClose: function() {
+        // here's goes some logic
+        // e.g. save content before closing the modal
+        return true; // close the modal
+        return false; // nothing happens
+    }
+});
 </script>
 
 </body>

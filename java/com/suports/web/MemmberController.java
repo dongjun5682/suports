@@ -27,10 +27,10 @@ import com.suports.web.service.MemberServiceImpl;
 
 @RestController
 public class MemmberController {
-	public static final String MEMBER_PHOTO_PATH = "/Users/yirekim/suports/src/main/webapp/resources/img/members_photo//";
+	public static final String MEMBER_PHOTO_PATH = "/Users/yirekim/suports_sourcetree/src/main/webapp/resources/img/members_photo//";
 	private static final Logger logger = LoggerFactory.getLogger(MemmberController.class);
 
-	@Autowired MemberDTO memberDTO;
+	@Autowired MemberDTO memberDTO; // hum..
 	@Autowired ImageDTO imageDTO;
 	@Autowired MemberServiceImpl memberService;
 	@Autowired Proxy pxy;
@@ -38,16 +38,33 @@ public class MemmberController {
 	@Autowired ISupplier c;
 	@Autowired Map<String, Object> map;
 	
+	@GetMapping("/members/details/{teamIndex}")
+	public Map<?,?> detailList(@PathVariable int teamIndex) 
+	{
+		logger.info("===MEMBER DETAIL LIST=== and {}", teamIndex);
+		
+		memberDTO.setTeamIndex(teamIndex);
+
+		map.clear();
+		map.put("teamIndex", teamIndex);
+		pxy.carryOut(map);
+		
+		i = (Object o)-> memberService.retrieveListOfMembers(pxy);
+		List<?> ls = (List<?>) i.apply(pxy);
+		
+		map.clear();
+		map.put("members", ls);
+		
+		return map;
+	}
 	@GetMapping("/members/page/{page}/{teamIndex}")
 	public Map<?,?> list(@PathVariable String page, @PathVariable int teamIndex) 
 	{
 		logger.info("===MEMBER LIST==={} and {}", page, teamIndex);
 		
-		MemberDTO mem = new MemberDTO();
-		mem.setTeamIndex(teamIndex);
+		memberDTO.setTeamIndex(teamIndex);
 
 		map.clear();
-		
 		c = ()-> memberService.countATeamMembers(teamIndex);
 		map.put("pageNum", page);
 		map.put("teamIndex", teamIndex);
@@ -62,8 +79,6 @@ public class MemmberController {
 		map.clear();
 		map.put("members", ls);
 		map.put("pxy", pxy);
-		
-	
 		return map;
 	}
 	@GetMapping("/members/detail/{memberIndex}")
@@ -113,7 +128,7 @@ public class MemmberController {
 		return map;
     }
 
-	@PostMapping("/members/{userid}")
+	@PutMapping("/members/login/{userid}")
 	public MemberDTO login(@RequestBody MemberDTO mem, @PathVariable String userid)throws Exception {
 		
 		logger.info("===LOGIN DTO ==={}",mem);
@@ -124,7 +139,8 @@ public class MemmberController {
 	@PutMapping("/members/{userid}")
 	public Map<?,?> updates(@RequestBody MemberDTO mem, @PathVariable String userid) {
 
-		logger.info("update param {}", mem);
+		logger.info("===UPDATE DTO ==={}",mem);
+		
 		memberService.modifyAMember(mem);
 		map.clear();
 		map.put("msg","성공");
