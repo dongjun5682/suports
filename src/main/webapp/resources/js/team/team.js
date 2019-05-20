@@ -44,19 +44,20 @@ team = (() => {
             });
             home.login();
         })
-
     }
     let team_list = (x) => {
         $('.team-container .row .col-md-12').empty();
         $('.team-container .row nav').remove();
         $.getJSON($.ctx() + '/teams/page/' + x.page, d => {
             $.each(d.team, (i, j) => {
-                $('<div class="col-md-2 col-sm-6 col-xs-6">' +
-                    '<div class="course"> <a href="#" class="course-img"> <img src="resources/img/logo/' + j.emblem + '" alt="" style="width:50%;"> </a>' +
-                    '<a class="course-title" href="#">' + j.name + '</a> </div>' +
-                    '</div>').appendTo('.team-container .row .col-md-12').click(function() {
-                    alert("team name : " + j.name + ' team index: ' + j.index);
-                    $('#content').html(compo.team_detail_list());
+                $('<div class="col-md-2 col-sm-6 col-xs-6">' 
+                 +'		<div class="course">'
+                 +'			<a href="#" class="course-img"> <img src="resources/img/logo/' + j.emblem + '" alt="" style="width:50%;"> </a>' 
+                 +'			<a class="course-title" href="#">' + j.name + '</a>'
+                 +'		</div>'
+                 +'</div>')
+                 .appendTo('.team-container .row .col-md-12').click(function() {
+                	 team_detail(j);
                 })
             });
             let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:800px;">'
@@ -122,8 +123,7 @@ team = (() => {
                     '<div class="course"> <a href="#" class="course-img"> <img src="resources/img/logo/' + j.emblem + '" alt="" style="width:50%;"> </a>' +
                     '<a class="course-title" href="#">' + j.name + '</a> </div>' +
                     '</div>').appendTo('.team-container .row .col-md-12').click(function() {
-                    alert("team name : " + j.name + ' team index: ' + j.index);
-                    $('#content').html(compo.team_detail_list());
+                    team_detail(j);
                 })
             });
             let html = '<nav> <ul class="col-md-12 pagination">'
@@ -171,9 +171,96 @@ team = (() => {
         });
     }
 
-    let team_detail = () => {
-
-    }
+    let team_detail = (x) => {
+    	$('#footer').remove();
+    	$('.team_member_details').remove();
+    	$('#content').html(compo.team_detail_page(x));
+    	   	
+    	let oter_members = ''; 
+    	let leader_no = '';
+    	
+    	$.getJSON($.ctx() + '/members/details/'+x.teamIndex, d => {
+    		$.each(d.members, (i,j) => {
+    			oter_members += ''
+    				+'<div class="row voffset" id="'+j.memberIndex+'">'
+    				+'	<div class="list_detail">'
+    				+'        <div class="list_detail_form">'
+    				+'            <div class="detail_title" name="member_name">이름</div>'
+    				+'            <div class="detail_text">'+j.name+'</div>'
+    				+'        </div>'
+    				+'        <div class="list_detail_form">'
+    				+'            <div class="detail_title">포지션</div>'
+    				+'            <div class="detail_text">'+j.position+'</div>'
+    				+'        </div>'
+    				+'        <div class="list_detail_form">'
+    				+'            <div class="detail_title">지역</div>'
+    				+'            <div class="detail_text">'+j.address+'</div>'
+    				+'        </div>'
+    				+'        <div class="list_detail_form">'
+    				+'            <div class="detail_title">생년월일</div>'
+    				+'            <div class="detail_text">'+j.birth+'</div>'
+    				+'        </div>'
+    				+'	</div>'
+    				+'	<div class="list_detail_mem_img">'
+    				+'			<img src="resources/img/members_photo/'+j.photo+'" class="img-fluid rounded-circle animated pulse-hvr teamlist_current_img" />'
+    				+'	</div>'
+    				+'</div>'
+    				if(x.captain == j.memberIndex){
+    					leader_no = j.memberIndex
+    				}
+    		})
+    		$('.team_member_details').append(compo.team_detail_list());
+    		$('.row_sets').append(oter_members);
+    		if(x.captain == leader_no){
+    			$('div[id="'+leader_no+'"]').attr('class','row leaderset');
+    			$('div[id="'+leader_no+'"]').attr('id','leader_no');
+    			$('#leader_no div[name="member_name"]').text('팀 장');
+    			$('#leader_no div[class="list_detail"]').attr('class','list_detail_leader');
+    			$('#leader_no div[class="list_detail_form"]').attr('class','list_detail_leader_form');
+    			$('#leader_no img').attr('class','list_leader_img');
+    		}	
+    	})
+    	
+    	if($.member().teamIndex == 0){
+    		let join_btn = '<div class="mem_team_join">'
+    			+'<button type="button" class="team_join_btn">팀 가입신청</button>'
+    	        +'</div>';
+    	    $('.mem_up_right_content').append(join_btn);
+    	    $('.team_join_btn').click(()=>{;
+    	    	swal({
+    	    		title: '가입요청',
+    	    		text: '팀에 참가하시겠습니까?',
+    	    		icon: 'info',
+    	    		button: '참가!',
+    	    	})
+    	    	.then((join) => {
+    	    		let joinData = {
+    	    				memberIndex : $.member().memberIndex,
+    	    				teamIndex : x.teamIndex
+    	    		}
+    	    		$.ajax({
+                        url: $.ctx() + '/members/'+joinData.memberIndex,
+                        type: 'PUT',
+                        data: JSON.stringify(joinData),
+                        dataType: 'json',
+                        contentType: "application/json; charset=utf-8",
+                        success: d => {
+                            swal({
+                            	title: '가입성공',
+                            	icon: 'success',
+                            	button: '확인',
+                            })
+                            team_detail(x);
+                            $('.mem_team_join').remove();
+                        },
+                        error: e => {
+                        	
+                        }
+                    })
+    	    	});
+    	    });
+    	}
+    };
     let team_create = () => {
         $('#modal-content2').html(compo.team_create_1());
         $('.fieldbtn').click(() => {
@@ -181,7 +268,7 @@ team = (() => {
             $('.team_create_next_btn').click(() => {
                 let formdata = {
                     name: $('input[name="teamName"]').val(),
-                    avgage: $('input[name="teamAge"]').val(),
+                    avgage: $('select[name="teamAvgage"]').val(),
                     sort: $('select[name="teamSort"]').val(),
                     address: $('select[name="teamLocation"]').val(),
                     sport: $('select[name="teamSport"]').val(),
@@ -397,7 +484,7 @@ team = (() => {
         	let updateData = {
         			captain : $.member().memberIndex,
     				name : $('input[name="teamName"]').val(),
-    				avgage : $('input[name="teamAvgage"]').val(),
+    				avgage : $('select[name="teamAvgage"]').val(),
     				sort: $('input[name="teamSort"]').val(),
     				style: $('select[name="teamStyle"]').val(),
     				sport : $('select[name="teamSport"]').val(),
@@ -445,9 +532,7 @@ team = (() => {
          })
    
     }
-    let team_trans_captain = () => {
-    	
-    }
+   
     let team_diss_ever = () => {
     	swal({
  		   title: "팀 해체!",
@@ -530,7 +615,6 @@ team = (() => {
         team_sub_member:team_sub_member,
         team_update_info:team_update_info,
         team_update_emblem:team_update_emblem,
-        team_trans_captain:team_trans_captain,
         team_diss_ever:team_diss_ever,
         team_member_detail:team_member_detail,
         team_member_edit:team_member_edit

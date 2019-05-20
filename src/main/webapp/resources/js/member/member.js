@@ -53,18 +53,17 @@ member = (() => {
         $('#footer').remove();
         $('#myMpa').after(compo.footer());
         home_list_after();
-     /*   $.getScript($.js()+'/compo/compo.js',()=>{
-         	$.getScript($.js()+'/home/chat.js',()=>{
-         		$(compo.chatbot()).appendTo('#footer');	
-         		$('#chat_body').hide().after( '<button id="chat_ball" style="margin-left: 1373px;width: 5%;margin-bottom: 40px;"><img src="resources/img/soccer-ball.png" style="width: 101%; margin-left: 127px;"></button>' );
-         			  $("#chat_ball").click(function(){
-         				  alert('클릭');
-         				 $('#chat_body').show();
-         				 	chat.chat_bot();
-         			  });
-         		
-          	});
-        });*/
+     /*
+		 * $.getScript($.js()+'/compo/compo.js',()=>{
+		 * $.getScript($.js()+'/home/chat.js',()=>{
+		 * $(compo.chatbot()).appendTo('#footer'); $('#chat_body').hide().after( '<button
+		 * id="chat_ball" style="margin-left: 1373px;width: 5%;margin-bottom:
+		 * 40px;"><img src="resources/img/soccer-ball.png" style="width: 101%;
+		 * margin-left: 127px;"></button>' ); $("#chat_ball").click(function(){
+		 * alert('클릭'); $('#chat_body').show(); chat.chat_bot(); });
+		 * 
+		 * }); });
+		 */
         $('#nav').empty().after(compo.login_nav());
         $('#userBtn').click(() => {
         	$('#alram-drop').remove();
@@ -84,8 +83,27 @@ member = (() => {
             	member_update_frame();
             });
             $('#myteam').click(() => {
-            	team.team_update_frame();
-            });
+            	if ($.member().teamIndex == 0){
+            		swal('현재 소속된 팀이 없습니다.');
+            	} else {
+            		let teamData = {
+            				teamIndex : $.member().teamIndex
+            		}
+            		$.ajax({
+            			 url: $.ctx()+'/teams/myteam/'+teamData.teamIndex,
+            			 type: 'PUT',
+            			 data: JSON.stringify(teamData),
+            			 dataType: 'json',
+            			 contentType: "application/json; charset=utf-8",
+            			 success: d => {
+            				 $('.team_member_details').remove();
+            				 team.team_detail(d);
+            			 },
+            			 error: e => {
+                             alert('ajax fail');
+                         }
+            		 });
+            	}
             $('#logout').click(() => {
             	sessionStorage.removeItem("member"); 
             	window.location.reload();
@@ -128,7 +146,7 @@ member = (() => {
                     break;
             }
         })
-
+        
         $('#sear-btn').click(function() {
             let search = {
                 p: 1,
@@ -156,26 +174,27 @@ member = (() => {
         	$('.navbar-right').remove();
         	login_after();
         })
+    });
     }
     
     
     let home_list_after = () => {
         let list_stadium_detail = '';
-       /* $.getScript($.js()+'/compo/compo.js',()=>{
-         	$.getScript($.js()+'/home/chat.js',()=>{
-         		$('#myMpa').before(compo.chatbot());
-         		alert('home_list_after 챗');
-         		$('#chat_body').hide().after( '<button id="chat_ball" style="margin-left: 1373px;width: 4%;margin-bottom: 40px;"><img src="resources/img/soccer-ball.png" style="width: 101%; margin-left: 127px;"></button>' );
-         		
-         		$('#chat_ball').css('z-index', '0');
-         			  $("#chat_ball").click(function(){
-         				  alert('클릭');
-         				 $('#chat_body').show();
-         				 	chat.chat_bot();
-         			  });
-         		
-          	});
-        });*/
+       /*
+		 * $.getScript($.js()+'/compo/compo.js',()=>{
+		 * $.getScript($.js()+'/home/chat.js',()=>{
+		 * $('#myMpa').before(compo.chatbot()); alert('home_list_after 챗');
+		 * $('#chat_body').hide().after( '<button id="chat_ball"
+		 * style="margin-left: 1373px;width: 4%;margin-bottom: 40px;"><img
+		 * src="resources/img/soccer-ball.png" style="width: 101%; margin-left:
+		 * 127px;"></button>' );
+		 * 
+		 * $('#chat_ball').css('z-index', '0');
+		 * $("#chat_ball").click(function(){ alert('클릭');
+		 * $('#chat_body').show(); chat.chat_bot(); });
+		 * 
+		 * }); });
+		 */
         $.getJSON($.ctx() + '/stadiums', d => {
             $.each(d.home, (i, j) => {
                 if (j.areaName == '서울') {
@@ -243,31 +262,6 @@ member = (() => {
             });
         });
     }
-    let member_list = () => {
-//    	$.getJSON($.ctx()+'/members/page/1', d => {
-////    	$.getJSON($.ctx()+'/members/page/'+x.page, d => {
-//    		let table = '<table class="table table-striped"><tr>'
-//				+'<th>No.</th>'
-//				+'<th>이름</th>'
-//				+'<th>스포츠</th>'
-//				+'<th>포지션</th>'
-//				+'<th>위치</th>'
-//				+'<th> + </th>'
-//				+'</tr>'
-//    		$.each(d.ls, (i,j) => {
-//    			table += '<tr>'
-//    	        +'<td>'+j.rnum+'</td>'
-//    	        +'<td>'+j.name+'</td>'
-//    	        +'<td>'+j.sports+'</td>'
-//    	        +'<td>'+j.position+'</td>'
-//    	        +'<td>'+j.address+'</td>'
-//    	        +'<td> + 수정 </td>'
-//    	        +'</tr>'
-//			});
-//    		table += '</table>'
-//    		$('#update_mid_content').append(table);
-//    	})
-    };
     let member_update_frame = ()=>{
     	$('#footer').remove();
     	$('#content').empty().html(compo.member_update_frame());
@@ -289,11 +283,10 @@ member = (() => {
     let profile =()=>{
     	$('#update_mid_content').append(compo.update_player());
     	password_tooltip();
-		$('#datepicker').datepicker({
+		$('input[name="memberBirth"]').datepicker({
 			locale: 'ko-kr',
             uiLibrary: 'bootstrap4',
-            
-            	
+            format : 'yyyy/mm/dd'
 		});
     	$('#mem_update_btn').click(e=>{
 			$('#mem_update_btn').attr('disabled', true);
@@ -354,9 +347,10 @@ member = (() => {
 			};
     		$('.modal-content').html(compo.signup_2());
     		password_tooltip();
-    		$('#datepicker').datepicker({
+    		$('input[name="memberBirth"]').datepicker({
     			locale: 'ko-kr',
-                uiLibrary: 'bootstrap4'
+                uiLibrary: 'bootstrap4',
+                format : 'yyyy/mm/dd',
     		});
     		$('.imgnextbtnbg').click(() => {
     			let formdata2 = {
@@ -418,7 +412,7 @@ member = (() => {
            })
     	})
     };
-    // update.id json require   
+    // update.id json require
     let update_ajax = (update) => {
     	$.ajax({
 			url : $.ctx()+'/members/'+update.id,
@@ -512,13 +506,12 @@ member = (() => {
         login_after:login_after,
         home_list_after:home_list_after,
         signup:signup,
-        member_list:member_list,
         member_update_frame:member_update_frame,
         profile:profile,
         profile_photo_update:profile_photo_update,
         profile_disable:profile_disable,
         update_ajax:update_ajax,
         upload_ajax:upload_ajax,
-        password_tooltip:password_tooltip,
+        password_tooltip:password_tooltip
     }
 })();

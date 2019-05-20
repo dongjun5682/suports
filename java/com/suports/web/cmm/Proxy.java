@@ -19,9 +19,9 @@ public class Proxy {
 
     public void carryOut(Map<?,?> paramMap) {
 
-		pageSize = ((String)paramMap.get("pageSize") == null)	? 5 : Integer.parseInt((String) paramMap.get("pageSize"));
+		pageSize = ((String)paramMap.get("pageSize") == null) ? 5 : Integer.parseInt((String) paramMap.get("pageSize"));
 		pageNum = ((String)paramMap.get("pageNum") == null) ? 1 : Integer.parseInt((String) paramMap.get("pageNum"));
-		totalCount = (int) paramMap.get("totalCount");
+		totalCount = (paramMap.get("totalCount") == null ? 0 : (int) paramMap.get("totalCount"));
 		
 		teamIndex = (paramMap.get("teamIndex") == null) ? 0 : (int) paramMap.get("teamIndex");
 		

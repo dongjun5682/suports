@@ -88,9 +88,16 @@
 		DISABLE_DATE disableDate,
 		TEAM_INDEX teamIndex
 		FROM MEMBER, (SELECT @ROWNUM := 0) N
-		WHERE TEAM_INDEX LIKE #{teamIndex}
-		ORDER BY rnum DESC
-		LIMIT #{startRow}, #{pageSize}
+		<choose>
+			<when test="totalCount == 0">
+				WHERE TEAM_INDEX LIKE #{teamIndex}
+			</when>
+			<otherwise>
+				WHERE TEAM_INDEX LIKE #{teamIndex}
+				ORDER BY rnum DESC
+				LIMIT #{startRow}, #{pageSize}
+			</otherwise>
+		</choose>
 	</select>
 	<select id="countMembers" resultType="int">
 	SELECT COUNT(*) FROM MEMBER;
@@ -176,20 +183,26 @@
 	<update id="updateAMember"
 		parameterType="com.suports.web.domain.MemberDTO" flushCache="true"
 		statementType="PREPARED" timeout="20">
-		<if test="state != null">
+		<if test="state != null and disableDate != 0 and teamIndex == 0">
 		UPDATE 
 		MEMBER SET
 		STATE = 'resolved',
 		DISABLE_DATE = NULL
 		WHERE ID LIKE #{id}
 		</if>
-		<if test="state == null and name == null and characters == null">
+		<if test="state == null and name == null and characters == null and teamIndex == 0">
 		UPDATE 
 		MEMBER SET
 		STATE = 'pending',
 		DISABLE_DATE = NOW()
 		WHERE ID LIKE #{id} 
 		AND PASSWORD LIKE #{password}
+		</if>
+		<if test="state == null and name == null and memberIndex != 0 and teamIndex != 0">
+		UPDATE 
+		MEMBER SET
+		TEAM_INDEX = #{teamIndex}
+		WHERE MEMBER_INDEX LIKE #{memberIndex}
 		</if>
 		<if test="state == null and name != null and characters != null and disableDate == 0">
 		UPDATE 
