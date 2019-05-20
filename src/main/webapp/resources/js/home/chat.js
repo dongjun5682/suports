@@ -237,6 +237,71 @@ chat=(()=>{
 			            });
 			        });
 	        	break;
+			case "지도 보여줘":
+			        $('#footer').empty();
+			        $('#content').empty().html(compo.stadium_list_sidebar());
+			            $('#content').empty().html(compo.stadium_list_sidebar());
+			            $('.col-md-9').append(compo.map());
+			            var locations = new Array();
+			            $(document).ready(function initialize(d) {
+			            	$.getJSON($.ctx() + '/map',d => {
+			            	$.each(d.map_lo, (i, j) => {
+			            		let date = new Object();
+			            		date.name = j.stadiumName;
+			            		date.addr = j.stadiumAddr;
+			            		date.latitude = j.latitude;
+			            		date.hardness = j.hardness;
+			            		date.photo = j.stadiumPhoto;
+			            		date.date = j.date;
+			            		date.time = j.time;
+			            		locations.push(date);
+			          });
+			             	$('#map').css({
+			                    'width': '100%',
+			                    'height': '716px'
+			                    
+			                });
+			             	var map = new google.maps.Map(document.getElementById('map'), {
+			          		    zoom: 12,
+			          		    center: new google.maps.LatLng(37.549012, 126.988546),
+			          		    mapTypeId: google.maps.MapTypeId.ROADMAP
+			          		   });
+			            $.each(locations,(i,j)=>{
+			          		   var infowindow = new google.maps.InfoWindow();
+			          		   var marker,i;
+			          			 marker = new google.maps.Marker
+			          			 ({id:i,
+			          		     position: new google.maps.LatLng(j.latitude,j.hardness), 
+			          		     map: map
+			          		     });
+			          		     google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			          		       return function() {
+			          		    	   infowindow.setContent('<div class="map_se">'
+			          		        		 				+'<h3>' + j.name +'</h3>'
+			          		        		 				+ '<p>' + j.addr +'</p>'
+			          		        		 				+ '<img src="' + j.photo +'">' 
+			          		        		 				+ '<p>디테일을 보시려면 더블클릭 하세요.</p>'
+			          		        		 				+ '<a id="map_select" style="font-size: 26px;">Go to Stadium</a></div>');
+			          		         					infowindow.open(map, marker);
+			          		         					$('#map_select').click(function(e){
+			          		         						alert('보류');
+			          		         					/*	let arr={stadiumName:j.name,stadiumAddr:j.addr,stadiumPhoto:j.photo,date:j.date,time:j.time,latitude:j.latitude,hardness:j.hardness};
+			          		         						$('#content').html(compo.stadium_list_detail(j));
+			          		         						$('#chat_main').remove();*/
+			          		         						/*stadium.list_detail(arr);*/
+			          		         					});
+			          		       		}
+			          		     })(marker, i));
+			          		     {if(marker)
+			          		       marker.addListener('click', function() {
+			          		         map.setZoom(15);
+			          		         map.setCenter(this.getPosition());
+			          		       });
+			          		       };
+			            });
+			        });
+			     });       
+	        	break;
 			default : 
 				$('<div class="row msg_container base_sent">'
 	    				+'                        <div class="col-md-10 col-xs-10 ">'

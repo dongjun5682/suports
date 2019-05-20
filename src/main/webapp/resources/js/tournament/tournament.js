@@ -27,6 +27,7 @@ tour =(()=>{
         });
     };
     let setContentView =()=>{
+    	$('#chat_main').remove();
     	$('#content').empty().html(compo.tournament()).css({
             'margin-top': '100px',
             'height': '850px'
