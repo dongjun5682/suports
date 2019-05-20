@@ -20,7 +20,7 @@
   <result property="totalcount" column="TOTALCOUNT" />
   <result property="rnum" column="RNUM"/>
 </resultMap>
-	<select id="selectATeam" 
+	<select id="selectATeam"
 	resultMap="teamResult">
 		SELECT *
 		FROM TEAM

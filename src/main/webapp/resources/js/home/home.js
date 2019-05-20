@@ -112,7 +112,6 @@ home = (() => {
                     d: $('.search-date').val(),
                     t: $('.search-time').val()
             };
-            alert($('.search-addr').val());
             stadium.srch(search);
         	}
         });
@@ -167,7 +166,6 @@ home = (() => {
                     d: $('.search-date').val(),
                     t: $('.search-time').val()
                 };
-                alert($('.search-addr').val());
                 stadium.srch(search);
             	}
             });

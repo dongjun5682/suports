@@ -107,7 +107,7 @@ team = (() => {
     let team_list_after = (x) => {
         $('#content').empty();
         $('#footer').remove();
-        if ($.member().teamIndex === 0) {
+        if ($.member().teamIndex == 0) {
             $('#content').html(compo.team_content());
         } else {
             $('#content').html(compo.no_team_content());
@@ -220,8 +220,8 @@ team = (() => {
     			$('#leader_no img').attr('class','list_leader_img');
     		}	
     	})
-    	
     	if($.member().teamIndex == 0){
+    		
     		let join_btn = '<div class="mem_team_join">'
     			+'<button type="button" class="team_join_btn">팀 가입신청</button>'
     	        +'</div>';
@@ -236,7 +236,8 @@ team = (() => {
     	    	.then((join) => {
     	    		let joinData = {
     	    				memberIndex : $.member().memberIndex,
-    	    				teamIndex : x.teamIndex
+    	    				teamIndex : x.teamIndex,
+    	    				name : $.member().name
     	    		}
     	    		$.ajax({
                         url: $.ctx() + '/members/'+joinData.memberIndex,

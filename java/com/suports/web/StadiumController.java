@@ -39,13 +39,14 @@ public class StadiumController {
 		System.out.println("모두보기!!");
 		map.clear();
 		map.put("pageNum", page);
-		map.put("pageSize", "12");
+		map.put("pageSize", "8");
 		map.put("blockSize", "5");
 		ISupplier c = ()-> staMap.countStadium();
 		map.put("totalCount", c.get());
 		pxy.carryOut(map);
 		IFunction i = (Object o)-> staMap.allStadium(pxy);
 		List<?> ls = (List<?>) i.apply(pxy);
+		System.out.println(ls.toString());
 		map.clear();
 		map.put("ls", ls);
 		map.put("pxy", pxy);
@@ -57,15 +58,18 @@ public class StadiumController {
 			@PathVariable String page,
 			@PathVariable String date,
 			@PathVariable String time) {
-		System.out.println(date);
-		System.out.println(word);
 		logger.info("=======경기장 리스트 진입 ======");
+		System.out.println(page);
 		String search = word;
-		ISupplier c = ()-> staMap.countSearch(search);
+		map.clear();
+		map.put("search", word);
+		map.put("date", date);
+		map.put("time", time);
+		ISupplier c = ()-> staMap.countSearch(map);
 		map.clear();
 		map.put("search", search);
 		map.put("pageNum", page);
-		map.put("pageSize", "12");
+		map.put("pageSize", "8");
 		map.put("blockSize", "5");
 		map.put("date",date);
 		map.put("time",time);
@@ -88,7 +92,7 @@ public class StadiumController {
 		map.clear();
 		map.put("search", se);
 		map.put("pageNum", page);
-		map.put("pageSize", "12");
+		map.put("pageSize", "8");
 		map.put("blockSize", "5");
 		map.put("totalCount",c.get());
 		pxy.carryOut(map);
@@ -128,7 +132,7 @@ public class StadiumController {
 		map.clear();
 		map.put("search", se);
 		map.put("pageNum", page);
-		map.put("pageSize", "12");
+		map.put("pageSize", "8");
 		map.put("blockSize", "5");
 		map.put("totalCount",c.get());
 		pxy.carryOut(map);
@@ -180,7 +184,7 @@ public class StadiumController {
 		map.clear();
 		map.put("search", se);
 		map.put("pageNum", page);
-		map.put("pageSize", "12");
+		map.put("pageSize", "8");
 		map.put("blockSize", "5");
 		map.put("totalCount",c.get());
 		pxy.carryOut(map);

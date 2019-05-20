@@ -34,12 +34,12 @@
 		'${positionName}';
 	</select>
 
-	<select id="updateMember" parameterType="com.suports.web.cmm.Proxy">
+	<update id="updateMember" parameterType="com.suports.web.cmm.Proxy">
 		UPDATE GAME
 		SET
 		MEMBER_INDEX = #{mIndex}
 		WHERE GAME_INDEX = #{gmNumber};
-	</select>
+	</update>
 
 	<select id="selectOverlap"
 		parameterType="com.suports.web.domain.GameDTO" resultMap="result">

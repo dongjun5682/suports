@@ -8,10 +8,10 @@
  	
 </resultMap>
 
-<select id="insertPayment" parameterType="string">
+<insert id="insertPayment" parameterType="string">
 	INSERT INTO PAYMENT(PAYMENT_KEY)
 	VALUES('${value}');
-</select>
+</insert>
 
 	<select id="selectPayments" parameterType="string" resultMap="result" >
 		SELECT R.PAYMENT_NUMBER AS PAY
@@ -19,7 +19,7 @@
 		WHERE R.GAME_INDEX LIKE G.GAME_INDEX
 	</select>
 	
-	<select id="updateAccessCode" parameterType="string">
+	<update id="updateAccessCode" parameterType="string">
 		UPDATE PAYMENT SET ACCESS_CODE = '1' WHERE PAYMENT_NUMBER LIKE #{value};
-	</select>
+	</update>
 </mapper>

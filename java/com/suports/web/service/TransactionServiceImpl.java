@@ -14,12 +14,15 @@ import com.suports.web.cmm.ISupplier;
 import com.suports.web.cmm.Proxy;
 import com.suports.web.domain.AlramDTO;
 import com.suports.web.domain.GameDTO;
+import com.suports.web.domain.MemberDTO;
 import com.suports.web.domain.ReservationDTO;
+import com.suports.web.domain.TeamDTO;
 import com.suports.web.mapper.AlramMapper;
 import com.suports.web.mapper.GameMapper;
 import com.suports.web.mapper.PaymentMapper;
 import com.suports.web.mapper.ReservationMapper;
 import com.suports.web.mapper.StadiumMapper;
+import com.suports.web.mapper.TeamMapper;
 
 @Service
 public class TransactionServiceImpl implements TransactionService{
@@ -38,7 +41,10 @@ public class TransactionServiceImpl implements TransactionService{
 	@Autowired StadiumMapper stMap;
 	@Autowired IFunction i;
 	@Autowired TransactionService tranService;
-	
+	@Autowired MemberServiceImpl memberService;
+	@Autowired MemberDTO memberDTO;
+	@Autowired TeamMapper teamMap;
+	@Autowired TeamDTO teamDTO;
 	
 	@Transactional
 	@Override
@@ -150,6 +156,28 @@ public class TransactionServiceImpl implements TransactionService{
 		map.put("alram",list);
 		map.put("res", resDTO);
 		return map;
+	}
+	
+	@Transactional
+	@Override
+	public void teamJoinMember(Map<?, ?> map) {
+		int memberIndex = 0;
+		memberDTO = (MemberDTO) map.get("mem");
+		
+		teamDTO.setTeamIndex(memberDTO.getTeamIndex());
+		
+		i = (Object o) -> teamMap.selectATeam(teamDTO);
+		
+		teamDTO = (TeamDTO) i.apply(teamDTO);
+		memberIndex = memberDTO.getMemberIndex();
+		memberDTO.setMemberIndex(teamDTO.getCaptain());
+		alMap.insertMember(memberDTO);
+		
+		memberDTO.setName(null);
+		memberDTO.setMemberIndex(memberIndex);
+		System.out.println("askjskfjnsdkjfnasdkjfnkdfndsjfnksfj"+memberDTO.toString());
+		
+		memberService.modifyAMember(memberDTO);
 	}
 
 }

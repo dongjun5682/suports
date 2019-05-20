@@ -17,11 +17,11 @@
 		<result property="accessCode" column="ACCESS_CODE" />
 	</resultMap>
 
-	<select id="insertReservation"
+	<insert id="insertReservation"
 		parameterType="com.suports.web.cmm.Proxy">
 		INSERT INTO RESERVATION(RESERVATION_NUMBER,GAME_INDEX)
 		VALUES('${resNumber}',${gmNumber})
-	</select>
+	</insert>
 
 	<select id="selectReservation"
 		parameterType="com.suports.web.cmm.Proxy"

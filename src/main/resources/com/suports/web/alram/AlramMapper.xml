@@ -20,6 +20,11 @@
 		VALUES('${name} 예약이 확정 되었습니다.', #{mIndex});
 	</select>
 	
+	<insert id="insertMember" parameterType="com.suports.web.domain.MemberDTO">
+		INSERT INTO ALRAM(MESSAGE,MEMBER_INDEX)
+		VALUES('${name}님이 팀원으로 합류하였습니다.',#{memberIndex});
+	</insert>
+	
 	<select id="seletMemberAlram" parameterType="string" resultMap="result">
 		SELECT * FROM ALRAM WHERE MEMBER_INDEX = ${value};
 	</select>

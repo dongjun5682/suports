@@ -110,11 +110,12 @@ member = (() => {
                          }
             		 });
             	}
+         
+        });
             $('#logout').click(() => {
             	sessionStorage.removeItem("member"); 
             	window.location.reload();
             });
-        });
         });
         $('#alramBtn').click(()=>{
         	 $('#user-drop').remove();
@@ -129,7 +130,6 @@ member = (() => {
         });
         $('.navbar-right a').click(function(e) {
             let _this = $(this).attr('id');
-            alert(_this);
             switch (_this) {
                 case 'exercise':
                 	stadium.stadium_res();

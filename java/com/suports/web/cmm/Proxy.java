@@ -35,27 +35,17 @@ public class Proxy {
 		endPage = blockNum;
 		startPage = (endPage - blockSize) + 1; 
 		endPage = (blockNum > pageCount ) ? pageCount :blockNum ;
-		existPrev = (startPage - pageSize) > 0;
-		existNext = endPage <= pageCount;
+		existNext = (startPage+blockSize)>pageCount?false:true;
+		existPrev = (pageNum<=blockSize)?false:true;
 		prevBlock = startPage - pageSize;
 		nextBlock = startPage + pageSize;
-		
-		System.out.println(endPage);
-		System.out.println(startPage);
-		System.out.println(existNext);
-		System.out.println(existPrev);
-		System.out.println(prevBlock);
-		System.out.println(nextBlock);
-		
-		
-		
 		search = (String) paramMap.get("search");
     }   
     public void search(Map<?,?> paramMap) {
     	
     	pageSize = ((String)paramMap.get("pageSize") == null)	? 5 : Integer.parseInt((String) paramMap.get("pageSize"));
 		pageNum = ((String)paramMap.get("pageNum") == null) ? 1 : Integer.parseInt((String) paramMap.get("pageNum"));
-		totalCount = (int) paramMap.get("totalCount");
+		totalCount = (paramMap.get("totalCount") == null ? 0 : (int) paramMap.get("totalCount"));
 		/* teamIndex = (int) paramMap.get("teamIndex"); */
 		
 		int pageCount = (totalCount % pageSize != 0) ?  totalCount/pageSize+1:totalCount/pageSize;
@@ -63,16 +53,17 @@ public class Proxy {
 		blockSize = (_blockSize == null) ? 5 : Integer.parseInt(_blockSize);
 		startRow = (pageNum -1) *pageSize + 1;
 		endRow = (totalCount > pageNum * pageSize)? pageNum * pageSize: totalCount;
-	
 		blockNum = (int)(Math.ceil(pageNum / (double)blockSize) * blockSize);
 		endPage = blockNum;
 		startPage = (endPage - blockSize) + 1; 
 		endPage = (blockNum > pageCount ) ? pageCount :blockNum ;
-		existNext = (startPage + pageSize) <= pageCount;
-		existPrev = (startPage - pageSize) > 0 ;
+		existNext = (startPage+blockSize)>pageCount?false:true;
+		existPrev = (pageNum<=blockSize)?false:true;
 		prevBlock = startPage - pageSize;
 		nextBlock = startPage + pageSize;
-
+		System.out.println(startRow);
+		System.out.println(endRow);
+		System.out.println(totalCount);
 		search = (String) paramMap.get("search");
 		date = (String) paramMap.get("date");
 		time = (String) paramMap.get("time");

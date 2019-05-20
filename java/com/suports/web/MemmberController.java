@@ -24,6 +24,7 @@ import com.suports.web.cmm.Proxy;
 import com.suports.web.domain.ImageDTO;
 import com.suports.web.domain.MemberDTO;
 import com.suports.web.service.MemberServiceImpl;
+import com.suports.web.service.TransactionServiceImpl;
 
 @RestController
 public class MemmberController {
@@ -37,6 +38,7 @@ public class MemmberController {
 	@Autowired IFunction i;
 	@Autowired ISupplier c;
 	@Autowired Map<String, Object> map;
+	@Autowired TransactionServiceImpl tranService;
 	
 	@GetMapping("/members/details/{teamIndex}")
 	public Map<?,?> detailList(@PathVariable int teamIndex) 
@@ -120,6 +122,7 @@ public class MemmberController {
 	@PutMapping("/members")
 	public Map<?,?> signup(@RequestBody MemberDTO mem) {
 
+		
 		memberService.addAMember(mem);
 		
 		map.clear();
@@ -130,9 +133,7 @@ public class MemmberController {
 
 	@PutMapping("/members/login/{userid}")
 	public MemberDTO login(@RequestBody MemberDTO mem, @PathVariable String userid)throws Exception {
-		
 		logger.info("===LOGIN DTO ==={}",mem);
-		
 		return memberService.retrieveAMember(mem);
 	}
 	
@@ -140,11 +141,10 @@ public class MemmberController {
 	public Map<?,?> updates(@RequestBody MemberDTO mem, @PathVariable String userid) {
 
 		logger.info("===UPDATE DTO ==={}",mem);
-		
-		memberService.modifyAMember(mem);
 		map.clear();
+		map.put("mem", mem);
+		tranService.teamJoinMember(map);
 		map.put("msg","성공");
-		
 		return map;
 	}
 	

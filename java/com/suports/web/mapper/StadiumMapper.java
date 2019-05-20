@@ -28,7 +28,7 @@ public interface StadiumMapper {
 	public int countGyeonggiSearch();
 	
 	
-	public int countSearch(String search);
+	public int countSearch(Map<?, ?> map);
 	
 	public List<?> areaAllStadium();
 	public void chatBotAnswer(ChatBotDTO chd);

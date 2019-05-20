@@ -89,7 +89,6 @@ stadium = (() => {
           		         					infowindow.open(map, marker);
           		         					$('#map_select').click(function(e){
           		         						let arr={stadiumName:j.name,stadiumAddr:j.addr,stadiumPhoto:j.photo,date:j.date,time:j.time,latitude:j.latitude,hardness:j.hardness};
-          		         						$('#content').html(compo.stadium_list_detail(j));
           		         						$('#chat_main').remove();
           		         						list_detail(arr);
           		         					});
@@ -187,7 +186,9 @@ stadium = (() => {
                 $(this).click(() => {
                     let arr = {
                         s: x.srch,
-                        p: $(this).text()
+                        p: $(this).text(),
+                        d: x.d,
+                        t: x.t
                     };
                     list(arr);
                 });
@@ -195,14 +196,18 @@ stadium = (() => {
             $('.nextBlock').click(function() {
                 let arr = {
                     s: x.srch,
-                    p: d.pxy.nextBlock
+                    p: d.pxy.nextBlock,
+                    d: x.d,
+                    t: x.t
                 };
                 list(arr);
             })
             $('.prevBlock').click(function() {
                 let arr = {
                     s: x.srch,
-                    p: d.pxy.prevBlock
+                    p: d.pxy.prevBlock,
+                    d: x.d,
+                    t: x.t
                 };
                 list(arr);
             })
@@ -262,9 +267,7 @@ stadium = (() => {
           		         					infowindow.open(map, marker);
           		         					$('#map_select').click(function(e){
           		         						let arr={stadiumName:j.name,stadiumAddr:j.addr,stadiumPhoto:j.photo,date:j.date,time:j.time,latitude:j.latitude,hardness:j.hardness};
-          		         						$('#content').html(compo.stadium_list_detail(j));
           		         						$('#chat_main').remove();
-          		         						list_detail_after(arr);
           		         					});
           		       		}
           		     })(marker, i));
@@ -359,7 +362,9 @@ stadium = (() => {
                 $(this).click(() => {
                     let arr = {
                         s: x.srch,
-                        p: $(this).text()
+                        p: $(this).text(),
+                        d: x.d,
+                        t: x.d
                     };
                     list_after(arr);
                 });
@@ -367,14 +372,18 @@ stadium = (() => {
             $('.nextBlock').click(function() {
                 let arr = {
                     s: x.srch,
-                    p: d.pxy.nextBlock
+                    p: d.pxy.nextBlock,
+                    d: x.d,
+                    t: x.d
                 };
                 list_after(arr);
             })
             $('.prevBlock').click(function() {
                 let arr = {
                     s: x.srch,
-                    p: d.pxy.prevBlock
+                    p: d.pxy.prevBlock,
+                    d: x.d,
+                    t: x.d
                 };
                 list_after(arr);
             })
@@ -557,6 +566,7 @@ stadium = (() => {
 
     let payment = arr => {
         $('#footer').empty();
+        $('#myMpa').after(compo.footer());
         $('#map').remove();
         $('#content').empty().html(compo.payment(arr)).css('margin-top', '100px');
         $('<div class="row">'
@@ -616,7 +626,6 @@ stadium = (() => {
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
         $('#content').css('margin-top', '80px');
-        alert(x.d);
         $.getJSON($.ctx()+'/stadiums/search/'+x.s+'/'+x.p+'/'+x.d+'/'+x.t, d => {
             $('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
             $.each(d.srch, (i, j) => {
@@ -667,7 +676,9 @@ stadium = (() => {
                 $(this).click(() => {
                     let arr = {
                         s: x.srch,
-                        p: $(this).text()
+                        p: $(this).text(),
+                        d: x.d,
+                        t: x.t
                     };
                     srch(arr);
                 });
@@ -675,14 +686,18 @@ stadium = (() => {
             $('.nextBlock').click(function() {
                 let arr = {
                     s: x.srch,
-                    p: d.pxy.nextBlock
+                    p: d.pxy.nextBlock,
+                    d: x.d,
+                    t: x.t
                 };
                 srch(arr);
             })
             $('.prevBlock').click(function() {
                 let arr = {
                     s: x.srch,
-                    p: d.pxy.prevBlock
+                    p: d.pxy.prevBlock,
+                    d: x.d,
+                    t: x.t
                 };
                 srch(arr);
             })
@@ -1170,7 +1185,6 @@ stadium = (() => {
          'margin-top': '110px',
          'height': '640px'
      }).html(html);
-     alert(j.stadiumIndex);
      $.getJSON($.ctx() + '/game/position/'+ j.timeIndex, d => {
          $.each(d.position, (i, j) => {
              if (j.position === 'FW_' + i && j.memberIndex != null) {

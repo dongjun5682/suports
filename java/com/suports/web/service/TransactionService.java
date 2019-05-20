@@ -8,4 +8,5 @@ import org.springframework.stereotype.Component;
 public interface TransactionService {
 
 	public Map<?, ?> reservationTransaction(Map<?, ?> map);
+	public void teamJoinMember(Map<?,?> map);
 }
