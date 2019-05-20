@@ -89,32 +89,50 @@ member = (() => {
             	member_update_frame();
             });
             $('#myteam').click(() => {
-            	if ($.member().teamIndex == 0){
-            		swal('현재 소속된 팀이 없습니다.');
-            	} else {
-            		let teamData = {
-            				teamIndex : $.member().teamIndex
-            		}
-            		$.ajax({
-            			 url: $.ctx()+'/teams/myteam/'+teamData.teamIndex,
-            			 type: 'PUT',
-            			 data: JSON.stringify(teamData),
-            			 dataType: 'json',
-            			 contentType: "application/json; charset=utf-8",
-            			 success: d => {
-            				 $('.team_member_details').remove();
-            				 team.team_detail(d);
-            			 },
-            			 error: e => {
-                             alert('ajax fail');
-                         }
-            		 });
-            	}
-            $('#logout').click(() => {
-            	sessionStorage.removeItem("member"); 
-            	window.location.reload();
+            	let fp_members = ''
+                    +'<div class="field_position_member_1">'
+                    +'    <div class="fp_img_form">'
+                    +'        <img src="" alt="Member Name">'
+                    +'    </div>'
+                    +'    <div class="fp_name_form">'
+                    +'        <div class="fp_names"></div>'
+                    +'    </div>'
+                    +'    <div class="fp_mark_form">'
+                    +'        <div class="fp_positions"></div>'
+                    +'    </div>'
+                    +'</div>';
+            	$('.field_position_a_team').append(fp_members);
+            	
+//            	if ($.member().teamIndex == 0){
+//            		swal('현재 소속된 팀이 없습니다.');
+//            	} else {
+//            		let teamData = {
+//            				teamIndex : $.member().teamIndex
+//            				}
+//            		$.ajax({
+//            			url: $.ctx()+'/teams/myteam/'+teamData.teamIndex,
+//            			type: 'PUT',
+//            			data: JSON.stringify(teamData),
+//            			dataType: 'json',
+//            			contentType: "application/json; charset=utf-8",
+//            			success: d => {
+//            				if($.member().memberIndex == d.captain){
+//            					team.team_update_frame();
+//            				} else {
+//            					$('.team_member_details').remove();
+//            					team.team_detail(d);
+//            				}
+//            			},
+//            			error: e => {
+//            				alert('ajax fail');
+//            			}
+//            		});
+//            	}
             });
-        });
+            $('#logout').click(() => {
+        		sessionStorage.removeItem("member"); 
+        		window.location.reload();
+        	});
         });
         $('#alramBtn').click(()=>{
         	 $('#user-drop').remove();

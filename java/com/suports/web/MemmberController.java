@@ -94,7 +94,7 @@ public class MemmberController {
 	@GetMapping("/members/{incase}/{searching}")
 	public MemberDTO find(@PathVariable String incase, @PathVariable String searching) 
 	{
-		logger.info("===MEMBER A New Member ==={},{}", incase, searching);
+		logger.info("===MEMBER FIND A MEMBER ==={},{}", incase, searching);
 		
 		MemberDTO mem = new MemberDTO();
 	
@@ -114,6 +114,7 @@ public class MemmberController {
 				break;
 			}
 		}
+		System.out.println(memberService.retrieveAMemberDetail(mem).toString());
 		return memberService.retrieveAMemberDetail(mem);
 
 	}

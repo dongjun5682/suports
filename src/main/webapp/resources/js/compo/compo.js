@@ -189,6 +189,20 @@ compo = {
 		+'                                        </select>'
 		+'                                        <span class="select-arrow"></span>';
 	},
+	field_position_form: ()=>{
+		return '<div class="field_position_form">'
+		+'    <div class="fp_background">'
+		+'        <div class="fp_logo_a">'
+		+'				<img src="resources/img/logo/team_logo0.png" class="fp_a_team_img">'
+		+'		  </div>'	
+		+'		  <div class="vs_mark">VS</div>'
+		+'        <div class="fp_logo_b">'
+		+'				<img src="resources/img/logo/team_logo15.png" class="fp_b_team_img">'
+		+'		  </div>'	
+		+'        <img src="resources/img/background/field_img.png" alt="Field Image" class="fp_feild_img">'
+		+'    </div>'
+		+'</div>'
+	},
 	member_update_frame: ()=>{
 		return '<div class="member_update_sides">'
 		+'    <div class="mem_up_side_menu">'
@@ -232,7 +246,7 @@ compo = {
 		+'        <option value="phone">전화번호</option>'
 		+'    </select>'
 		+'    <div class="input-group-append" id="search_bar_add">'
-		+'        <input type="text" id="search_words_add">'
+		+'        <input type="text" id="search_words_add" required>'
 		+'    </div>'
 		+'    <div class="input-group-append" id="search_btn_add">'
 		+'        <button class="add_btn" type="button" data-toggle="modal" data-target="#myModal3">팀원 추가</button>'

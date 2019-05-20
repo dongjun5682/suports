@@ -40,15 +40,6 @@ public class Proxy {
 		prevBlock = startPage - pageSize;
 		nextBlock = startPage + pageSize;
 		
-		System.out.println(endPage);
-		System.out.println(startPage);
-		System.out.println(existNext);
-		System.out.println(existPrev);
-		System.out.println(prevBlock);
-		System.out.println(nextBlock);
-		
-		
-		
 		search = (String) paramMap.get("search");
     }   
     public void search(Map<?,?> paramMap) {

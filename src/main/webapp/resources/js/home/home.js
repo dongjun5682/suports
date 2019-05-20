@@ -38,7 +38,7 @@ home = (() => {
     let setContentView = () => {
     	
         $('#content').before(compo.header());
-        $('#content').append(compo.content()).css('margin-top','0px');
+        $('#content').append(compo.content());
         jQuery(function($) {
             $('#home').vidbg({
                 'mp4': 'resources/video/Fifa.mp4',

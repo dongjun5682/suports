@@ -262,9 +262,8 @@ stadium = (() => {
           		         					infowindow.open(map, marker);
           		         					$('#map_select').click(function(e){
           		         						let arr={stadiumName:j.name,stadiumAddr:j.addr,stadiumPhoto:j.photo,date:j.date,time:j.time,latitude:j.latitude,hardness:j.hardness};
-          		         						$('#content').html(compo.stadium_list_detail(j));
           		         						$('#chat_main').remove();
-          		         						list_detail_after(arr);
+          		         						list_field_position(arr);
           		         					});
           		       		}
           		     })(marker, i));
@@ -482,6 +481,62 @@ stadium = (() => {
             home.login();
         });
 
+    }
+    
+    let list_field_position = (j) => {
+        $('#chat_main').remove();
+    	$('#content').html(compo.stadium_list_detail(j));
+        
+    	$('#sta_photo').append(compo.field_position_form());
+    	let fp_members = ''
+            +'<div class="field_position_member_1">'
+            +'    <div class="fp_img_form">'
+            +'        <img src="" alt="Member Name">'
+            +'    </div>'
+            +'    <div class="fp_name_form">'
+            +'        <div class="fp_names"></div>'
+            +'    </div>'
+            +'    <div class="fp_mark_form">'
+            +'        <div class="fp_positions"></div>'	
+            +'    </div>'
+            +'</div>';
+    	$('.field_position_a_team').append(fp_members);
+    	
+    	
+    	
+        // map 설정 ////
+        $(document).ready(function() {
+            initMap(j);
+        });
+        $('#sta_photo').append('		<div class="col-md-4" style="margin: 570px auto auto -120px;">'
+        		+'			<h1 style="margin-left: -110px;"> 위치 </h1>'
+        		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
+        		+'		</div>');
+        $('#myMpa').append(compo.map(j));
+       
+        $('#map').css({
+            'width': '1270px',
+            'height': '400px',
+            'margin-bottom': '100px',
+            'margin-left':'235px'
+        });
+        
+        // 예약 확인 버튼
+        $('#pay_btn_1').click(() => {
+            $('#pay_btn_1').attr({
+                'data-target': '#myModal',
+                'data-toggle': 'modal'
+            });
+            home.login();
+        });
+        $('#a-team').click((d) => {
+            $('#a-team').attr({
+                'data-target': '#myModal',
+                'data-toggle': 'modal'
+            });
+            home.login();
+        });
+    
     }
 
     let list_detail_after = (j) => {

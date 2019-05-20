@@ -131,26 +131,8 @@ window.addEventListener("load", function(){
 	    "message": "이 웹 사이트는 귀하가 당사 웹 사이트에서 최상의 경험을 할 수 있도록 쿠키를 사용합니다.",
 	    "dismiss": "알겠습니다!"
 	  }
-	})});
+	});
  
-var modal = new tingle.modal({
-    footer: false,
-    stickyFooter: false,
-    closeMethods: ['overlay', 'button', 'escape'],
-    closeLabel: "Close",
-    cssClass: ['custom-class-1', 'custom-class-2'],
-    onOpen: function() {
-        console.log('modal open');
-    },
-    onClose: function() {
-        console.log('modal closed');
-    },
-    beforeClose: function() {
-        // here's goes some logic
-        // e.g. save content before closing the modal
-        return true; // close the modal
-        return false; // nothing happens
-    }
 });
 </script>
 
