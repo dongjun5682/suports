@@ -35,11 +35,20 @@ public class Proxy {
 		endPage = blockNum;
 		startPage = (endPage - blockSize) + 1; 
 		endPage = (blockNum > pageCount ) ? pageCount :blockNum ;
-		existNext = (startPage + pageSize) <= pageCount;
-		existPrev = (startPage - pageSize) > 0 ;
+		existPrev = (startPage - pageSize) > 0;
+		existNext = endPage <= pageCount;
 		prevBlock = startPage - pageSize;
 		nextBlock = startPage + pageSize;
-
+		
+		System.out.println(endPage);
+		System.out.println(startPage);
+		System.out.println(existNext);
+		System.out.println(existPrev);
+		System.out.println(prevBlock);
+		System.out.println(nextBlock);
+		
+		
+		
 		search = (String) paramMap.get("search");
     }   
     public void search(Map<?,?> paramMap) {

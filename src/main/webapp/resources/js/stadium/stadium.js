@@ -117,7 +117,9 @@ stadium = (() => {
             } else {
                 let arr = {
                     p: '1',
-                    s: search
+                    s: search,
+                    t:$('#recipient-time').val(),
+                    d:$('#recipient-date').val()
                 };
                 srch(arr);
             }
@@ -145,11 +147,14 @@ stadium = (() => {
                         '      <i class="course-link-icon fa fa-link"></i>' +
                         '    </a>' +
                         '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                        '    <div class="course-time">' +
+                        '      <span class="course-time course-free">' + j.time + '</span>' +
+                        '    </div>' +
                         '    <div class="course-details">' +
                         '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                         '    </div>' +
                         '    <div class="course-people">' +
-                        '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                        '      <span class="course-people course-free">' +j.people + '/' + 22 + '</span>' +
                         '    </div>' +
                         '  </div>' +
                         '</div> ')
@@ -285,7 +290,9 @@ stadium = (() => {
             } else {
                 let arr = {
                     p: '1',
-                    s: search
+                    s: search,
+                    t:$('#recipient-time').val(),
+                    d:$('#recipient-date').val()
                 };
                 srch_after(arr);
             }
@@ -305,18 +312,21 @@ stadium = (() => {
         $.getJSON($.ctx() + '/stadiums/page/' + x.p, d => {
             $('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
             $.each(d.ls, (i, j) => {
-                $('<div class="col-md-3 col-sm-6 col-xs-6" >' +
+            	$('<div class="col-md-3 col-sm-6 col-xs-6" >' +
                         '  <div class="course">' +
                         '    <a href="#" class="course-img">' +
                         '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
                         '      <i class="course-link-icon fa fa-link"></i>' +
                         '    </a>' +
                         '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                        '    <div class="course-time">' +
+                        '      <span class="course-time course-free">' + j.time + '</span>' +
+                        '    </div>' +
                         '    <div class="course-details">' +
                         '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                         '    </div>' +
                         '    <div class="course-people">' +
-                        '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                        '      <span class="course-people course-free">'+j.people+ '/' + 22 + '</span>' +
                         '    </div>' +
                         '  </div>' +
                         '</div> ')
@@ -443,8 +453,8 @@ stadium = (() => {
         $(document).ready(function() {
             initMap(j);
         });
-        $('#myMpa').append('		<div class="col-md-4" style="margin: auto auto 30px 220px;">'
-        		+'			<h1> 위치 </h1>'
+        $('#sta_photo').append('		<div class="col-md-4" style="margin: 570px auto auto -120px;">'
+        		+'			<h1 style="margin-left: -110px;"> 위치 </h1>'
         		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
         		+'		</div>');
         $('#myMpa').append(compo.map(j));
@@ -455,7 +465,6 @@ stadium = (() => {
             'margin-bottom': '100px',
             'margin-left':'235px'
         });
-        
         
         // 예약 확인 버튼
         $('#pay_btn_1').click(() => {
@@ -480,8 +489,7 @@ stadium = (() => {
         $('#content').html(compo.stadium_list_detail(j));
         position_map(j);
         $('#footer').css('.section', 'padding-bottom:78px;');
-        $('#footer').css('.section', 'background-color: #1db91d9e;');
-        $('#footer').attr('style', 'position: fixed;left: 0;bottom: 0;width: 100%;background-color: #8cff88;color: white;text-align: center;padding-bottom: 5px;padding-bottom: 34px;-top: 5px;padding-top: 0px;"')
+        $('#footer').attr('style', 'position: fixed;left: 0;bottom: 0;width: 100%;background-color: #00A86B;color: white;text-align: center;padding-bottom: 5px;padding-bottom: 34px;-top: 5px;padding-top: 0px;"')
         $('#footer').html('<div class="navbar-brand">' +
             '<div class= col-ms-1>' +
             '<a class="logo" href="index.html" style="margin-right: 1230px;">' +
@@ -505,6 +513,10 @@ stadium = (() => {
             'margin-bottom': '100px',
             'margin-left':'235px'
         });
+        $('#sta_photo').append('		<div class="col-md-4" style="margin: 570px auto auto -120px;">'
+        		+'			<h1 style="margin-left: -110px;"> 위치 </h1>'
+        		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
+        		+'		</div>');
         // 예약 확인 버튼
         $('#pay_btn_1').click(() => {
             let position = $('#roster_ball').parent().attr('id');
@@ -547,6 +559,11 @@ stadium = (() => {
         $('#footer').empty();
         $('#map').remove();
         $('#content').empty().html(compo.payment(arr)).css('margin-top', '100px');
+        $('<div class="row">'
+    		    +'<div class="col-md-12 paybtn">'
+    		    +'<button type="button" class="btn btn-primary" id="payment_btn" style="background-color: rgb(17, 100, 65); border-color: rgb(17, 100, 65);">결제 하기</button>'
+    		    +'</div>'
+    		    +'</div>').appendTo('.payt')
         $('#payment_btn').click(e=> {
 			// payment_page(arr);
         	 $.getJSON($.ctx() + '/reservation/payment/' + arr.stadium.timeIndex + '/' + arr.posi + '/' + $.member().memberIndex+'/'+arr.stadium.stadiumIndex
@@ -599,22 +616,25 @@ stadium = (() => {
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
         $('#content').css('margin-top', '80px');
-        let url = $.ctx() + '/stadiums/search/' + x.s + '/' + x.p+'/'+x.d+'/'+x.t;
-        $.getJSON(url, d => {
+        alert(x.d);
+        $.getJSON($.ctx()+'/stadiums/search/'+x.s+'/'+x.p+'/'+x.d+'/'+x.t, d => {
             $('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
             $.each(d.srch, (i, j) => {
-                $('<div class="col-md-3 col-sm-6 col-xs-6" >' +
+            	$('<div class="col-md-3 col-sm-6 col-xs-6" >' +
                         '  <div class="course">' +
                         '    <a href="#" class="course-img">' +
                         '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
                         '      <i class="course-link-icon fa fa-link"></i>' +
                         '    </a>' +
                         '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                        '    <div class="course-time">' +
+                        '      <span class="course-time course-free">' + j.time + '</span>' +
+                        '    </div>' +
                         '    <div class="course-details">' +
                         '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                         '    </div>' +
                         '    <div class="course-people">' +
-                        '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                        '      <span class="course-people course-free">' + j.people + '/' + 22 + '</span>' +
                         '    </div>' +
                         '  </div>' +
                         '</div> ')
@@ -674,7 +694,9 @@ stadium = (() => {
             } else {
                 let arr = {
                     p: '1',
-                    s: search
+                    s: search,
+                    t:$('#recipient-time').val(),
+                    d:$('#recipient-date').val()
                 };
                 srch(arr);
             }
@@ -760,7 +782,9 @@ stadium = (() => {
             } else {
                 let arr = {
                     p: '1',
-                    s: search
+                    s: search,
+                    t:$('#recipient-time').val(),
+                    d:$('#recipient-date').val()
                 };
                 srch_seoul(arr);
             }
@@ -817,7 +841,9 @@ stadium = (() => {
             } else {
                 let arr = {
                     p: '1',
-                    s: search
+                    s: search,
+                    t:$('#recipient-time').val(),
+                    d:$('#recipient-date').val()
                 };
                 srch(arr);
             }
@@ -874,7 +900,9 @@ stadium = (() => {
             } else {
                 let arr = {
                     p: '1',
-                    s: search
+                    s: search,
+                    t:$('#recipient-time').val(),
+                    d:$('#recipient-date').val()
                 };
                 srch(arr);
             }
@@ -895,26 +923,27 @@ stadium = (() => {
     };
 
     let srch_after = x => {
-    	
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
         $('#content').css('margin-top', '80px');
-        let url = $.ctx() + '/stadiums/search/' + x.s + '/' + x.p;
-        $.getJSON(url, d => {
+        $.getJSON($.ctx()+'/stadiums/search/'+x.s+'/'+x.p+'/'+x.d+'/'+x.t, d, d => {
             $('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
             $.each(d.srch, (i, j) => {
-                $('<div class="col-md-3 col-sm-6 col-xs-6" >' +
+            	$('<div class="col-md-3 col-sm-6 col-xs-6" >' +
                         '  <div class="course">' +
                         '    <a href="#" class="course-img">' +
                         '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
                         '      <i class="course-link-icon fa fa-link"></i>' +
                         '    </a>' +
                         '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                        '    <div class="course-time">' +
+                        '      <span class="course-time course-free">' + j.time + '</span>' +
+                        '    </div>' +
                         '    <div class="course-details">' +
                         '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                         '    </div>' +
                         '    <div class="course-people">' +
-                        '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                        '      <span class="course-people course-free">' + j.people + '/' + 22 + '</span>' +
                         '    </div>' +
                         '  </div>' +
                         '</div> ')
@@ -974,7 +1003,9 @@ stadium = (() => {
             } else {
                 let arr = {
                     p: '1',
-                    s: search
+                    s: search,
+                    t:$('#recipient-time').val(),
+                    d:$('#recipient-date').val()
                 };
                 srch_after(arr);
             }

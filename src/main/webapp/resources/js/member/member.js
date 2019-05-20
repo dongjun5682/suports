@@ -80,8 +80,6 @@ member = (() => {
             		+'<ul>'
             		+'<li id="frofile"><h3 class="black-text">프로필 관리<h3></li>'
             		+'    <li class="divider"></li>'
-            		+'    <li id="friend"><h3 class="black-text">친구 초대하기<h3></li>'
-            		+'    <li class="divider"></li>'
             		+'    <li id="myteam"><h3 class="black-text">My Team<h3></li>'
             		+'    <li class="divider"></li>'
             		+'    <li id="logout"><h3 class="black-text">로그아웃<h3></li>'
@@ -131,26 +129,26 @@ member = (() => {
                     });
                     tour.tour_apply();
                     break;
-             
                 default:
                     break;
             }
         })
 
         $('#sear-btn').click(function() {
+        	if($('.search-addr').val() == '모두보기'){
+        		let x = {p:1};
+        		stadium.list_after(x);
+        	}else{
             let search = {
                 p: 1,
-                s: $('.search-addr').val()
+                s: $('.search-addr').val(),
+                d: $('.search-time').val(),
+                t: $('search-date').val()
             };
-            if (search.s === '') {
-                let arr = {
-                    p: 1
-                };
-                stadium.list(arr);
-            } else {
-                stadium.srch(search);
+            stadium.srch_after(search);
             }
         });
+        
         $('#stadium_list').click(() => {
             $('#content').css('margin-top', '80px');
             let arr = {
@@ -162,6 +160,7 @@ member = (() => {
         $('.logo_login').click(()=>{
         	$('.logo_login').remove();
         	$('.navbar-right').remove();
+        	$('#content').css('margin-top','0px');
         	login_after();
         })
     }
@@ -195,16 +194,18 @@ member = (() => {
                             '      <i class="course-link-icon fa fa-link"></i>' +
                             '    </a>' +
                             '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                            '    <div class="course-time">' +
+                            '      <span class="course-time course-free"> ' + j.time + '</span>' +
+                            '    </div>' +
                             '    <div class="course-details">' +
                             '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                             '    </div>' +
                             '    <div class="course-people">' +
-                            '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                            '      <span class="course-price course-free">' + j.people + '/' + 22 + '</span>' +
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.seoul_stadium').click(function() {
                             stadium.list_detail_after(j);
-                            
                         });
                     }
                 } else if (j.areaName == '인천') {
@@ -216,11 +217,14 @@ member = (() => {
                             '      <i class="course-link-icon fa fa-link"></i>' +
                             '    </a>' +
                             '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                            '    <div class="course-time">' +
+                            '      <span class="course-time course-free"> ' + j.time +'</span>' +
+                            '    </div>' +
                             '    <div class="course-details">' +
                             '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                             '    </div>' +
                             '    <div class="course-people">' +
-                            '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                            '      <span class="course-price course-free">' + j.people + '/' + 22 + '</span>' +
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.Incheon_stadium').click(function() {
@@ -236,11 +240,14 @@ member = (() => {
                             '      <i class="course-link-icon fa fa-link"></i>' +
                             '    </a>' +
                             '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                            '    <div class="course-time">' +
+                            '      <span class="course-time course-free">' + j.time +'</span>' +
+                            '    </div>' +
                             '    <div class="course-details">' +
                             '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                             '    </div>' +
                             '    <div class="course-people">' +
-                            '      <span class="course-price course-free">' + 10 + '/' + 22 + '</span>' +
+                            '      <span class="course-price course-free">' + j.people + '/' + 22 + '</span>' +
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.gyeonggi_stadium').click(function() {

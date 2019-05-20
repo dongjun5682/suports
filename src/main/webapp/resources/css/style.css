@@ -227,7 +227,6 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 
 .navbar-brand .logo {
-	margin-top: 10px;
 	display: inline-block;
 }
 
@@ -1515,3 +1514,95 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 .res_img{
 	height: 350px;
 }
+._1v2u2kp{
+    height: 56px !important;
+    width: 56px !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: rgb(235, 235, 235) !important;
+    border-image: initial !important;
+    border-radius: 3px !important;
+}
+
+._ni9axhe{
+    margin:-35px auto 40px 10px;
+}
+.st_image{
+	width: 100%;
+}
+.res_info{
+	    border: 1px solid #e4e4e4 !important;
+    width: 300px;
+    height: 327px;
+    font-size: 16px;
+   	padding: 20px;
+}
+#search{
+	    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 970px;
+}
+._7qp4lh{
+    border-bottom: 1px solid;
+    width: 250px;
+    }
+.res_title{
+	    float: left;
+    margin-left: 10px;
+}
+.res_ff{
+	    margin-right: 10px;
+    float: right;
+}
+  ._12ay6gm{
+    background-color: rgba(255, 180, 0, 0.05) !important;
+    border-top: 1px solid rgb(255, 180, 0) !important;
+    border-bottom: 1px solid rgb(255, 180, 0) !important;
+    padding: 24px 36px 24px 24px !important;
+    margin-top:20px;
+}
+  ._czm8crp {
+        margin: 0px !important;
+        word-wrap: break-word !important;
+        font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+        font-size: 16px !important;
+        font-weight: 400 !important;
+        line-height: 1.375em !important;
+        color: #484848 !important;
+    }
+    ._j1kt73 {
+    white-space: nowrap !important;
+}._ni9axhe {
+    display: table-cell !important;
+    vertical-align: middle !important;
+}  ._10ejfg4u {
+    display: table-cell !important;
+    width: 100% !important;
+    vertical-align: middle !important;
+}._hgs47m {
+    display: table !important;
+    width: 100% !important;
+    border-spacing: 0px !important;
+}._qtix31 {
+    display: table !important;
+}._1m8bb6v {
+    position: absolute !important;
+    display: block !important;
+    border: 0px !important;
+    margin: -1px !important;
+    padding: 0px !important;
+    height: 1px !important;
+    width: 1px !important;
+    clip: rect(0, 0, 0, 0) !important;
+    overflow: hidden !important;
+}._36rlri {
+    display: inline-block !important;
+}
+
+._ni9axh{
+margin:-40px auto 50px -180px;}
+.paybtn{
+	margin:20px;
+	}

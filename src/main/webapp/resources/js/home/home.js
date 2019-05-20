@@ -54,7 +54,7 @@ home = (() => {
         $('#datepicker').datepicker({
 			locale: 'ko-kr',
             uiLibrary: 'bootstrap4',
-            format : 'yyyy/mm/dd',
+            format : 'yyyy-mm-dd',
             autoPick: 'true',
             date:''
 		});
@@ -103,34 +103,19 @@ home = (() => {
             }
         })
         $('#sear-btn').click(function() {
-            /*alert('addr : '+ $('.search-addr').val());
-          
-          	/stadiums/page/{page}
-          	 * 
-            alert('sport : '+ $('.search-sports').val());
-            alert('position : '+ $('.search-position').val());*/
-        	  alert('time : '+ $('.search-time').val());
-        	  alert('date : '+ $('.search-date').val());
         	if($('.search-addr').val() == '모두보기'){
         		let x = {p:1};
-        		stadium.list_after(x);
-        	}else if($('.search-addr').val() == ''){
-        	}
+        		stadium.list(x);
+        	}else{
             let search = {
                 p: 1,
                 s: $('.search-addr').val(),
-                d: $('.search-time').val(),
-                t: $('search-date').val()
+                d: $('#datepicker').val(),
+                t: $('.search-time').val()
             };
-            
-//            if (search.s == '') {
-//                let arr = {
-//                    p: 1
-//                };
-//                stadium.list(arr);
-//            } else {
-//                stadium.srch(search);
-//            }
+            alert($('.search-addr').val());
+            stadium.srch(search);
+        	}
         });
         $('#stadium_list').click(() => {
             $('#content').css('margin-top', '80px');
@@ -205,6 +190,9 @@ home = (() => {
                             '      <i class="course-link-icon fa fa-link"></i>' +
                             '    </a>' +
                             '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                            '    <div class="course-time">' +
+                            '      <span class="course-time course-free"> ' + j.time + '</span>' +
+                            '    </div>' +
                             '    <div class="course-details">' +
                             '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                             '    </div>' +
@@ -225,6 +213,9 @@ home = (() => {
                             '      <i class="course-link-icon fa fa-link"></i>' +
                             '    </a>' +
                             '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                            '    <div class="course-time">' +
+                            '      <span class="course-time course-free"> ' + j.time +'</span>' +
+                            '    </div>' +
                             '    <div class="course-details">' +
                             '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                             '    </div>' +
@@ -245,6 +236,9 @@ home = (() => {
                             '      <i class="course-link-icon fa fa-link"></i>' +
                             '    </a>' +
                             '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
+                            '    <div class="course-time">' +
+                            '      <span class="course-time course-free">' + j.time +'</span>' +
+                            '    </div>' +
                             '    <div class="course-details">' +
                             '      <span class="course-category">' + j.stadiumAddr + '</span>' +
                             '    </div>' +
