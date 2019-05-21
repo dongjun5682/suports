@@ -47,12 +47,12 @@ member = (() => {
        
         $('#home').attr('style', '" "');
         $('#rm_search').empty().append(compo.srch());
-        $('#datepicker').datepicker({
+        $('input[name="gameDate"]').datepicker({
 			locale: 'ko-kr',
             uiLibrary: 'bootstrap4',
             format : 'yyyy-mm-dd',
-            autoPick: 'true',
-            date:''
+            autoShow: 'true',
+            autoPick: 'true'
 		});
         $('.search-date').css({'margin-top':'10px','border-radius':' 4px'});
         $('.logo').remove();
@@ -135,6 +135,9 @@ member = (() => {
             let _this = $(this).attr('id');
             switch (_this) {
                 case 'exercise':
+                	if($.member().teamIndex){
+                		
+                	}
                 	stadium.stadium_res();
                     break;
                 case 'team':
@@ -171,15 +174,6 @@ member = (() => {
             stadium.srch_after(search);
             }
         });
-        
-        $('#stadium_list').click(() => {
-            $('#content').css('margin-top', '80px');
-            let arr = {
-                p: 1
-            };
-            stadium.list_after(arr);
-        })
-        
         $('.logo_login').click(()=>{
         	$('.logo_login').remove();
         	$('.navbar-right').remove();
@@ -454,17 +448,18 @@ member = (() => {
             let memberData = {
 					memberId : $.member().id
 			};
+            alert('asdsadasd');
             $('#img_upload_frm').ajaxForm({
                 url: $.ctx()+'/uploadImg/'+memberData.memberId,
                 dataType: 'json',
-                encType: "multipart/form-data",
+                encType: 'multipart/form-data',
                 type: 'POST',
                 beforeSubmit: function() {
-                    if($('#photo').val() === ""){
+                    if($('#photo').val() == ''){
                          alert("사진을 선택하셔야 합니다.");
                          return false;
                     }else{
-                         let ext = $("#photo").val().split(".").pop().toLowerCase();
+                         let ext = $('#photo').val().split('.').pop().toLowerCase();
                          if($.inArray(ext, ['jpg','png','jpeg']) == -1){
                         	 alert('JPG, JPEG, PNG 형식의 파일만 업로드 할 수 있습니다.');
                         	 return false;

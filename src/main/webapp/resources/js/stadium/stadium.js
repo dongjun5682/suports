@@ -184,11 +184,10 @@ stadium = (() => {
 
             $('.page').each(function() {
                 $(this).click(() => {
+                	 
                     let arr = {
                         s: x.srch,
-                        p: $(this).text(),
-                        d: x.d,
-                        t: x.t
+                        p: $(this).text()
                     };
                     list(arr);
                 });
@@ -196,18 +195,14 @@ stadium = (() => {
             $('.nextBlock').click(function() {
                 let arr = {
                     s: x.srch,
-                    p: d.pxy.nextBlock,
-                    d: x.d,
-                    t: x.t
+                    p: d.pxy.nextBlock
                 };
                 list(arr);
             })
             $('.prevBlock').click(function() {
                 let arr = {
                     s: x.srch,
-                    p: d.pxy.prevBlock,
-                    d: x.d,
-                    t: x.t
+                    p: d.pxy.prevBlock
                 };
                 list(arr);
             })
@@ -363,9 +358,7 @@ stadium = (() => {
                 $(this).click(() => {
                     let arr = {
                         s: x.srch,
-                        p: $(this).text(),
-                        d: x.d,
-                        t: x.d
+                        p: $(this).text()
                     };
                     list_after(arr);
                 });
@@ -373,18 +366,14 @@ stadium = (() => {
             $('.nextBlock').click(function() {
                 let arr = {
                     s: x.srch,
-                    p: d.pxy.nextBlock,
-                    d: x.d,
-                    t: x.d
+                    p: d.pxy.nextBlock
                 };
                 list_after(arr);
             })
             $('.prevBlock').click(function() {
                 let arr = {
                     s: x.srch,
-                    p: d.pxy.prevBlock,
-                    d: x.d,
-                    t: x.d
+                    p: d.pxy.prevBlock
                 };
                 list_after(arr);
             })
@@ -646,17 +635,6 @@ stadium = (() => {
                   };
                   payment_reservation(res)
               })
-
-        	// 나중에 유효성 검사 하기
-// let first_name = $('.name_1').val();
-// let last_name = $('.name_2').val();
-// let card_1 = $('.cardnumber_1').val();
-// let card_2 = $('.cardnumber_2').val();
-// let card_3 = $('.cardnumber_3').val();
-// let card_4 = $('.cardnumber_4').val();
-// let validThru = $('.validThru').val();
-// let cvv = $('.cvv').val();
-// let birthday = $('.birthday').val();
         })
 
     }
@@ -732,7 +710,7 @@ stadium = (() => {
             $('.page').each(function() {
                 $(this).click(() => {
                     let arr = {
-                        s: x.srch,
+                        s: x.s,
                         p: $(this).text(),
                         d: x.d,
                         t: x.t
@@ -742,7 +720,7 @@ stadium = (() => {
             });
             $('.nextBlock').click(function() {
                 let arr = {
-                    s: x.srch,
+                    s: x.s,
                     p: d.pxy.nextBlock,
                     d: x.d,
                     t: x.t
@@ -751,7 +729,7 @@ stadium = (() => {
             })
             $('.prevBlock').click(function() {
                 let arr = {
-                    s: x.srch,
+                    s: x.s,
                     p: d.pxy.prevBlock,
                     d: x.d,
                     t: x.t
@@ -998,7 +976,7 @@ stadium = (() => {
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
         $('#content').css('margin-top', '80px');
-        $.getJSON($.ctx()+'/stadiums/search/'+x.s+'/'+x.p+'/'+x.d+'/'+x.t, d, d => {
+        $.getJSON($.ctx()+'/stadiums/search/'+x.s+'/'+x.p+'/'+x.d+'/'+x.t, d => {
             $('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
             $.each(d.srch, (i, j) => {
             	$('<div class="col-md-3 col-sm-6 col-xs-6" >' +
@@ -1047,23 +1025,29 @@ stadium = (() => {
             $('.page').each(function() {
                 $(this).click(() => {
                     let arr = {
-                        s: x.srch,
-                        p: $(this).text()
+                        s: x.s,
+                        p: $(this).text(),
+                        d: x.d,
+                        t: x.t
                     };
                     srch_after(arr);
                 });
             });
             $('.nextBlock').click(function() {
                 let arr = {
-                    s: x.srch,
-                    p: d.pxy.nextBlock
+                    s: x.s,
+                    p: d.pxy.nextBlock,
+                    d: x.d,
+                    t: x.t
                 };
                 srch_after(arr);
             })
             $('.prevBlock').click(function() {
                 let arr = {
-                    s: x.srch,
-                    p: d.pxy.prevBlock
+                    s: x.s,
+                    p: d.pxy.prevBlock,
+                    d: x.d,
+                    t: x.t
                 };
                 srch_after(arr);
             })

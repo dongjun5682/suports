@@ -28,7 +28,7 @@ import com.suports.web.service.TransactionServiceImpl;
 
 @RestController
 public class MemmberController {
-	public static final String MEMBER_PHOTO_PATH = "/Users/yirekim/suports_sourcetree/src/main/webapp/resources/img/members_photo//";
+	public static final String MEMBER_PHOTO_PATH = "/Users/dongjun/suports_workspace/suports/src/main/webapp/resources/img/members_photo//";
 	private static final Logger logger = LoggerFactory.getLogger(MemmberController.class);
 
 	@Autowired MemberDTO memberDTO; // hum..
@@ -140,6 +140,16 @@ public class MemmberController {
 	
 	@PutMapping("/members/{userid}")
 	public Map<?,?> updates(@RequestBody MemberDTO mem, @PathVariable String userid) {
+
+		logger.info("===UPDATE DTO ==={}",mem);
+		
+		memberService.modifyAMember(mem);
+		map.clear();
+		map.put("msg","성공");
+		return map;
+	}
+	@PutMapping("/member/{userid}")
+	public Map<?,?> teamUpdateMember(@RequestBody MemberDTO mem, @PathVariable String userid) {
 
 		logger.info("===UPDATE DTO ==={}",mem);
 		map.clear();

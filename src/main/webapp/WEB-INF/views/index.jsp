@@ -14,7 +14,7 @@
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap"></script>
 <script src="resources/js/com/popper.min.js"></script>
-<!-- <script src="resources/js/com/jquery.min.3.3.1.js"></script> -->
+<!-- <script src="resources/js/com/jquery.min.3.3.1.js"></script>  -->
 <script src="resources/js/com/jquery.min.3.4.0.js"></script>
 
 <!-- 아임포트 -->
@@ -91,7 +91,7 @@ crossorigin="anonymous">
 	<script src="resources/js/com/tingle.min.js"></script>
 	<script src="resources/js/com/datepicker.min.js"></script>
 	<script src="resources/js/com/datepicker.ko-kr.js"></script>
-
+	<script src="resources/js/com/fileupload.js"></script>
 	<script src="resources/js/compo/compo.js"></script>
 	<script src="resources/js/com/util.js"></script>
 	<script src="resources/js/home/home.js"></script>

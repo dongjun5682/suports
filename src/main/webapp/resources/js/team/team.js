@@ -240,7 +240,7 @@ team = (() => {
     	    				name : $.member().name
     	    		}
     	    		$.ajax({
-                        url: $.ctx() + '/members/'+joinData.memberIndex,
+                        url: $.ctx() + '/member/'+joinData.memberIndex,
                         type: 'PUT',
                         data: JSON.stringify(joinData),
                         dataType: 'json',
@@ -569,7 +569,8 @@ team = (() => {
     }
     let emblem_carousel = () => {
     	$(document).ready(function(){
-    		  // Activate the Carousel. Pause it when you move the mouse over it
+    		  // Activate the Carousel. Pause it when you move the mouse over
+				// it
     		  $("#emblemCarousel").carousel({interval: false, pause: "hover"});
     		        
     		  // Enable Carousel Indicators
