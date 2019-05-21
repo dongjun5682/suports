@@ -12,6 +12,7 @@ compo = {
 		+'                </div>'
 		+'                <nav id="nav">'
 		+'                    <ul class="main-menu nav navbar-nav navbar-right">'
+		+'                        <li><a href="#" id="notice">NOTICE</a></li>'
 		+'                        <li><a href="#" id="tourment">TOURNEMENT</a></li>'
 		+'                        <li><a href="#" id="team">TEAM</a></li>'
 		+'                        <li><a href="#" id="signup" data-toggle="modal" data-target="#myModal">SIGNUP</a></li>'
@@ -199,6 +200,16 @@ compo = {
 		+'    </div>'
 		+'</div>'
 	},
+	notice_frame: ()=>{
+		return '<div class="member_update_sides">'
+		+'    <div class="mem_up_side_menu">'
+		+'    </div>'
+		+'</div>'
+		+'<div id="update_mid_content">'
+		+'</div>'
+		+'<div class="mem_up_right_content"> '
+		+'</div>'
+	},
 	member_update_frame: ()=>{
 		return '<div class="member_update_sides">'
 		+'    <div class="mem_up_side_menu">'
@@ -303,6 +314,7 @@ compo = {
 	},
 	login_nav : ()=>{
 		return ' <ul class="main-menu nav navbar-nav navbar-right">'
+		+'   <li><a href="#" id="notice">NOTICE</a></li>'
 		+'  <li><a href="#" id="tourment">TOURMENT</a></li>'
 		+'  <li><a href="#" id="team">TEAM</a></li>'
 		+'  <li><a href="#" id="exercise">EXERCISE</a></li>'
@@ -1454,7 +1466,7 @@ compo = {
 		+'    </div>'
 		+'  </div>'
 		+'  <div class="section">'
-		+'    <div class="container">'
+		+'    <div class="container" id="real_container">'
 		+'		<div class="col-md-4">'
 		+'			<h1> 포지션 </h1>'
 		+'			<span>회원님이 원하시는 포지션을 선택할 수 있습니다.</span>'
@@ -1528,7 +1540,7 @@ compo = {
 		return '<div class="row">'
 		+'<div id="img_upload_div">'
 			+'<form id="img_upload_frm" encType="multipart/form-data">'
-			+'<input type="file" id="photo" name="photo" class="form-control" id="photo" placeholder="" required>'
+			+'<input type="file" id="photo" name="photo" class="form-control" required>'
 			+'<div class="invalid-feedback">'
 			+'</div>'
 			+'<input type="submit" value="사진전송" id="img_upload_btn" class="upload_btns">'

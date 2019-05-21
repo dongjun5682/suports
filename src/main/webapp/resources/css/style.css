@@ -31,6 +31,15 @@ Table OF Contents
 	General
 \*------------------------------------*/
 /* --- typography --- */
+
+footer#footer {
+    padding-top: 60px;
+    margin: 20px auto auto auto;
+}
+div#content {
+    margin-top: 80px;
+    padding-bottom: 100px;
+}
 body {
     font-family: 'Montserrat', sans-serif;
 	font-size: 15px;
@@ -1331,9 +1340,6 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 .stadium-row{
 	margin: 15px;
-}
-#content{
-    margin-top: 62px;
 }
 .tournament-content button{
 	width: 160px;

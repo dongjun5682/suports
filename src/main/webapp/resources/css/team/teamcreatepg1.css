@@ -21,9 +21,7 @@ button.team_join_btn {
 .mem_team_join:hover {
     background-color: #00b0e7;
 }
-div#content {
-    margin-top: 80px;
-}
+
 .team_detail_page img.team_logo {
     width: 100%;
 }

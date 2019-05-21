@@ -68,7 +68,7 @@
 		</choose>
 	</select>
 	<select id="selectListOfMembers"
-		resultType="com.suports.web.domain.MemberDTO">
+		resultMap="memberResult">
 		SELECT 
 		@ROWNUM := @ROWNUM+1 as rnum,
 		MEMBER_INDEX memberIndex,
@@ -90,10 +90,10 @@
 		FROM MEMBER, (SELECT @ROWNUM := 0) N
 		<choose>
 			<when test="totalCount == 0">
-				WHERE TEAM_INDEX LIKE #{teamIndex}
+				WHERE TEAM_INDEX LIKE #{index}
 			</when>
 			<otherwise>
-				WHERE TEAM_INDEX LIKE #{teamIndex}
+				WHERE TEAM_INDEX LIKE #{index}
 				ORDER BY rnum DESC
 				LIMIT #{startRow}, #{pageSize}
 			</otherwise>

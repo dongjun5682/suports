@@ -15,7 +15,7 @@
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap"></script>
 <script src="resources/js/com/popper.min.js"></script>
 <!-- <script src="resources/js/com/jquery.min.3.3.1.js"></script> -->
-<script src="resources/js/com/jquery.min.3.4.0.js"></script>
+<script src="resources/js/com/jquery.min.3.4.1.js"></script>
 
 <!-- 아임포트 -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
@@ -33,14 +33,12 @@
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/com/myTooltip.css">
 <link rel="stylesheet" href="resources/css/com/bootstrap3.css">
-<link rel="stylesheet" href="resources/css/com/tingle.min.css">
 <link rel="stylesheet" href="resources/css/com/animate.min.css">
+<link rel="stylesheet" href="resources/css/com/datapicker.min.css">
+<link rel="stylesheet" href="resources/css/com/summernote-lite.css">
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
 <link rel="stylesheet" href="resources/css/chatbot.css"> 
-<link rel="stylesheet" href="resources/css/datepicker/datapicker.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" 
-integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" 
-crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
 <!-- modal css -->
 <link rel="stylesheet" href="resources/css/modal.css">
@@ -57,7 +55,6 @@ crossorigin="anonymous">
 
 </head>
 <body>
-
 <div id="content"></div>
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -88,9 +85,10 @@ crossorigin="anonymous">
 	<script src="resources/js/com/router.js"></script>
 	<script src="resources/js/com/myTooltip.js"></script>
 	<script src="resources/js/com/sweetalert.min.js"></script>
-	<script src="resources/js/com/tingle.min.js"></script>
 	<script src="resources/js/com/datepicker.min.js"></script>
 	<script src="resources/js/com/datepicker.ko-kr.js"></script>
+	<script src="resources/js/com/summernote-lite.min.js"></script>
+	<script src="resources/js/com/summernote-ko-KR.js"></script>
 
 	<script src="resources/js/compo/compo.js"></script>
 	<script src="resources/js/com/util.js"></script>
@@ -98,9 +96,8 @@ crossorigin="anonymous">
     <script src="resources/js/home/chat.js"></script>
 	<script src="resources/js/member/member.js"></script>
     <script src="resources/js/vidbg.js"></script>
-	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-    
-    
+	<!-- <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script> -->
+   
 <script>
 app.run('<%=application.getContextPath()%>');
 
@@ -132,8 +129,8 @@ window.addEventListener("load", function(){
 	    "dismiss": "알겠습니다!"
 	  }
 	});
- 
 });
+
 </script>
 
 </body>
