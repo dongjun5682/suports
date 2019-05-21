@@ -24,8 +24,6 @@ public class GameController {
 	public Map<?,?> positionList(@PathVariable String timeIndex){
 		IFunction i = (Object o)  -> gameMap.selectGame(timeIndex);
 		List<?> list= (List<?>) i.apply(timeIndex);
-		System.out.println(list.toString());
-		System.out.println(timeIndex);
 		map.clear();
 		map.put("position",list);
 		return map;

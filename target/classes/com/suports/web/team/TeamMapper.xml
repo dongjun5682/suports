@@ -5,26 +5,29 @@
 
 <mapper namespace="com.suports.web.mapper.TeamMapper">
 
-<resultMap id="teamResult" type="com.suports.web.domain.TeamDTO">
-  <id property="teamIndex" column="TEAM_INDEX" javaType="int"/>
-  <result property="name" column="TEAM_NAME" javaType="String"/>
-  <result property="emblem" column="TEAM_EMBLEM" javaType="String"/>
-  <result property="captain" column="TEAM_CAPTIN" javaType="int"/>
-  <result property="sport" column="TEAM_SPORT" javaType="String"/>
-  <result property="sort" column="TEAM_SORT" javaType="String"/>
-  <result property="address" column="TEAM_ADDR" javaType="String"/>
-  <result property="info" column="TEAM_INFO" javaType="String"/>
-  <result property="avgage" column="TEAM_AGE" javaType="String"/>
-  <result property="style" column="TEAM_STYLE" javaType="String"/>
-  <result property="tournamentIndex" column="TOURNAMENT_INDEX" javaType="int" />
-  <result property="totalcount" column="TOTALCOUNT" />
-  <result property="rnum" column="RNUM"/>
-</resultMap>
-	<select id="selectATeam"
-	resultMap="teamResult">
+	<resultMap id="teamResult"
+		type="com.suports.web.domain.TeamDTO">
+		<id property="teamIndex" column="TEAM_INDEX" javaType="int" />
+		<result property="name" column="TEAM_NAME" javaType="String" />
+		<result property="emblem" column="TEAM_EMBLEM"
+			javaType="String" />
+		<result property="captain" column="TEAM_CAPTIN" javaType="int" />
+		<result property="sport" column="TEAM_SPORT" javaType="String" />
+		<result property="sort" column="TEAM_SORT" javaType="String" />
+		<result property="address" column="TEAM_ADDR" javaType="String" />
+		<result property="info" column="TEAM_INFO" javaType="String" />
+		<result property="avgage" column="TEAM_AGE" javaType="String" />
+		<result property="style" column="TEAM_STYLE" javaType="String" />
+		<result property="tournamentIndex" column="TOURNAMENT_INDEX"
+			javaType="int" />
+		<result property="totalcount" column="TOTALCOUNT" />
+		<result property="rnum" column="RNUM" />
+	</resultMap>
+	<select id="selectATeam" resultMap="teamResult">
 		SELECT *
 		FROM TEAM
-		WHERE TEAM_INDEX LIKE #{teamIndex}
+		WHERE
+		TEAM_INDEX LIKE #{teamIndex}
 	</select>
 	<insert id="insertATeam"
 		parameterType="com.suports.web.domain.TeamDTO" flushCache="true"
@@ -56,49 +59,51 @@
 		parameterType="com.suports.web.domain.TeamDTO" flushCache="true"
 		statementType="PREPARED" timeout="20">
 		<if test="emblem == null">
-		UPDATE TEAM SET
-		TEAM_NAME = #{name},
-		TEAM_AGE = #{avgage},
-		TEAM_SORT = #{sort},
-		TEAM_STYLE = #{style},
-		TEAM_SPORT = #{sport},
-		TEAM_ADDR = #{address},
-		TEAM_INFO = #{info}
-		WHERE TEAM_CAPTIN 
-		LIKE #{captain}
+			UPDATE TEAM SET
+			TEAM_NAME = #{name},
+			TEAM_AGE = #{avgage},
+			TEAM_SORT = #{sort},
+			TEAM_STYLE = #{style},
+			TEAM_SPORT = #{sport},
+			TEAM_ADDR = #{address},
+			TEAM_INFO = #{info}
+			WHERE TEAM_CAPTIN
+			LIKE #{captain}
 		</if>
 		<if test="emblem != null">
-		UPDATE TEAM SET
-		TEAM_EMBLEM = #{emblem}
-		WHERE TEAM_INDEX 
-		LIKE #{teamIndex}
+			UPDATE TEAM SET
+			TEAM_EMBLEM = #{emblem}
+			WHERE TEAM_INDEX
+			LIKE #{teamIndex}
 		</if>
 	</update>
 	<delete id="deleteATeam"
 		parameterType="com.suports.web.domain.TeamDTO" flushCache="true"
 		statementType="PREPARED" timeout="20">
-		DELETE 
+		DELETE
 		FROM TEAM
 		WHERE TEAM_INDEX
 		LIKE #{teamIndex}
 	</delete>
-	
+
 	<select id="selectListOfTeams"
-	parameterType="com.suports.web.cmm.Proxy"
-	resultMap="teamResult">
-	SELECT T2.*
-	FROM (SELECT  @ROWNUM:=@ROWNUM+1 AS RNUM, T.*
-			FROM (SELECT * FROM TEAM ORDER BY TEAM_INDEX DESC) T, (SELECT @ROWNUM:=0)TMP) T2 
-	WHERE T2.RNUM BETWEEN #{startRow} AND #{endRow};
+		parameterType="com.suports.web.cmm.Proxy" resultMap="teamResult">
+		SELECT T2.*
+		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS RNUM, T.*
+		FROM (SELECT * FROM TEAM ORDER BY TEAM_INDEX DESC) T, (SELECT
+		@ROWNUM:=0)TMP) T2
+		WHERE T2.RNUM BETWEEN #{startRow} AND #{endRow};
 	</select>
-	
+
 	<select id="countTeams" resultType="int">
-	SELECT COUNT(*) FROM TEAM;
+		SELECT COUNT(*) FROM TEAM;
 	</select>
-	
+
 	<!-- 토너먼트 주장만 신청 -->
-	<select id="selectTeam" parameterType="com.suports.web.domain.MemberDTO" resultType="com.suports.web.domain.TeamDTO">
-	SELECT 
+	<select id="selectTeam"
+		parameterType="com.suports.web.domain.MemberDTO"
+		resultType="com.suports.web.domain.TeamDTO">
+		SELECT
 		TEAM_INDEX teamIndex,
 		TEAM_NAME name,
 		TEAM_EMBLEM emblem,
@@ -109,7 +114,14 @@
 		TEAM_INFO info,
 		TEAM_AGE avgage,
 		TEAM_STYLE style
-		FROM TEAM WHERE TEAM_CAPTIN LIKE #{memberIndex};
+		FROM TEAM WHERE TEAM_CAPTIN LIKE
+		#{memberIndex};
 	</select>
-	
+	<select id="searchArea" parameterType="string"
+		resultMap="teamResult">
+		SELECT TEAM_INDEX,TEAM_NAME,TEAM_EMBLEM,TEAM_CAPTIN,TEAM_SPORT,TEAM_SORT,TEAM_ADDR,TEAM_INFO,TEAM_AGE,TEAM_STYLE
+		FROM TEAM
+		WHERE TEAM_ADDR LIKE '${value}';
+	</select>
+
 </mapper>

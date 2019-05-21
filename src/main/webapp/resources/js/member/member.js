@@ -34,6 +34,7 @@ member = (() => {
     let login_after =()=>{
     	$('#map').remove();
         $('#content').empty().append(compo.content());
+        $('#content').css('margin-top','0px');
         jQuery(function($) {
             $('#home').vidbg({
                 'mp4': 'resources/video/Fifa.mp4',
@@ -61,19 +62,15 @@ member = (() => {
         $('#footer').remove();
         $('#myMpa').after(compo.footer());
         home_list_after();
-     /*
-		 * $.getScript($.js()+'/compo/compo.js',()=>{
-		 * $.getScript($.js()+'/home/chat.js',()=>{
-		 * $(compo.chatbot()).appendTo('#footer'); $('#chat_body').hide().after( '<button
-		 * id="chat_ball" style="margin-left: 1373px;width: 5%;margin-bottom:
-		 * 40px;"><img src="resources/img/soccer-ball.png" style="width: 101%;
-		 * margin-left: 127px;"></button>' ); $("#chat_ball").click(function(){
-		 * alert('클릭'); $('#chat_body').show(); chat.chat_bot(); });
-		 * 
-		 * }); });
-		 */
         $('#nav').empty().after(compo.login_nav());
-      
+        
+        
+        if($.member().teamIndex != 0){
+        	$('#exercise').parent().after('<li><a href="#" id="team_exercise">TEAM_EXERCISE</a></li>');
+        }
+        $('#team_exercise').click(()=>{
+        	alert('asdjnaskjdnsa');
+        })
         $('#userBtn').click(() => {
         	$('#alram-drop').remove();
             $('<div class="dropdown-menu" id="user-drop">'
@@ -144,9 +141,6 @@ member = (() => {
             let _this = $(this).attr('id');
             switch (_this) {
                 case 'exercise':
-                	if($.member().teamIndex){
-                		
-                	}
                 	stadium.stadium_res();
                     break;
                 case 'team':
@@ -164,8 +158,9 @@ member = (() => {
                     });
                     tour.tour_apply();
                     break;
-                default:
-                    break;
+                case 'team_exercise':
+                	stadium.team_stadium_list();
+                	break;
             }
         })
         

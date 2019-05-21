@@ -19,6 +19,8 @@ public interface TeamMapper {
 	public Map<String, Object> selectATeamPic(TeamDTO team);
 	public TeamDTO selectATeam(TeamDTO team);
 	
+	public List<?> searchArea(String area);
+	
 	//tournament apply access
 	public TeamDTO selectTeam(MemberDTO memDTO);
 	

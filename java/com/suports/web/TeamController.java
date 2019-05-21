@@ -34,6 +34,7 @@ public class TeamController {
 	@Autowired Map<String, Object> map;
 	@Autowired Proxy pxy;
 	@Autowired TeamMapper teamMap;
+	@Autowired IFunction i;
 	
 	@Transactional
 	@PostMapping("/teams")
@@ -104,6 +105,15 @@ public class TeamController {
 		map.put("team", ls);
 		map.put("pxy", pxy);
 		System.out.println(" ls team : "+ls.toString());
+		return map;
+	}
+	
+	@GetMapping("teams/{area}")
+	public Map<?, ?> areaSrch(@PathVariable String area){
+		i = (Object o) -> teamMap.searchArea(area);
+		List<?> list = (List<?>) i.apply(area);
+		map.clear();
+		map.put("team", list);
 		return map;
 	}
 }

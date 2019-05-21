@@ -93,6 +93,7 @@ home = (() => {
                     break;
                 case 'team':
                     $('#map').remove();
+                    $('#content').css('margin-top','80px');
                     team.onCreate();
                     break;
                 case 'tourment':
@@ -101,6 +102,7 @@ home = (() => {
                 case 'about':
                     break;
                 case 'notice':
+                	$('#content').css('margin-top','80px');
                 	$('#update_mid_content').remove();
                 	let x = {
                 		page : '1'
@@ -140,7 +142,7 @@ home = (() => {
                 });
             });
             $('#rm_search').append(compo.srch());
-            
+            $('.search-date').css({'margin-top':'10px','border-radius':' 4px'});
             $('#footer').remove();
             $('#myMpa').after(compo.footer());
             $('#team_search').click(() => {

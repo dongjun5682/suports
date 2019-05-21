@@ -15,7 +15,6 @@ board = (() => {
     };
     let onCreate = (x) => {
         init();
-        $('#footer').remove();
         $.when(
             $.getScript(compojs),
             $.getScript(stadiumjs),

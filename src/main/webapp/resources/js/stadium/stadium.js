@@ -387,7 +387,7 @@ stadium = (() => {
         $('#chat_main').remove();
     	$('#content').html(compo.stadium_list_detail(j));
         let html = '<div class="a-team" id="roster_100"  ondrop="drop(event)" ondragover="allowDrop(event)"> ' +
-            '<img src="resources/img/football.png" draggable="false" ondragstart="drag(event)" id="roster_ball" width="50" height="50"> ' +
+            '<img class="posimage" src="resources/img/football.png" draggable="false" ondragstart="drag(event)" id="roster_ball" width="75" height="75"> ' +
             '</div> ' +
             '<div class="a-team" id="GK_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 80px;position: absolute; margin-top: 180px;"></div>' +
             '<div class="a-team" id="DF_9" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;"></div>' +
@@ -421,16 +421,16 @@ stadium = (() => {
         $.getJSON($.ctx() + '/game/position/' + j.timeIndex, d => {
             $.each(d.position, (i, j) => {
                 if (j.position === 'FW_' + i && j.memberIndex != null) {
-                    $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#FW_' + i);
+                    $('<img class="posimage" src="resources/img/members_photo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="75px" height="75px">').appendTo('#FW_' + i);
                     $('#roster_' + i).attr('ondrop', 'drag(event)');
                 } else if (j.position === 'MF_' + i && j.memberIndex != null) {
-                    $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#MF_' + i);
+                    $('<img class="posimage" src="resources/img/members_photo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="75px" height="75px">').appendTo('#MF_' + i);
                     $('#roster_' + i).attr('ondrop', 'drag(event)');
                 } else if (j.position === 'DF_' + i && j.memberIndex != null) {
-                    $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#DF_' + i);
+                    $('<img class="posimage" src="resources/img/members_photo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="75px" height="75px">').appendTo('#DF_' + i);
                     $('#roster_' + i).attr('ondrop', 'drag(event)');
                 } else if (j.position === 'GK_' + i && j.memberIndex != null) {
-                    $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px">').appendTo('#GK_' + i);
+                    $('<img class="posimage" src="resources/img/members_photo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="75px" height="75px">').appendTo('#GK_' + i);
                     $('#roster_' + i).attr('ondrop', 'drag(event)');
                 }
             });
@@ -468,6 +468,7 @@ stadium = (() => {
                 'data-target': '#myModal',
                 'data-toggle': 'modal'
             });
+            $('#content').css('margin-top','0px');
             home.login();
         });
         $('#a-team').click((d) => {
@@ -475,6 +476,7 @@ stadium = (() => {
                 'data-target': '#myModal',
                 'data-toggle': 'modal'
             });
+            $('#content').css('margin-top','0px');
             home.login();
         });
 
@@ -503,7 +505,7 @@ stadium = (() => {
         $(document).ready(function() {
             initMap(j);
         });
-        $('#real_container').append('<div class="col-md-4">'
+        $('#real_container').append('<div class="col-md-4 wich">'
         		+'			<h1> 위치 </h1>'
         		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
         		+'		</div>');
@@ -511,22 +513,6 @@ stadium = (() => {
        
         $('#map').css({
         	'height': '480px'
-        });
-        
-        // 예약 확인 버튼
-        $('#pay_btn_1').click(() => {
-            $('#pay_btn_1').attr({
-                'data-target': '#myModal',
-                'data-toggle': 'modal'
-            });
-            home.login();
-        });
-        $('#a-team').click((d) => {
-            $('#a-team').attr({
-                'data-target': '#myModal',
-                'data-toggle': 'modal'
-            });
-            home.login();
         });
     
     }
@@ -557,7 +543,7 @@ stadium = (() => {
         $('#map').css({
         	'height': '480px'
         });
-        $('#sta_photo').append('		<div class="col-md-4">'
+        $('#sta_photo').append('		<div class="col-md-4 wich">'
         		+'			<h1> 위치 </h1>'
         		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
         		+'		</div>');
@@ -610,20 +596,20 @@ stadium = (() => {
     		    +'</div>'
     		    +'</div>').appendTo('.payt')
         $('#payment_btn').click(e=> {
-			// payment_page(arr);
-        	 $.getJSON($.ctx() + '/reservation/payment/' + arr.stadium.timeIndex + '/' + arr.posi + '/' + $.member().memberIndex+'/'+arr.stadium.stadiumIndex
-              		, d=> {
-              	let message = new Array();
-              	$.each(d.alram,(i,j)=>{
-              		message[i] = j.message;
-              	})
-              	let res = {
-                      'stadium': arr.stadium,
-                      'res': d.res,
-                      'messege' : message
-                  };
-                  payment_reservation(res)
-              })
+			 payment_page(arr);
+//        	 $.getJSON($.ctx() + '/reservation/payment/' + arr.stadium.timeIndex + '/' + arr.posi + '/' + $.member().memberIndex+'/'+arr.stadium.stadiumIndex
+//              		, d=> {
+//              	let message = new Array();
+//              	$.each(d.alram,(i,j)=>{
+//              		message[i] = j.message;
+//              	})
+//              	let res = {
+//                      'stadium': arr.stadium,
+//                      'res': d.res,
+//                      'messege' : message
+//                  };
+//                  payment_reservation(res)
+//              })
         })
 
     }
@@ -639,11 +625,18 @@ stadium = (() => {
         $('#pay_home').click(() => {
         	$('.logo_login').remove();
         	$('.navbar-right').remove();
+        	$('#content').css('margin-top','0px');
             member.login_after();
         });
         $('.resBtn').click(()=>{
         	stadium_res();
         });
+        $('.teambtn').click(()=>{
+        	let x = {
+                    'page': 1
+                };
+        	team.team_list_after(x);
+        })
         
     }
     let srch = x => {
@@ -1077,7 +1070,6 @@ stadium = (() => {
     let stadium_res =()=>{
     	 $('#content').css('margin-top', '80px');
          $('#content').empty();
-         $('#footer').remove();
          let access = '';
          $('  <div class="container">'
             		+'    <div class="row" style="margin: 20px;">'
@@ -1097,7 +1089,7 @@ stadium = (() => {
         		 }else{
         			 access = '결제 완료 되었습니다.'
         		 }
-        		$('        <div class="col-md-4">'
+        		$('<div class="col-md-4">'
         	              +'          <div class="res_img">'
         	              +'            <img src="'+j.photo+'" style="width: 370px;">'
         	              +'          </div>'
@@ -1128,9 +1120,107 @@ stadium = (() => {
         
          
     }
+    
+    let team_stadium_list =()=>{
+    	 $('#content').css('margin-top', '80px');
+         $('#content').empty();
+         $('#footer').css('padding','0px');
+         let access = '';
+         $('  <div class="container">'
+            		+'    <div class="row" style="margin: 20px;">'
+              		+'      <div class="col-md-5">'
+              		+'        <div class="res_header">'
+              		+'          <h2> 팀 경기 목록</h2>'
+              		+'        </div>'
+              		+'      </div>'
+              		+'      <div class="col-md-12 res_list" style="margin-top: 70px;">'
+              		+'      </div>'
+              		+'    </div>'
+              		+'  </div>').appendTo('#content');
+         $('<div class="col-md-4">'
+	              +'          <div class="res_img">'
+	              +'            <img src="https://mblogthumb-phinf.pstatic.net/20150511_147/zuckcorp_1431352794678WGHz1_JPEG/DSC03789.JPG?type=w2" style="width: 370px;">'
+	              +'          </div>'
+	              +'        </div>'
+	              +'        <div class="col-md-2" style="margin-top: 30px;">'
+	                +'<h3>서울 시립 창동운동장</h3>'
+	               +' <div class="course-details"> '
+	                   +' <span class="course-date">날짜 :2019년05월21일</span> '
+	                   +' </div>'
+	                   +' <div class="course-details"> '
+	                      +' <span class="course-time">시간 : 09:00</span> '
+	                      +' </div>'
+	                    +' <div class="course-details"> '
+	                      +' <span class="course-res">예약번호 : 5867364</span> '
+	                      +' </div>'
+	                    +' <div class="course-details"> '
+	                      +' <span class="course-resdate">예약날짜 : 2019년05월10일</span> '
+	                      +' </div>'
+	              +'        </div>').appendTo('.res_list');
+         $('<div class="col-md-4">'
+	              +'          <div class="res_img">'
+	              +'            <img src="https://iamground.kr/img/facility/soc/6a1a1f9e0fbb994a17f743c412a74ceb/b7c7157ceadc5f8d68658758687c796d.jpg" style="width: 370px;">'
+	              +'          </div>'
+	              +'        </div>'
+	              +'        <div class="col-md-2" style="margin-top: 30px;">'
+	                +'<h3>손기정 체육공원 인조잔디 축구장</h3>'
+	               +' <div class="course-details"> '
+	                   +' <span class="course-date">날짜 :2019년05월24일</span> '
+	                   +' </div>'
+	                   +' <div class="course-details"> '
+	                      +' <span class="course-time">시간 : 09:00</span> '
+	                      +' </div>'
+	                    +' <div class="course-details"> '
+	                      +' <span class="course-res">예약번호 : 4737283</span> '
+	                      +' </div>'
+	                    +' <div class="course-details"> '
+	                      +' <span class="course-resdate">예약날짜 : 2019년05월11일</span> '
+	                      +' </div>'
+	              +'        </div>').appendTo('.res_list');
+         $('<div class="col-md-4">'
+	              +'          <div class="res_img">'
+	              +'            <img src="http://img.hani.co.kr/imgdb/resize/2018/0525/152713893764_20180525.JPG" style="width: 370px;height:246px;">'
+	              +'          </div>'
+	              +'        </div>'
+	              +'        <div class="col-md-2" style="margin-top: 30px;">'
+	                +'<h3>잠실 종합운동장 보조 경기장</h3>'
+	               +' <div class="course-details"> '
+	                   +' <span class="course-date">날짜 :2019년05월25일</span> '
+	                   +' </div>'
+	                   +' <div class="course-details"> '
+	                      +' <span class="course-time">시간 : 09:00</span> '
+	                      +' </div>'
+	                    +' <div class="course-details"> '
+	                      +' <span class="course-res">예약번호 : 5867384</span> '
+	                      +' </div>'
+	                    +' <div class="course-details"> '
+	                      +' <span class="course-resdate">예약날짜 : 2019년05월09일</span> '
+	                      +' </div>'
+	              +'        </div>').appendTo('.res_list');
+         $('<div class="col-md-4">'
+	              +'          <div class="res_img">'
+	              +'            <img src="https://iamground.kr/img/facility/soc/6a1a1f9e0fbb994a17f743c412a74ceb/c8e41e67028b4581353601f0f8b1770c.jpg" style="width: 370px;">'
+	              +'          </div>'
+	              +'        </div>'
+	              +'        <div class="col-md-2" style="margin-top: 30px;">'
+	                +'<h3>효창 운동장</h3>'
+	               +' <div class="course-details"> '
+	                   +' <span class="course-date">날짜 :2019년05월30일</span> '
+	                   +' </div>'
+	                   +' <div class="course-details"> '
+	                      +' <span class="course-time">시간 : 09:00</span> '
+	                      +' </div>'
+	                    +' <div class="course-details"> '
+	                      +' <span class="course-res">예약번호 : 3498584</span> '
+	                      +' </div>'
+	                    +' <div class="course-details"> '
+	                      +' <span class="course-resdate">예약날짜 : 2019년05월08일</span> '
+	                      +' </div>'
+	              +'        </div>').appendTo('.res_list');
+    }
     let position_map =(j)=>{
     	 let html = '<div class="a-team" id="roster_100" ondrop="drop(event)" ondragover="allowDrop(event)"> ' +
-         '<img src="resources/img/logo/' + $.member().photo + '" draggable="true" ondragstart="drag(event)" id="roster_ball" width="50" height="50"> ' +
+         '<img class="posimage" src="resources/img/members_photo/' + $.member().photo + '" draggable="true" ondragstart="drag(event)" id="roster_ball" width="75" height="75"> ' +
          '</div> ' +
          '<div class="a-team" id="GK_10" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 80px;position: absolute; margin-top: 180px;"></div>' +
          '<div class="a-team" id="DF_9" ondrop="drop(event)" ondragover="allowDrop(event)" style="margin-left: 253px;position: absolute;"></div>' +
@@ -1164,16 +1254,16 @@ stadium = (() => {
      $.getJSON($.ctx() + '/game/position/' + j.timeIndex, d => {
          $.each(d.position, (i, j) => {
              if (j.position === 'FW_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#FW_' + i);
+                 $('<img class="posimage" src="resources/img/members_photo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="75px" height="75px"> ').appendTo('#FW_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              } else if (j.position === 'MF_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#MF_' + i);
+                 $('<img class="posimage" src="resources/img/members_photo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="75px" height="75px"> ').appendTo('#MF_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              } else if (j.position === 'DF_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#DF_' + i);
+                 $('<img class="posimage" src="resources/img/members_photo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="75px" height="75px"> ').appendTo('#DF_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              } else if (j.position === 'GK_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="50px" height="50px"> ').appendTo('#GK_' + i);
+                 $('<img class="posimage" src="resources/img/members_photo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="75px" height="75px"> ').appendTo('#GK_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              }
              if(j.memberIndex == $.member().memberIndex){
@@ -1218,16 +1308,16 @@ stadium = (() => {
      $.getJSON($.ctx() + '/game/position/'+ j.timeIndex, d => {
          $.each(d.position, (i, j) => {
              if (j.position === 'FW_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#FW_' + i);
+                 $('<img class="posimage" src="resources/img/members_photo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="55px" height="55px"> ').appendTo('#FW_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              } else if (j.position === 'MF_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#MF_' + i);
+                 $('<img class="posimage" src="resources/img/members_photo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="55px" height="55px"> ').appendTo('#MF_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              } else if (j.position === 'DF_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#DF_' + i);
+                 $('<img class="posimage" src="resources/img/members_photo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="55px" height="55px"> ').appendTo('#DF_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              } else if (j.position === 'GK_' + i && j.memberIndex != null) {
-                 $('<img src="resources/img/logo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="30px" height="30px"> ').appendTo('#GK_' + i);
+                 $('<img class="posimage" src="resources/img/members_photo/' + j.photo + '" draggable="false" id="' + j.memberIndex + '" width="55px" height="55px"> ').appendTo('#GK_' + i);
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              }
              if(j.memberIndex == $.member().memberIndex){
@@ -1309,6 +1399,7 @@ stadium = (() => {
         position_map:position_map,
         position_map_res:position_map_res,
         payment_page:payment_page,
-        list_field_position:list_field_position
+        list_field_position:list_field_position,
+        team_stadium_list:team_stadium_list
     }
 })();

@@ -31,15 +31,15 @@ Table OF Contents
 	General
 \*------------------------------------*/
 /* --- typography --- */
-
 footer#footer {
-    padding-top: 60px;
-    margin: 20px auto auto auto;
+	padding-top: 60px;
+	margin: 20px auto auto auto;
 }
+
 div#content {
-    margin-top: 80px;
-    padding-bottom: 100px;
+	padding-bottom: 20px;
 }
+
 body {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 15px;
@@ -1348,10 +1348,6 @@ to {
 	margin: 15px;
 }
 
-#content {
-	margin-top: 62px;
-}
-
 .tournament-content button {
 	width: 160px;
 	height: 50px;
@@ -1933,4 +1929,12 @@ h1, h2, h3, h4, h5, h6, p, label, .btn, a {
 		width: 180px;
 		height: 320px;
 	}
+}
+
+.posimage{
+	border-radius: 50%;
+}
+.wich{
+	    margin-top: 600px;
+    margin-left: -140px;
 }

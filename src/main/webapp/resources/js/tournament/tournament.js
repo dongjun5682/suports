@@ -29,10 +29,8 @@ tour =(()=>{
     let setContentView =()=>{
     	$('#chat_main').remove();
     	$('#content').empty().html(compo.tournament()).css({
-            'margin-top': '100px',
-            'height': '850px'
+            'margin-top': '100px'
         });
-    	$('#footer').remove();
     	$('.tournament-content button').click(function(e){
     		$('.tournament-content button').attr({'data-target':'#myModal','data-toggle':'modal'});
     		home.login();  
@@ -44,8 +42,7 @@ tour =(()=>{
     }
    let tour_apply =()=>{
 	   $('#content').empty().html(compo.tournament()).css({
-           'margin-top': '100px',
-           'height': '850px'
+           'margin-top': '100px'
        });
    	   $('#footer').remove();
 	   $('.tournament-content button').click(function(e){

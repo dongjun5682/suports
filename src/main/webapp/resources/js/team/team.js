@@ -30,7 +30,6 @@ team = (() => {
     };
     let setContentView = (d) => {
         $('#content').empty();
-        $('#footer').remove();
         $('#content').html(compo.team_content());
         let x = {
             'page': 1
@@ -44,7 +43,43 @@ team = (() => {
             });
             home.login();
         })
+        $(document).ready(function() {
+            $('#areateam').on('change', function() {
+                let area = $(this).val();
+                if (area == '서울') {
+                	team_area_srch(area);
+                } else if (area == '인천') {
+                	team_area_srch(area);
+                } else if (area == '경기') {
+                	team_area_srch(area);
+                }else if (area == '모두보기') {
+                	let x = {
+                            'page': 1
+                        };
+                	team_list(x);
+                }
+            });
+        });
     }
+    let team_area_srch =(d)=>{
+    	$('.team-container .row .col-md-12').empty();
+    	 $('.team-container .row nav').remove();
+    	$.getJSON($.ctx()+'/teams/'+d,d=>{
+    	
+    	 $.each(d.team, (i, j) => {
+             $('<div class="col-md-2 col-sm-6 col-xs-6">' 
+              +'		<div class="course">'
+              +'			<a href="#" class="course-img"> <img src="resources/img/logo/' + j.emblem + '" alt="" style="width:50%;"> </a>' 
+              +'			<a class="course-title" href="#">' + j.name + '</a>'
+              +'		</div>'
+              +'</div>')
+              .appendTo('.team-container .row .col-md-12').click(function() {
+             	 team_detail(j);
+             })
+         });
+    	})
+    }
+    
     let team_list = (x) => {
         $('.team-container .row .col-md-12').empty();
         $('.team-container .row nav').remove();
@@ -106,7 +141,6 @@ team = (() => {
     }
     let team_list_after = (x) => {
         $('#content').empty();
-        $('#footer').remove();
         if ($.member().teamIndex == 0) {
             $('#content').html(compo.team_content());
         } else {
@@ -117,6 +151,23 @@ team = (() => {
         })
         $('.team-container .row .col-md-12').empty();
         $('.team-container .row nav').remove();
+        $(document).ready(function() {
+            $('#areateam').on('change', function() {
+                let area = $(this).val();
+                if (area == '서울') {
+                	team_area_srch(area);
+                } else if (area == '인천') {
+                	team_area_srch(area);
+                } else if (area == '경기') {
+                	team_area_srch(area);
+                }else if (area == '모두보기') {
+                	let x = {
+                            'page': 1
+                        };
+                	team_list(x);
+                }
+            });
+        });
         $.getJSON($.ctx() + '/teams/page/' + x.page, d => {
             $.each(d.team, (i, j) => {
                 $('<div class="col-md-2 col-sm-6 col-xs-6">' +
@@ -623,7 +674,8 @@ team = (() => {
         team_update_emblem:team_update_emblem,
         team_diss_ever:team_diss_ever,
         team_member_detail:team_member_detail,
-        team_member_edit:team_member_edit
+        team_member_edit:team_member_edit,
+        team_area_srch:team_area_srch
     };
 
 })();

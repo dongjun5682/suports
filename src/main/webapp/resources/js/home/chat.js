@@ -237,10 +237,11 @@ chat=(()=>{
 			            });
 			        });
 	        	break;
-			case '우리팀 예약위치 보여줘':
+			case '우리팀 경기 위치 보여줘':
 			        $('#footer').empty();
 			        $('#content').empty().html(compo.stadium_list_sidebar());
 			            $('#content').empty().html(compo.stadium_list_sidebar());
+			            $('#content').css('margin-top','80px');
 			            $('.col-md-9').append(compo.map());
 			            var locations = new Array();
 			            $(document).ready(function initialize(d) {

@@ -39,12 +39,6 @@ public class Proxy {
 		existPrev = (pageNum<=blockSize)?false:true;
 		prevBlock = startPage - pageSize;
 		nextBlock = startPage + pageSize;
-
-		System.out.println("startRow ="+startRow);
-		System.out.println("endRow ="+endRow);
-		System.out.println("pageSize ="+pageSize);
-		System.out.println("totalCount ="+totalCount);
-		
 		search = (String) paramMap.get("search");
     }   
     public void carryOutLimit(Map<?,?> paramMap) {
@@ -66,11 +60,6 @@ public class Proxy {
 		existPrev = (pageNum<=blockSize)?false:true;
 		prevBlock = startPage - pageSize;
 		nextBlock = startPage + pageSize;
-
-		System.out.println("startRow ="+startRow);
-		System.out.println("endRow ="+endRow);
-		System.out.println("pageSize ="+pageSize);
-		System.out.println("totalCount ="+totalCount);
     }
     public void search(Map<?,?> paramMap) {
     	
@@ -92,9 +81,6 @@ public class Proxy {
 		existPrev = (pageNum<=blockSize)?false:true;
 		prevBlock = startPage - pageSize;
 		nextBlock = startPage + pageSize;
-		System.out.println(startRow);
-		System.out.println(endRow);
-		System.out.println(totalCount);
 		search = (String) paramMap.get("search");
 		date = (String) paramMap.get("date");
 		time = (String) paramMap.get("time");

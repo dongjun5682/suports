@@ -133,6 +133,7 @@ public class MemmberController {
 	@PutMapping("/members/login/{userid}")
 	public MemberDTO login(@RequestBody MemberDTO mem, @PathVariable String userid)throws Exception {
 		logger.info("===LOGIN DTO ==={}",mem);
+		System.out.println(mem.toString());
 		return memberService.retrieveAMember(mem);
 	}
 	

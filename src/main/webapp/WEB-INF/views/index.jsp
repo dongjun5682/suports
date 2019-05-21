@@ -36,9 +36,7 @@
 <link rel="stylesheet" href="resources/css/com/animate.min.css">
 <link rel="stylesheet" href="resources/css/com/datapicker.min.css">
 <link rel="stylesheet" href="resources/css/com/summernote-lite.css">
-<link rel="stylesheet" href="resources/css/font-awesome.min.css">
 <link rel="stylesheet" href="resources/css/chatbot.css"> 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
 <!-- modal css -->
 <link rel="stylesheet" href="resources/css/modal.css">

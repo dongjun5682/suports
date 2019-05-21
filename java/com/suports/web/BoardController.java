@@ -59,8 +59,6 @@ public class BoardController {
 		map.clear();
 		map.put("board", ls);
 		map.put("pxy", pxy);
-		
-		System.out.println(ls.toString());
 		return map;
 	}
 	

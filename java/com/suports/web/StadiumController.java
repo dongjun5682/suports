@@ -59,7 +59,6 @@ public class StadiumController {
 			@PathVariable String date,
 			@PathVariable String time) {
 		logger.info("=======경기장 리스트 진입 ======");
-		System.out.println(page);
 		String search = word;
 		map.clear();
 		map.put("search", word);
@@ -108,7 +107,6 @@ public class StadiumController {
 			@PathVariable("search") String search) {
 		logger.info("=======서울 리스트 진입 ======");
 		String se = search;
-		System.out.println(search);
 		ISupplier c = ()-> staMap.countSeoulSearch();
 		map.clear();
 		map.put("search", se);
@@ -119,7 +117,6 @@ public class StadiumController {
 		map.clear();
 		map.put("pxy", pxy);
 		map.put("srch", ls);
-		System.out.println(ls.toString());
 		return map;
 	}
 	@GetMapping("/incheon/search/{search}/{page}")
