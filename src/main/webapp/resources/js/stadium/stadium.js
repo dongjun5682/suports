@@ -117,8 +117,7 @@ stadium = (() => {
                 let arr = {
                     p: '1',
                     s: search,
-                    t:$('#recipient-time').val(),
-                    d:$('#recipient-date').val()
+                    t:$('#recipient-time').val()
                 };
                 srch(arr);
             }
@@ -492,20 +491,6 @@ stadium = (() => {
     	$('#content').html(compo.stadium_list_detail(j));
         
     	$('#sta_photo').append(compo.field_position_form());
-//    	let fp_members = ''
-//            +'<div class="field_position_member_1">'
-//            +'    <div class="fp_img_form">'
-//            +'        <img src="" alt="Member Name">'
-//            +'    </div>'
-//            +'    <div class="fp_name_form">'
-//            +'        <div class="fp_names"></div>'
-//            +'    </div>'
-//            +'    <div class="fp_mark_form">'
-//            +'        <div class="fp_positions"></div>'	
-//            +'    </div>'
-//            +'</div>';
-//    	$('.field_position_a_team').append(fp_members);
-    	
     	$('.fp_stadium_img_click').click(()=>{
     		$('.modal-content4').empty();
     		$('.modal-content4').html('<div class="fp_stadium_img_onModal"><img src="'+j.stadiumPhoto+'" alt="Stadium Image"></div>');
@@ -661,7 +646,7 @@ stadium = (() => {
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
         $('#content').css('margin-top', '80px');
-        $.getJSON($.ctx()+'/stadiums/search/'+x.s+'/'+x.p+'/'+x.d+'/'+x.t, d => {
+        $.getJSON($.ctx()+'/stadiums/search/'+x.s+'/'+x.p+'/'+x.t, d => {
             $('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
             $.each(d.srch, (i, j) => {
             	$('<div class="col-md-3 col-sm-6 col-xs-6" >' +
@@ -712,7 +697,6 @@ stadium = (() => {
                     let arr = {
                         s: x.s,
                         p: $(this).text(),
-                        d: x.d,
                         t: x.t
                     };
                     srch(arr);
@@ -722,7 +706,6 @@ stadium = (() => {
                 let arr = {
                     s: x.s,
                     p: d.pxy.nextBlock,
-                    d: x.d,
                     t: x.t
                 };
                 srch(arr);
@@ -731,7 +714,6 @@ stadium = (() => {
                 let arr = {
                     s: x.s,
                     p: d.pxy.prevBlock,
-                    d: x.d,
                     t: x.t
                 };
                 srch(arr);
@@ -745,8 +727,7 @@ stadium = (() => {
                 let arr = {
                     p: '1',
                     s: search,
-                    t:$('#recipient-time').val(),
-                    d:$('#recipient-date').val()
+                    t:$('#recipient-time').val()
                 };
                 srch(arr);
             }
@@ -976,7 +957,7 @@ stadium = (() => {
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
         $('#content').css('margin-top', '80px');
-        $.getJSON($.ctx()+'/stadiums/search/'+x.s+'/'+x.p+'/'+x.d+'/'+x.t, d => {
+        $.getJSON($.ctx()+'/stadiums/search/'+x.s+'/'+x.p+'/'+x.t, d => {
             $('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
             $.each(d.srch, (i, j) => {
             	$('<div class="col-md-3 col-sm-6 col-xs-6" >' +
@@ -1027,7 +1008,6 @@ stadium = (() => {
                     let arr = {
                         s: x.s,
                         p: $(this).text(),
-                        d: x.d,
                         t: x.t
                     };
                     srch_after(arr);
@@ -1037,7 +1017,6 @@ stadium = (() => {
                 let arr = {
                     s: x.s,
                     p: d.pxy.nextBlock,
-                    d: x.d,
                     t: x.t
                 };
                 srch_after(arr);
@@ -1046,7 +1025,6 @@ stadium = (() => {
                 let arr = {
                     s: x.s,
                     p: d.pxy.prevBlock,
-                    d: x.d,
                     t: x.t
                 };
                 srch_after(arr);

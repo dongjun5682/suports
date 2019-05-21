@@ -119,7 +119,6 @@ home = (() => {
             let search = {
             		p: 1,
                     s: $('.search-addr').val(),
-                    d: $('.search-date').val(),
                     t: $('.search-time').val()
             };
             stadium.srch(search);

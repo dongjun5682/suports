@@ -52,17 +52,15 @@ public class StadiumController {
 		map.put("pxy", pxy);
 		return map;
 	} 
-	@GetMapping("/stadiums/search/{word}/{page}/{date}/{time}")
+	@GetMapping("/stadiums/search/{word}/{page}/{time}")
 	public Map<?,?> search(	
 			@PathVariable String word,	
 			@PathVariable String page,
-			@PathVariable String date,
 			@PathVariable String time) {
 		logger.info("=======경기장 리스트 진입 ======");
 		String search = word;
 		map.clear();
 		map.put("search", word);
-		map.put("date", date);
 		map.put("time", time);
 		ISupplier c = ()-> staMap.countSearch(map);
 		map.clear();
@@ -70,7 +68,6 @@ public class StadiumController {
 		map.put("pageNum", page);
 		map.put("pageSize", "8");
 		map.put("blockSize", "5");
-		map.put("date",date);
 		map.put("time",time);
 		map.put("totalCount",c.get());
 		pxy.search(map);

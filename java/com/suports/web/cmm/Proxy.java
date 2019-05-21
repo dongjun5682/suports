@@ -66,7 +66,6 @@ public class Proxy {
     	pageSize = ((String)paramMap.get("pageSize") == null)	? 5 : Integer.parseInt((String) paramMap.get("pageSize"));
 		pageNum = ((String)paramMap.get("pageNum") == null) ? 1 : Integer.parseInt((String) paramMap.get("pageNum"));
 		totalCount = (paramMap.get("totalCount") == null ? 0 : (int) paramMap.get("totalCount"));
-		/* teamIndex = (int) paramMap.get("teamIndex"); */
 		
 		int pageCount = (totalCount % pageSize != 0) ?  totalCount/pageSize+1:totalCount/pageSize;
 		String _blockSize = (String)paramMap.get("blockSize");
@@ -82,7 +81,6 @@ public class Proxy {
 		prevBlock = startPage - pageSize;
 		nextBlock = startPage + pageSize;
 		search = (String) paramMap.get("search");
-		date = (String) paramMap.get("date");
 		time = (String) paramMap.get("time");
     	
     }
