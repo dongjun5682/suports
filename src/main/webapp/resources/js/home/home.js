@@ -70,7 +70,7 @@ home = (() => {
          	$.getScript($.js()+'/home/chat.js',()=>{
          		$('#myMpa').before(compo.chatbot());
          		$('#chat_body').hide().after( '<button id="chat_ball" style="margin-left: 1373px;width: 4%;margin-bottom: 40px;"><img src="resources/img/soccer-ball.png" style="width: 101%; margin-left: 127px;"></button>' );
-         		$('#chat_ball').css('z-index', '-1');
+         		$('#chat_ball').css('z-index','0');
          			  $("#chat_ball").click(function(){
          				  alert('클릭');
          				 alert('홈 챗봇');
