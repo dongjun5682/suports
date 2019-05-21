@@ -452,7 +452,7 @@ stadium = (() => {
         $(document).ready(function() {
             initMap(j);
         });
-        $('#sta_photo').append('		<div class="col-md-4" id="loca_id">'
+        $('#sta_photo').append('		<div class="col-md-4 wich">'
         		+'			<h1> 위치 </h1>'
         		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
         		+'		</div>');

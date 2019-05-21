@@ -141,6 +141,7 @@ home = (() => {
                 });
             });
             $('#rm_search').append(compo.srch());
+            $('#content').css('margin-top','0px');
             $('.search-date').css({'margin-top':'10px','border-radius':' 4px'});
             $('#footer').remove();
             $('#myMpa').after(compo.footer());
@@ -200,6 +201,7 @@ home = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.seoul_stadium').click(function() {
+                                $('#content').css('margin-top','80px');
                             stadium.list_detail(j);
                         });
                     }
@@ -223,6 +225,7 @@ home = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.Incheon_stadium').click(function() {
+                                $('#content').css('margin-top','80px');
                             stadium.list_detail(j);
                         });
                     }
@@ -246,6 +249,7 @@ home = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.gyeonggi_stadium').click(function() {
+                                $('#content').css('margin-top','80px');
                             stadium.list_detail(j);
                         });
                     }
