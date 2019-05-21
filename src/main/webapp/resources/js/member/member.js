@@ -62,15 +62,18 @@ member = (() => {
         $('#footer').remove();
         $('#myMpa').after(compo.footer());
         home_list_after();
-        $('#nav').empty().after(compo.login_nav());
-        
-        
+        let x = {
+        		photo : $.member().photo
+        }
+        $('#nav').empty().after(compo.login_nav(x));
         if($.member().teamIndex != 0){
         	$('#exercise').parent().after('<li><a href="#" id="team_exercise">TEAM_EXERCISE</a></li>');
         }
         $('#team_exercise').click(()=>{
         	alert('asdjnaskjdnsa');
         })
+
+   
         $('#userBtn').click(() => {
         	$('#alram-drop').remove();
             $('<div class="dropdown-menu" id="user-drop">'

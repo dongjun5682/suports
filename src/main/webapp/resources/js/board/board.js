@@ -30,7 +30,7 @@ board = (() => {
     };
     let setContentView = (x) => {
     	$('#content').html(compo.notice_frame());
-    	
+    	$('#footer').remove();
     	let title = '<div class="notice_title"><h3>서포츠 공지사항</h3></div>';
     	
     	let table = '';

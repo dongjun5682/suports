@@ -37,7 +37,6 @@
 <link rel="stylesheet" href="resources/css/com/datapicker.min.css">
 <link rel="stylesheet" href="resources/css/com/summernote-lite.css">
 <link rel="stylesheet" href="resources/css/chatbot.css"> 
-
 <!-- modal css -->
 <link rel="stylesheet" href="resources/css/modal.css">
 
