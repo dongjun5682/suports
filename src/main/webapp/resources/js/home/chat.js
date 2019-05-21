@@ -237,7 +237,7 @@ chat=(()=>{
 			            });
 			        });
 	        	break;
-			case "지도 보여줘":
+			case "우리팀 예약위치 보여줘":
 			        $('#footer').empty();
 			        $('#content').empty().html(compo.stadium_list_sidebar());
 			            $('#content').empty().html(compo.stadium_list_sidebar());
@@ -262,7 +262,7 @@ chat=(()=>{
 			                    
 			                });
 			             	var map = new google.maps.Map(document.getElementById('map'), {
-			          		    zoom: 12,
+			          		    zoom: 14,
 			          		    center: new google.maps.LatLng(37.549012, 126.988546),
 			          		    mapTypeId: google.maps.MapTypeId.ROADMAP
 			          		   });
