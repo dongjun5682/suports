@@ -63,9 +63,9 @@
 			<div class="modal-content2"></div>
 		</div>
 	</div>
-	<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
-			<div class="modal-content3"></div>
+			<div class="modal-content4"></div>
 		</div>
 	</div>
 	<div class="modal fade" id="myModal_tour" tabindex="-1" role="dialog" aria-hidden="true">

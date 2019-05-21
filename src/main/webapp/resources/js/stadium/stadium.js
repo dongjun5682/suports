@@ -456,7 +456,7 @@ stadium = (() => {
             initMap(j);
         });
         $('#sta_photo').append('		<div class="col-md-4 wich">'
-        		+'			<h1> 위치 </h1>'
+        		+'			<h1 class="location_map"> 위치 </h1>'
         		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
         		+'		</div>');
         $('#myMpa').append(compo.map(j));
@@ -492,26 +492,32 @@ stadium = (() => {
     	$('#content').html(compo.stadium_list_detail(j));
         
     	$('#sta_photo').append(compo.field_position_form());
-    	let fp_members = ''
-            +'<div class="field_position_member_1">'
-            +'    <div class="fp_img_form">'
-            +'        <img src="" alt="Member Name">'
-            +'    </div>'
-            +'    <div class="fp_name_form">'
-            +'        <div class="fp_names"></div>'
-            +'    </div>'
-            +'    <div class="fp_mark_form">'
-            +'        <div class="fp_positions"></div>'	
-            +'    </div>'
-            +'</div>';
-    	$('.field_position_a_team').append(fp_members);
+//    	let fp_members = ''
+//            +'<div class="field_position_member_1">'
+//            +'    <div class="fp_img_form">'
+//            +'        <img src="" alt="Member Name">'
+//            +'    </div>'
+//            +'    <div class="fp_name_form">'
+//            +'        <div class="fp_names"></div>'
+//            +'    </div>'
+//            +'    <div class="fp_mark_form">'
+//            +'        <div class="fp_positions"></div>'	
+//            +'    </div>'
+//            +'</div>';
+//    	$('.field_position_a_team').append(fp_members);
+    	
+    	$('.fp_stadium_img_click').click(()=>{
+    		$('.modal-content4').empty();
+    		$('.modal-content4').html('<div class="fp_stadium_img_onModal"><img src="'+j.stadiumPhoto+'" alt="Stadium Image"></div>');
+
+    	})
     	
         // map 설정 ////
         $(document).ready(function() {
             initMap(j);
         });
         $('#real_container').append('<div class="col-md-4">'
-        		+'			<h1> 위치 </h1>'
+        		+'			<h1 class="location_map"> 위치 </h1>'
         		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
         		+'		</div>');
         $('#myMpa').append(compo.map(j));
@@ -556,7 +562,7 @@ stadium = (() => {
             'margin' : 'auto'
         });
         $('#sta_photo').append('<div class="col-md-4 wich">'
-        		+'			<h1> 위치 </h1>'
+        		+'			<h1 class="location_map"> 위치 </h1>'
         		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
         		+'		</div>');
         // 예약 확인 버튼

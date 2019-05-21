@@ -455,7 +455,7 @@ team = (() => {
 					team_members_list(xn);
 				});
 				$('.add_btn').click(function(){
-					$('.modal-content3').empty();
+					$('.modal-content4').empty();
 						let incase = '';
 					if ($('#search_type_add').val() == 'name') {
 						incase = 'name';
@@ -482,7 +482,7 @@ team = (() => {
 							+'    <div class="detail_line">'+d.state+'</div>'
 							+'    <div class="detail_button"><button type="button" class="send_join_req_btn">가입요청</button></div>'
 							+'</div>'
-							$('.modal-content3').html(add_member_detail);
+							$('.modal-content4').html(add_member_detail);
 					})
 				});
         	})
