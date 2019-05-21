@@ -141,7 +141,7 @@ img.fp_b_team_img {
 
 img.fp_feild_img {
     width: 90%;
-    margin-top: 45px;
+    margin: 45px auto 60px auto;
 }
 .beginbtn {
   box-shadow:  0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
