@@ -38,8 +38,7 @@
 <link rel="stylesheet" href="resources/css/com/summernote-lite.css">
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
 <link rel="stylesheet" href="resources/css/chatbot.css"> 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <!-- modal css -->
 <link rel="stylesheet" href="resources/css/modal.css">
 

@@ -452,14 +452,16 @@ stadium = (() => {
         $(document).ready(function() {
             initMap(j);
         });
-        $('#sta_photo').append('		<div class="col-md-4">'
+        $('#sta_photo').append('		<div class="col-md-4" id="loca_id">'
         		+'			<h1> 위치 </h1>'
         		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
         		+'		</div>');
         $('#myMpa').append(compo.map(j));
        
         $('#map').css({
-            'height': '480px'
+            'height': '480px',
+            'width' : '1280px',
+            'margin' : 'auto'
         });
         
         // 예약 확인 버튼
@@ -510,7 +512,9 @@ stadium = (() => {
         $('#myMpa').append(compo.map(j));
        
         $('#map').css({
-        	'height': '480px'
+        	'height': '480px',
+            'width' : '1280px',
+            'margin' : 'auto'
         });
         
         // 예약 확인 버튼
@@ -555,9 +559,11 @@ stadium = (() => {
         });
         $('#myMpa').append(compo.map(j));
         $('#map').css({
-        	'height': '480px'
+        	'height': '480px',
+            'width' : '1280px',
+            'margin' : 'auto'
         });
-        $('#sta_photo').append('		<div class="col-md-4">'
+        $('#sta_photo').append('<div class="col-md-4">'
         		+'			<h1> 위치 </h1>'
         		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
         		+'		</div>');

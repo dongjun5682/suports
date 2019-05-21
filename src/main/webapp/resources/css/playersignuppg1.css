@@ -1,9 +1,60 @@
 
+.board_article {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.ba_content {
+    margin-top: 140px;
+    position: absolute;
+    width: 67%;
+    height: 420px;
+    font-weight: bold;
+    border: 1px solid #EAECEF;
+    padding: 10px;
+    }
+
+.ba_titles {
+    width: 14%;
+    font-weight: bold;
+    text-align: -webkit-center;
+    border: 1px solid #EAECEF;
+    padding: 10px;
+    margin: 10px;
+}
+
+.ba_infos {
+    width: 50%;
+    font-weight: bold;
+    border: 1px solid #EAECEF;
+    padding: 10px;
+    margin: 10px;
+}
+
 button.insert_article {
     margin: auto;
     width: 100%;
     height: 100%;
 }
+img.member_login_img {
+	object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.and_dropmenu_btn {
+    width: 45px;
+    height: 45px;
+}
+
+img.member_login_img:hover {
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 79%, 0.6);
+}
+
+
 input#notice_title {
     margin-bottom: 12px;
 }
@@ -48,7 +99,19 @@ button.writing {
 }
 
 .fieldbtn {
-  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+    width: 100%;
+    height: 40px;
+    margin-top: 30px;
+    background-color: #00C5FF;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px
+}
+.fieldbtn:hover {
+    background-color: #EE2460;
+    color: #fff2f6;
+    transform: scale(0.95);
 }
 img.fp_a_team_img {
     width: 100%;

@@ -72,7 +72,10 @@ member = (() => {
 		 * 
 		 * }); });
 		 */
-        $('#nav').empty().after(compo.login_nav());
+        let x = {
+        		photo : $.member().photo
+        }
+        $('#nav').empty().after(compo.login_nav(x));
       
         $('#userBtn').click(() => {
         	$('#alram-drop').remove();
