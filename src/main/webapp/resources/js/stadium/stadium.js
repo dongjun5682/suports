@@ -452,17 +452,14 @@ stadium = (() => {
         $(document).ready(function() {
             initMap(j);
         });
-        $('#sta_photo').append('		<div class="col-md-4" style="margin: 570px auto auto -120px;">'
-        		+'			<h1 style="margin-left: -110px;"> 위치 </h1>'
+        $('#sta_photo').append('		<div class="col-md-4">'
+        		+'			<h1> 위치 </h1>'
         		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
         		+'		</div>');
         $('#myMpa').append(compo.map(j));
        
         $('#map').css({
-            'width': '1270px',
-            'height': '400px',
-            'margin-bottom': '100px',
-            'margin-left':'235px'
+            'height': '480px'
         });
         
         // 예약 확인 버튼
@@ -502,23 +499,18 @@ stadium = (() => {
             +'</div>';
     	$('.field_position_a_team').append(fp_members);
     	
-    	
-    	
         // map 설정 ////
         $(document).ready(function() {
             initMap(j);
         });
-        $('#sta_photo').append('		<div class="col-md-4" style="margin: 570px auto auto -120px;">'
-        		+'			<h1 style="margin-left: -110px;"> 위치 </h1>'
+        $('#real_container').append('<div class="col-md-4">'
+        		+'			<h1> 위치 </h1>'
         		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
         		+'		</div>');
         $('#myMpa').append(compo.map(j));
        
         $('#map').css({
-            'width': '1270px',
-            'height': '400px',
-            'margin-bottom': '100px',
-            'margin-left':'235px'
+        	'height': '480px'
         });
         
         // 예약 확인 버튼
@@ -563,13 +555,10 @@ stadium = (() => {
         });
         $('#myMpa').append(compo.map(j));
         $('#map').css({
-        	'width': '1270px',
-            'height': '400px',
-            'margin-bottom': '100px',
-            'margin-left':'235px'
+        	'height': '480px'
         });
-        $('#sta_photo').append('		<div class="col-md-4" style="margin: 570px auto auto -120px;">'
-        		+'			<h1 style="margin-left: -110px;"> 위치 </h1>'
+        $('#sta_photo').append('		<div class="col-md-4">'
+        		+'			<h1> 위치 </h1>'
         		+'			<span>대한민국 '+j.stadiumAddr+'</span>'
         		+'		</div>');
         // 예약 확인 버튼

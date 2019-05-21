@@ -31,6 +31,15 @@ Table OF Contents
 	General
 \*------------------------------------*/
 /* --- typography --- */
+
+footer#footer {
+    padding-top: 60px;
+    margin: 20px auto auto auto;
+}
+div#content {
+    margin-top: 80px;
+    padding-bottom: 100px;
+}
 body {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 15px;

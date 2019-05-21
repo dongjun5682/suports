@@ -3,7 +3,7 @@ var home = home || {};
 
 home = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
-    let _, js, compojs, memberjs, stadiumjs, tournamentjs, teamjs, backjs, msessionjs,chatjs;
+    let _, js, compojs, boardjs, memberjs, stadiumjs, tournamentjs, teamjs, backjs, msessionjs,chatjs;
 
     let init = () => {
         _ = $.ctx();
@@ -15,7 +15,8 @@ home = (() => {
         teamjs = js + '/team/team.js';
         backjs = js + '/backgroundTransition.js';
         msessionjs = js + '/home/membersession.js';
-        chatjs = js + '/home/chat.js'
+        chatjs = js + '/home/chat.js';
+        boardjs = js + '/board/board.js';
     };
     let onCreate = () => {
         init();
@@ -28,6 +29,7 @@ home = (() => {
             $.getScript(backjs),
             $.getScript(msessionjs),
             $.getScript(chatjs),
+            $.getScript(boardjs),
             $.Deferred(function(d) {
                 $(d.resolve);
             })
@@ -90,7 +92,6 @@ home = (() => {
                     member.signup();
                     break;
                 case 'team':
-                    $('#content').css('margin-top', '80px');
                     $('#map').remove();
                     team.onCreate();
                     break;
@@ -98,7 +99,13 @@ home = (() => {
                     tour.onCreate();
                     break;
                 case 'about':
-                    $('#content').css('margin-top', '80px');
+                    break;
+                case 'notice':
+                	$('#update_mid_content').remove();
+                	let x = {
+                		page : '1'
+                	}
+                	board.onCreate(x);
                     break;
             }
         })
@@ -116,6 +123,7 @@ home = (() => {
             stadium.srch(search);
         	}
         });
+
         //로고 클릭시 새로 그리기
         $('.navbar-brand .logo').click(() => {
         	  $('#map').remove();

@@ -60,7 +60,7 @@ team = (() => {
                 	 team_detail(j);
                 })
             });
-            let html = '<nav> <ul class="col-md-12 pagination" style="margin-left:800px;">'
+            let html = '<nav> <ul class="col-md-12 pagination">'
             if (d.pxy.existPrev) {
                 html += '<li class="prevBlock"><a href="#">&laquo;</a></li>';
             }
@@ -220,47 +220,51 @@ team = (() => {
     			$('#leader_no img').attr('class','list_leader_img');
     		}	
     	})
-    	if($.member().teamIndex == 0){
-    		
-    		let join_btn = '<div class="mem_team_join">'
-    			+'<button type="button" class="team_join_btn">팀 가입신청</button>'
-    	        +'</div>';
-    	    $('.mem_up_right_content').append(join_btn);
-    	    $('.team_join_btn').click(()=>{;
-    	    	swal({
-    	    		title: '가입요청',
-    	    		text: '팀에 참가하시겠습니까?',
-    	    		icon: 'info',
-    	    		button: '참가!',
-    	    	})
-    	    	.then((join) => {
-    	    		let joinData = {
-    	    				memberIndex : $.member().memberIndex,
-    	    				teamIndex : x.teamIndex,
-    	    				name : $.member().name
-    	    		}
-    	    		$.ajax({
-                        url: $.ctx() + '/member/'+joinData.memberIndex,
-                        type: 'PUT',
-                        data: JSON.stringify(joinData),
-                        dataType: 'json',
-                        contentType: "application/json; charset=utf-8",
-                        success: d => {
-                            swal({
-                            	title: '가입성공',
-                            	icon: 'success',
-                            	button: '확인',
-                            })
-                            team_detail(x);
-                            $('.mem_team_join').remove();
-                        },
-                        error: e => {
-                        	
-                        }
-                    })
-    	    	});
-    	    });
-    	}
+    	if(sessionStorage['member']) {
+    		if($.member().teamIndex == 0){
+	    		
+	    		let join_btn = '<div class="mem_team_join">'
+	    			+'<button type="button" class="team_join_btn">팀 가입신청</button>'
+	    	        +'</div>';
+	    	    $('.mem_up_right_content').append(join_btn);
+	    	    $('.team_join_btn').click(()=>{;
+	    	    	swal({
+	    	    		title: '가입요청',
+	    	    		text: '팀에 참가하시겠습니까?',
+	    	    		icon: 'info',
+	    	    		button: '참가!',
+	    	    	})
+	    	    	.then((join) => {
+	    	    		let joinData = {
+	    	    				memberIndex : $.member().memberIndex,
+	    	    				teamIndex : x.teamIndex,
+	    	    				name : $.member().name
+	    	    		}
+	    	    		$.ajax({
+	                        url: $.ctx() + '/member/'+joinData.memberIndex,
+	                        type: 'PUT',
+	                        data: JSON.stringify(joinData),
+	                        dataType: 'json',
+	                        contentType: "application/json; charset=utf-8",
+	                        success: d => {
+	                            swal({
+	                            	title: '가입성공',
+	                            	icon: 'success',
+	                            	button: '확인',
+	                            })
+	                            team_detail(x);
+	                            $('.mem_team_join').remove();
+	                        },
+	                        error: e => {
+	                        	
+	                        }
+	                    })
+	    	    	});
+	    	    });
+    		}
+		} else {
+				
+		}
     };
     let team_create = () => {
         $('#modal-content2').html(compo.team_create_1());
@@ -370,19 +374,19 @@ team = (() => {
     			});
         		table += '</table>'
 
-        		let pageTag = '<ul class="pagination" id="member_List_Paging">'
+        		let pagination = '<ul class="pagination" id="member_List_Paging">'
 				
 				let i = 0;
 				for(i = d.pxy.startPage; i <= d.pxy.endPage; i++){
 					if (d.pxy.pageNum == i){
-						pageTag += '<li class="page-item active"><a href="#" class="paging">'+i+'</a></li>';
+						pagination += '<li class="page-item active"><a href="#" class="paging">'+i+'</a></li>';
 					} else {
-						pageTag += '<li class="page-item"><a href="#" class="paging">'+i+'</a></li>';
+						pagination += '<li class="page-item"><a href="#" class="paging">'+i+'</a></li>';
 					}
 				};
-				pageTag += '</ul>'
+				pagination += '</ul>'
 				
-				let middleContent = listTitle + addAMember + table + pageTag;
+				let middleContent = listTitle + addAMember + table + pagination;
 				$('#update_mid_content').append(middleContent);				
 				
 				$('.memberDetail').click(function(){
@@ -393,11 +397,11 @@ team = (() => {
         		});
 				
 				$('.page-item').click(function(){
-					let x2 = {
+					let xn = {
 						page : $(this).text(),
 						teamIndex : $.member().teamIndex
 					}
-					team_members_list(x2);
+					team_members_list(xn);
 				});
 				$('.add_btn').click(function(){
 					$('.modal-content3').empty();

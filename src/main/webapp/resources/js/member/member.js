@@ -73,6 +73,7 @@ member = (() => {
 		 * }); });
 		 */
         $('#nav').empty().after(compo.login_nav());
+      
         $('#userBtn').click(() => {
         	$('#alram-drop').remove();
             $('<div class="dropdown-menu" id="user-drop">'
@@ -84,6 +85,7 @@ member = (() => {
             		+'    <li id="logout"><h3 class="black-text">로그아웃<h3></li>'
             		+'  </ul>'
             		+'</div>').appendTo('#userBtn');
+            
             
             $('#frofile').click(() => {
             	member_update_frame();
@@ -120,6 +122,13 @@ member = (() => {
         		window.location.reload();
         	});
         });
+        $('#notice').click(()=>{
+        	$('#update_mid_content').remove();
+        	let x = {
+            		page : '1'
+            	}
+            	board.onCreate(x);
+        })
         $('#alramBtn').click(()=>{
         	 $('#user-drop').remove();
              $(compo.alram_drop_btn()).appendTo('#alramBtn');
@@ -434,7 +443,8 @@ member = (() => {
 			dataType : 'json',
 			contentType : "application/json; charset=utf-8",
 			success : d => {
-				window.location.reload();
+				sessionStorage.removeItem("member"); 
+        		window.location.reload();
 				alert('계정 정보가 업데이트 되어 로그아웃 되었습니다.');
 			},
 			error : e => {

@@ -48,7 +48,7 @@ public class MemmberController {
 		memberDTO.setTeamIndex(teamIndex);
 
 		map.clear();
-		map.put("teamIndex", teamIndex);
+		map.put("index", teamIndex);
 		pxy.carryOut(map);
 		
 		i = (Object o)-> memberService.retrieveListOfMembers(pxy);
@@ -69,7 +69,7 @@ public class MemmberController {
 		map.clear();
 		c = ()-> memberService.countATeamMembers(teamIndex);
 		map.put("pageNum", page);
-		map.put("teamIndex", teamIndex);
+		map.put("index", teamIndex);
 		map.put("pageSize", "12");
 		map.put("blockSize", "5");
 		map.put("totalCount", c.get());
@@ -116,14 +116,12 @@ public class MemmberController {
 				break;
 			}
 		}
-		System.out.println(memberService.retrieveAMemberDetail(mem).toString());
 		return memberService.retrieveAMemberDetail(mem);
 
 	}
 	@PutMapping("/members")
 	public Map<?,?> signup(@RequestBody MemberDTO mem) {
 
-		
 		memberService.addAMember(mem);
 		
 		map.clear();
