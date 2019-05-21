@@ -1938,3 +1938,7 @@ h1, h2, h3, h4, h5, h6, p, label, .btn, a {
 	    margin-top: 600px;
     margin-left: -140px;
 }
+.image_sta{
+	width: 100%;
+	margin-top:30px;
+}

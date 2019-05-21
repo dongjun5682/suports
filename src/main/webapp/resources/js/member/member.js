@@ -229,6 +229,7 @@ member = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.seoul_stadium').click(function() {
+                            	$('#content').css('margin-top','80px');
                             stadium.list_detail_after(j);
                         });
                     }
@@ -252,6 +253,7 @@ member = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.Incheon_stadium').click(function() {
+                            	$('#content').css('margin-top','80px');
                             stadium.list_detail_after(j);
                         });
                     }
@@ -275,6 +277,7 @@ member = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.gyeonggi_stadium').click(function() {
+                            	$('#content').css('margin-top','80px');
                             stadium.list_detail_after(j);
                         });
                     }

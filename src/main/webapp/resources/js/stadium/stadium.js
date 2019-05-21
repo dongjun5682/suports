@@ -442,6 +442,9 @@ stadium = (() => {
             '<div class= col-ms-1>' +
             '<a class="logo" href="index.html" style="margin-right: 1230px;">' +
             '<img src="resources/img/logo/logo.png" alt="logo"></a>' +
+            '<button class="btn hover2" style="width: 9%;padding: 16px;margin-bottom: 46px;margin-left: -150px; margin-right:80px;">' +
+            '<span style="color:white;">경기 날짜: '+j.date+' 시간: '+j.time+'</span>' +
+            '</button>' +
             '<button type="button" id="pay_btn_1" class="btn hover2" data-toggle="modal" data-target="#myModal" style="width: 9%;padding: 16px;background-color: #ffffff;margin-bottom: 46px;">' +
             '<span style="color:black">예약하기</span>' +
             '</button>' +
@@ -531,6 +534,9 @@ stadium = (() => {
             '<div class= col-ms-1>' +
             '<a class="logo" href="index.html" style="margin-right: 1230px;">' +
             '<img src="resources/img/logo/logo.png" alt="logo"></a>' +
+            '<button class="btn hover2" style="width: 9%;padding: 16px;margin-bottom: 46px;margin-left: -150px; margin-right:80px;">' +
+            '<span style="color:white;">경기 날짜: '+j.date+' 시간: '+j.time+'</span>' +
+            '</button>' +
             '<button type="button" id="pay_btn_1" class="btn hover2"style="width: 9%;padding: 16px;background-color: #ffffff;margin-bottom: 46px;">' +
             '<span style="color:black">예약하기</span>' +
             '</button>' +
