@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.suports.web.cmm.Proxy;
-import com.suports.web.domain.ChatBotDTO;
 import com.suports.web.domain.StadiumDTO;
 
 @Repository
@@ -31,7 +30,6 @@ public interface StadiumMapper {
 	public int countSearch(Map<?, ?> map);
 	
 	public List<?> areaAllStadium();
-	public void chatBotAnswer(ChatBotDTO chd);
 	public String selectStadiumName(int stadiumIndex);
 	public List<?> mapLocation();
 

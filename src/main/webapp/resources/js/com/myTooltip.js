@@ -742,7 +742,7 @@ isNull = function (object) {
 	      return (object == null || typeof object == "undefined" || object === "" || object == "undefined");
 	    }
 	  } catch (e) {
-	    alert("isNull: " + object + "::" + e.message);
+	    swal("isNull: " + object + "::" + e.message);
 	    WebSquare.exception.printStackTrace(e);
 	  }
 	}; 

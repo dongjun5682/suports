@@ -36,7 +36,10 @@ team = (() => {
         };
         team_list(x);
         $('#team_create').click(() => {
-            alert('로그인 먼저 해주세요!!');
+        	swal({
+        		icon : 'info',
+        		text : '먼저 로그인 해주시기 바랍니다.'
+        	});
             $('#team_create').attr({
                 'data-target': '#myModal',
                 'data-toggle': 'modal'
@@ -362,7 +365,10 @@ team = (() => {
                                     $('#myModal').modal('hide');
                                 },
                                 error: e => {
-                                    alert('ajax fail');
+                                	 swal({
+                                    	 icon : 'error',
+                                    	 text : '시스템에 문제가 있습니다. 다시시도 바랍니다.'
+                                     });
                                 }
                             })
                         })
@@ -515,20 +521,26 @@ team = (() => {
     	$('.fieldbtn').click(()=>{
     		let subData = {
         			teamIndex : $.member().teamIndex,
-    				id : $('input[id="id"]').val()
+    				name : $('input[id="id"]').val()
     		};
     		$.ajax({
-    			url : $.ctx()+'/members/'+subData.teamIndex,
+    			url : $.ctx()+'/members/sub',
     			type : 'PUT',
     			data : JSON.stringify(subData),
     			dataType : 'json',
     			contentType : "application/json; charset=utf-8",
     			success : d => {
-    				alert('팀원  방출');
-    				member.login_after();
+    				swal({
+                		icon : 'sucess',
+                		text : '정상적으로 방출되었습니다.'
+                	});
+    				team_update_info();
     			},
     			error : e => {
-    				alert('ajax fail');
+    				swal({
+                		icon : 'error',
+                		text : '시스템에 문제가 있습니다. 다시 시도하여 주세요.'
+                	});
     			}
     		})
     	})
@@ -554,11 +566,17 @@ team = (() => {
     			dataType : 'json',
     			contentType : "application/json; charset=utf-8",
     			success : d => {
-    				alert('팀 정보가 업데이트되었습니다.');
+    				 swal({
+                    	 icon : 'success',
+                    	 text : '팀 정보가 정상적으로 수정되었습니다.'
+                     });
     				member.login_after();
     			},
     			error : e => {
-    				alert('ajax fail');
+    				 swal({
+                    	 icon : 'error',
+                    	 text : '시스템에 문제가 있습니다. 다시시도 바랍니다.'
+                     });
     			}
     		})
     	});
@@ -579,10 +597,16 @@ team = (() => {
                  contentType: "application/json; charset=utf-8",
                  success: d => {
                      $('#myModal').modal('hide');
-                     alert('emblem updated');
+                     swal({
+                    	 icon : 'success',
+                    	 text : '엠블렘이 업데이트 되었습니다!'
+                     });
                  },
                  error: e => {
-                     alert('ajax fail');
+                	 swal({
+                    	 icon : 'error',
+                    	 text : '시스템에 문제가 있습니다. 다시시도 바랍니다.'
+                     });
                  }
              })
          })

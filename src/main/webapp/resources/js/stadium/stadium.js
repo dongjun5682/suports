@@ -11,7 +11,6 @@ stadium = (() => {
         compojs = js + '/compo/compo.js';
         homejs = js + '/home/home.js';
         msessionjs = js + '/home/membersession.js'
-        chatjs = js + '/home/chat.js'
     };
     let onCreate = (d) => {
 
@@ -36,7 +35,6 @@ stadium = (() => {
         list(arr);
     }
     let list = (x) => {
-    	$('#chat_main').remove();
         $('#content').css('margin-top', '80px');
         $('#map').empty();
         $('#footer').empty();
@@ -89,7 +87,6 @@ stadium = (() => {
           		         					infowindow.open(map, marker);
           		         					$('#map_select').click(function(e){
           		         						let arr={stadiumName:j.name,stadiumAddr:j.addr,stadiumPhoto:j.photo,date:j.date,time:j.time,latitude:j.latitude,hardness:j.hardness};
-          		         						$('#chat_main').remove();
           		         						list_field_position(arr);
           		         					});
           		       		}
@@ -112,7 +109,10 @@ stadium = (() => {
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if (search === '') {
-                alert('검색어를 입력하십시오');
+            	swal({
+            		icon : 'info',
+            		text : '검색어를 입력해주세요.'
+            	});
             } else {
                 let arr = {
                     p: '1',
@@ -208,7 +208,6 @@ stadium = (() => {
         });
     }
     let list_after = (x) => {
-    	$('#chat_main').remove();
     	$('#map').empty();
         $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
@@ -261,7 +260,6 @@ stadium = (() => {
           		         					infowindow.open(map, marker);
           		         					$('#map_select').click(function(e){
           		         						let arr={stadiumName:j.name,stadiumAddr:j.addr,stadiumPhoto:j.photo,date:j.date,time:j.time,latitude:j.latitude,hardness:j.hardness};
-          		         						$('#chat_main').remove();
           		         						list_field_position(arr);
           		         					});
           		       		}
@@ -284,7 +282,10 @@ stadium = (() => {
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if ($.fn.nullChecker(search)) {
-                alert('검색어를 입력하십시오');
+                 	swal({
+            		icon : 'info',
+            		text : '검색어를 입력해주세요.'
+            	});
             } else {
                 let arr = {
                     p: '1',
@@ -383,7 +384,6 @@ stadium = (() => {
 
 
     let list_detail = (j) => {
-        $('#chat_main').remove();
     	$('#content').html(compo.stadium_list_detail(j));
         let html = '<div class="a-team" id="roster_100"  ondrop="drop(event)" ondragover="allowDrop(event)"> ' +
             '<img class="posimage" src="resources/img/football.png" draggable="false" ondragstart="drag(event)" id="roster_ball" width="75" height="75"> ' +
@@ -487,7 +487,6 @@ stadium = (() => {
     }
     
     let list_field_position = (j) => {
-        $('#chat_main').remove();
     	$('#content').html(compo.stadium_list_detail(j));
         
     	$('#sta_photo').append(compo.field_position_form());
@@ -516,7 +515,6 @@ stadium = (() => {
     }
 
     let list_detail_after = (j) => {
-    	$('#chat_main').remove();
         $('#content').html(compo.stadium_list_detail(j));
         position_map(j);
         $('#footer').css('.section', 'padding-bottom:78px;');
@@ -555,7 +553,10 @@ stadium = (() => {
             let position = $('#roster_ball').parent().attr('id');
             let ac_code = 0;
             if (position == 'roster_100') {
-            	swal('포지션을 선택해주세요');
+            	swal({
+            		icon : 'info',
+            		text : '포지션을 선택해주세요!'
+            	});
             } else {
             	sessionStorage.setItem('posi', $('#roster_ball').parent().attr('id'));
                 $('#pay_btn_1').attr({
@@ -722,7 +723,10 @@ stadium = (() => {
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if ($.fn.nullChecker(search)) {
-                alert('검색어를 입력하십시오');
+                 	swal({
+            		icon : 'info',
+            		text : '검색어를 입력해주세요.'
+            	});
             } else {
                 let arr = {
                     p: '1',
@@ -809,7 +813,10 @@ stadium = (() => {
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if ($.fn.nullChecker(search)) {
-                alert('검색어를 입력하십시오');
+                 	swal({
+            		icon : 'info',
+            		text : '검색어를 입력해주세요.'
+            	});
             } else {
                 let arr = {
                     p: '1',
@@ -868,7 +875,10 @@ stadium = (() => {
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if ($.fn.nullChecker(search)) {
-                alert('검색어를 입력하십시오');
+                 	swal({
+            		icon : 'info',
+            		text : '검색어를 입력해주세요.'
+            	});
             } else {
                 let arr = {
                     p: '1',
@@ -927,7 +937,10 @@ stadium = (() => {
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if ($.fn.nullChecker(search)) {
-                alert('검색어를 입력하십시오');
+                 	swal({
+            		icon : 'info',
+            		text : '검색어를 입력해주세요.'
+            	});
             } else {
                 let arr = {
                     p: '1',
@@ -1033,7 +1046,10 @@ stadium = (() => {
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if ($.fn.nullChecker(search)) {
-                alert('검색어를 입력하십시오');
+                 	swal({
+            		icon : 'info',
+            		text : '검색어를 입력해주세요.'
+            	});
             } else {
                 let arr = {
                     p: '1',

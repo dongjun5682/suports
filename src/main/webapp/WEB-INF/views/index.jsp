@@ -14,7 +14,6 @@
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAQX1xNr1pIAgaFoZIyZXHXw2WnJvlgGY&callback=initMap"></script>
 <script src="resources/js/com/popper.min.js"></script>
-<!-- <script src="resources/js/com/jquery.min.3.3.1.js"></script> -->
 <script src="resources/js/com/jquery.min.3.4.1.js"></script>
 
 <!-- 아임포트 -->
@@ -36,7 +35,6 @@
 <link rel="stylesheet" href="resources/css/com/animate.min.css">
 <link rel="stylesheet" href="resources/css/com/datapicker.min.css">
 <link rel="stylesheet" href="resources/css/com/summernote-lite.css">
-<link rel="stylesheet" href="resources/css/chatbot.css"> 
 <!-- modal css -->
 <link rel="stylesheet" href="resources/css/modal.css">
 
@@ -63,14 +61,14 @@
 			<div class="modal-content2"></div>
 		</div>
 	</div>
-	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content4"></div>
-		</div>
-	</div>
 	<div class="modal fade" id="myModal_tour" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div id="modal-content3"></div>
+		</div>
+	</div>
+	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content4"></div>
 		</div>
 	</div>
 
@@ -93,7 +91,6 @@
 	<script src="resources/js/compo/compo.js"></script>
 	<script src="resources/js/com/util.js"></script>
 	<script src="resources/js/home/home.js"></script>
-    <script src="resources/js/home/chat.js"></script>
 	<script src="resources/js/member/member.js"></script>
     <script src="resources/js/vidbg.js"></script>
 	<!-- <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script> -->

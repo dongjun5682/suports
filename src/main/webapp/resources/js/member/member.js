@@ -2,7 +2,7 @@ var member = member || {}
 
 member = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
-    let _, js, compojs, stadiumjs, tournamentjs, teamjs,chatjs;
+    let _, js, compojs, stadiumjs, tournamentjs, teamjs;
 
     let init = () => {
         _ = $.ctx();
@@ -11,7 +11,6 @@ member = (() => {
         stadiumjs = js + '/stadium/stadium.js';
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js + '/team/team.js';
-        chatjs = js + '/home/chat.js'
     };
     let onCreate = (d) => {
         init();
@@ -20,7 +19,6 @@ member = (() => {
             $.getScript(stadiumjs),
             $.getScript(tournamentjs),
             $.getScript(teamjs),
-            $.getScript(chatjs),
             $.Deferred(function(d) {
                 $(d.resolve);
             })
@@ -34,7 +32,6 @@ member = (() => {
     let login_after =()=>{
     	$('#map').remove();
         $('#content').empty().append(compo.content());
-        $('#content').css('margin-top','0px');
         jQuery(function($) {
             $('#home').vidbg({
                 'mp4': 'resources/video/Fifa.mp4',
@@ -45,8 +42,6 @@ member = (() => {
                 overlay: true,
             });
         });
-       
-        $('#home').attr('style', '" "');
         $('#rm_search').empty().append(compo.srch());
         $('input[name="gameDate"]').datepicker({
 			locale: 'ko-kr',
@@ -70,7 +65,10 @@ member = (() => {
         	$('#exercise').parent().after('<li><a href="#" id="team_exercise">TEAM_EXERCISE</a></li>');
         }
         $('#team_exercise').click(()=>{
-        	alert('asdjnaskjdnsa');
+        	 swal({
+            	 icon : 'error',
+            	 text : '시스템에 문제가 있습니다. 다시시도 바랍니다.'
+             });
         })
 
    
@@ -92,7 +90,10 @@ member = (() => {
             });
             $('#myteam').click(() => {
             	if ($.member().teamIndex == 0){
-            		swal('현재 소속된 팀이 없습니다.');
+            		swal({
+                		icon : 'info',
+                		text : '현재 소속된 팀이 없습니다.'
+                	});
             	} else {
             		let teamData = {
             				teamIndex : $.member().teamIndex
@@ -112,7 +113,10 @@ member = (() => {
             				}
             			},
             			error: e => {
-            				alert('ajax fail');
+            				 swal({
+                            	 icon : 'error',
+                            	 text : '시스템에 문제가 있습니다. 다시시도 바랍니다.'
+                             });
             			}
             		});
             	}
@@ -147,18 +151,12 @@ member = (() => {
                 	stadium.stadium_res();
                     break;
                 case 'team':
-                    $('#content').css('margin-top', '80px');
                     let x = {
                         'page': 1
                     };
                     team.team_list_after(x);
                     break;
                 case 'tourment':
-                    $('#content').css('margin-top', '80px');
-                    $('#content').css({
-                        'margin-top': '70px',
-                        'height': '850px'
-                    });
                     tour.tour_apply();
                     break;
                 case 'team_exercise':
@@ -183,7 +181,6 @@ member = (() => {
         $('.logo_login').click(()=>{
         	$('.logo_login').remove();
         	$('.navbar-right').remove();
-        	$('#content').css('margin-top','0px');
         	login_after();
         })
     }
@@ -191,21 +188,6 @@ member = (() => {
     
     let home_list_after = () => {
         let list_stadium_detail = '';
-       /*
-		 * $.getScript($.js()+'/compo/compo.js',()=>{
-		 * $.getScript($.js()+'/home/chat.js',()=>{
-		 * $('#myMpa').before(compo.chatbot()); alert('home_list_after 챗');
-		 * $('#chat_body').hide().after( '<button id="chat_ball"
-		 * style="margin-left: 1373px;width: 4%;margin-bottom: 40px;"><img
-		 * src="resources/img/soccer-ball.png" style="width: 101%; margin-left:
-		 * 127px;"></button>' );
-		 * 
-		 * $('#chat_ball').css('z-index', '0');
-		 * $("#chat_ball").click(function(){ alert('클릭');
-		 * $('#chat_body').show(); chat.chat_bot(); });
-		 * 
-		 * }); });
-		 */
         $.getJSON($.ctx() + '/stadiums', d => {
             $.each(d.home, (i, j) => {
                 if (j.areaName == '서울') {
@@ -228,7 +210,6 @@ member = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.seoul_stadium').click(function() {
-                            	$('#content').css('margin-top','80px');
                             stadium.list_detail_after(j);
                         });
                     }
@@ -252,7 +233,6 @@ member = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.Incheon_stadium').click(function() {
-                            	$('#content').css('margin-top','80px');
                             stadium.list_detail_after(j);
                         });
                     }
@@ -276,7 +256,6 @@ member = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.gyeonggi_stadium').click(function() {
-                            	$('#content').css('margin-top','80px');
                             stadium.list_detail_after(j);
                         });
                     }
@@ -328,12 +307,17 @@ member = (() => {
     			dataType : 'json',
     			contentType : "application/json; charset=utf-8",
     			success : d => {
-    				alert('계정 정보가 업데이트되어 로그아웃 되었습니다.');
+    				 swal({
+                    	 icon : 'success',
+                    	 text : '계정 정보가 수정되었습니다!'
+                     });
     				window.location.reload();
     			},
     			error: function(xhr, option, error){
-    				alert(xhr.status);
-    				alert(error);
+    				 swal({
+                    	 icon : 'error',
+                    	 text : '시스템에 문제가 있습니다. 다시시도 바랍니다.'
+                     });
     			}
     		})
     	});
@@ -425,7 +409,10 @@ member = (() => {
     								$('#myModal').modal('hide');
     							},
     							error : e => {
-    								alert('ajax fail');
+    								 swal({
+    				                	 icon : 'error',
+    				                	 text : '시스템에 문제가 있습니다. 다시시도 바랍니다.'
+    				                 });
     							}
     						})
     					})
@@ -445,10 +432,16 @@ member = (() => {
 			success : d => {
 				sessionStorage.removeItem("member"); 
         		window.location.reload();
-				alert('계정 정보가 업데이트 되어 로그아웃 되었습니다.');
+        		swal({
+            		icon : 'info',
+            		text : '계정 정보가 수정되어 로그아웃 됩니다.'
+            	});
 			},
 			error : e => {
-				alert('ajax fail');
+				 swal({
+                	 icon : 'error',
+                	 text : '시스템에 문제가 있습니다. 다시시도 바랍니다.'
+                 });
 			}
 		})
     };
@@ -458,7 +451,6 @@ member = (() => {
             let memberData = {
 					memberId : $.member().id
 			};
-            alert('asdsadasd');
             $('#img_upload_frm').ajaxForm({
                 url: $.ctx()+'/uploadImg/'+memberData.memberId,
                 dataType: 'json',
@@ -466,12 +458,15 @@ member = (() => {
                 type: 'POST',
                 beforeSubmit: function() {
                     if($('#photo').val() == ''){
-                         alert("사진을 선택하셔야 합니다.");
+                         swal("사진을 선택하셔야 합니다.");
                          return false;
                     }else{
                          let ext = $('#photo').val().split('.').pop().toLowerCase();
                          if($.inArray(ext, ['jpg','png','jpeg']) == -1){
-                        	 alert('JPG, JPEG, PNG 형식의 파일만 업로드 할 수 있습니다.');
+                        	 swal({
+                            	 icon : 'info',
+                            	 text : 'JPG, JPEG, PNP형식의 파일만 업로드 가능합니다.'
+                             });
                         	 return false;
                          }
                     }

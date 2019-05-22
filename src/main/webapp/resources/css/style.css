@@ -93,6 +93,8 @@ h3#stadium_detail_warn {
 
 div#content {
 	padding-bottom: 20px;
+    margin-top: 80px;
+    display: block;
 }
 
 body {
@@ -467,9 +469,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	Hero Area
 \*------------------------------------*/
 .hero-area {
-	position: relative;
-	padding-top: 80px;
-	padding-bottom: 80px;
+	/* padding-bottom: 80px; */
 }
 
 #home.hero-area {
@@ -1358,6 +1358,8 @@ to {
 	background: rgba(0, 0, 0, 0.5);
 	padding: 40px;
 	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
 }
 
 .ev_list {
