@@ -2728,16 +2728,17 @@ a#profile_disable:hover {
 .detail_line {
   margin: 10px auto 10px auto;
   width: 300px;
-  border: 0.1px solid #CED4DA;
+  border: 0.1px solid #DEE2E6;
   color: #485057;
-
+  padding: 2px;
 }
 .detail_textarea {
   margin: 10px auto 20px auto;
   width: 300px;
   height: 120px;
   color: #485057;
-
+  border: 0.1px solid #DEE2E6;
+  padding: 4px;
 }
 ul#member_List_Paging {
   display: table;
@@ -2754,17 +2755,27 @@ ul#member_List_Paging {
   margin-bottom: 12px;
 }
 
+.member_current_photo {padding-top: 4px;}
+
+.member_detail {
+    margin-top: 50px;
+    padding: 14px;
+    /* right: 300px; */
+    background-color: white;
+    border-radius: 4px;
+}
 img.member_currnt_img {
   display: block;
   justify-content: center;
   max-height: 400px;
   max-width: 400px;
-  margin: auto auto 30px auto;
-  border-radius: 4px;
+  margin: 20px auto 30px auto;
+  border-radius: 18px;
+  object-fit: cover;
 }
 div#update_mid_content {
   position: fixed;
-  left: 380px;
+  left: 340px;
   right: 400px;
 }
 

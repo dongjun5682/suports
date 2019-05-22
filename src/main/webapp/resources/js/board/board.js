@@ -2,7 +2,7 @@ var board = board || {}
 
 board = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
-    let _, js, compojs, stadiumjs, tournamentjs, teamjs, chatjs;
+    let _, js, compojs, stadiumjs, tournamentjs, teamjs;
 
     let init = () => {
         _ = $.ctx();
@@ -11,7 +11,6 @@ board = (() => {
         stadiumjs = js + '/stadium/stadium.js';
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js + '/team/team.js';
-        chatjs = js + '/home/chat.js';
     };
     let onCreate = (x) => {
         init();
@@ -20,7 +19,6 @@ board = (() => {
             $.getScript(stadiumjs),
             $.getScript(tournamentjs),
             $.getScript(teamjs),
-            $.getScript(chatjs),
             $.Deferred(function(x) {
                 $(x.resolve);
             })
@@ -76,6 +74,8 @@ board = (() => {
 				if($.member().memberIndex == 1){
 					let create_btn = '<div class="article_write_btn"><button type="button" class="writing">글쓰기</button></div>';
 		        	attach = title + table + create_btn + pagination;
+				}else{
+					attach = title + table + pagination;
 				}
 			} else {
 				attach = title + table + pagination;

@@ -216,4 +216,11 @@
 		LIKE #{id}
 		</if>
 	</update>
+	<update id="deleteAMemberFromTeam">
+		UPDATE
+		MEMBER SET
+		TEAM_INDEX = NULL
+		WHERE NAME
+		LIKE #{name}
+	</update>
 </mapper>

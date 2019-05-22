@@ -95,6 +95,11 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 	@Override
+	public void removeAMemberFromTeam(MemberDTO mem) {
+		memberMapper.deleteAMemberFromTeam(mem);
+		
+	}
+	@Override
 	public void enableAMember(MemberDTO mem) {
 		memberMapper.enableAMember(mem);
 		

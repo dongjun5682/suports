@@ -3,7 +3,7 @@ var home = home || {};
 
 home = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
-    let _, js, compojs, boardjs, memberjs, stadiumjs, tournamentjs, teamjs, backjs, msessionjs,chatjs;
+    let _, js, compojs, boardjs, memberjs, stadiumjs, tournamentjs, teamjs, backjs, msessionjs;
 
     let init = () => {
         _ = $.ctx();
@@ -15,7 +15,6 @@ home = (() => {
         teamjs = js + '/team/team.js';
         backjs = js + '/backgroundTransition.js';
         msessionjs = js + '/home/membersession.js';
-        chatjs = js + '/home/chat.js';
         boardjs = js + '/board/board.js';
     };
     let onCreate = () => {
@@ -28,7 +27,6 @@ home = (() => {
             $.getScript(teamjs),
             $.getScript(backjs),
             $.getScript(msessionjs),
-            $.getScript(chatjs),
             $.getScript(boardjs),
             $.Deferred(function(d) {
                 $(d.resolve);
@@ -151,12 +149,6 @@ home = (() => {
                 $('#people').empty().attr('id', 'position').append(compo.solo_search());
             });
             home_list();
-          /*  $.getScript($.js()+'/compo/compo.js',()=>{
-             	$.getScript($.js()+'/home/chat.js',()=>{
-             	$(compo.chatbot()).appendTo('#myMpa');	
-                chat.init(d);
-              	});
-                });*/
             $('#sear-btn').click(function() {
             	if($('.search-addr').val() == '모두보기'){
             		let x = {p:1};
@@ -279,12 +271,14 @@ home = (() => {
                 			state : d.state,
                 			disableDate : d.disableDate
                 	}
+                	let date = new Date(d.disableDate);
+        			let disableDateDeco = date.getDay() + '-' + date.getMonth() + '-' + date.getFullYear();
                    if (logindata2.state == 'pending') {
                 	   swal({
-                		   title: "비활성화 계정입니다!",
-                		   text: "탈퇴를 위해 비활성화된 계정입니다. 요청일("+logindata2.disableDate+")로 부터 6일 후 계정이 자동으로 삭제됩니다.",
-                		   icon: "warning",
-                		   buttons: ["취소","다시 활성화"],
+                		   title: '비활성화 계정입니다',
+                		   text: '탈퇴를 위해 비활성화된 계정입니다. 요청일('+disableDateDeco+')로 부터 6일 후 계정이 자동으로 삭제됩니다.',
+                		   icon: 'warning',
+                		   buttons: ['취소','다시 활성화'],
                 		   dangerMode: true,
                 		 })
                 		 .then((willDelete) => {
@@ -312,7 +306,10 @@ home = (() => {
                    }
                 },
                 error: e => {
-                    swal('비밀번호를 틀리셨습니다');
+                	swal({
+                		icon : 'error',
+                		text : '비밀번호를 틀리셨습니다.'
+                	});
                 }
             })
             $('#myModal').modal('hide');
@@ -321,8 +318,6 @@ home = (() => {
             member.signup();
         })
     }
-   
-    
     return {
         onCreate: onCreate,
         home_list: home_list,

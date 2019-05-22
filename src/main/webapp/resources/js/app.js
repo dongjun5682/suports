@@ -28,7 +28,10 @@ app = (()=>{
 			setContentView();
 			
 		}).fail(()=>{
-			alert(WHEN_ERR);
+			 swal({
+            	 icon : 'error',
+            	 text : '시스템에 문제가 있습니다. 다시시도 바랍니다.'
+             });
 		});
 	};
 	let setContentView=()=>{

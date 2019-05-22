@@ -115,13 +115,15 @@ public class MemmberController {
 				
 				break;
 			}
+			
 		}
 		return memberService.retrieveAMemberDetail(mem);
 
 	}
 	@PutMapping("/members")
 	public Map<?,?> signup(@RequestBody MemberDTO mem) {
-
+		logger.info("===MEMBER SIGNIP IN ==={}", mem);
+		
 		memberService.addAMember(mem);
 		
 		map.clear();
@@ -129,6 +131,17 @@ public class MemmberController {
 		
 		return map;
     }
+	@PutMapping("/members/sub")
+	public Map<?,?> subtract(@RequestBody MemberDTO mem) {
+		logger.info("===MEMBER SUBTRACT IN ==={}", mem);
+		
+		memberService.removeAMemberFromTeam(mem);
+		map.clear();
+		map.put("msg", "SUCCESS");
+		
+		
+		return map;
+	}
 
 	@PutMapping("/members/login/{userid}")
 	public MemberDTO login(@RequestBody MemberDTO mem, @PathVariable String userid)throws Exception {
@@ -150,7 +163,7 @@ public class MemmberController {
 	@PutMapping("/member/{userid}")
 	public Map<?,?> teamUpdateMember(@RequestBody MemberDTO mem, @PathVariable String userid) {
 
-		logger.info("===UPDATE DTO ==={}",mem);
+//		logger.info("===UPDATE JOIN TEAM DTO ==={}",mem);
 		map.clear();
 		map.put("mem", mem);
 		tranService.teamJoinMember(map);

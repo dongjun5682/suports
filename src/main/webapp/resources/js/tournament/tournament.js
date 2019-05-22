@@ -27,7 +27,6 @@ tour =(()=>{
         });
     };
     let setContentView =()=>{
-    	$('#chat_main').remove();
     	$('#content').empty().html(compo.tournament()).css({
             'margin-top': '100px'
         });
@@ -36,7 +35,7 @@ tour =(()=>{
     		home.login();  
     	});
     	$('.m_segment img').click(()=>{
-    		alert('팀 디테일 나오기');
+    		
     	})
     	
     }
@@ -49,7 +48,10 @@ tour =(()=>{
    		let _this = $(this).attr('id');
    		$.getJSON($.ctx()+'/tournament/'+$.member().memberIndex , d=>{
    			if(d.captain === null){
-   				alert(_this + '주장만 신청 가능!!');
+   			 swal({
+            	 icon : 'info',
+            	 text : '팀의 주장만 신청이 가능합니다.'
+             });
    				$('#myModal_tour').modal("hide");
    			}else{
    				switch (_this) {

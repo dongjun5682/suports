@@ -1,6 +1,9 @@
    function inputMoveNumber(num) {
 				if(isFinite(num.value) == false) {
-					alert("카드번호는 숫자만 입력할 수 있습니다.");
+					 swal({
+	                	 icon : 'info',
+	                	 text : '카드번호는 숫자만 입력할 수 있습니다.'
+	                 });
 					num.value = "";
 					return false;
 				}
@@ -35,14 +38,20 @@
 
            // isFinite함수를 사용하여 문자가 선언되었는지 확인한다.
            if(isFinite(inputMonth + inputYear) == false) {
-               alert("문자는 입력하실 수 없습니다.");
+        	   swal({
+              	 icon : 'error',
+              	 text : '문자는 입력할 수 없습니다.'
+               });
                period.value = autoLeftPad((Number(nowMonth) + 1), 2) + "/" + nowYear;
                return false;
            }
 
            // 입력한 월이 12월 보다 큰 경우
            if(inputMonth > 12) {
-               alert("12월보다 큰 월수는 입력하실 수 없습니다. ");
+        	   swal({
+              	 icon : 'info',
+              	 text : '1월 부터 12월 까지만 입력할 수 있습니다.'
+               });
                period.value = "12/" + inputYear;
                return false;
            }
@@ -51,7 +60,10 @@
 
            // 입력한 유효기간을 현재날짜와 비교하여 사용 가능 여부를 판단한다.
            if((inputYear + inputMonth) <= (nowYear + nowMonth)) {
-               alert("유효기간이 만료된 카드는 사용하실 수 없습니다.");
+        	   swal({
+              	 icon : 'error',
+              	 text : '유효기간이 만료된 카드는 사용이 불가능합니다.'
+               });
                period.value = inputMonth + "/" + autoLeftPad((Number(nowYear) + 1), 2);
                return false;
            }
