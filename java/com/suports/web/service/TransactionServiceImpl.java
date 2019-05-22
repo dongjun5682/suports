@@ -175,7 +175,6 @@ public class TransactionServiceImpl implements TransactionService{
 		
 		memberDTO.setName(null);
 		memberDTO.setMemberIndex(memberIndex);
-		System.out.println("askjskfjnsdkjfnasdkjfnkdfndsjfnksfj"+memberDTO.toString());
 		
 		memberService.modifyAMember(memberDTO);
 	}
