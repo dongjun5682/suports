@@ -62,7 +62,7 @@ member = (() => {
         }
         $('#nav').empty().after(compo.login_nav(x));
         if($.member().teamIndex != 0){
-        	$('#exercise').parent().after('<li><a href="#" id="team_exercise">TEAM_EXERCISE</a></li>');
+        	$('#exercise').parent().after('<li><a href="#" id="team_exercise">클럽 운동</a></li>');
         }
         $('#userBtn').click(() => {
         	$('#alram-drop').remove();
@@ -70,7 +70,7 @@ member = (() => {
             		+'<ul>'
             		+'<li id="frofile"><h3 class="black-text">프로필 관리<h3></li>'
             		+'    <li class="divider"></li>'
-            		+'    <li id="myteam"><h3 class="black-text">My Team<h3></li>'
+            		+'    <li id="myteam"><h3 class="black-text">나의 클럽<h3></li>'
             		+'    <li class="divider"></li>'
             		+'    <li id="logout"><h3 class="black-text">로그아웃<h3></li>'
             		+'  </ul>'

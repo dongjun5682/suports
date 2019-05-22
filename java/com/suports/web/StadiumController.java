@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.suports.web.cmm.IFunction;
 import com.suports.web.cmm.ISupplier;
 import com.suports.web.cmm.Proxy;
+import com.suports.web.domain.ChatBotDTO;
 import com.suports.web.domain.StadiumDTO;
+import com.suports.web.mapper.ChatBotMapper;
 import com.suports.web.mapper.StadiumMapper;
 import com.suports.web.service.StadiumServiceImpl;
 
@@ -28,6 +30,7 @@ public class StadiumController {
 	@Autowired Map<String,Object> map;
 	@Autowired StadiumMapper staMap;
 	@Autowired Proxy pxy;
+	@Autowired ChatBotMapper chaMap;
 	
 	
 	@GetMapping("/stadiums/page/{page}")
@@ -152,4 +155,17 @@ public class StadiumController {
 		map.put("map_lo", ls);
 		return map;
 	}
+	@GetMapping("/chatbot/value/{value}") 
+	public Map<?,?> chat(@PathVariable String value){ 
+		map.clear(); 
+		String val = "%"+value+"%";
+		ChatBotDTO chat = new ChatBotDTO();
+		chat.setMsg(val);
+		IFunction i = (Object o) -> chaMap.chatBot(chat);
+		ChatBotDTO ch = (ChatBotDTO) i.apply(chat);
+		map.put("value", ch);
+		return map; 
+		}
+	
+	
 }

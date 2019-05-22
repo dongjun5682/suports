@@ -47,7 +47,8 @@
 
 <!-- team css -->
 <link rel="stylesheet" href="resources/css/team/teamcreatepg1.css">
-
+<link rel="stylesheet" href="resources/css/chatbot.css"> 
+<link rel="stylesheet" href="resources/css/font-awesome.min.css">
 </head>
 <body>
 <div id="content"></div>
