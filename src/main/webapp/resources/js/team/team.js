@@ -36,7 +36,7 @@ team = (() => {
         };
         team_list(x);
         $('#team_create').click(() => {
-            alert('로그인 먼저 해주세요!!');
+            swal('로그인 먼저 해주세요!!');
             $('#team_create').attr({
                 'data-target': '#myModal',
                 'data-toggle': 'modal'
@@ -362,7 +362,7 @@ team = (() => {
                                     $('#myModal').modal('hide');
                                 },
                                 error: e => {
-                                    alert('ajax fail');
+                                    swal('ajax fail');
                                 }
                             })
                         })
@@ -524,11 +524,11 @@ team = (() => {
     			dataType : 'json',
     			contentType : "application/json; charset=utf-8",
     			success : d => {
-    				alert('팀원  방출');
+    				swal('팀원  방출');
     				member.login_after();
     			},
     			error : e => {
-    				alert('ajax fail');
+    				swal('ajax fail');
     			}
     		})
     	})
@@ -554,11 +554,11 @@ team = (() => {
     			dataType : 'json',
     			contentType : "application/json; charset=utf-8",
     			success : d => {
-    				alert('팀 정보가 업데이트되었습니다.');
+    				swal('팀 정보가 업데이트되었습니다.');
     				member.login_after();
     			},
     			error : e => {
-    				alert('ajax fail');
+    				swal('ajax fail');
     			}
     		})
     	});
@@ -579,10 +579,10 @@ team = (() => {
                  contentType: "application/json; charset=utf-8",
                  success: d => {
                      $('#myModal').modal('hide');
-                     alert('emblem updated');
+                     swal('emblem updated');
                  },
                  error: e => {
-                     alert('ajax fail');
+                     swal('ajax fail');
                  }
              })
          })

@@ -112,7 +112,7 @@ stadium = (() => {
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if (search === '') {
-                alert('검색어를 입력하십시오');
+                swal('검색어를 입력하십시오');
             } else {
                 let arr = {
                     p: '1',
@@ -284,7 +284,7 @@ stadium = (() => {
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if ($.fn.nullChecker(search)) {
-                alert('검색어를 입력하십시오');
+                swal('검색어를 입력하십시오');
             } else {
                 let arr = {
                     p: '1',
@@ -512,6 +512,7 @@ stadium = (() => {
             'width' : '1280px',
             'margin' : 'auto'
         });
+        $('#myMpa').after(compo.footer());
     
     }
 
@@ -599,20 +600,20 @@ stadium = (() => {
     		    +'</div>'
     		    +'</div>').appendTo('.payt')
         $('#payment_btn').click(e=> {
-			 payment_page(arr);
-//        	 $.getJSON($.ctx() + '/reservation/payment/' + arr.stadium.timeIndex + '/' + arr.posi + '/' + $.member().memberIndex+'/'+arr.stadium.stadiumIndex
-//              		, d=> {
-//              	let message = new Array();
-//              	$.each(d.alram,(i,j)=>{
-//              		message[i] = j.message;
-//              	})
-//              	let res = {
-//                      'stadium': arr.stadium,
-//                      'res': d.res,
-//                      'messege' : message
-//                  };
-//                  payment_reservation(res)
-//              })
+//			 payment_page(arr);
+        	 $.getJSON($.ctx() + '/reservation/payment/' + arr.stadium.timeIndex + '/' + arr.posi + '/' + $.member().memberIndex+'/'+arr.stadium.stadiumIndex
+              		, d=> {
+              	let message = new Array();
+              	$.each(d.alram,(i,j)=>{
+              		message[i] = j.message;
+              	})
+              	let res = {
+                      'stadium': arr.stadium,
+                      'res': d.res,
+                      'messege' : message
+                  };
+                  payment_reservation(res)
+              })
         })
 
     }
@@ -722,7 +723,7 @@ stadium = (() => {
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if ($.fn.nullChecker(search)) {
-                alert('검색어를 입력하십시오');
+                swal('검색어를 입력하십시오');
             } else {
                 let arr = {
                     p: '1',
@@ -809,7 +810,7 @@ stadium = (() => {
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if ($.fn.nullChecker(search)) {
-                alert('검색어를 입력하십시오');
+                swal('검색어를 입력하십시오');
             } else {
                 let arr = {
                     p: '1',
@@ -868,7 +869,7 @@ stadium = (() => {
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if ($.fn.nullChecker(search)) {
-                alert('검색어를 입력하십시오');
+                swal('검색어를 입력하십시오');
             } else {
                 let arr = {
                     p: '1',
@@ -927,7 +928,7 @@ stadium = (() => {
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if ($.fn.nullChecker(search)) {
-                alert('검색어를 입력하십시오');
+                swal('검색어를 입력하십시오');
             } else {
                 let arr = {
                     p: '1',
@@ -1033,7 +1034,7 @@ stadium = (() => {
         $('#area_srch').on('click', () => {
             let search = $('#search').val();
             if ($.fn.nullChecker(search)) {
-                alert('검색어를 입력하십시오');
+                swal('검색어를 입력하십시오');
             } else {
                 let arr = {
                     p: '1',
@@ -1087,7 +1088,7 @@ stadium = (() => {
         		 }
         		$('<div class="col-md-4">'
         	              +'          <div class="res_img">'
-        	              +'            <img src="'+j.photo+'" style="width: 370px;">'
+        	              +'            <img src="'+j.photo+'" style="width: 370px;height: 246px;">'
         	              +'          </div>'
         	              +'        </div>'
         	              +'        <div class="col-md-2" style="margin-top: 30px;">'

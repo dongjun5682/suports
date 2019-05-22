@@ -36,7 +36,6 @@ public class StadiumController {
 	
 	@GetMapping("/stadiums/page/{page}")
 	public Map<?,?> list(@PathVariable String page){
-		System.out.println("모두보기!!");
 		map.clear();
 		map.put("pageNum", page);
 		map.put("pageSize", "8");
@@ -46,7 +45,6 @@ public class StadiumController {
 		pxy.carryOut(map);
 		IFunction i = (Object o)-> staMap.allStadium(pxy);
 		List<?> ls = (List<?>) i.apply(pxy);
-		System.out.println(ls.toString());
 		map.clear();
 		map.put("ls", ls);
 		map.put("pxy", pxy);

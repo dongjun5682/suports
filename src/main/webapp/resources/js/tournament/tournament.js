@@ -63,7 +63,7 @@ tour =(()=>{
    						$('.r_16 .m_segment .r_16_1').html('<span>'
    						+'<a href="#">'
    						+'<img src="resources/img/logo/'+d.emblem+'" alt="Brazil">'
-   						+'<span>'+d.name+'</span>'
+   						+'<span>team</span>'
    						+'</a>'
    						+'<strong>4</strong>'
    						+'</span>');

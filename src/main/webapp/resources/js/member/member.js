@@ -69,11 +69,6 @@ member = (() => {
         if($.member().teamIndex != 0){
         	$('#exercise').parent().after('<li><a href="#" id="team_exercise">TEAM_EXERCISE</a></li>');
         }
-        $('#team_exercise').click(()=>{
-        	alert('asdjnaskjdnsa');
-        })
-
-   
         $('#userBtn').click(() => {
         	$('#alram-drop').remove();
             $('<div class="dropdown-menu" id="user-drop">'
@@ -112,7 +107,7 @@ member = (() => {
             				}
             			},
             			error: e => {
-            				alert('ajax fail');
+            				swal('ajax fail');
             			}
             		});
             	}
@@ -194,14 +189,14 @@ member = (() => {
        /*
 		 * $.getScript($.js()+'/compo/compo.js',()=>{
 		 * $.getScript($.js()+'/home/chat.js',()=>{
-		 * $('#myMpa').before(compo.chatbot()); alert('home_list_after 챗');
+		 * $('#myMpa').before(compo.chatbot()); swal('home_list_after 챗');
 		 * $('#chat_body').hide().after( '<button id="chat_ball"
 		 * style="margin-left: 1373px;width: 4%;margin-bottom: 40px;"><img
 		 * src="resources/img/soccer-ball.png" style="width: 101%; margin-left:
 		 * 127px;"></button>' );
 		 * 
 		 * $('#chat_ball').css('z-index', '0');
-		 * $("#chat_ball").click(function(){ alert('클릭');
+		 * $("#chat_ball").click(function(){ swal('클릭');
 		 * $('#chat_body').show(); chat.chat_bot(); });
 		 * 
 		 * }); });
@@ -328,12 +323,12 @@ member = (() => {
     			dataType : 'json',
     			contentType : "application/json; charset=utf-8",
     			success : d => {
-    				alert('계정 정보가 업데이트되어 로그아웃 되었습니다.');
+    				swal('계정 정보가 업데이트되어 로그아웃 되었습니다.');
     				window.location.reload();
     			},
     			error: function(xhr, option, error){
-    				alert(xhr.status);
-    				alert(error);
+    				swal(xhr.status);
+    				swal(error);
     			}
     		})
     	});
@@ -425,7 +420,7 @@ member = (() => {
     								$('#myModal').modal('hide');
     							},
     							error : e => {
-    								alert('ajax fail');
+    								swal('ajax fail');
     							}
     						})
     					})
@@ -445,10 +440,10 @@ member = (() => {
 			success : d => {
 				sessionStorage.removeItem("member"); 
         		window.location.reload();
-				alert('계정 정보가 업데이트 되어 로그아웃 되었습니다.');
+				swal('계정 정보가 업데이트 되어 로그아웃 되었습니다.');
 			},
 			error : e => {
-				alert('ajax fail');
+				swal('ajax fail');
 			}
 		})
     };
@@ -458,7 +453,7 @@ member = (() => {
             let memberData = {
 					memberId : $.member().id
 			};
-            alert('asdsadasd');
+            swal('asdsadasd');
             $('#img_upload_frm').ajaxForm({
                 url: $.ctx()+'/uploadImg/'+memberData.memberId,
                 dataType: 'json',
@@ -466,12 +461,12 @@ member = (() => {
                 type: 'POST',
                 beforeSubmit: function() {
                     if($('#photo').val() == ''){
-                         alert("사진을 선택하셔야 합니다.");
+                         swal("사진을 선택하셔야 합니다.");
                          return false;
                     }else{
                          let ext = $('#photo').val().split('.').pop().toLowerCase();
                          if($.inArray(ext, ['jpg','png','jpeg']) == -1){
-                        	 alert('JPG, JPEG, PNG 형식의 파일만 업로드 할 수 있습니다.');
+                        	 swal('JPG, JPEG, PNG 형식의 파일만 업로드 할 수 있습니다.');
                         	 return false;
                          }
                     }

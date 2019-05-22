@@ -74,8 +74,6 @@ home = (() => {
          		$('#chat_body').hide().after( '<button id="chat_ball" style="margin-left: 1373px;width: 4%;margin-bottom: 40px;"><img src="resources/img/soccer-ball.png" style="width: 101%; margin-left: 127px;"></button>' );
          		$('#chat_ball').css('z-index','0');
          			  $("#chat_ball").click(function(){
-         				  alert('클릭');
-         				 alert('홈 챗봇');
          				 $('#chat_body').show();
          				 	chat.chat_bot();
          			  });
@@ -119,8 +117,10 @@ home = (() => {
             let search = {
             		p: 1,
                     s: $('.search-addr').val(),
-                    t: $('.search-time').val()
+                    t: $('.search-time').val(),
+                    d: $('.search-date').val()
             };
+            swal(search.d);
             stadium.srch(search);
         	}
         });
@@ -312,7 +312,7 @@ home = (() => {
                    }
                 },
                 error: e => {
-                    alert('ajax fail');
+                    swal('비밀번호를 틀리셨습니다');
                 }
             })
             $('#myModal').modal('hide');
