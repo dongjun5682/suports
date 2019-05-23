@@ -98,39 +98,38 @@ public class BoardController {
 		return map;
 	}
 	
-//	@Transactional
-//	@PostMapping("/editorImg/{userid}")
-//	public Map<?,?> fileUpload(MultipartHttpServletRequest request, @PathVariable String userid)throws Exception{
-//		logger.info("=== FILE UPLOAD {}====", request);
-//		String result = "";
-//		Iterator<String> it = request.getFileNames();
-//		map.clear();
-//		if(it.hasNext()){
-//			MultipartFile file = request.getFile(it.next());
-//            logger.info("file upload result:{}", "success");
-//            logger.info("upload file name:{}", file.getName());
-//            logger.info("upload file size:{}", file.getSize());
-//            logger.info("upload file exist:{}", file.isEmpty());
-//            logger.info("upload file original name:{}", file.getOriginalFilename());
-//            logger.info("upload file:{}", file.getOriginalFilename());
-//            
-//            String filename = file.getOriginalFilename();
-//            map.put("filename", filename);
-//            File dest = new File(BOARD_PHOTO_PATH + filename);
-//            file.transferTo(dest);
-//            result = "전송 완료";
-//            
-//            ImageDTO img = new ImageDTO();
-//            img.setImageName(filename);
-//            img.setImageOwner(userid);
-//            boardService.addABoardPhoto(img);
-//            
-//        }else{
-//            logger.info("file upload result: {}", "fail");
-//            result = "전송 실패";
-//        }
-//		
-//        map.put("result", result);
-//        return map;
-//	}
+	@PostMapping("/boards/imageUpload")
+	public Map<?,?> fileUpload(MultipartHttpServletRequest request, @PathVariable String userid)throws Exception{
+		logger.info("=== FILE UPLOAD {}====", request);
+		String result = "";
+		Iterator<String> it = request.getFileNames();
+		map.clear();
+		if(it.hasNext()){
+			MultipartFile file = request.getFile(it.next());
+            logger.info("file upload result:{}", "success");
+            logger.info("upload file name:{}", file.getName());
+            logger.info("upload file size:{}", file.getSize());
+            logger.info("upload file exist:{}", file.isEmpty());
+            logger.info("upload file original name:{}", file.getOriginalFilename());
+            logger.info("upload file:{}", file.getOriginalFilename());
+            
+            String filename = file.getOriginalFilename();
+            map.put("filename", filename);
+            File dest = new File(BOARD_PHOTO_PATH + filename);
+            file.transferTo(dest);
+            result = "전송 완료";
+            
+            ImageDTO img = new ImageDTO();
+            img.setImageName(filename);
+            img.setImageOwner(userid);
+            boardService.addABoardPhoto(img);
+            
+        }else{
+            logger.info("file upload result: {}", "fail");
+            result = "전송 실패";
+        }
+		
+        map.put("result", result);
+        return map;
+	}
 }

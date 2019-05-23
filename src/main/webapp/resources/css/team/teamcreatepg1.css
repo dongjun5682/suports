@@ -2,6 +2,10 @@
     margin-bottom: 20px;
     display: block;
 }
+span.search_club {
+    font-size: 18px;
+    font-weight: 600;
+}
 .mem_team_join {
     top: 38%;
     margin-top: 50px;
@@ -20,6 +24,24 @@ img.ce_img {
     object-fit: cover;
 }
 
+<<<<<<< HEAD
+=======
+.ce_title {
+    color: #485057;
+    font-size: 12px;
+}
+span.search_club {
+    width: 80px;
+    text-align: center;
+    display: -webkit-box;
+}
+img.ce_img {
+    width: 120px;
+    height: 100%;
+    object-fit: cover;
+}
+
+>>>>>>> yire
 .current_emblem_img {
        position: absolute;
     z-index: -1;
@@ -123,7 +145,7 @@ input.search_words_add {
 }
 .carousel-inner img {
     width: 300px;
-    margin: 14% 4% 14% 4%;
+    margin: 5% 4% 14% 4%;
 }
 .teamupdateemblem div#emblemCarousel {
         text-align: center;

@@ -2662,10 +2662,9 @@ input#img_upload_btn{
 }
 
 .mem_up_side_text_css {
-   
-  font-size: 14.0px;
-  text-align: left;
-  line-height: 35.0px;
+   font-size: 14px;
+   font-weight: 400;
+   line-height: 35.0px;
 }
 
 img.right_content_img {

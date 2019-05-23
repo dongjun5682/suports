@@ -28,7 +28,6 @@ board = (() => {
     };
     let setContentView = (x) => {
     	$('#content').html(compo.notice_frame());
-    	$('#footer').remove();
     	let title = '<div class="notice_title"><h3>서포츠 공지사항</h3></div>';
     	
     	let table = '';
@@ -74,7 +73,7 @@ board = (() => {
 				if($.member().memberIndex == 1){
 					let create_btn = '<div class="article_write_btn"><button type="button" class="writing">글쓰기</button></div>';
 		        	attach = title + table + create_btn + pagination;
-				}else{
+				} else {
 					attach = title + table + pagination;
 				}
 			} else {
@@ -127,7 +126,7 @@ board = (() => {
 			$('#update_mid_content').append(article_content);
 		});
     }
-    write = () => {
+    let write = () => {
 		let smart_editor = '<div id="update_mid_content"><div class="notice_h"><h3>공지사항</h3></div>'
 			+'<div class="notice_editor">'
 			+'<form method="post">'
@@ -146,12 +145,28 @@ board = (() => {
 			lang: 'ko-KR',
 			callbacks: {
 				onImageUpload: function(files, editor, welEditable) {
-					for (var i = files.length - 1; i >= 0; i--) {
-						sendFile(files[i], this);
-					}
+//					for (var i = files.length - 1; i >= 0; i--) {
+						sendFile(files[0], this);
+//					}
 		        }
 		    }
 		});
+		function sendFile(file, editor) {
+	 		data = new FormData();
+	 	    data.append("uploadFile", file);
+	 	    $.ajax({
+	 	    	url : $.ctx()+'/boards/imageUpload/',
+	 	        data : data,
+	 	        type : 'POST',
+	 	        cache : false,
+	 	        contentType : false,
+	 	        processData : false,
+	 	        success : function(data) {
+	 	        	$(editor).summernote('editor.insertImage', data.url);
+	 	        	alert($(editor).summernote('editor.insertImage', data.url));
+	 	        }
+	 	    });
+	 	}
 		$('.insert_article').click(()=>{
 			let articleData = {
 					title : $('form input[id="notice_title"]').val(),

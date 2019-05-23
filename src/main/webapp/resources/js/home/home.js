@@ -3,7 +3,7 @@ var home = home || {};
 
 home = (() => {
     const WHEN_ERR = '호출하는 JS 파일을 찾지 못했습니다.';
-    let _, js, compojs, boardjs, memberjs, stadiumjs, tournamentjs, teamjs, backjs, msessionjs;
+    let _, js, compojs, boardjs, homejs, memberjs, stadiumjs, tournamentjs, teamjs, backjs, msessionjs;
 
     let init = () => {
         _ = $.ctx();
@@ -13,6 +13,7 @@ home = (() => {
         stadiumjs = js + '/stadium/stadium.js';
         tournamentjs = js + '/tournament/tournament.js';
         teamjs = js + '/team/team.js';
+        homejs = js + '/home/home.js';
         backjs = js + '/backgroundTransition.js';
         msessionjs = js + '/home/membersession.js';
         boardjs = js + '/board/board.js';
@@ -25,6 +26,7 @@ home = (() => {
             $.getScript(stadiumjs),
             $.getScript(tournamentjs),
             $.getScript(teamjs),
+            $.getScript(homejs),
             $.getScript(backjs),
             $.getScript(msessionjs),
             $.getScript(boardjs),
@@ -36,20 +38,8 @@ home = (() => {
         });
     };
     let setContentView = () => {
-    	
         $('#content').before(compo.header());
         $('#content').append(compo.content());
-        jQuery(function($) {
-            $('#home').vidbg({
-                'mp4': 'resources/video/Fifa.mp4',
-            }, {
-                // Options
-                muted: true,
-                loop: true,
-                overlay: true,
-            });
-        });
-        $('#myMpa').after(compo.footer());
         $('#rm_search').append(compo.srch());
         $('input[name="gameDate"]').datepicker({
 			locale: 'ko-kr',
@@ -58,13 +48,29 @@ home = (() => {
             autoShow: 'true',
             autoPick: 'true'
 		});
-        $('.search-date').css({'margin-top':'10px','border-radius':' 4px'});
-        $('#team_search').click(() => {
-            $('#position').empty().attr('id', 'people').append(compo.team_search());
-        });
-        $('#solo_search').click(() => {
-            $('#people').empty().attr('id', 'position').append(compo.solo_search());
-        });
+        $('#home').vegas({
+    		cover: true,
+    		delay: 8000,
+    		transitionDuration : 1500,
+    	    slides: [
+    	    	{ src: "resources/img/background/main_bg6.jpg" },
+    	        { src: "resources/img/background/main_bg1.jpg" },
+    	        { src: "resources/img/background/main_bg5.jpg" },
+    	        { src: "resources/img/background/main_bg3.jpg" },
+    	        { src: "resources/img/background/main_bg7.jpg" },
+    	        { src: "resources/img/background/main_bg8.jpg" },
+    	        { src: "resources/img/background/main_bg9.jpg" },
+    	        { src: "resources/img/background/main_bg4.jpg" },
+    	        { src: "resources/img/background/main_bg2.jpg" }
+    	    ]
+    	});
+        $('body .vegas-container').css("position","static");
+//        $('#team_search').click(() => {
+//            $('#position').empty().attr('id', 'people').append(compo.team_search());
+//        });
+//        $('#solo_search').click(() => {
+//            $('#people').empty().attr('id', 'position').append(compo.solo_search());
+//        });
         home_list();
         $.getScript($.js()+'/compo/compo.js',()=>{
          	$.getScript($.js()+'/home/chat.js',()=>{
@@ -89,7 +95,6 @@ home = (() => {
                     break;
                 case 'team':
                     $('#map').remove();
-                    $('#content').css('margin-top','80px');
                     team.onCreate();
                     break;
                 case 'tourment':
@@ -98,7 +103,6 @@ home = (() => {
                 case 'about':
                     break;
                 case 'notice':
-                	$('#content').css('margin-top','80px');
                 	$('#update_mid_content').remove();
                 	let x = {
                 		page : '1'
@@ -125,44 +129,37 @@ home = (() => {
 
         //로고 클릭시 새로 그리기
         $('.navbar-brand .logo').click(() => {
+        	$('#header').remove();
+        	$('#content').empty();
+        	home.onCreate();
+        	$('#chat_main').remove();
         	  $('#map').remove();
-        	  $('#content').empty().append(compo.content());
-              jQuery(function($){
-                  $('#home').vidbg({
-                      'mp4': 'resources/video/Fifa.mp4',
-                  }, {
-                    // Options
-                    muted: true,
-                    loop: true,
-                    overlay: true,
-                });
-            });
-            $('#rm_search').append(compo.srch());
-            $('#content').css('margin-top','0px');
-            $('.search-date').css({'margin-top':'10px','border-radius':' 4px'});
-            $('#footer').remove();
-            $('#myMpa').after(compo.footer());
-            $('#team_search').click(() => {
-                $('#position').empty().attr('id', 'people').append(compo.team_search());
-            });
-            $('#solo_search').click(() => {
-                $('#people').empty().attr('id', 'position').append(compo.solo_search());
-            });
-            home_list();
-            $('#sear-btn').click(function() {
-            	if($('.search-addr').val() == '모두보기'){
-            		let x = {p:1};
-            		stadium.list(x);
-            	}else{
-                let search = {
-                    p: 1,
-                    s: $('.search-addr').val(),
-                    d: $('.search-date').val(),
-                    t: $('.search-time').val()
-                };
-                stadium.srch(search);
-            	}
-            });
+//        	  $('#content').empty().append(compo.content());
+//            $('#rm_search').append(compo.srch());
+        	  
+//            $('.search-date').css({'margin-top':'10px','border-radius':' 4px'});
+//            $('#team_search').click(() => {
+//                $('#position').empty().attr('id', 'people').append(compo.team_search());
+//            });
+//            $('#solo_search').click(() => {
+//                $('#people').empty().attr('id', 'position').append(compo.solo_search());
+//            });
+        	  
+//            home_list();
+//            $('#sear-btn').click(function() {
+//            	if($('.search-addr').val() == '모두보기'){
+//            		let x = {p:1};
+//            		stadium.list(x);
+//            	}else{
+//                let search = {
+//                    p: 1,
+//                    s: $('.search-addr').val(),
+//                    d: $('.search-date').val(),
+//                    t: $('.search-time').val()
+//                };
+//                stadium.srch(search);
+//            	}
+//            });
         })
         
        
@@ -178,7 +175,7 @@ home = (() => {
                             '  <div class="course">' +
                             '    <a href="#" class="course-img">' +
                             '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
-                            '      <i class="course-link-icon fa fa-link"></i>' +
+                            '      <i class="course-link-icon icon-check"></i>' +
                             '    </a>' +
                             '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                             '    <div class="course-time">' +
@@ -192,7 +189,6 @@ home = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.seoul_stadium').click(function() {
-                                $('#content').css('margin-top','80px');
                             stadium.list_detail(j);
                         });
                     }
@@ -202,7 +198,7 @@ home = (() => {
                             '  <div class="course">' +
                             '    <a href="#" class="course-img">' +
                             '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
-                            '      <i class="course-link-icon fa fa-link"></i>' +
+                            '      <i class="course-link-icon icon-check"></i>' +
                             '    </a>' +
                             '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                             '    <div class="course-time">' +
@@ -216,7 +212,6 @@ home = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.Incheon_stadium').click(function() {
-                                $('#content').css('margin-top','80px');
                             stadium.list_detail(j);
                         });
                     }
@@ -226,7 +221,7 @@ home = (() => {
                             '  <div class="course">' +
                             '    <a href="#" class="course-img">' +
                             '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
-                            '      <i class="course-link-icon fa fa-link"></i>' +
+                            '      <i class="course-link-icon icon-check"></i>' +
                             '    </a>' +
                             '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                             '    <div class="course-time">' +
@@ -240,7 +235,6 @@ home = (() => {
                             '    </div>' +
                             '  </div>' +
                             '</div> ').appendTo('.gyeonggi_stadium').click(function() {
-                                $('#content').css('margin-top','80px');
                             stadium.list_detail(j);
                         });
                     }
@@ -250,6 +244,7 @@ home = (() => {
     }
 
     let login = () => {
+    	$('#footer').remove();
         $('.modal-content').html(compo.signin());
         $('.login100-social-item bg1').click(e => {
         });

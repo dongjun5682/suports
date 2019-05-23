@@ -73,11 +73,12 @@ public class MemmberController {
 		map.put("pageSize", "12");
 		map.put("blockSize", "5");
 		map.put("totalCount", c.get());
-		pxy.carryOut(map);
+		System.out.println(c.get());
+		pxy.carryOutLimit(map);
 		
 		i = (Object o)-> memberService.retrieveListOfMembers(pxy);
 		List<?> ls = (List<?>) i.apply(pxy);
-		
+		System.out.println(ls.toString());
 		map.clear();
 		map.put("members", ls);
 		map.put("pxy", pxy);

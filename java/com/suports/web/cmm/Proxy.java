@@ -60,6 +60,7 @@ public class Proxy {
 		existPrev = (pageNum<=blockSize)?false:true;
 		prevBlock = startPage - pageSize;
 		nextBlock = startPage + pageSize;
+		index = (int) paramMap.get("index");
     }
     public void search(Map<?,?> paramMap) {
     	

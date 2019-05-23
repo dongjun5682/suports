@@ -35,6 +35,8 @@
 <link rel="stylesheet" href="resources/css/com/animate.min.css">
 <link rel="stylesheet" href="resources/css/com/datapicker.min.css">
 <link rel="stylesheet" href="resources/css/com/summernote-lite.css">
+<link rel="stylesheet" href="resources/css/com/vegas.min.css">
+<link rel="stylesheet" href="resources/css/icomoon.css">
 <!-- modal css -->
 <link rel="stylesheet" href="resources/css/modal.css">
 
@@ -82,18 +84,19 @@
 	<script src="resources/js/check.js"></script>
 	<script src="resources/js/bootstrap3.min.js"></script>
 	<script src="resources/js/com/router.js"></script>
+	<script src="resources/js/com/vegas.min.js"></script>
+	<script src="resources/js/com/jquery.iMissYou.min.js"></script>
 	<script src="resources/js/com/myTooltip.js"></script>
 	<script src="resources/js/com/sweetalert.min.js"></script>
 	<script src="resources/js/com/datepicker.min.js"></script>
 	<script src="resources/js/com/datepicker.ko-kr.js"></script>
 	<script src="resources/js/com/fileupload.js"></script>
+	<script src="resources/js/com/util.js"></script>
 	<script src="resources/js/com/summernote-lite.min.js"></script>
 	<script src="resources/js/com/summernote-ko-KR.js"></script>
 	<script src="resources/js/compo/compo.js"></script>
-	<script src="resources/js/com/util.js"></script>
 	<script src="resources/js/home/home.js"></script>
 	<script src="resources/js/member/member.js"></script>
-    <script src="resources/js/vidbg.js"></script>
 	<!-- <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script> -->
    
 <script>
@@ -128,6 +131,17 @@ window.addEventListener("load", function(){
 	  }
 	});
 });
+
+jQuery(document).ready(function($){
+    $.iMissYou({
+        title: "~3~ 돌아와요!~",
+        favicon: {
+            enabled: true,
+            src:'resources/img/logo/favicon2.ico'
+        }
+    });
+});
+
 
 </script>
 
