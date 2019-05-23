@@ -226,7 +226,6 @@ team = (() => {
     }
 
     let team_detail = (x) => {
-    	$('#footer').remove();
     	$('.team_member_details').remove();
     	$('#content').html(compo.team_detail_page(x));
     	   	
@@ -278,13 +277,13 @@ team = (() => {
     		if($.member().teamIndex == 0){
 	    		
 	    		let join_btn = '<div class="mem_team_join">'
-	    			+'<button type="button" class="team_join_btn">팀 가입신청</button>'
+	    			+'<button type="button" class="team_join_btn">클럽 가입</button>'
 	    	        +'</div>';
-	    	    $('.mem_up_right_content').append(join_btn);
+	    	    $('.member_update_sides').append(join_btn);
 	    	    $('.team_join_btn').click(()=>{;
 	    	    	swal({
 	    	    		title: '가입요청',
-	    	    		text: '팀에 참가하시겠습니까?',
+	    	    		text: '클럽에 참가하시겠습니까?',
 	    	    		icon: 'info',
 	    	    		button: '참가!',
 	    	    	})
@@ -379,7 +378,6 @@ team = (() => {
 
     }
     let team_update_frame = () => {
-    	$('#footer').remove();
     	$('#content').html(compo.team_update_frame());
     	team_update_info();
 
@@ -531,10 +529,15 @@ team = (() => {
     			contentType : "application/json; charset=utf-8",
     			success : d => {
     				swal({
-                		icon : 'sucess',
+                		icon : 'success',
                 		text : '정상적으로 방출되었습니다.'
                 	});
-    				team_update_info();
+    				$('#update_mid_content').empty();
+    	        	let x = {
+    	                    page: 1,
+    	                    teamIndex : $.member().teamIndex
+    	                };
+    	        	team_members_list(x);
     			},
     			error : e => {
     				swal({
@@ -553,7 +556,7 @@ team = (() => {
         			captain : $.member().memberIndex,
     				name : $('input[name="teamName"]').val(),
     				avgage : $('select[name="teamAvgage"]').val(),
-    				sort: $('input[name="teamSort"]').val(),
+    				sort: $('select[name="teamSort"]').val(),
     				style: $('select[name="teamStyle"]').val(),
     				sport : $('select[name="teamSport"]').val(),
     				address : $('select[name="teamLocation"]').val(),
@@ -568,7 +571,7 @@ team = (() => {
     			success : d => {
     				 swal({
                     	 icon : 'success',
-                    	 text : '팀 정보가 정상적으로 수정되었습니다.'
+                    	 text : '클럽 정보가 정상적으로 수정되었습니다.'
                      });
     				member.login_after();
     			},
@@ -584,10 +587,30 @@ team = (() => {
     let team_update_emblem = () => {
     	$('#update_mid_content').append(compo.team_update_emblem());
     	emblem_carousel();
-    	 $('.upload_btns2').click(() => {
-    		 let emb = {
-    				 	teamIndex : $.member().teamIndex,
-    	                emblem : $('.carousel-inner div.active').attr('name')
+    	let teamData = {
+    			teamIndex : $.member().teamIndex
+    	}
+    	$.ajax({
+			url: $.ctx()+'/teams/myteam',
+			type: 'PUT',
+			data: JSON.stringify(teamData),
+			dataType: 'json',
+			contentType: "application/json; charset=utf-8",
+			success: d => {
+				let current_emblem = '<div class="ce_title"><div>현재 엠블렘: </div></div><img src="resources/img/logo/'+d.emblem+'" alt="Current emblem" class="ce_img">';
+		    	$('.current_emblem_img').append(current_emblem);
+			},
+			error: e => {
+				 swal({
+                	 icon : 'error',
+                	 text : '시스템에 문제가 있습니다. 다시시도 바랍니다.'
+                 });
+			}
+		});
+    	$('.upload_btns2').click(() => {
+    		let emb = {
+    				teamIndex : $.member().teamIndex,
+    				emblem : $('.carousel-inner div.active').attr('name')
     	            };
              $.ajax({
                  url: $.ctx() + '/teams/'+emb.teamIndex,
@@ -601,6 +624,8 @@ team = (() => {
                     	 icon : 'success',
                     	 text : '엠블렘이 업데이트 되었습니다!'
                      });
+                     $('#update_mid_content').empty();
+                     team_update_emblem();
                  },
                  error: e => {
                 	 swal({
@@ -615,8 +640,8 @@ team = (() => {
    
     let team_diss_ever = () => {
     	swal({
- 		   title: "팀 해체!",
- 		   text: "주의: 팀 해체를 하시면 모든 팀원들이 팀 귀속에서 해제되고 별도의 알림이 가지 않습니다.",
+ 		   title: "클럽 해체",
+ 		   text: "주의: 클럽 해체를 하시면 모든 팀원들이 팀 귀속에서 해제되고 별도의 알림이 가지 않습니다.",
  		   icon: "warning",
  		   buttons: ["취소","해체 결정"],
  		   dangerMode: true,
@@ -633,7 +658,7 @@ team = (() => {
  					dataType : 'json',
  					contentType : "application/json; charset=utf-8",
  					success : d => {
- 						swal("팀이 정상적으로 해체되었습니다. 업데이트를 위해 로그아웃 됩니다.", {
+ 						swal("클럽이 정상적으로 해체되었습니다. 업데이트를 위해 로그아웃 됩니다.", {
  			 		       icon: "info",
  			 		       button: false
  			 		     });
@@ -642,7 +667,7 @@ team = (() => {
  					}
  				})
  		   } else {
- 		     swal("팀이 유지됩니다.");
+ 		     swal("클럽이 유지됩니다.");
  		   }
  		 });
     }
@@ -683,6 +708,7 @@ team = (() => {
     		    $("#emblemCarousel").carousel("next");
     		  });
     		});
+    	
     }
     return {
         onCreate:onCreate,

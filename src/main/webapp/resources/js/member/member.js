@@ -81,6 +81,7 @@ member = (() => {
             	member_update_frame();
             });
             $('#myteam').click(() => {
+            	$('#footer').remove();
             	if ($.member().teamIndex == 0){
             		swal({
                 		icon : 'info',
@@ -91,7 +92,7 @@ member = (() => {
             				teamIndex : $.member().teamIndex
             				}
             		$.ajax({
-            			url: $.ctx()+'/teams/myteam/'+teamData.teamIndex,
+            			url: $.ctx()+'/teams/myteam',
             			type: 'PUT',
             			data: JSON.stringify(teamData),
             			dataType: 'json',

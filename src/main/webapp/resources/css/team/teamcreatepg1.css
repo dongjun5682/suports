@@ -3,16 +3,30 @@
     display: block;
 }
 .mem_team_join {
-    position: absolute;
     top: 38%;
-    margin-left: 100px;
-    width: 28%;
+    margin-top: 50px;
     height: 45px;
     text-align: -webkit-center;
     border-radius: 4px;
     background-color: #00C5FF;
     }
+.ce_title {
+    color: #485057;
+    font-size: 12px;
+}
+img.ce_img {
+    width: 120px;
+    height: 100%;
+    object-fit: cover;
+}
 
+.current_emblem_img {
+       position: absolute;
+    z-index: -1;
+    text-align: -webkit-center;
+    left: 64px;
+    margin-top: 8px;
+}
 button.team_join_btn {
     color: white;
     width: 100%;
@@ -99,16 +113,23 @@ input.search_words_add {
     margin-left: 4px;
     margin-right: 4px;
 }
+.mid_content_sub {
+    width: 500px;
+    margin: auto;
+}
 
+.subtitle_sub {
+    text-align: -webkit-center;
+}
 .carousel-inner img {
-    width: 50%;
-    height: 50%;
-    margin-top: 50px;
+    width: 300px;
+    margin: 14% 4% 14% 4%;
 }
 .teamupdateemblem div#emblemCarousel {
         text-align: center;
-        margin-bottom: 120px;
-        margin-top: 28px;
+        /* margin-bottom: 120px; */
+        margin: 28px 10px auto 10px;
+        height: 480px;
 }
 .teamcreatepg3 div#emblemCarousel {
     height: 400px;
@@ -289,7 +310,8 @@ input.search_words_add {
   line-height         : 22.0px;
 }
 textarea#teamInfo {
-    height: 80px;
+    height: 120px;
+    resize: none;
 }
 
 button.team_create_next_btn {
@@ -2846,3 +2868,4 @@ textarea#team_create_textarea {
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
+

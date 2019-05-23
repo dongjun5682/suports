@@ -52,8 +52,8 @@ public class TeamController {
 		
 		return map;
 	}
-	@PutMapping("/teams/myteam/{userid}")
-	public TeamDTO select(@RequestBody TeamDTO team, @PathVariable String userid){
+	@PutMapping("/teams/myteam")
+	public TeamDTO select(@RequestBody TeamDTO team){
 		
 		logger.info("===TEAM SELECT ==={}",team);
 		

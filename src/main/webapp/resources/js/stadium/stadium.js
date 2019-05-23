@@ -488,7 +488,8 @@ stadium = (() => {
     
     let list_field_position = (j) => {
     	$('#content').html(compo.stadium_list_detail(j));
-        
+        $('.posi_span').text('다른 클럽과의 경기 스쿼드');
+        $('.position').text('포메이션');
     	$('#sta_photo').append(compo.field_position_form());
     	$('.fp_stadium_img_click').click(()=>{
     		$('.modal-content4').empty();
@@ -601,20 +602,20 @@ stadium = (() => {
     		    +'</div>'
     		    +'</div>').appendTo('.payt')
         $('#payment_btn').click(e=> {
-//			 payment_page(arr);
-        	 $.getJSON($.ctx() + '/reservation/payment/' + arr.stadium.timeIndex + '/' + arr.posi + '/' + $.member().memberIndex+'/'+arr.stadium.stadiumIndex
-              		, d=> {
-              	let message = new Array();
-              	$.each(d.alram,(i,j)=>{
-              		message[i] = j.message;
-              	})
-              	let res = {
-                      'stadium': arr.stadium,
-                      'res': d.res,
-                      'messege' : message
-                  };
-                  payment_reservation(res)
-              })
+			 payment_page(arr);
+//        	 $.getJSON($.ctx() + '/reservation/payment/' + arr.stadium.timeIndex + '/' + arr.posi + '/' + $.member().memberIndex+'/'+arr.stadium.stadiumIndex
+//              		, d=> {
+//              	let message = new Array();
+//              	$.each(d.alram,(i,j)=>{
+//              		message[i] = j.message;
+//              	})
+//              	let res = {
+//                      'stadium': arr.stadium,
+//                      'res': d.res,
+//                      'messege' : message
+//                  };
+//                  payment_reservation(res)
+//              })
         })
 
     }
