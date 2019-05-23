@@ -14,7 +14,9 @@
     border: 1px solid #EAECEF;
     padding: 10px;
     }
-
+.notice_title {
+    margin-bottom: 30px;
+}
 .ba_titles {
     width: 14%;
     font-weight: bold;
@@ -101,12 +103,12 @@ button.writing {
 .fieldbtn {
     box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
     width: 100%;
-    height: 40px;
+    height: 45px;
     margin-top: 30px;
     background-color: #00C5FF;
     color: white;
     font-weight: bold;
-    border-radius: 4px
+    border-radius: 4px;
 }
 .fieldbtn:hover {
     background-color: #EE2460;
@@ -151,7 +153,6 @@ img.fp_feild_img {
   position: fixed;
   margin-left: 360px;
   width: 148px;
-  /* height: 100%; */
 }
 
 img.img-fluid.rounded-circle.animated.pulse-hvr.teamlist_current_img {
@@ -172,13 +173,11 @@ img.imgnextbtnbg {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "material", Helvetica, Arial, serif;
   font-size           : 22.0px;
   color               : rgba(115, 123, 132, 1.0);
 }
 
 .playersignuppg1 {
-  /* width               : 100%; */
   min-width           : 1024px;
   min-height          : 780px;
   position            : relative;
@@ -190,21 +189,6 @@ img.imgnextbtnbg {
   border-radius: 8px;
 }
 
-a {
-  text-decoration     : none;
-}
-div {
-  -webkit-text-size-adjust: none;
-}
-.anima-full-width-a {
-  width               : 100%;
-}
-.anima-full-height-a {
-  height              : 100%;
-}
-div {
-  -webkit-text-size-adjust: none;
-}
 .playersignuppg1 .rightcontent {
   background-color    : rgba(255,255,255,0.0);
   top                 : 0px;
@@ -278,7 +262,6 @@ div {
   left                : 0px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  /* transform           : rotate(0deg); */
 }
 .playersignuppg1 .formsignup .chkterms {
   background-color    : rgba(255,255,255,0.0);
@@ -291,7 +274,6 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
   font-size           : 16.0px;
   color               : rgba(115, 123, 132, 1.0);
   text-align          : left;
@@ -332,7 +314,6 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
   font-size           : 14.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
@@ -349,7 +330,6 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size           : 16.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
@@ -424,7 +404,6 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
   font-size           : 18.0px;
   color               : rgba(57, 63, 69, 1.0);
   text-align          : center;
@@ -441,7 +420,6 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
   font-size           : 24.0px;
   color               : rgba(39, 44, 49, 1.0);
   text-align          : center;
@@ -480,7 +458,6 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
   font-size           : 20.0px;
   color               : rgba(255, 255, 255, 1.0);
   line-height         : 24.0px;
@@ -510,21 +487,6 @@ div {
   -moz-osx-font-smoothing: grayscale;
   background-color    : rgba(255, 255, 255, 1.0);
   border-radius: 8px;
-}
-a {
-  text-decoration     : none;
-}
-div {
-  -webkit-text-size-adjust: none;
-}
-.anima-full-width-a {
-  width               : 100%;
-}
-.anima-full-height-a {
-  height              : 100%;
-}
-div {
-  -webkit-text-size-adjust: none;
 }
 
 .playersignuppg2 .fieldbtm {
@@ -611,7 +573,6 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
   font-size           : 20.0px;
   color               : rgba(114, 145, 158, 1.0);
   text-align          : center;
@@ -659,8 +620,6 @@ div {
   height              : 86px;
   width: 100%;
   position            : absolute;
-  /* margin              : 0; */
-  /* left                : 0px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -726,22 +685,15 @@ div {
   transform           : rotate(0deg);
 }
 .playersignuppg2 .formfieldpg2 .fieldselect .texttitle {
-  /* background-color: rgba(255,255,255,0.0); */
   top: -10px;
-  /* height: auto; */
   to; */
   width: 127px;
   position: absolute;
-  /* margin: 0; */
   left: 1px;
   -ms-transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
-  /* transform: rotate(0deg); */
-  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size: 18.0px;
   color: rgba(0, 0, 0, 1.0);
-  /* text-align: left; */
-  /* line-height: 21.0px; */
 }
 .playersignuppg2 .formfieldpg2 .fieldposloctime {
   background-color    : rgba(255,255,255,0.0);
@@ -802,7 +754,6 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "HelveticaNeue-UltraLight", Helvetica, Arial, serif;
   font-size           : 14.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : center;
@@ -819,7 +770,6 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
   font-size           : 14.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : center;
@@ -836,62 +786,35 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
   font-size           : 14.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : center;
   line-height         : 35.0px;
 }
 .playersignuppg2 .formfieldpg2 .fieldposloctime .texttitle {
-  /* background-color    : rgba(255,255,255,0.0); */
-  /* top                 : 0px; */
-  /* height              : auto; */
-  /* width               : 127px; */
-  /* position            : absolute; */
-  /* margin              : 0; */
-  /* left                : 1px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
-  /* -webkit-transform   : rotate(0deg); */ /* Chrome, Safari, Opera */
-  /* transform           : rotate(0deg); */
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size           : 18.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
-  /* line-height         : 21.0px; */
 }
 .playersignuppg2 .formfieldpg2 .fieldposloctime .texttitle1 {
-  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 0px;
-  /* height              : auto; */
-  /* width               : 127px; */
   position            : absolute;
-  /* margin              : 0; */
   left                : 143px;
   -ms-transform       : rotate(0deg); /* IE 9 */
-  /* -webkit-transform   : rotate(0deg); */ /* Chrome, Safari, Opera */
-  /* transform           : rotate(0deg); */
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size           : 18.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
-  /* line-height         : 21.0px; */
 }
 .playersignuppg2 .formfieldpg2 .fieldposloctime .texttitle2 {
-  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 0px;
-  /* height              : auto; */
-  /* width               : 127px; */
   position            : absolute;
-  /* margin              : 0; */
   left                : 286px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  /* transform           : rotate(0deg); */
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size           : 18.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
-  /* line-height         : 21.0px; */
 }
 .playersignuppg2 .formfieldpg2 .fieldbirth {
   background-color    : rgba(255,255,255,0.0);
@@ -950,17 +873,10 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "HelveticaNeue-UltraLight", Helvetica, Arial, serif;
   font-size           : 14.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : center;
   line-height         : 35.0px;
-}
-.playersignuppg2 .formfieldpg2 .fieldbirth .textyear .span1 {
-  
-}
-.playersignuppg2 .formfieldpg2 .fieldbirth .textyear .span2 {
-  font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
 }
 .playersignuppg2 .formfieldpg2 .fieldbirth .textmonth {
   background-color    : rgba(255,255,255,0.0);
@@ -973,17 +889,10 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "HelveticaNeue-UltraLight", Helvetica, Arial, serif;
   font-size           : 14.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : center;
   line-height         : 35.0px;
-}
-.playersignuppg2 .formfieldpg2 .fieldbirth .textmonth .span1 {
-  
-}
-.playersignuppg2 .formfieldpg2 .fieldbirth .textmonth .span2 {
-  font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
 }
 .playersignuppg2 .formfieldpg2 .fieldbirth .textday {
   background-color    : rgba(255,255,255,0.0);
@@ -996,37 +905,22 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
   font-size           : 14.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : center;
   line-height         : 35.0px;
 }
 .playersignuppg2 .formfieldpg2 .fieldbirth .texttitle {
-  /* background-color    : rgba(255,255,255,0.0); */
-  /* top                 : 0px; */
-  /* height              : auto; */
-  /* width               : 309px; */
-  /* position            : absolute; */
-  /* margin              : 0; */
-  /* left                : 1px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
-  /* -webkit-transform   : rotate(0deg); */ /* Chrome, Safari, Opera */
-  /* transform           : rotate(0deg); */
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size: 18px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
-  /* line-height         : 21.0px; */
 }
 .playersignuppg2 .formfieldpg2 .fieldpassword {
   background-color    : rgba(255,255,255,0.0);
-  /* top                 : 0px; */
   height              : 64px;
   width: 100%;
   position            : absolute;
-  /* margin              : 0; */
-  /* left                : 0px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
@@ -1044,37 +938,24 @@ div {
   transform           : rotate(0deg);
 }
 .playersignuppg2 .formfieldpg2 .fieldpassword .textcontent {
-  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 28px;
   height              : auto;
   width: 100%;
   position: absolute;
   margin              : 0;
-  /* left                : 4px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
   font-size           : 14.0px;
-  /* color               : rgba(0, 0, 0, 1.0); */
   text-align          : left;
-  /* line-height         : 35.0px; */
 }
 .playersignuppg2 .formfieldpg2 .fieldpassword .texttitle {
   background-color    : rgba(255,255,255,0.0);
-  /* top                 : 0px; */
-  /* height              : auto; */
-  /* width               : 227px; */
-  /* position            : absolute; */
-  /* margin              : 0; */
-  /* left                : 1px; */
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
   font-size: 18px;
   text-align          : left;
-  /* line-height         : 21.0px; */
 }
 .playersignuppg2 .hsubtitle {
   background-color    : rgba(255,255,255,0.0);
@@ -1099,11 +980,9 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
   font-size: 22px;
   color               : rgba(57, 63, 69, 1.0);
   text-align          : left;
-  /* line-height         : 32.0px; */
 }
 .playersignuppg2 .hsubtitle .htitle {
   background-color    : rgba(255,255,255,0.0);
@@ -1116,7 +995,6 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
   font-size           : 22.0px;
   color               : rgba(39, 44, 49, 1.0);
   text-align          : left;
@@ -1145,7 +1023,6 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
   font-size           : 16.0px;
   color               : rgba(115, 123, 132, 1.0);
   text-align          : left;
@@ -1162,17 +1039,10 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
   font-size           : 24.0px;
   color               : rgba(39, 44, 49, 1.0);
   text-align          : left;
   line-height         : 37.0px;
-}
-.playersignuppg2 .groupleftside .textsidecontent1 .span1 {
-  
-}
-.playersignuppg2 .groupleftside .textsidecontent1 .span2 {
-  color               : rgba(0, 0, 0, 1.0);
 }
 .playersignuppg2 .groupleftside .imgsidebar {
   background-color    : rgba(255,255,255,0.0);
@@ -1233,7 +1103,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 18.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : right;
@@ -1389,7 +1259,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 20.0px;
   color               : rgba(114, 145, 158, 1.0);
   text-align          : center;
@@ -1446,7 +1316,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 16.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
@@ -1511,14 +1381,14 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 14.0px;
   color               : #07172A;
   text-align          : left;
   line-height         : 22.0px;
 }
 .playersignuppg3 .fieldchkbox .filedselect .text .texttitle1 {
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 20.0px;
   color               : #07172A;
   text-align          : left;
@@ -1585,14 +1455,14 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 14.0px;
   color               : rgba(107, 107, 115, 1.0);
   text-align          : left;
   line-height         : 22.0px;
 }
 .playersignuppg3 .fieldchkbox .filedselect1 .text .texttitle1 {
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 20.0px;
   color               : #07172A;
   text-align          : left;
@@ -1658,14 +1528,14 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 14.0px;
   color               : rgba(107, 107, 115, 1.0);
   text-align          : left;
   line-height         : 22.0px;
 }
 .playersignuppg3 .fieldchkbox .filedselect2 .text .texttitle1 {
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 20.0px;
   color               : #07172A;
   text-align          : left;
@@ -1731,14 +1601,14 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 14.0px;
   color               : rgba(107, 107, 115, 1.0);
   text-align          : left;
   line-height         : 22.0px;
 }
 .playersignuppg3 .fieldchkbox .filedselect3 .text .texttitle1 {
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 20.0px;
   color               : #07172A;
   text-align          : left;
@@ -1804,14 +1674,14 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 14.0px;
   color               : rgba(107, 107, 115, 1.0);
   text-align          : left;
   line-height         : 22.0px;
 }
 .playersignuppg3 .fieldchkbox .filedselect4 .text .texttitle1 {
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 20.0px;
   color               : #07172A;
   text-align          : left;
@@ -1877,14 +1747,14 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 14.0px;
   color               : rgba(107, 107, 115, 1.0);
   text-align          : left;
   line-height         : 22.0px;
 }
 .playersignuppg3 .fieldchkbox .fieldselect .text .texttitle1 {
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 20.0px;
   color               : #07172A;
   text-align          : left;
@@ -1926,7 +1796,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 20.0px;
   color               : rgba(57, 63, 69, 1.0);
   text-align          : left;
@@ -1943,7 +1813,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 22.0px;
   color               : rgba(39, 44, 49, 1.0);
   text-align          : left;
@@ -1972,7 +1842,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 24.0px;
   color               : rgba(39, 44, 49, 1.0);
   text-align          : left;
@@ -1989,7 +1859,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 16.0px;
   color               : rgba(115, 123, 132, 1.0);
   text-align          : left;
@@ -2066,7 +1936,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 18.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : right;
@@ -2172,27 +2042,19 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 14.0px;
   color               : rgba(114, 145, 158, 1.0);
   text-align          : center;
   line-height         : 17.0px;
 }
 .teamcreatepg4 .fieldpicture .texttitle {
-  /* background-color    : rgba(255,255,255,0.0); */
-  /* top                 : 0px; */
-  /* height              : auto; */
-  /* width               : 359px; */
-  /* position            : absolute; */
-  /* margin              : 0; */
   left                : 3px;
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
-  /* transform           : rotate(0deg); */
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 18.0px;
   color               : rgba(0, 0, 0, 1.0);
-  /* text-align          : left; */
   margin-bottom: 10px;
   line-height         : 21.0px;
 }
@@ -2219,7 +2081,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 22.0px;
   color               : rgba(39, 44, 49, 1.0);
   text-align          : left;
@@ -2248,7 +2110,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 16.0px;
   color               : rgba(115, 123, 132, 1.0);
   text-align          : left;
@@ -2265,17 +2127,12 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 24.0px;
   color               : rgba(39, 44, 49, 1.0);
   text-align          : left;
   line-height         : 37.0px;
 }
-.teamcreatepg4 .groupleftside .textsidecontent1 .span1 {
-  
-}
-.teamcreatepg4 .groupleftside .textsidecontent1 .span2 {
-  color               : rgba(0, 0, 0, 1.0);
 }
 .teamcreatepg4 .groupleftside .imgsidebar {
   background-color    : rgba(255,255,255,0.0);
@@ -2336,7 +2193,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 18.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : right;
@@ -2438,7 +2295,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 20.0px;
   color               : rgba(255, 255, 255, 1.0);
   text-align          : center;
@@ -2479,7 +2336,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 20.0px;
   color               : rgba(114, 145, 158, 1.0);
   text-align          : center;
@@ -2509,7 +2366,6 @@ div {
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
-
 
 .teamcreatepg5 {
   width               : 100%;
@@ -2562,7 +2418,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 18.0px;
   color               : rgba(57, 63, 69, 1.0);
   text-align          : center;
@@ -2579,7 +2435,7 @@ div {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 24.0px;
   color               : rgba(39, 44, 49, 1.0);
   text-align          : center;
@@ -2621,7 +2477,6 @@ div {
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
 }
-
 .formupdate {
   z-index: 99;
 }
@@ -2629,11 +2484,9 @@ div {
     text-align: -webkit-center;
     display: inline-block;
 }
-
 .team_member_details .row.voffset:hover {
     background-color: rgba(241, 243, 245, 0.5);
 }
-
 
 .team_member_details div#leader_no:hover {
     background-color: rgba(203, 243, 255, 0.2);
@@ -2647,12 +2500,9 @@ div {
     text-align: -webkit-center;
     display: inline-block;
 }
-
 .team_member_details .row.voffset:hover {
     background-color: rgba(241, 243, 245, 0.5);
 }
-
-
 .team_member_details div#leader_no:hover {
     background-color: rgba(203, 243, 255, 0.2);
 }
@@ -2754,13 +2604,13 @@ ul#member_List_Paging {
 .fieldform {
   margin-bottom: 12px;
 }
-
-.member_current_photo {padding-top: 4px;}
+.member_current_photo {
+	padding-top: 4px;
+	}
 
 .member_detail {
     margin-top: 50px;
     padding: 14px;
-    /* right: 300px; */
     background-color: white;
     border-radius: 4px;
 }
@@ -2799,7 +2649,7 @@ input#img_upload_btn{
 }
 
 .mem_up_side_title {
-  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size: 16.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: left;
@@ -2808,10 +2658,9 @@ input#img_upload_btn{
 }
 
 .mem_up_side_text_css {
-  font-family: "AppleSDGothicNeo-SemiBold", Helvetica, Arial, serif;
-  font-size: 14.0px;
-  text-align: left;
-  line-height: 35.0px;
+   font-size: 14px;
+   font-weight: 400;
+   line-height: 35.0px;
 }
 
 img.right_content_img {
@@ -2839,7 +2688,7 @@ img.right_content_img {
 .texttitlepg11 {
   -ms-transform: rotate(0deg);
   /* IE 9 */
-  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size: 16.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: left;
@@ -2880,7 +2729,7 @@ button.upload_btns2 {
   -ms-transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size: 16.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: left;
@@ -2897,7 +2746,7 @@ button.upload_btns2 {
 }
 
 .playerupdateinfo span.span1 {
-  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size: 16.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: left;
@@ -2922,7 +2771,7 @@ button.upload_btns2 {
 .playerupdateinfo .texttitlepg1 {
   -ms-transform: rotate(0deg);
   /* IE 9 */
-  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size: 16.0px;
   color: rgba(255, 255, 255, 1.0);
   text-align: center;
@@ -2963,7 +2812,7 @@ button.upload_btns2 {
   -ms-transform: rotate(0deg);
   /* IE 9 */
   transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
+   
   font-size: 14.0px;
   color: rgba(0, 0, 0, 1.0);
   line-height: 35.0px;
@@ -3022,7 +2871,7 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
+   
   font-size: 14.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: left;
@@ -3042,7 +2891,7 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size: 16.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: left;
@@ -3077,15 +2926,11 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "HelveticaNeue-UltraLight", Helvetica, Arial, serif;
+   
   font-size: 12.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: center;
   line-height: 35.0px;
-}
-
-.playerupdateinfo .formupdate .fieldbirth .textyear .span2 {
-  font-family: "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
 }
 
 .playerupdateinfo .formupdate .fieldbirth .textmonth {
@@ -3101,7 +2946,7 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "HelveticaNeue-UltraLight", Helvetica, Arial, serif;
+   
   font-size: 12.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: center;
@@ -3109,7 +2954,7 @@ button.upload_btns2 {
 }
 
 .playerupdateinfo .formupdate .fieldbirth .textmonth .span2 {
-  font-family: "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
+   
 }
 
 .playerupdateinfo .formupdate .fieldbirth .textday {
@@ -3125,7 +2970,7 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
+   
   font-size: 12.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: center;
@@ -3145,7 +2990,7 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size: 16.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: left;
@@ -3213,84 +3058,25 @@ button.upload_btns2 {
 }
 
 .formupdate .fieldloctypetime {
-  /* background-color: rgba(255, 255, 255, 0.0); */
   margin-bottom: 12px;
   display: -webkit-box;
-  /* top: 232px; */
-  /* height: 55px; */
-  /* width: 473px; */
-  /* position: absolute; */
-  /* margin: 0; */
-  /* left: 0px; */
   -ms-transform: rotate(0deg);
-  /* IE 9 */
-  /* -webkit-transform: rotate(0deg); */
-  /* Chrome, Safari, Opera */
-  /* transform: rotate(0deg); */
 }
 
 .formupdate .fieldloctypetime .imgbirthbg {
-  /* background-color: rgba(255, 255, 255, 0.0); */
-  /* top: 27px; */
-  /* height: 28px; */
   width: 30%;
-  /* box-sizing: border-box; */
-  /* width: 175px; */
-  /* position: absolute; */
-  /* margin: 0; */
-  /* left: 298px; */
-  /* border-radius: 1px; */
-  /* border-style: solid; */
-  /* border-width: 1px; */
-  /* border-color: rgba(222, 227, 232, 1.0); */
   -ms-transform: rotate(0deg);
-  /* IE 9 */
-  /* -webkit-transform: rotate(0deg); */
-  /* Chrome, Safari, Opera */
-  /* transform: rotate(0deg); */
 }
 
 .formupdate .fieldloctypetime .imgbirthbg1 {
-  /* background-color: rgba(255, 255, 255, 0.0); */
-  /* top: 27px; */
-  /* height: 28px; */
   width: 30%;
   margin: auto 5% auto 5%;
-  /* box-sizing: border-box; */
-  /* width: 139px; */
-  /* position: absolute; */
-  /* margin: 0; */
-  /* left: 152px; */
-  /* border-radius: 1px; */
-  /* border-style: solid; */
-  /* border-width: 1px; */
-  /* border-color: rgba(222, 227, 232, 1.0); */
   -ms-transform: rotate(0deg);
-  /* IE 9 */
-  /* -webkit-transform: rotate(0deg); */
-  /* Chrome, Safari, Opera */
-  /* transform: rotate(0deg); */
 }
 
 .formupdate .fieldloctypetime .imgbirthbg2 {
-  /* background-color: rgba(255, 255, 255, 0.0); */
-  /* top: 27px; */
   width: 30%;
-  /* height: 28px; */
-  /* box-sizing: border-box; */
-  /* width: 139px; */
-  /* position: absolute; */
-  /* margin: 0; */
-  /* left: 7px; */
-  /* border-radius: 1px; */
-  /* border-style: solid; */
-  /* border-width: 1px; */
-  /* border-color: rgba(222, 227, 232, 1.0); */
   -ms-transform: rotate(0deg);
-  /* IE 9 */
-  /* -webkit-transform: rotate(0deg); */
-  /* Chrome, Safari, Opera */
-  /* transform: rotate(0deg); */
 }
 
 .formupdate .fieldloctypetime .textyear {
@@ -3306,7 +3092,7 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "HelveticaNeue-UltraLight", Helvetica, Arial, serif;
+   
   font-size: 12.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: center;
@@ -3325,7 +3111,7 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
+   
   font-size: 12.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: center;
@@ -3344,7 +3130,7 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
+   
   font-size: 12.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: center;
@@ -3364,7 +3150,7 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size: 14.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: left;
@@ -3372,23 +3158,7 @@ button.upload_btns2 {
 }
 
 .formupdate .fieldloctypetime .texttitlepg11 {
-  /* background-color: rgba(255, 255, 255, 0.0); */
-  /* top: 0px; */
-  /* height: auto; */
-  /* width: 137px; */
-  /* position: absolute; */
-  /* margin: 0; */
-  /* left: 149px; */
   -ms-transform: rotate(0deg);
-  /* IE 9 */
-  /* -webkit-transform: rotate(0deg); */
-  /* Chrome, Safari, Opera */
-  /* transform: rotate(0deg); */
-  /* font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif; */
-  /* font-size: 14.0px; */
-  /* color: rgba(0, 0, 0, 1.0); */
-  /* text-align: left; */
-  /* line-height: 17.0px; */
 }
 
 .formupdate .fieldloctypetime .texttitlepg12 {
@@ -3404,7 +3174,7 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size: 14.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: left;
@@ -3448,7 +3218,7 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
+   
   font-size: 12.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: left;
@@ -3465,16 +3235,12 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size: 16.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: left;
   line-height: 19.0px;
   margin-bottom: 10px;
-}
-
-.playerupdateinfo .formupdate .fieldcharacter .texttitlepg11 .span2 {
-  font-family: "HelveticaNeue-Bold", Helvetica, Arial, serif;
 }
 
 .playerupdateinfo .formupdate .fieldcharacter .uea0d {
@@ -3490,7 +3256,6 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "material", Helvetica, Arial, serif;
   font-size: 16.0px;
   color: rgba(135, 142, 150, 1.0);
   text-align: left;
@@ -3522,7 +3287,7 @@ button.upload_btns2 {
 .formupdate .fieldfirstname .textcontentpg1 {
   -ms-transform: rotate(0deg);
   /* IE 9 */
-  font-family: "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
+   
   font-size: 14.0px;
   text-align: left;
 }
@@ -3532,12 +3297,8 @@ button.upload_btns2 {
   /* IE 9 */
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
-  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size: 16.0px;
-}
-
-.playerupdateinfo .formupdate .fieldfirstname .texttitlepg11 .span2 {
-  font-family: "HelveticaNeue-Bold", Helvetica, Arial, serif;
 }
 
 .playerupdateinfo .fieldnickname {
@@ -3583,7 +3344,7 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-SemiBold", Helvetica, Arial, serif;
+   
   font-size: 14.0px;
   color: rgba(72, 80, 87, 1.0);
   text-align: left;
@@ -3603,7 +3364,7 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
+   
   font-size: 14.0px;
   color: rgba(72, 80, 87, 1.0);
   text-align: left;
@@ -3623,7 +3384,7 @@ button.upload_btns2 {
   -webkit-transform: rotate(0deg);
   /* Chrome, Safari, Opera */
   transform: rotate(0deg);
-  font-family: "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size: 16.0px;
   color: rgba(0, 0, 0, 1.0);
   text-align: left;
@@ -3645,10 +3406,6 @@ button.upload_btns2 {
   text-align: center;
   line-height: 10px;
   font-weight: bolder;
-}
-
-.playerupdatepicture {
-  -moz-osx-font-smoothing: grayscale;
 }
 .playerupdatepicture .imgpath {
   background-color    : rgba(255,255,255,0.0);
@@ -3677,13 +3434,12 @@ button.upload_btns2 {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 16.0px;
   color               : rgba(255, 255, 255, 1.0);
   text-align          : center;
 }
 .playerupdatepicture .divexit {
-  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 51px;
   height              : auto;
   width               : auto;
@@ -3693,7 +3449,6 @@ button.upload_btns2 {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : Helvetica, Arial, serif;
   font-size           : 22.0px;
   color               : rgba(115, 123, 132, 1.0);
   text-align          : left;
@@ -3703,7 +3458,6 @@ button.upload_btns2 {
   -ms-transform       : rotate(0deg); /* IE 9 */
 }
 .playerupdatepicture .formupdate .fieldupdatepicture {
-  background-color    : rgba(255,255,255,0.0);
   height: 100%;
   width: 100%;
   position            : relative;
@@ -3712,7 +3466,6 @@ button.upload_btns2 {
   transform           : rotate(0deg);
 }
 .playerupdatepicture .formupdate .fieldupdatepicture .fieldbtn {
-  /* background-color    : rgba(255,255,255,0.0); */
   top                 : 413px;
   height: 50px;
   width               : 311px;
@@ -3725,7 +3478,6 @@ button.upload_btns2 {
   transform           : rotate(0deg);
 }
 .playerupdatepicture .formupdate .fieldupdatepicture .fieldbtn .imguploadbtnbg {
-  background-color    : rgba(255,255,255,0.0);
   top                 : 0px;
   height              : 60px;
   width               : 236px;
@@ -3737,7 +3489,6 @@ button.upload_btns2 {
   transform           : rotate(0deg);
 }
 .playerupdatepicture .formupdate .fieldupdatepicture .fieldbtn .btnuploadfile {
-  background-color    : rgba(255,255,255,0.0);
   top                 : 18px;
   height              : auto;
   width               : 310px;
@@ -3747,7 +3498,7 @@ button.upload_btns2 {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+     
   font-size           : 14.0px;
   color               : rgba(114, 145, 158, 1.0);
   text-align          : center;
@@ -3762,14 +3513,13 @@ button.upload_btns2 {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
+   
   font-size           : 10.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
   line-height         : 35.0px;
 }
 .playerupdatepicture .formupdate .fieldupdatepicture .textcontentpg11 {
-  background-color    : rgba(255,255,255,0.0);
   top                 : 0px;
   height              : auto;
   width               : 232px;
@@ -3779,7 +3529,7 @@ button.upload_btns2 {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
+   
   font-size           : 10.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
@@ -3797,7 +3547,6 @@ button.upload_btns2 {
   transform: rotate(0deg);
 }
 .playerupdatepicture .fieldnickname .imgpath1 {
-  background-color    : rgba(255,255,255,0.0);
   top                 : 495px;
   height              : 22px;
   width               : 178px;
@@ -3819,7 +3568,7 @@ button.upload_btns2 {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Thin", Helvetica, Arial, serif;
+   
   font-size           : 14.0px;
   color               : rgba(72, 80, 87, 1.0);
   text-align          : left;
@@ -3836,7 +3585,7 @@ button.upload_btns2 {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-SemiBold", Helvetica, Arial, serif;
+   
   font-size           : 14.0px;
   color               : rgba(72, 80, 87, 1.0);
   text-align          : left;
@@ -3853,7 +3602,7 @@ button.upload_btns2 {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-  font-family         : "AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+   
   font-size           : 16.0px;
   color               : rgba(0, 0, 0, 1.0);
   text-align          : left;
@@ -3895,6 +3644,4 @@ button.upload_btns2 {
   -ms-transform       : rotate(0deg); /* IE 9 */
   -webkit-transform   : rotate(0deg); /* Chrome, Safari, Opera */
   transform           : rotate(0deg);
-}
-
 }

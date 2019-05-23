@@ -32,16 +32,24 @@ member = (() => {
     let login_after =()=>{
     	$('#map').remove();
         $('#content').empty().append(compo.content());
-        jQuery(function($) {
-            $('#home').vidbg({
-                'mp4': 'resources/video/Fifa.mp4',
-            }, {
-                // Options
-                muted: true,
-                loop: true,
-                overlay: true,
-            });
-        });
+
+        $('#home').vegas({
+    		cover: true,
+    		delay: 8000,
+    		transitionDuration : 1500,
+    	    slides: [
+    	    	{ src: "resources/img/background/main_bg6.jpg" },
+    	        { src: "resources/img/background/main_bg1.jpg" },
+    	        { src: "resources/img/background/main_bg5.jpg" },
+    	        { src: "resources/img/background/main_bg3.jpg" },
+    	        { src: "resources/img/background/main_bg7.jpg" },
+    	        { src: "resources/img/background/main_bg8.jpg" },
+    	        { src: "resources/img/background/main_bg9.jpg" },
+    	        { src: "resources/img/background/main_bg4.jpg" },
+    	        { src: "resources/img/background/main_bg2.jpg" }
+    	    ]
+    	});
+        $('body .vegas-container').css("position","static");
         $('#rm_search').empty().append(compo.srch());
         $('input[name="gameDate"]').datepicker({
 			locale: 'ko-kr',
@@ -50,28 +58,18 @@ member = (() => {
             autoShow: 'true',
             autoPick: 'true'
 		});
-        $('.search-date').css({'margin-top':'10px','border-radius':' 4px'});
         $('.logo').remove();
         $('<a class="logo_login" href="#"><img src="resources/img/logo/logo.png" alt="logo"></a>').appendTo('.navbar-brand');
         $('#content');
-        $('#footer').remove();
-        $('#myMpa').after(compo.footer());
         home_list_after();
         let x = {
         		photo : $.member().photo
         }
         $('#nav').empty().after(compo.login_nav(x));
         if($.member().teamIndex != 0){
-        	$('#exercise').parent().after('<li><a href="#" id="team_exercise">TEAM_EXERCISE</a></li>');
+        	$('#exercise').parent().after('<li><a href="#" id="team_exercise">팀 예약현황</a></li>');
         }
-        $('#team_exercise').click(()=>{
-        	 swal({
-            	 icon : 'error',
-            	 text : '시스템에 문제가 있습니다. 다시시도 바랍니다.'
-             });
-        })
 
-   
         $('#userBtn').click(() => {
         	$('#alram-drop').remove();
             $('<div class="dropdown-menu" id="user-drop">'
@@ -92,14 +90,14 @@ member = (() => {
             	if ($.member().teamIndex == 0){
             		swal({
                 		icon : 'info',
-                		text : '현재 소속된 팀이 없습니다.'
+                		text : '현재 소속된 클럽이 없습니다.'
                 	});
             	} else {
             		let teamData = {
             				teamIndex : $.member().teamIndex
             				}
             		$.ajax({
-            			url: $.ctx()+'/teams/myteam/'+teamData.teamIndex,
+            			url: $.ctx()+'/teams/myteam',
             			type: 'PUT',
             			data: JSON.stringify(teamData),
             			dataType: 'json',
@@ -196,7 +194,7 @@ member = (() => {
                             '  <div class="course">' +
                             '    <a href="#" class="course-img">' +
                             '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
-                            '      <i class="course-link-icon fa fa-link"></i>' +
+                            '      <i class="course-link-icon icon-check"></i>' +
                             '    </a>' +
                             '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                             '    <div class="course-time">' +
@@ -219,7 +217,7 @@ member = (() => {
                             '  <div class="course">' +
                             '    <a href="#" class="course-img">' +
                             '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
-                            '      <i class="course-link-icon fa fa-link"></i>' +
+                            '      <i class="course-link-icon icon-check"></i>' +
                             '    </a>' +
                             '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                             '    <div class="course-time">' +
@@ -242,7 +240,7 @@ member = (() => {
                             '  <div class="course">' +
                             '    <a href="#" class="course-img">' +
                             '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
-                            '      <i class="course-link-icon fa fa-link"></i>' +
+                            '      <i class="course-link-icon icon-check"></i>' +
                             '    </a>' +
                             '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                             '    <div class="course-time">' +
@@ -255,7 +253,7 @@ member = (() => {
                             '      <span class="course-price course-free">' + j.people + '/' + 22 + '</span>' +
                             '    </div>' +
                             '  </div>' +
-                            '</div> ').appendTo('.gyeonggi_stadium').click(function() {
+                            '</div> ').appendTo('.gyeonggi_stadium').click(function() {hh
                             stadium.list_detail_after(j);
                         });
                     }
@@ -264,7 +262,6 @@ member = (() => {
         });
     }
     let member_update_frame = ()=>{
-    	$('#footer').remove();
     	$('#content').empty().html(compo.member_update_frame());
     	profile();
     	

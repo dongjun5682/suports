@@ -35,9 +35,7 @@ stadium = (() => {
         list(arr);
     }
     let list = (x) => {
-        $('#content').css('margin-top', '80px');
         $('#map').empty();
-        $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
         $('#map_button').click(() =>{
             $('#content').empty().html(compo.stadium_list_sidebar());
@@ -142,7 +140,7 @@ stadium = (() => {
                         '  <div class="course">' +
                         '    <a href="#" class="course-img">' +
                         '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
-                        '      <i class="course-link-icon fa fa-link"></i>' +
+                        '      <i class="course-link-icon icon-check"></i>' +
                         '    </a>' +
                         '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                         '    <div class="course-time">' +
@@ -159,7 +157,6 @@ stadium = (() => {
                     .appendTo('#asearch')
                     .click(function() {
                         $('#map').empty();
-                        $('#footer').empty();
                         list_detail(j);
                     });
             });
@@ -209,9 +206,7 @@ stadium = (() => {
     }
     let list_after = (x) => {
     	$('#map').empty();
-        $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
-        $('#content').css('margin-top','80px');
         $('#map_button').click(() => {
             $('#content').empty().html(compo.stadium_list_sidebar());
             $('.col-md-9').append(compo.map());
@@ -315,7 +310,7 @@ stadium = (() => {
                         '  <div class="course">' +
                         '    <a href="#" class="course-img">' +
                         '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
-                        '      <i class="course-link-icon fa fa-link"></i>' +
+                        '      <i class="course-link-icon icon-check"></i>' +
                         '    </a>' +
                         '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                         '    <div class="course-time">' +
@@ -332,7 +327,6 @@ stadium = (() => {
                     .appendTo('#asearch')
                     .click(function() {
                         $('#map').empty();
-                        $('#footer').empty();
                         list_detail_after(j);
                     });
             });
@@ -435,21 +429,6 @@ stadium = (() => {
             });
 
         });
-        $('#footer').css('.section', 'padding-bottom:78px;');
-        $('#footer').attr('style', 'position: fixed;left: 0;bottom: 0;width: 100%;background-color: #00A86B;color: white;text-align: center;padding-bottom: 5px;padding-bottom: 34px;-top: 5px;padding-top: 0px;"')
-        $('#footer').html('<div class="navbar-brand">' +
-            '<div class= col-ms-1>' +
-            '<a class="logo" href="index.html" style="margin-right: 1230px;">' +
-            '<img src="resources/img/logo/logo.png" alt="logo"></a>' +
-            '<button class="btn hover2" style="width: 9%;padding: 16px;margin-bottom: 46px;margin-left: -150px; margin-right:80px;">' +
-            '<span style="color:white;">경기 날짜: '+j.date+' 시간: '+j.time+'</span>' +
-            '</button>' +
-            '<button type="button" id="pay_btn_1" class="btn hover2" data-toggle="modal" data-target="#myModal" style="width: 9%;padding: 16px;background-color: #ffffff;margin-bottom: 46px;">' +
-            '<span style="color:black">예약하기</span>' +
-            '</button>' +
-            '</div>'+
-            '</div>' +
-            '</div>');
         // map 설정 ////
         $(document).ready(function() {
             initMap(j);
@@ -472,7 +451,6 @@ stadium = (() => {
                 'data-target': '#myModal',
                 'data-toggle': 'modal'
             });
-            $('#content').css('margin-top','0px');
             home.login();
         });
         $('#a-team').click((d) => {
@@ -480,7 +458,6 @@ stadium = (() => {
                 'data-target': '#myModal',
                 'data-toggle': 'modal'
             });
-            $('#content').css('margin-top','0px');
             home.login();
         });
 
@@ -517,23 +494,6 @@ stadium = (() => {
     let list_detail_after = (j) => {
         $('#content').html(compo.stadium_list_detail(j));
         position_map(j);
-        $('#footer').css('.section', 'padding-bottom:78px;');
-        $('#footer').attr('style', 'position: fixed;left: 0;bottom: 0;width: 100%;background-color: #00A86B;color: white;text-align: center;padding-bottom: 5px;padding-bottom: 34px;-top: 5px;padding-top: 0px;"')
-        $('#footer').html('<div class="navbar-brand">' +
-            '<div class= col-ms-1>' +
-            '<a class="logo" href="index.html" style="margin-right: 1230px;">' +
-            '<img src="resources/img/logo/logo.png" alt="logo"></a>' +
-            '<button class="btn hover2" style="width: 9%;padding: 16px;margin-bottom: 46px;margin-left: -150px; margin-right:80px;">' +
-            '<span style="color:white;">경기 날짜: '+j.date+' 시간: '+j.time+'</span>' +
-            '</button>' +
-            '<button type="button" id="pay_btn_1" class="btn hover2"style="width: 9%;padding: 16px;background-color: #ffffff;margin-bottom: 46px;">' +
-            '<span style="color:black">예약하기</span>' +
-            '</button>' +
-            '</div>' +
-            '<div class= col-ms-11>' +
-            '</div>' +
-            '</div>' +
-            '</div>');
         // map 설정 ////
         $(document).ready(function() {
             initMap(j);
@@ -575,7 +535,6 @@ stadium = (() => {
                 })
                 $('#pay_next').click(() => {
                     $('#myModal').modal('hide');
-                    $('#footer').remove();
                     $('#content').empty();
                     let arr = {
                         'stadium': j,
@@ -590,8 +549,6 @@ stadium = (() => {
     }
 
     let payment = arr => {
-        $('#footer').empty();
-        $('#myMpa').after(compo.footer());
         $('#map').remove();
         $('#content').empty().html(compo.payment(arr)).css('margin-top', '100px');
         $('<div class="row">'
@@ -619,7 +576,6 @@ stadium = (() => {
     }
     let payment_reservation = j => {
         $('#content').empty().html(compo.payment_reservation(j));
-        $('#footer').empty();
         position_map_res(j.stadium);
         $('#alramBtn img').attr('src','resources/img/alram_after.png');
         $.each(j.message,(i,j)=>{
@@ -629,7 +585,6 @@ stadium = (() => {
         $('#pay_home').click(() => {
         	$('.logo_login').remove();
         	$('.navbar-right').remove();
-        	$('#content').css('margin-top','0px');
             member.login_after();
         });
         $('.resBtn').click(()=>{
@@ -644,9 +599,7 @@ stadium = (() => {
         
     }
     let srch = x => {
-        $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
-        $('#content').css('margin-top', '80px');
         $.getJSON($.ctx()+'/stadiums/search/'+x.s+'/'+x.p+'/'+x.t, d => {
             $('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
             $.each(d.srch, (i, j) => {
@@ -654,7 +607,7 @@ stadium = (() => {
                         '  <div class="course">' +
                         '    <a href="#" class="course-img">' +
                         '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
-                        '      <i class="course-link-icon fa fa-link"></i>' +
+                        '      <i class="course-link-icon icon-check"></i>' +
                         '    </a>' +
                         '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                         '    <div class="course-time">' +
@@ -671,7 +624,6 @@ stadium = (() => {
                     .appendTo('#asearch')
                     .click(function() {
                         $('#map').empty();
-                        $('#footer').empty();
                         list_detail(j);
                     });
             });
@@ -739,9 +691,7 @@ stadium = (() => {
 
     };
     let srch_seoul = x => {
-        $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
-        $('#content').css('margin-top', '80px');
         let url = $.ctx() + '/seoul/search/' + x.s + '/' + x.p;
         $.getJSON(url, d => {
             $('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
@@ -750,7 +700,7 @@ stadium = (() => {
                         '  <div class="course">' +
                         '    <a href="#" class="course-img">' +
                         '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
-                        '      <i class="course-link-icon fa fa-link"></i>' +
+                        '      <i class="course-link-icon icon-check"></i>' +
                         '    </a>' +
                         '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                         '    <div class="course-details">' +
@@ -764,7 +714,6 @@ stadium = (() => {
                     .appendTo('#asearch')
                     .click(function() {
                         $('#map').empty();
-                        $('#footer').empty();
                         list_detail(j);
                     });
             });
@@ -842,9 +791,7 @@ stadium = (() => {
         });
     };
     let srch_incheon = x => {
-        $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
-        $('#content').css('margin-top', '80px');
         let url = $.ctx() + '/incheon/search/' + x.s + '/' + x.p;
         $.getJSON(url, d => {
             $('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
@@ -853,7 +800,7 @@ stadium = (() => {
                         '  <div class="course">' +
                         '    <a href="#" class="course-img">' +
                         '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
-                        '      <i class="course-link-icon fa fa-link"></i>' +
+                        '      <i class="course-link-icon icon-check"></i>' +
                         '    </a>' +
                         '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                         '    <div class="course-details">' +
@@ -867,7 +814,6 @@ stadium = (() => {
                     .appendTo('#asearch')
                     .click(function() {
                         $('#map').empty();
-                        $('#footer').empty();
                         list_detail(j);
                     });
             });
@@ -904,9 +850,7 @@ stadium = (() => {
         });
     };
     let srch_gyeonggi = x => {
-        $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
-        $('#content').css('margin-top', '80px');
         let url = $.ctx() + '/gyeonggi/search/' + x.s + '/' + x.p;
         $.getJSON(url, d => {
             $('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
@@ -915,7 +859,7 @@ stadium = (() => {
                         '  <div class="course">' +
                         '    <a href="#" class="course-img">' +
                         '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
-                        '      <i class="course-link-icon fa fa-link"></i>' +
+                        '      <i class="course-link-icon icon-check"></i>' +
                         '    </a>' +
                         '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                         '    <div class="course-details">' +
@@ -929,7 +873,6 @@ stadium = (() => {
                     .appendTo('#asearch')
                     .click(function() {
                         $('#map').empty();
-                        $('#footer').empty();
                         list_detail(j);
                     });
             });
@@ -967,9 +910,7 @@ stadium = (() => {
     };
 
     let srch_after = x => {
-        $('#footer').empty();
         $('#content').empty().html(compo.stadium_list_sidebar());
-        $('#content').css('margin-top', '80px');
         $.getJSON($.ctx()+'/stadiums/search/'+x.s+'/'+x.p+'/'+x.t, d => {
             $('<div id="asearch" class="contianer"></div>').appendTo('.stadium-list');
             $.each(d.srch, (i, j) => {
@@ -977,7 +918,7 @@ stadium = (() => {
                         '  <div class="course">' +
                         '    <a href="#" class="course-img">' +
                         '      <img src="' + j.stadiumPhoto + '" alt="' + i + '" style="height: 220px;">' +
-                        '      <i class="course-link-icon fa fa-link"></i>' +
+                        '      <i class="course-link-icon icon-check"></i>' +
                         '    </a>' +
                         '    <a class="course-title" href="#">' + j.stadiumName + '</a>' +
                         '    <div class="course-time">' +
@@ -994,7 +935,6 @@ stadium = (() => {
                     .appendTo('#asearch')
                     .click(function() {
                         $('#map').empty();
-                        $('#footer').empty();
                         list_detail_after(j);
                     });
             });
@@ -1080,7 +1020,6 @@ stadium = (() => {
         });
     }
     let stadium_res =()=>{
-    	 $('#content').css('margin-top', '80px');
          $('#content').empty();
          let access = '';
          $('  <div class="container">'
@@ -1134,9 +1073,7 @@ stadium = (() => {
     }
     
     let team_stadium_list =()=>{
-    	 $('#content').css('margin-top', '80px');
          $('#content').empty();
-         $('#footer').css('padding','0px');
          let access = '';
          $('  <div class="container">'
             		+'    <div class="row" style="margin: 20px;">'
@@ -1333,7 +1270,6 @@ stadium = (() => {
                  $('#roster_' + i).attr('ondrop', 'drag(event)');
              }
              if(j.memberIndex == $.member().memberIndex){
-             	$('#footer').empty().removeAttr('style');
              }
          });
 

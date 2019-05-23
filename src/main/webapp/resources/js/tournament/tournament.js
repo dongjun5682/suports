@@ -27,9 +27,6 @@ tour =(()=>{
         });
     };
     let setContentView =()=>{
-    	$('#content').empty().html(compo.tournament()).css({
-            'margin-top': '100px'
-        });
     	$('.tournament-content button').click(function(e){
     		$('.tournament-content button').attr({'data-target':'#myModal','data-toggle':'modal'});
     		home.login();  
@@ -40,17 +37,13 @@ tour =(()=>{
     	
     }
    let tour_apply =()=>{
-	   $('#content').empty().html(compo.tournament()).css({
-           'margin-top': '100px'
-       });
-   	   $('#footer').remove();
 	   $('.tournament-content button').click(function(e){
    		let _this = $(this).attr('id');
    		$.getJSON($.ctx()+'/tournament/'+$.member().memberIndex , d=>{
    			if(d.captain === null){
    			 swal({
             	 icon : 'info',
-            	 text : '팀의 주장만 신청이 가능합니다.'
+            	 text : '클럽 주장만 신청이 가능합니다.'
              });
    				$('#myModal_tour').modal("hide");
    			}else{

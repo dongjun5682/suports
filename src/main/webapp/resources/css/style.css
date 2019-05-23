@@ -31,9 +31,58 @@ Table OF Contents
 	General
 \*------------------------------------*/
 /* --- typography --- */
+
+div#ev_list {
+    display: block;
+    margin-top: 24rem;
+}
+span.form-label.anb_1_2 {
+    margin: 12px auto 12px auto;
+    display: block;
+}
+
+select.form-control.search-addr {
+    height: 48px;
+}
+
+input.form-control.search-date {
+    height: 48px;
+}
+
+select.form-control.search-time {
+    height: 48px;
+}
+
+button#sear-btn {
+    height: 50px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.anb_2 {
+    margin: 28px 20% auto 20%;
+}
+.lead.white-text {
+    color: #212528;
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 14px;
+}
+
+input.form-control.search-addr {
+    color: #212528;
+    background-color: white;
+}
+.anb_1 {
+    text-align: left;
+    display: block;
+    margin: 10px auto auto auto;
+}
 footer#footer {
-	padding-top: 60px;
+	/* padding-top: 60px; */
 	margin: 20px auto auto auto;
+	display: inline-block;
 }
 .p_tags_2:hover {
     background-color: #F1F3F5;
@@ -91,11 +140,6 @@ h3#stadium_detail_warn {
     /* border-bottom: 1px solid #495057; */
 }
 
-div#content {
-	padding-bottom: 20px;
-    margin-top: 80px;
-    display: block;
-}
 
 body {
 	font-family: 'Montserrat', sans-serif;
@@ -177,10 +221,6 @@ blockquote:before {
 }
 
 /* --- Section --- */
-.section {
-	position: relative;
-}
-
 .section-hr {
 	margin-top: 80px;
 	margin-bottom: 80px;
@@ -188,8 +228,8 @@ blockquote:before {
 }
 
 .section-header {
-	margin-bottom: 40px;
-	margin-top: 50px;
+	margin-bottom: 26px;
+	margin-top: 28px;
 }
 
 /* --- Background Image --- */
@@ -311,7 +351,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	Navigation
 \*------------------------------------*/
 #header {
-	position: relative;
+	position: sticky;
 	left: 0;
 	right: 0;
 	top: 0;
@@ -323,13 +363,15 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 
 #header.transparent-nav {
-	position: absolute;
+	
 	background-color: transparent;
 }
 
 #header.transparent-nav .main-menu li a {
-	color: #149C65;
+	color: rgb(34, 199, 129);
+	/* background-color: rgba(142, 142, 142, 0.1); */
 	font-size: 16px;
+	font-weight: 400;
 }
 
 .main-menu li a {
@@ -338,16 +380,16 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	transition: 0.2s all;
 }
 
-.main-menu li a:hover, .main-menu li a:focus {
-	background-color: transparent;
-}
+/* .main-menu li a:hover, .main-menu li a:focus {
+	background-color: #ff0c0c00;
+} */
 
 .main-menu li a:after {
 	content: "";
 	display: block;
 	height: 2px;
-	maring-top: 20px;
-	background-color: green;
+	margin-top: 4px;
+	background-color: #22C781;
 	width: 100%;
 	-webkit-transform: translateY(5px);
 	-ms-transform: translateY(5px);
@@ -473,19 +515,17 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 
 #home.hero-area {
-	height: calc(110vh - 80px);
-	padding-top: 0px;
-	padding-bottom: 0px;
+	    /* height: 50%; */
+	    /* padding-top: 0px; */
+	    padding-bottom: 0px;
 }
 
 .home-wrapper {
-	position: absolute;
-	top: 50%;
+	display: block;
+	margin: 20% auto auto -580px;
 	-webkit-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
-	left: 0;
-	right: 0;
 }
 
 /* -- Breadcrumb -- */
@@ -589,6 +629,7 @@ to {
 
 .course .course-img>img {
 	width: 100%;
+	object-fit: cover;
 }
 
 .course-img:after {
@@ -1355,11 +1396,12 @@ to {
 
 }
 .booking-form {
-	background: rgba(0, 0, 0, 0.5);
-	padding: 40px;
-	border-radius: 6px;
-	display: flex;
-	flex-direction: column;
+	background-color: white;
+	padding: 24px;
+	border-radius: 4px;
+	box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.3);
+	width: 420px;
+	height: 460px;
 }
 
 .ev_list {
@@ -1374,9 +1416,9 @@ to {
 }
 
 .black-text {
-	color: black;
-	font-size: 15px;
-	padding-left: 10px;
+	color: #212528;
+	font-size: 18px;
+	padding: 4px;
 }
 
 .black-text2 {
@@ -1386,8 +1428,9 @@ to {
 }
 
 #user-drop {
-	margin-top: 18px;
-	width: 300px;
+	margin-top: 15px;
+	width: 200px;
+	text-align: -webkit-center;
 }
 
 #alram-drop {
